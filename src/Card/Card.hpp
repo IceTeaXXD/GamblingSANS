@@ -26,23 +26,4 @@ class DeckCard : Card{
         int getType();
 };
 
-class AbilityCard : Card{
-    private:
-        /* Type
-            1. Re-Roll
-            2. Quadruple
-            3. Quarter
-            4. Reverse Direction
-            5. Swap Card
-            6. Switch
-            7. Abilityless
-        */
-        int type;
-    
-    public:
-        AbilityCard(int type);
-        int getType();
-};
-
-
 #endif
