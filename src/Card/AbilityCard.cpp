@@ -1,5 +1,6 @@
 #include <iostream>
 #include "AbilityCard.hpp"
+using namespace std;
 
 AbilityCard::AbilityCard(bool avail) : Card()
 {
@@ -15,9 +16,13 @@ void AbilityCard::setNotAvailable()
 {
     availability = false;
 }
-Player AbilityCard::getOwner(AbilityCard* a)
+// Player AbilityCard::getOwner(AbilityCard* a)
+// {
+//     return a->owner;
+// }
+void AbilityCard::use()
 {
-    return a->owner;
+    cout<<"Menggunakan ability card"<<endl;
 }
 void REROLL::use(Card* )
 {
@@ -45,11 +50,11 @@ void Abilityless::use()
     if (isAvailable())
     {
         //CASENYA KURANG YANG SEMUA KARTU ABILITY SUDAH MATI
-        Player owner = getOwner(this);
-        string name;
-        cout<<owner.getName()<<" akan mematikan kartu ability lawan"<<endl;
-        cout<<"Silahkan pilih pemain yang kartu abilitynya ingin dimatikan: "<<endl;
-        cin>>name;
+        // Player owner = getOwner(this);
+        // string name;
+        // cout<<owner.getName()<<" akan mematikan kartu ability lawan"<<endl;
+        // cout<<"Silahkan pilih pemain yang kartu abilitynya ingin dimatikan: "<<endl;
+        // cin>>name;
         //Kurang bikin fungsi buat cari objek player dg name = "XXX";
         // if (isAvailable())
         // {

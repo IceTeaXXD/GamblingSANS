@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "../Card/Card.hpp"
+#include "../Card/AbilityCard.hpp"
 using namespace std;
 
 /* Kelas untuk Player */
@@ -14,7 +15,8 @@ class Player{
         int point;
 
         /* Player Cards */
-        Card* playerCards;
+        Card* playerCard;
+        Card* tableCard;
 
         /* Ability Cards */
         AbilityCard* abilityCards;
@@ -33,7 +35,10 @@ class Player{
         void setPoint(int);
         static int countOfPlayers;
         int countofPlayerCards;
-        int countofAbilityCards;
+        int countofTableCard;
+        void operator<<(Card&);
+        void addTableCard(Card&);
+        void viewAllCard();
 };
 
 #endif

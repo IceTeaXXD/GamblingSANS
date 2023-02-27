@@ -7,10 +7,12 @@ using namespace std;
 class Card{
     public:
         Card();
-        virtual int getType() const = 0;
+        virtual string getType();
+        virtual int getNum();
+        virtual void printInfo();
 };
 
-class DeckCard : Card{
+class DeckCard : public Card{
     private:
         int num;
         /* Type 
@@ -20,10 +22,12 @@ class DeckCard : Card{
         4. Merah */
         int type;
     public:
-        DeckCard(int n);
+        DeckCard();
+        DeckCard(int,int);
         ~DeckCard();
         int getNum();
-        int getType();
+        string getType();
+        void printInfo();
 };
 
 #endif

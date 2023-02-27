@@ -2,17 +2,17 @@
 #define ABILITY_CARD_HPP
 #include <iostream>
 #include "Card.hpp"
-#include "../Player/Player.hpp"
+// #include "../Player/Player.hpp"
 
 class AbilityCard : public Card{
     private:
         bool availability;
-        Player owner;
+        // Player owner;
     public:
         AbilityCard(bool);
         bool isAvailable();
         void setNotAvailable();
-        Player getOwner(AbilityCard*);
+        // Player getOwner(AbilityCard*);
         virtual void use();
 };
 class REROLL : AbilityCard

@@ -16,6 +16,7 @@ class GameManager{
         /* Card Deck */
         Card* tableCards;
         static int numOfTableCards;
+        int point;
 
         /* Game Round */
         static int round;
@@ -24,7 +25,10 @@ class GameManager{
         ~GameManager();
         void setGiliran(int);
         int getGiliran();
-
+        void startGame();
+        void displayPlayer();
+        void initDistribute(int);
+        Card* getCard();
 };
 
 #endif
