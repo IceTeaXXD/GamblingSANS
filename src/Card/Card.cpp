@@ -3,8 +3,6 @@
 
 Card::Card(){}
 
-string Card::getType(){}
-int Card::getNum(){}
 void Card::printInfo(){cout<<"TES TES"<<endl;}
 
 DeckCard::DeckCard(){}

@@ -7,8 +7,6 @@ using namespace std;
 class Card{
     public:
         Card();
-        virtual string getType();
-        virtual int getNum();
         virtual void printInfo();
 };
 
