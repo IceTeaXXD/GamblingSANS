@@ -28,6 +28,14 @@ GameManager::GameManager()
             inc++;
         }
     }
+    abilityCardList = new AbilityCard[7];
+    abilityCardList[0] = new REROLL();
+    abilityCardList[1] = new Quadruple();
+    abilityCardList[2] = new Quarter();
+    abilityCardList[3] = new ReverseDirection();
+    abilityCardList[4] = new SwabCard();
+    abilityCardList[5] = new Switch();
+    abilityCardList[6] = new Abilityless();
     startGame();
 }
 void GameManager::startGame()
@@ -45,20 +53,11 @@ void GameManager::startGame()
             giliran++;
         }
         round++;
+        //kurang get ability card disini
     }
     else if (round>1 && round<6)
     {
-        for (int i = 0 ; i < 7 ; i++)
-        {   int aksi;
-            initDistribute(giliran);
-            cout<<"Tentukan aksi anda: "<<endl;
-            cout<<"1. Next"<<endl;
-            cout<<"2. Double"<<endl;
-            cout<<"3. Half"<<endl;
-            cin>>aksi;
-            giliran++;
-        }
-        round++;
+        //distribute table card
     }
 }
 
@@ -90,3 +89,10 @@ DeckCard* GameManager::getCard()
     numOfTableCards--;
     return ret;
 }
+AbilityCard* GameManager::getAbilityCard()
+{
+ //IMPELEMTASI DISINI 
+ //intinya ngerandom angka 0-length(abilityCardList) trs ambil sesuai yg di dapet + assign ke pemain
+ //Krtu ability yang udah diambil dihapus dari list
+ //sama kyk yang getCard()   
+} 

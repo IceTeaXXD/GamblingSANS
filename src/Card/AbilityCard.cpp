@@ -1,10 +1,13 @@
 #include <iostream>
 #include "AbilityCard.hpp"
 using namespace std;
-
-AbilityCard::AbilityCard(bool avail) : Card()
+AbilityCard::AbilityCard() : Card()
 {
     availability = true;
+}
+AbilityCard::AbilityCard(bool avail) : Card()
+{
+    availability = avail;
 }
 
 bool AbilityCard::isAvailable()
@@ -35,7 +38,7 @@ void REROLL::use(Card* )
     {}
 }
 
-void Quadruple::use()
+void Quadruple::use(int a)
 {
     if (isAvailable())
     {

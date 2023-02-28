@@ -6,7 +6,16 @@
 
 #include <iostream>
 using namespace std;
-
+/*
+    yang tinggal diimplementasi sejauh ini :
+    1. getabilitycard
+    2. distribute table card
+    kalau udh nanti tambahin di bagian startgame()
+    3. arah giliran masih statik -> harusnya berubah setiap ronde
+    4. fungsi use() di ability card mungkin udh bisa diimplementasi juga
+    5. Implementasi queue buat nentuin giliran permainan (biar lebih gampang klo ada yang make reverse)
+    6. Implementasi poin dan aksi (next, double, half)
+*/
 class GameManager{
     private:
         /* Array of Players */
@@ -15,6 +24,7 @@ class GameManager{
     public:
         /* Card Deck */
         DeckCard* tableCards;
+        AbilityCard* abilityCardList;
         static int numOfTableCards;
         int point;
 
@@ -29,6 +39,8 @@ class GameManager{
         void displayPlayer();
         void initDistribute(int);
         DeckCard* getCard();
+        AbilityCard* getAbilityCard();
+        void distributeTableCard();
 };
 
 #endif

@@ -7,50 +7,59 @@
 class AbilityCard : public Card{
     private:
         bool availability;
-        // Player owner;
     public:
+        AbilityCard();
         AbilityCard(bool);
         bool isAvailable();
         void setNotAvailable();
-        // Player getOwner(AbilityCard*);
         virtual void use();
 };
 class REROLL : AbilityCard
 {
     public:
         //Re-Roll, membuang 2 kartu dari main deck yang dimiliki oleh diri sendiri dan mengambil ulang 2 kartu.
-        void use(Card*);
+        REROLL();
+        void use(DeckCard* gameManager,DeckCard* PlayerCard);
+        void use(Card *);
 };
 class Quadruple : AbilityCard
 {
     public:
         //Quadruple, sama seperti aksi double hanya saja multipliernya menjadi 4x.
-        void use();
+        Quadruple(int);
+        void use(int);
 };
 class Quarter : AbilityCard
 {
     public:
         //Quarter, sama seperti aksi half hanya saja multipliernya menjadi 0.25x.
-        void use();
+        Quarter(int);
+        void use(int);
 };
 class ReverseDirection : AbilityCard
 {
     public :
+        ReverseDirection();
+        //ini perlu queue buat nentuin urutan
         void use();
 };
-class SwabCard : AbilityCard
+class SwapCard : AbilityCard
 {
+    //Kalau ngerjain swab sekalian di switch karena mirip
     public :
+        SwapCard(Player*);
         void use();
 };
 class Switch : AbilityCard
 {
     public :
+        Switch(Player*);
         void use();
 };
 class Abilityless : public AbilityCard
 {
     public :
+        Abilityless(Player*);
         void use();
 };
 #endif
