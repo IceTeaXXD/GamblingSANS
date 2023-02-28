@@ -15,8 +15,8 @@ class Player{
         int point;
 
         /* Player Cards */
-        Card* playerCard;
-        Card* tableCard;
+        DeckCard* playerCard;
+        DeckCard* tableCard;
 
         /* Ability Cards */
         AbilityCard* abilityCards;
@@ -36,8 +36,8 @@ class Player{
         static int countOfPlayers;
         int countofPlayerCards;
         int countofTableCard;
-        void operator<<(Card&);
-        void addTableCard(Card&);
+        void operator<<(DeckCard&);
+        void addTableCard(DeckCard&);
         void viewAllCard();
 };
 
