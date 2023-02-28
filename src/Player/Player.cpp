@@ -43,7 +43,7 @@ void Player::setPoint(int p){
     this->point = p;
 }
 
-void Player::operator<<(DeckCard& cardInput){
+void Player::addCard(DeckCard& cardInput){
     playerCard[countofPlayerCards] = cardInput;
     countofPlayerCards++;
 }

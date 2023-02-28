@@ -36,7 +36,7 @@ class Player{
         static int countOfPlayers;
         int countofPlayerCards;
         int countofTableCard;
-        void operator<<(DeckCard&);
+        void addCard(DeckCard&);
         void addTableCard(DeckCard&);
         void viewAllCard();
 };

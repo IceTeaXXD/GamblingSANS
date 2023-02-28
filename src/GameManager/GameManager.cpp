@@ -32,7 +32,21 @@ GameManager::GameManager()
 }
 void GameManager::startGame()
 {
-    if (round == 1);
+    if (round == 1)
+    {
+        for (int i = 0 ; i < 7 ; i++)
+        {   int aksi;
+            initDistribute(giliran);
+            cout<<"Tentukan aksi anda: "<<endl;
+            cout<<"1. Next"<<endl;
+            cout<<"2. Double"<<endl;
+            cout<<"3. Half"<<endl;
+            cin>>aksi;
+            giliran++;
+        }
+        round++;
+    }
+    else if (round>1 && round<6)
     {
         for (int i = 0 ; i < 7 ; i++)
         {   int aksi;
@@ -58,16 +72,16 @@ void GameManager::displayPlayer()
 
 void GameManager::initDistribute(int idplayer)
 {
-    Card* temp = getCard();
+    DeckCard* temp = getCard();
     players[idplayer].addCard(*temp);
-    cout<<"Kamu dapat kartu "<< temp->getNum()<< " dengan warna "<<temp->getNum()<<endl;
+    cout<<"Kamu dapat kartu "<< temp->getNum()<< " dengan warna "<<temp->getType()<<endl;
 }
 void GameManager::setGiliran(int g){this->giliran = 0;}
 
-Card* GameManager::getCard()
+DeckCard* GameManager::getCard()
 {
     int idx = rand()%numOfTableCards;
-    Card* ret = &tableCards[idx];
+    DeckCard* ret = &tableCards[idx];
     for (int i = idx ; i < numOfTableCards ; i++)
     {
         tableCards[i] = tableCards[i+1];

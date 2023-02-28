@@ -14,7 +14,7 @@ class GameManager{
         int giliran;
     public:
         /* Card Deck */
-        Card* tableCards;
+        DeckCard* tableCards;
         static int numOfTableCards;
         int point;
 
@@ -28,7 +28,7 @@ class GameManager{
         void startGame();
         void displayPlayer();
         void initDistribute(int);
-        Card* getCard();
+        DeckCard* getCard();
 };
 
 #endif
