@@ -19,13 +19,15 @@ using namespace std;
 */
 class GameManager{
     private:
+    public:
         /* Vector of Players */
         ArrOfPlayer players;
-
-    public:
         /* Card Deck */
         DeckCardCollection tableCards;
-        AbilityCard* abilityCardList;
+        /* Play Cards */
+        DeckCardCollection playCards;
+
+        // AbilityCard* abilityCardList;
         static int numOfTableCards;
         int point;
 
@@ -43,11 +45,11 @@ class GameManager{
         /* Mengubah Point */
         void setPoint(int);
 
-        void startGame();
+        // void startGame();
         void displayPlayer();
         void initDistribute(int);
         DeckCard* getCard();
-        AbilityCard* getAbilityCard();
+        // AbilityCard* getAbilityCard();
         void distributeTableCard();
 };
 
