@@ -16,8 +16,6 @@ ArrOfPlayer::ArrOfPlayer(){
     this->arr.push_back(p5);
     this->arr.push_back(p6);
     this->arr.push_back(p7);
-
-    this->giliran = 0;
     
 }
 
@@ -25,12 +23,23 @@ ArrOfPlayer::~ArrOfPlayer(){
     this->arr.clear();
 }
 
-int ArrOfPlayer::getGiliran(){
-    return this->giliran;
+void ArrOfPlayer::nextTurn(){
+    vector<Player> temp;
+    for (int i = 1; i < 7; i++){
+        temp.push_back(this->arr[i]);
+    }
+    temp.push_back(this->arr[0]);
+    this->arr.clear();
+    this->arr = temp;
 }
 
-void ArrOfPlayer::setGiliran(int giliran){
-    this->giliran = giliran;
+void ArrOfPlayer::reverseTurn(){
+    vector<Player> temp;
+    for (int i = 0; i < 7; i++){
+        temp.push_back(this->arr[i]);
+    }
+    this->arr.clear();
+    this->arr = temp;
 }
 
 Player ArrOfPlayer::getPlayer(int idx){
@@ -41,11 +50,11 @@ void ArrOfPlayer::changePlayerName(int idx, string name){
     this->arr[idx].setName(name);
 }
 
-void setPlayerPoint(int idx, int point){
+void ArrOfPlayer::setPlayerPoint(int idx, int point){
     this->arr[idx].setPoint(point);
 }
 
-void addPlayerCard(int idx, DeckCard& card){
+void ArrOfPlayer::addPlayerCard(int idx, DeckCard& card){
     this->arr[idx].addCard(card);
 }
 

@@ -6,8 +6,7 @@
 
 class ArrOfPlayer {
     private :
-        vector<Player> arr (7);
-        int giliran;
+        vector<Player> arr;
     public :
         //ctor
         ArrOfPlayer();
@@ -16,8 +15,8 @@ class ArrOfPlayer {
         ~ArrOfPlayer();
 
         // Function
-        int getGiliran();
-        void setGiliran(int);
+        void nextTurn();
+        void reverseTurn();
         Player getPlayer(int);
         void changePlayerName(int, string);
         void setPlayerPoint(int, int);
