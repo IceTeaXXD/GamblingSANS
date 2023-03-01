@@ -56,7 +56,7 @@ class DeckCardCollection{
         vector<DeckCard> buffer;
     public:
         DeckCardCollection();
-        void TableCards();
+        // void TableCards();
         DeckCardCollection(int);
         ~DeckCardCollection();
         DeckCard* getCard(int);
