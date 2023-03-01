@@ -4,10 +4,12 @@
 #include <iostream>
 #include "../Card/DeckCard.hpp"
 #include "../Card/AbilityCard.hpp"
+#include "../Rules/FindValue.hpp"
+
 using namespace std;
 
 /* Kelas untuk Player */
-class Player{
+class Player : protected FindValue{
     private:
         /* Nama dari Pemain */
         int id;
@@ -39,6 +41,8 @@ class Player{
         void addCard(DeckCard&);
         void addTableCard(DeckCard&);
         void viewAllCard();
+
+        int value();
 };
 
 #endif
