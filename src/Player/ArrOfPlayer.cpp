@@ -41,3 +41,11 @@ void ArrOfPlayer::changePlayerName(int idx, string name){
     this->arr[idx].setName(name);
 }
 
+void setPlayerPoint(int idx, int point){
+    this->arr[idx].setPoint(point);
+}
+
+void addPlayerCard(int idx, DeckCard& card){
+    this->arr[idx].addCard(card);
+}
+

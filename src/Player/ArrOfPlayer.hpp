@@ -1,12 +1,12 @@
 #ifndef ARROFPLAYER_HPP
 #define ARROFPLAYER_HPP
 
-#include <bits/stdc++.h>
+#include <vector>
 #include "Player.hpp"
 
 class ArrOfPlayer {
     private :
-        vector<Player> arr;
+        vector<Player> arr (7);
         int giliran;
     public :
         //ctor
@@ -20,6 +20,8 @@ class ArrOfPlayer {
         void setGiliran(int);
         Player getPlayer(int);
         void changePlayerName(int, string);
+        void setPlayerPoint(int, int);
+        void addPlayerCard(int, DeckCard&);
 };
 
 #endif
