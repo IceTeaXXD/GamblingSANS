@@ -26,7 +26,7 @@ int Warna::getType()
     return type;
 }
 
-DeckCardCollection::DeckCardCollection(){
+void DeckCardCollection::TableCards(){
     /* Make 52 Deck Cards */
     vector<DeckCard> cards;
     for (int i = 0 ; i<4 ; i++)
@@ -59,5 +59,15 @@ DeckCard DeckCardCollection::getCard(int i){
 }
 
 void DeckCardCollection::setCard(DeckCard& c){
+    this->buffer.push_back(c);
+}
+
+DeckCard* DeckCardCollection::takeCard(){
+    DeckCard* c = new DeckCard(this->buffer[0]);
+    this->buffer.erase(this->buffer.begin());
+    return c;
+}
+
+void DeckCardCollection::operator+(DeckCard& c){
     this->buffer.push_back(c);
 }

@@ -48,10 +48,13 @@ class DeckCardCollection{
         vector<DeckCard> buffer;
     public:
         DeckCardCollection();
+        void TableCards();
         DeckCardCollection(int);
         ~DeckCardCollection();
         DeckCard getCard(int);
+        DeckCard* takeCard();
         void setCard(DeckCard&);
+        void operator+(DeckCard&);
 };
 
 #endif
