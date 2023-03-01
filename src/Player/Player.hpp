@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include "../Card/DeckCard.hpp"
-#include "../Card/AbilityCard.hpp"
+// #include "../Card/AbilityCard.hpp
 #include "../Rules/FindValue.hpp"
 
 using namespace std;
@@ -17,10 +17,10 @@ class Player : protected FindValue{
         int point;
 
         /* Player Cards */
-        DeckCardCollection playerCard;
+        vector<DeckCard> playerCard;
         
         /* Ability Cards */
-        AbilityCard* abilityCards;
+        // AbilityCard* abilityCards;
 
     public:
         /* ctor */
@@ -38,8 +38,7 @@ class Player : protected FindValue{
         static int countOfPlayers;
         int countofPlayerCards;
         int countofTableCard;
-        Player& operator+(DeckCard&);
-
+        void operator+(DeckCard&);
         void addTableCard(DeckCard&);
         void viewAllCard();
         bool operator<(Player&);
