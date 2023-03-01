@@ -28,6 +28,7 @@ class Warna{
         void setWarna(string);
         string getType();
         Warna(int);
+        Warna();
 };
 
 class Angka{
@@ -37,6 +38,7 @@ class Angka{
         void setNum(int);
         int getNum();
         Angka(int);
+        Angka();
 };
 
 #endif
