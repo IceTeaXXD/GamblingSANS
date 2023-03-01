@@ -15,9 +15,8 @@ class Player{
         int point;
 
         /* Player Cards */
-        DeckCard* playerCard;
-        DeckCard* tableCard;
-
+        DeckCardCollection playerCard;
+        
         /* Ability Cards */
         AbilityCard* abilityCards;
 

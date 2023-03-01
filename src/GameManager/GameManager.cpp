@@ -77,6 +77,8 @@ void GameManager::initDistribute(int idplayer)
 }
 void GameManager::setGiliran(int g){this->giliran = 0;}
 
+void GameManager::setPoint(int p){this -> point = p;}
+
 DeckCard* GameManager::getCard()
 {
     int idx = rand()%numOfTableCards;

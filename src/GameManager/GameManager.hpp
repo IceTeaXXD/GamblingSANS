@@ -22,11 +22,9 @@ class GameManager{
         /* Vector of Players */
         ArrOfPlayer players;
 
-        // Giliran Player ke-i
-        int giliran;
     public:
         /* Card Deck */
-        DeckCard* tableCards;
+        DeckCardCollection tableCards;
         AbilityCard* abilityCardList;
         static int numOfTableCards;
         int point;
@@ -41,6 +39,9 @@ class GameManager{
         /* Mengubah Giliran dan Mendapatkan Giliran */
         void setGiliran(int);
         int getGiliran();
+
+        /* Mengubah Point */
+        void setPoint(int);
 
         void startGame();
         void displayPlayer();
