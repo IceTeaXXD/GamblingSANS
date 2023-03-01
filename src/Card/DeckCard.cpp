@@ -12,6 +12,22 @@ void DeckCard::printInfo()
     cout<<this->getNum()<<" "<<this->getType()<<endl;
 }
 
+// Belum dikerjain
+
+DeckCard& DeckCard::operator<(DeckCard& other){
+    return *this;
+}
+
+DeckCard& DeckCard::operator>(DeckCard& other){
+    return *this;
+}
+
+DeckCard& DeckCard::operator==(DeckCard& other){
+    return *this;
+}
+
+
+
 int Angka::getNum(){return this->num;}
 Angka::Angka(){}
 Angka::Angka(int num){
