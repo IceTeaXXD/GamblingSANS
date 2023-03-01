@@ -37,9 +37,13 @@ class Player{
         static int countOfPlayers;
         int countofPlayerCards;
         int countofTableCard;
-        void addCard(DeckCard&);
+        Player& operator+(DeckCard&);
+
         void addTableCard(DeckCard&);
         void viewAllCard();
+        bool operator<(Player&);
+        bool operator>(Player&);
+        bool operator==(Player&);
 };
 
 #endif

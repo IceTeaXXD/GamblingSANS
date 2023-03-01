@@ -47,10 +47,12 @@ void Player::setPoint(int p){
     this->point = p;
 }
 
-void Player::addCard(DeckCard& cardInput){
+Player& Player::operator+(DeckCard& cardInput){
     playerCard[countofPlayerCards] = cardInput;
     countofPlayerCards++;
+    return *this;
 }
+
 void Player::addTableCard(DeckCard& tempCard)
 {
     tableCard[countofTableCard] = tempCard;
@@ -68,4 +70,16 @@ void Player::viewAllCard()
     {
         cout<<tableCard[i].getNum()<<tableCard[i].getType()<<endl;
     } 
+}
+
+bool Player::operator<(Player& other){
+    return (this->point < other.point);
+}
+
+bool Player::operator>(Player& other){
+    return (this->point > other.point);
+}
+
+bool Player::operator==(Player& other){
+    return (this->point == other.point);
 }
