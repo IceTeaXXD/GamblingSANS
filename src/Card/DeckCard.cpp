@@ -1,11 +1,9 @@
 #include "DeckCard.hpp"
-int DeckCard::countofCards = 0;
 
 DeckCard::DeckCard(){}
 
-DeckCard::DeckCard(int t, int n):Warna(int t), Angka(int n) 
+DeckCard::DeckCard(int t, int n):Warna(t), Angka(n) 
 {
-    countofCards++;
 }
 DeckCard::~DeckCard(){}
 
