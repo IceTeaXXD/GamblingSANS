@@ -40,7 +40,14 @@ class DeckCard : public Warna, public Angka{
         DeckCard(int,int);
         ~DeckCard();
         
+        int value();        // Perlu dibuat
+
         void printInfo();
+
+        // Operator overloading
+        DeckCard& operator>(DeckCard&);
+        DeckCard& operator<(DeckCard&);
+        DeckCard& operator==(DeckCard&);
 };
 
 class DeckCardCollection{

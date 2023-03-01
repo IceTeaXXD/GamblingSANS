@@ -27,6 +27,12 @@ class Kombinasi : protected FindValue{
 
         /* Bruteforcing untuk Kombinasi Kartu */
         int getCombination(DeckCard x, DeckCard tc);
+
+        /* Operator overloading buat bandingin value */
+        Kombinasi& operator>(Kombinasi&);
+        Kombinasi& operator<(Kombinasi&);
+        Kombinasi& operator==(Kombinasi&);
+
 };
 
 #endif

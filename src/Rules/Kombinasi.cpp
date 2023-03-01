@@ -1,5 +1,16 @@
 #include "Kombinasi.hpp"
 
+template <class T, size_t n>
+T maxArr(T (&arr) [n]){
+    T maks = arr[0];
+    for (int i = 1; i < n; i++){
+        if (arr[i]>maks){
+            maks = arr[i];
+        }
+    }
+    return maks;
+}
+
 Kombinasi::Kombinasi(){}
 Kombinasi::~Kombinasi(){}
 
@@ -17,3 +28,17 @@ int Kombinasi::value(){
     /* Ini kayaknya mending terima satu kartu terus tentuin valuenya berapa */
     return 0;
 }
+
+/* Belum dikerjain */
+Kombinasi& Kombinasi::operator<(Kombinasi& other){
+    return *this;
+}
+
+Kombinasi& Kombinasi::operator>(Kombinasi& other){
+    return *this;
+}
+
+Kombinasi& Kombinasi::operator==(Kombinasi& other){
+    return *this;
+}
+
