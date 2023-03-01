@@ -26,17 +26,24 @@ Kombinasi::Kombinasi(){}
 Kombinasi::~Kombinasi(){}
 
 void Kombinasi::setCards(DeckCardCollection playerCards, DeckCardCollection tableCards){
-    this->playerCard1 = playerCards.getCard(0);
-    this->playerCard2 = playerCards.getCard(1);
-    this->tableCard1 = tableCards.getCard(0);
-    this->tableCard2 = tableCards.getCard(1);
-    this->tableCard3 = tableCards.getCard(2);
-    this->tableCard4 = tableCards.getCard(3);
-    this->tableCard5 = tableCards.getCard(4);
+    this->arr.push_back(*playerCards.getCard(0));
+    this->arr.push_back(*playerCards.getCard(1));
+    for(int i = 0 ; i < 5 ; i++)
+    {
+        this->arr.push_back(*tableCards.getCard(i));
+    }
 }
 
-int Kombinasi::value(){
+double Kombinasi::value(){
     /* Ini kayaknya mending terima satu kartu terus tentuin valuenya berapa */
+    /*double temp = 
+    looping dari atas (straight flush) buat cari nilainya
+    if (temp == 0) 
+    {
+        temp =  HighCard();
+    }
+    return temp;
+    */
     return 0;
 }
 
@@ -53,3 +60,22 @@ Kombinasi& Kombinasi::operator==(Kombinasi& other){
     return *this;
 }
 
+double Kombinasi::HighCard()
+{ 
+    double ret = arr[0].getNum() + arr[1].getNum() + arr[0].getType()*0.3 + arr[1].getType()*0.3;   
+    return ret;
+}
+
+bool Kombinasi::isPair()
+{
+    for (int i = 0 ; i < 7 ; i++)
+    {
+        for (int j = i+1 ; j < 7 ; i++)
+        {
+            if(arr[i].getNum() == arr[j].getNum())
+            {
+                return true;
+            }
+        }
+    }
+}

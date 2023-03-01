@@ -6,13 +6,8 @@
 
 class Kombinasi : protected FindValue{
     private:
-        DeckCard* playerCard1;
-        DeckCard* playerCard2;
-        DeckCard* tableCard1;
-        DeckCard* tableCard2;
-        DeckCard* tableCard3;
-        DeckCard* tableCard4;
-        DeckCard* tableCard5;
+        //0-1 player, sisanya table
+        vector<DeckCard> arr;
 
     public:
         /* Default Constructor */
@@ -23,7 +18,7 @@ class Kombinasi : protected FindValue{
         void setCards(DeckCardCollection playerCards, DeckCardCollection tableCards);
 
         /* Nentuin value kartu untuk kombinasi */
-        int value();
+        double value();
 
         /* Bruteforcing untuk Kombinasi Kartu */
         int getCombination(DeckCard x, DeckCard tc);
@@ -32,7 +27,24 @@ class Kombinasi : protected FindValue{
         Kombinasi& operator>(Kombinasi&);
         Kombinasi& operator<(Kombinasi&);
         Kombinasi& operator==(Kombinasi&);
-
+        
+        /*  Rule:
+            - highcard rumusnya ngikutin yg di docs, value = konstanta + 0.3*warna 
+            - Pair bernilai 2
+            - Two Pair bernilai 4
+            - Three Of Kind nilainya 6
+            - dst (inc 2)
+            - Jadi nanti buat di fungsi yg value tinggal panggil aja ini semua dijumlahin
+        */
+        double HighCard();
+        bool isPair();
+        bool isTwoPair();
+        bool isThreeOfKind();
+        bool isStraight();
+        bool isFlush();
+        bool isFullHouse();
+        bool isFourAKind();
+        bool isStraightFlush();
 };
 
 #endif

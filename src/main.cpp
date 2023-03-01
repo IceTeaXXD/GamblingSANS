@@ -14,8 +14,12 @@ int main()
             for (int i = 0 ; i < 7 ; i++){
                 //Implementasi penunjuk player yg main
                 //CONTOH : "Sekarang saatnya Player I"
-                game->players.getPlayer(i)+*game->tableCards.takeCard();
-                game->players.getPlayer(i)+*game->tableCards.takeCard();
+                DeckCard* temp1 = game->tableCards.takeCard();
+                DeckCard* temp2 = game->tableCards.takeCard();
+                game->players.getPlayer(i)+*temp1;
+                game->players.getPlayer(i)+*temp2;
+                cout<<"Kamu dapat kartu "<<temp1->getNum()<<" "<<temp1->getType()<<endl;
+                cout<<"Kamu dapat kartu "<<temp2->getNum()<<" "<<temp2->getType()<<endl;
                 //Mulai aksi player                
                 cout<<"Tentukan aksi anda: "<<endl;
                 cout<<"1. Next"<<endl;
@@ -31,9 +35,12 @@ int main()
         }
 
         else if(round >= 2 && round <= 6){
-            game->playCards+*game->tableCards.takeCard();
+            DeckCard* temp = game->tableCards.takeCard();
+            game->playCards+*temp;
+            cout<<"Kartu "<<temp->getNum()<<" "<<temp->getType()<<" telah ditambahkan di meja"<<endl;
             //Implementasi penunjuk player yg main
             //CONTOH : "Sekarang saatnya Player I"
+            //Tambahin juga buat tampilin kartu apa aja yang dimeja + dipunya player
             for (int i = 0 ; i < 7 ; i++){
                 cout<<"Tentukan aksi anda: "<<endl;
                 cout<<"1. Next"<<endl;

@@ -107,7 +107,7 @@ void DeckCardCollection::setCard(DeckCard& c){
 DeckCard* DeckCardCollection::takeCard(){
     DeckCard* c = new DeckCard(this->buffer[0]);
     this->buffer.erase(this->buffer.begin());
-    cout<<"Kamu dapat kartu "<<c->getNum()<<" "<<c->getType()<<endl;
+    // cout<<"Kamu dapat kartu "<<c->getNum()<<" "<<c->getType()<<endl;
     //Get Type perlu dibikin supaya per warnanya yang keluar bukan angka
     return c;
 }
