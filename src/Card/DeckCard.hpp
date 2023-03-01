@@ -6,18 +6,6 @@
 #include <vector>
 using namespace std;
 
-class DeckCard : public Warna, public Angka{
-    private:
-        // int num;
-        // int type;
-    public:
-        DeckCard();
-        DeckCard(int,int);
-        ~DeckCard();
-        
-        void printInfo();
-};
-
 class Warna{
     private:
         /* Type 
@@ -43,13 +31,27 @@ class Angka{
         Angka();
 };
 
+class DeckCard : public Warna, public Angka{
+    private:
+        // int num;
+        // int type;
+    public:
+        DeckCard();
+        DeckCard(int,int);
+        ~DeckCard();
+        
+        void printInfo();
+};
+
 class DeckCardCollection{
     private:
         vector<DeckCard> buffer;
     public:
         DeckCardCollection();
+        DeckCardCollection(int);
         ~DeckCardCollection();
         DeckCard getCard(int);
+        void setCard(DeckCard&);
 };
 
 #endif
