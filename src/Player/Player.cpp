@@ -41,29 +41,19 @@ void Player::setPoint(int p){
     this->point = p;
 }
 
-Player& Player::operator+(DeckCard& cardInput){
-    playerCard[countofPlayerCards] = cardInput;
-    countofPlayerCards++;
-    return *this;
+void Player::operator+(DeckCard& cardInput){
+    this->playerCard.push_back(cardInput);
+    this->countofPlayerCards++;
 }
 
-void Player::addTableCard(DeckCard& tempCard)
-{
-    tableCard[countofTableCard] = tempCard;
-    countofTableCard++;
-}
+
 void Player::viewAllCard()
 {
     cout<<"List of Player Cards : "<<endl;
     for (int i = 0 ; i<countofPlayerCards ; i++)
     {
-        playerCard[i].printInfo();
+        this->playerCard[i].printInfo();
     }
-    cout<<"List of Table Cards : "<< endl;
-    for(int i = 0 ; i<countofTableCard ;  i++)
-    {
-        cout<<tableCard[i].getNum()<<tableCard[i].getType()<<endl;
-    } 
 }
 
 bool Player::operator<(Player& other){
