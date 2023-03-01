@@ -1,21 +1,13 @@
 #include "ArrOfPlayer.hpp"
 
 ArrOfPlayer::ArrOfPlayer(){
-    Player p1;
-    Player p2;
-    Player p3;
-    Player p4;
-    Player p5;
-    Player p6;
-    Player p7;
-
-    this->arr.push_back(p1);
-    this->arr.push_back(p2);
-    this->arr.push_back(p3);
-    this->arr.push_back(p4);
-    this->arr.push_back(p5);
-    this->arr.push_back(p6);
-    this->arr.push_back(p7);
+    string name;
+    for (int i = 0; i < 7; i++){
+        cout << "Masukan nama player " << i+1 << " : ";
+        cin >> name;
+        Player p(name);
+        this->arr.push_back(p);
+    }
     
 }
 
@@ -55,6 +47,6 @@ void ArrOfPlayer::setPlayerPoint(int idx, int point){
 }
 
 void ArrOfPlayer::addPlayerCard(int idx, DeckCard& card){
-    this->arr[idx].addCard(card);
+    this->arr[idx] + card;
 }
 
