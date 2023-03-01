@@ -6,7 +6,6 @@ GameManager::~GameManager(){ cout << "Thank You For Playing The Game!" << endl;}
 
 GameManager::GameManager()
 {
-    tableCards.TableCards();
     // abilityCardList = new AbilityCard[7];
     // abilityCardList[0] = new REROLL();
     // abilityCardList[1] = new Quadruple();
@@ -52,7 +51,8 @@ void GameManager::initDistribute(int idplayer)
 {
     for (int i = 0 ; i < 7 ; i++)
     {
-        DeckCard* card = getCard();
+        DeckCard* card = tableCards.DeckCardCollection::getCard(0);
+        //ini harus dihapus sih yg awal
         players.getPlayer(idplayer)+*card;
     }
 }

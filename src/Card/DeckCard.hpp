@@ -59,7 +59,7 @@ class DeckCardCollection{
         void TableCards();
         DeckCardCollection(int);
         ~DeckCardCollection();
-        DeckCard getCard(int);
+        DeckCard* getCard(int);
         DeckCard* takeCard();
         void setCard(DeckCard&);
         void operator+(DeckCard&);

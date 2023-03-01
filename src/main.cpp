@@ -12,8 +12,8 @@ int main()
         if (round == 1){
             // for each player give 2 cards from table cards
             for (int i = 0 ; i < 7 ; i++){
-                game->players.getPlayer(i)+game->tableCards.takeCard();
-                game->players.getPlayer(i)+game->tableCards.takeCard();
+                game->players.getPlayer(i)+*game->tableCards.takeCard();
+                game->players.getPlayer(i)+*game->tableCards.takeCard();
             }
 
             for (int i = 0 ; i < 7 ; i++){
@@ -29,18 +29,18 @@ int main()
             /* TODO */
         }
 
-        else if(round >= 2 && round <= 6){
-            game->playCards+game->tableCards.takeCard();
+        // else if(round >= 2 && round <= 6){
+        //     game->playCards+game->tableCards.takeCard();
 
-            for (int i = 0 ; i < 7 ; i++){
-                cout<<"Tentukan aksi anda: "<<endl;
-                cout<<"1. Next"<<endl;
-                cout<<"2. Double"<<endl;
-                cout<<"3. Half"<<endl;
-                string aksi;
-                cin>>aksi;
-            }
-        }
+        //     for (int i = 0 ; i < 7 ; i++){
+        //         cout<<"Tentukan aksi anda: "<<endl;
+        //         cout<<"1. Next"<<endl;
+        //         cout<<"2. Double"<<endl;
+        //         cout<<"3. Half"<<endl;
+        //         string aksi;
+        //         cin>>aksi;
+        //     }
+        // }
 
         round++;
     }

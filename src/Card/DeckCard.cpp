@@ -42,6 +42,30 @@ int Warna::getType()
     return type;
 }
 
+DeckCardCollection::DeckCardCollection()
+{
+    vector<DeckCard> cards;
+    for (int i = 0 ; i<4 ; i++)
+    {
+        for (int j = 0 ; j < 13; j++)
+        {
+            DeckCard* c = new DeckCard(i+1,j+1);
+            cards.push_back(*c);
+        }
+    }
+
+    /* Mengacak */
+    srand(time(0));
+    vector<int> num;
+    for (int i = 1; i <= 52; i++){
+        num.push_back(i);
+    }
+    for (int i = 0; i < 52; i++){
+        int randIdx = rand() % (52 - i);
+        this->buffer.push_back(cards[num[randIdx]-1]);
+        num.erase(num.begin() + randIdx);
+    }
+}
 void DeckCardCollection::TableCards(){
     /* Make 52 Deck Cards */
     vector<DeckCard> cards;
@@ -70,8 +94,8 @@ void DeckCardCollection::TableCards(){
 
 DeckCardCollection::~DeckCardCollection(){}
 
-DeckCard DeckCardCollection::getCard(int i){
-    return(this->buffer[i]);
+DeckCard* DeckCardCollection::getCard(int a){
+    return(&this->buffer[a]);
 }
 
 void DeckCardCollection::setCard(DeckCard& c){

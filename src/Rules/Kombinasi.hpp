@@ -6,13 +6,13 @@
 
 class Kombinasi : protected FindValue{
     private:
-        DeckCard playerCard1;
-        DeckCard playerCard2;
-        DeckCard tableCard1;
-        DeckCard tableCard2;
-        DeckCard tableCard3;
-        DeckCard tableCard4;
-        DeckCard tableCard5;
+        DeckCard* playerCard1;
+        DeckCard* playerCard2;
+        DeckCard* tableCard1;
+        DeckCard* tableCard2;
+        DeckCard* tableCard3;
+        DeckCard* tableCard4;
+        DeckCard* tableCard5;
 
     public:
         /* Default Constructor */

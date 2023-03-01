@@ -41,7 +41,6 @@ class GameManager{
         /* Mengubah Giliran dan Mendapatkan Giliran */
         void setGiliran(int);
         int getGiliran();
-
         /* Mengubah Point */
         void setPoint(int);
 
