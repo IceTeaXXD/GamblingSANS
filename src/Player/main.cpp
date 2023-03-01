@@ -11,5 +11,11 @@ int main()
     satukuning->printInfo();
     *player1+*satukuning;
     player1->viewAllCard();
+
+    DeckCardCollection* deck = new DeckCardCollection();
+    DeckCard* card = new DeckCard(deck->getCard(0));
+    *player1+*card;
+    player1->viewAllCard();
+
     return 0;
 }
