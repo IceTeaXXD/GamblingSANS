@@ -42,3 +42,31 @@ string Warna::getType()
     }
     return ret;
 }
+
+DeckCardCollection::DeckCardCollection(){
+    /* Make 52 Deck Cards */
+    for (int i = 0 ; i<4 ; i++)
+    {
+        for (int j = 0 ; j < 13; j++)
+        {
+            DeckCard* c = new DeckCard(i+1,j+1);
+        }
+        this->buffer.push_back(*c);
+    }
+
+    /* Mengacak */
+    vector<DeckCard> acak;
+    for(int i = 0; i < 52; i++){
+        DeckCard* c = this->buffer[Rand() % 52];
+        while(find(acak.begin(), acak.end(), *c) != acak.end()){
+            *c = this->buffer[Rand() % 52];
+        }
+        acak.push_back(*c);
+    }
+}
+
+DeckCardCollection::~DeckCardCollection(){}
+
+DeckCard DeckCardCollection::getCard(int i){
+    return(this->buffer[i]);
+}
