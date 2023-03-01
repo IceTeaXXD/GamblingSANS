@@ -30,6 +30,7 @@ class Player{
 
         /* Functions */
         string getName();
+        void setName(string);
         int getID();
         int getPoint();
         void setPoint(int);

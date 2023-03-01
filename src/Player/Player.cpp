@@ -31,6 +31,10 @@ string Player::getName(){
     return this->name;
 }
 
+void Player::setName(string name){
+    this->name = name;
+}
+
 int Player::getID(){
     return this->id;
 }
