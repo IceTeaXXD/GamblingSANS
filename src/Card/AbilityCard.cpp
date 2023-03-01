@@ -27,7 +27,7 @@ void AbilityCard::use()
 {
     cout<<"Menggunakan ability card"<<endl;
 }
-void REROLL::use(Card* )
+void REROLL::use(AbilityCard* )
 {
     //Buat array dg isi objek kartu dulu baru bisa diimplementasi
     if (isAvailable())

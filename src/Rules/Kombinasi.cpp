@@ -11,16 +11,16 @@ T maxArr(T (&arr) [n]){
     return maks;
 }
 
-template <class T>
-T maxArr (vector<T> arr){
-    T maks = arr[0];
-    for (int i = 1; i < n; i++){
-        if (arr[i]>maks){
-            maks = arr[i];
-        }
-    }
-    return maks;
-}
+// template <class T>
+// T maxArr (vector<T> arr){
+//     T maks = arr[0];
+//     for (int i = 1; i < n; i++){
+//         if (arr[i]>maks){
+//             maks = arr[i];
+//         }
+//     }
+//     return maks;
+// }
 
 Kombinasi::Kombinasi(){}
 Kombinasi::~Kombinasi(){}

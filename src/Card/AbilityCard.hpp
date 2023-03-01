@@ -17,8 +17,8 @@ class REROLL : AbilityCard
     public:
         //Re-Roll, membuang 2 kartu dari main deck yang dimiliki oleh diri sendiri dan mengambil ulang 2 kartu.
         REROLL();
-        void use(DeckCard* gameManager,DeckCard* PlayerCard);
-        void use(Card *);
+        // void use(DeckCard* gameManager,DeckCard* PlayerCard);
+        void use(AbilityCard *);
 };
 class Quadruple : AbilityCard
 {
@@ -45,25 +45,25 @@ class SwapCard : AbilityCard
 {
     //Kalau ngerjain swab sekalian di switch karena mirip
     public :
-        SwapCard(Player*);
+        // SwapCard(Player*);
         void use();
 };
 class Switch : AbilityCard
 {
     public :
-        Switch(Player*);
+        // Switch(Player*);
         void use();
 };
 class Abilityless : public AbilityCard
 {
     public :
-        Abilityless(Player*);
+        // Abilityless(Player*);
         void use();
 };
 
 class AbilityCardCollection{
     private:
-        vector<DeckCard> buffer;
+        // vector<DeckCard> buffer;
     public:
         AbilityCardCollection();
         ~AbilityCardCollection();
