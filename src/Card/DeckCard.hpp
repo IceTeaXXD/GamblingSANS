@@ -2,6 +2,8 @@
 #define DECK_CARD_HPP
 
 #include <iostream>
+#include <algorithm>
+#include <vector>
 using namespace std;
 
 class DeckCard : public Warna, public Angka{
@@ -39,6 +41,15 @@ class Angka{
         int getNum();
         Angka(int);
         Angka();
+};
+
+class DeckCardCollection{
+    private:
+        vector<DeckCard> buffer;
+    public:
+        DeckCardCollection();
+        ~DeckCardCollection();
+        DeckCard getCard(int);
 };
 
 #endif

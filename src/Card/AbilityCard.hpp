@@ -60,4 +60,13 @@ class Abilityless : public AbilityCard
         Abilityless(Player*);
         void use();
 };
+
+class AbilityCardCollection{
+    private:
+        vector<DeckCard> buffer;
+    public:
+        AbilityCardCollection();
+        ~AbilityCardCollection();
+        AbilityCard getCard();
+};
 #endif
