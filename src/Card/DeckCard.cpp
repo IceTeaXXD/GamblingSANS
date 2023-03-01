@@ -21,26 +21,9 @@ Angka::Angka(int num){
 Warna::Warna(int t){
     this->type = type;
 }
-string Warna::getType()
+int Warna::getType()
 {
-    string ret;
-    if (this->type == 1)
-    {
-        ret = "Hijau";
-    }
-    else if (this->type == 2)
-    {
-        ret = "Biru";
-    }
-    else if (this->type == 3)
-    {
-        ret = "Kuning";
-    }
-    else
-    {
-        ret = "Merah";
-    }
-    return ret;
+    return type;
 }
 
 DeckCardCollection::DeckCardCollection(){

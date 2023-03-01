@@ -28,7 +28,7 @@ class Warna{
         int type;
     public:
         void setWarna(string);
-        string getType();
+        int getType();
         Warna(int);
         Warna();
 };

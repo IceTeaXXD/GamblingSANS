@@ -46,7 +46,7 @@ class Player : protected FindValue{
         bool operator>(Player&);
         bool operator==(Player&);
 
-        int value();
+        int value(DeckCard c);
 };
 
 #endif

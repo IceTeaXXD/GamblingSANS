@@ -21,8 +21,12 @@ class Kombinasi : protected FindValue{
         /* Setter */
         /* Set Kartu dari playerCards dan tableCards*/
         void setCards(DeckCardCollection playerCards, DeckCardCollection tableCards);
+
+        /* Nentuin value kartu untuk kombinasi */
         int value();
 
+        /* Bruteforcing untuk Kombinasi Kartu */
+        int getCombination(DeckCard x, DeckCard tc);
 };
 
 #endif

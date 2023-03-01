@@ -8,23 +8,17 @@ Player::Player()
 {
     this->countofTableCard= 0;
     this->countofPlayerCards = 0;
-    this->playerCard = new DeckCard[2];
-    this->tableCard = new DeckCard[5];
 }
 
 Player::Player(string nom):name(nom), point(0), countofPlayerCards(0), countofTableCard(0)
 { 
     countOfPlayers++; 
     this->id = countOfPlayers;
-    this->playerCard = new DeckCard[2];
-    this->tableCard = new DeckCard[5];
 }
 
 Player::~Player()
 { 
     countOfPlayers--; 
-    delete[] playerCard;
-    delete[] tableCard;
 }
 
 string Player::getName(){
@@ -82,4 +76,8 @@ bool Player::operator>(Player& other){
 
 bool Player::operator==(Player& other){
     return (this->point == other.point);
+}
+
+int Player::value(DeckCard c){
+    return ((c.getNum()/10) + 0.03 * (c.getType()-1));
 }
