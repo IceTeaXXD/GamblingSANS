@@ -1,11 +1,11 @@
 #include <iostream>
 #include "AbilityCard.hpp"
 using namespace std;
-AbilityCard::AbilityCard() : Card()
+AbilityCard::AbilityCard()
 {
     availability = true;
 }
-AbilityCard::AbilityCard(bool avail) : Card()
+AbilityCard::AbilityCard(bool avail)
 {
     availability = avail;
 }

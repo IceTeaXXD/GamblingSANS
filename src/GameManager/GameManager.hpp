@@ -2,7 +2,8 @@
 #define GAME_MANAGER_HPP
 
 #include "../Player/Player.hpp"
-#include "../Card/Card.hpp"
+#include "../Player/ArrOfPlayer.hpp"
+#include "../Card/DeckCard.hpp"
 
 #include <iostream>
 using namespace std;
@@ -18,8 +19,10 @@ using namespace std;
 */
 class GameManager{
     private:
-        /* Array of Players */
-        Player* players;
+        /* Vector of Players */
+        ArrOfPlayer players;
+
+        // Giliran Player ke-i
         int giliran;
     public:
         /* Card Deck */
@@ -31,10 +34,14 @@ class GameManager{
         /* Game Round */
         static int round;
 
+        /* Inisiator Game */
         GameManager();
         ~GameManager();
+
+        /* Mengubah Giliran dan Mendapatkan Giliran */
         void setGiliran(int);
         int getGiliran();
+
         void startGame();
         void displayPlayer();
         void initDistribute(int);

@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Player.hpp"
 #include "../Card/AbilityCard.hpp"
-#include "../Card/Card.hpp"
+#include "../Card/DeckCard.hpp"
 using namespace std;
 
 int main()

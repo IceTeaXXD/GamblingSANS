@@ -2,7 +2,7 @@
 #define PLAYER_HPP
 
 #include <iostream>
-#include "../Card/Card.hpp"
+#include "../Card/DeckCard.hpp"
 #include "../Card/AbilityCard.hpp"
 using namespace std;
 

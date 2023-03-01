@@ -1,10 +1,8 @@
 #ifndef ABILITY_CARD_HPP
 #define ABILITY_CARD_HPP
 #include <iostream>
-#include "Card.hpp"
-// #include "../Player/Player.hpp"
 
-class AbilityCard : public Card{
+class AbilityCard{
     private:
         bool availability;
     public:

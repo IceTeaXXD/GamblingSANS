@@ -1,23 +1,29 @@
-#include "Card.hpp"
-#include "AbilityCard.hpp"
-
-Card::Card(){}
-
-void Card::printInfo(){cout<<"TES TES"<<endl;}
+#include "DeckCard.hpp"
+int DeckCard::countofCards = 0;
 
 DeckCard::DeckCard(){}
-DeckCard::DeckCard(int t, int n)  
+
+DeckCard::DeckCard(int t, int n):Warna(int t), Angka(int n) 
 {
-    this->type = t;
-    this->num = n;
+    countofCards++;
 }
 DeckCard::~DeckCard(){}
+
 void DeckCard::printInfo()
 {
     cout<<this->getNum()<<" "<<this->getType()<<endl;
 }
-int DeckCard::getNum(){return this->num;}
-string DeckCard::getType()
+
+int Angka::getNum(){return this->num;}
+
+Angka::Angka(int num){
+    this->num = num;
+}
+
+Warna::Warna(int t){
+    this->type = type;
+}
+string Warna::getType()
 {
     string ret;
     if (this->type == 1)
