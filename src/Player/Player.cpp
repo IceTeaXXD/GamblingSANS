@@ -70,6 +70,7 @@ bool Player::operator==(Player& other){
     return (this->point == other.point);
 }
 
-int Player::value(DeckCard c){
-    return ((c.getNum()/10) + 0.03 * (c.getType()-1));
+double Player::value()
+{
+    return (playerCard.getCard(0)->getNum()/10+playerCard.getCard(1)->getNum()/10 + (playerCard.getCard(0)->getType()-1) * 0.3 + (playerCard.getCard(1)->getType()-1) * 0.3);
 }

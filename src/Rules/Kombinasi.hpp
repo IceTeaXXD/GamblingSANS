@@ -9,6 +9,8 @@ class Kombinasi : protected FindValue{
     private:
         //0-1 player, sisanya table
         vector<DeckCard> arr;
+
+        /* Array of Pairs. Mungkin Kosong mungkin terisi */
         vector<DeckCard> arrPair;
         vector<DeckCard> arrTwoPair;
         vector<DeckCard> arrThreeOfKind;

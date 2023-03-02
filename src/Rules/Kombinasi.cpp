@@ -111,3 +111,28 @@ bool Kombinasi::isPair()
     }
     return false;
 }
+
+bool Kombinasi::isTwoPair()
+{
+    int count_pair = 0;
+    vector<DeckCard> temp;
+    for (int i = 0 ; i < 7 ; i++)
+    {
+        for (int j = i+1 ; j < 7 ; j++)
+        {
+            if(arr[i].getNum() == arr[j].getNum()){
+                count_pair++;
+                temp.push_back(arr[i]);
+                temp.push_back(arr[j]);
+            }
+            if(count_pair == 2){
+                /* Ditemukan Two Pair */
+                for(int i = 0;i<4;i++){
+                    arrTwoPair.push_back(temp[i]);
+                }
+                return true;
+            }
+        }
+    }
+    return false;
+}
