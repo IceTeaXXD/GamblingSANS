@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "../Card/DeckCard.hpp"
+#include "../Card/DeckCardCollection.hpp"
 // #include "../Card/AbilityCard.hpp
 #include "../Rules/FindValue.hpp"
 

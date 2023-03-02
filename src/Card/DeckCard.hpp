@@ -5,33 +5,9 @@
 #include <algorithm>
 #include <vector>
 #include <ctime>
+#include "Angka.hpp"
+#include "Warna.hpp"
 using namespace std;
-
-class Warna{
-    private:
-        /* Type 
-        1. Hijau
-        2. Biru
-        3. Kuning
-        4. Merah */
-        int type;
-    public:
-        void setWarna(string);
-        int getType();
-        string translateToString();
-        Warna(int);
-        Warna();
-};
-
-class Angka{
-    private:
-        int num;
-    public:
-        void setNum(int);
-        int getNum();
-        Angka(int);
-        Angka();
-};
 
 class DeckCard : public Warna, public Angka{
     private:
@@ -50,23 +26,6 @@ class DeckCard : public Warna, public Angka{
         DeckCard& operator>(DeckCard&);
         DeckCard& operator<(DeckCard&);
         DeckCard& operator==(DeckCard&);
-};
-
-class DeckCardCollection{
-    private:
-        vector<DeckCard> buffer;
-    public:
-        /*  Default CTOR: Kreator Kosong    */
-        DeckCardCollection();
-        ~DeckCardCollection();
-
-        /*  Membuat deck kartu sebanyak 52 kartu    */
-        void MakeDeck();
-        
-        DeckCard* getCard(int);
-        DeckCard* takeCard();
-        void setCard(DeckCard&);
-        void operator+(DeckCard&);
 };
 
 #endif

@@ -4,6 +4,7 @@
 #include "../Player/Player.hpp"
 #include "../Player/ArrOfPlayer.hpp"
 #include "../Card/DeckCard.hpp"
+#include "../Card/DeckCardCollection.hpp"
 
 #include <iostream>
 using namespace std;
