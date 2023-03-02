@@ -62,7 +62,8 @@ Kombinasi& Kombinasi::operator==(Kombinasi& other){
 
 double Kombinasi::HighCard()
 { 
-    double ret = arr[0].getNum() + arr[1].getNum() + arr[0].getType()*0.3 + arr[1].getType()*0.3;   
+    /* rumus = konstanta/10 + (warna-1) * 0.3*/
+    double ret = (arr[0].getNum()+ arr[1].getNum())/10 + (arr[0].getType()-1)*0.3 + (arr[1].getType()-1)*0.3;   
     return ret;
 }
 
