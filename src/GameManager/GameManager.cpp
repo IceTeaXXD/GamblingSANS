@@ -6,6 +6,8 @@ GameManager::~GameManager(){ cout << "Thank You For Playing The Game!" << endl;}
 
 GameManager::GameManager()
 {
+    /* Inisialisasi DeckCard dengan memanggil MakeDeck()*/
+    tableCards.MakeDeck();
     // abilityCardList = new AbilityCard[7];
     // abilityCardList[0] = new REROLL();
     // abilityCardList[1] = new Quadruple();

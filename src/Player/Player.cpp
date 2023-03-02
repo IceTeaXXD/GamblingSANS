@@ -44,7 +44,7 @@ void Player::setPoint(int p){
 }
 
 void Player::operator+(DeckCard& cardInput){
-    this->playerCard.push_back(cardInput);
+    this->playerCard + cardInput;
     this->countofPlayerCards++;
 }
 
@@ -54,7 +54,7 @@ void Player::viewAllCard()
     cout<<"List of Player Cards : "<<endl;
     for (int i = 0 ; i<countofPlayerCards ; i++)
     {
-        this->playerCard[i].printInfo();
+        this->playerCard.getCard(i)->printInfo();
     }
 }
 

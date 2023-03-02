@@ -17,7 +17,7 @@ class Player : protected FindValue{
         int point;
 
         /* Player Cards */
-        vector<DeckCard> playerCard;
+        DeckCardCollection playerCard;
         
         /* Ability Cards */
         // AbilityCard* abilityCards;

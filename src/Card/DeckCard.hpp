@@ -56,10 +56,13 @@ class DeckCardCollection{
     private:
         vector<DeckCard> buffer;
     public:
+        /*  Default CTOR: Kreator Kosong    */
         DeckCardCollection();
-        // void TableCards();
-        DeckCardCollection(int);
         ~DeckCardCollection();
+
+        /*  Membuat deck kartu sebanyak 52 kartu    */
+        void MakeDeck();
+        
         DeckCard* getCard(int);
         DeckCard* takeCard();
         void setCard(DeckCard&);
