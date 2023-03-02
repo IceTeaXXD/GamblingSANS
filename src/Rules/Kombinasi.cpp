@@ -79,4 +79,5 @@ bool Kombinasi::isPair()
             }
         }
     }
+    return false;
 }
