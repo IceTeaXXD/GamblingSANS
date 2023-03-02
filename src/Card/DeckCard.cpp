@@ -9,7 +9,7 @@ DeckCard::~DeckCard(){}
 
 void DeckCard::printInfo()
 {
-    cout<<this->getNum()<<" "<<this->getType()<<endl;
+    cout<<this->getNum()<<" "<<this->translateToString()<<endl;
 }
 
 // Belum dikerjain
@@ -26,12 +26,22 @@ DeckCard& DeckCard::operator==(DeckCard& other){
     return *this;
 }
 
-
-
 int Angka::getNum(){return this->num;}
 Angka::Angka(){}
 Angka::Angka(int num){
     this->num = num;
+}
+string Warna::translateToString(){
+    if(getType() == 1){
+        return "Hijau";
+    }else if (getType() == 2)
+    {
+        return "Biru";
+    }else if(getType() == 3){
+        return "Kuning";
+    }else{
+        return "Merah";
+    }
 }
 Warna::Warna(){}
 Warna::Warna(int t){
