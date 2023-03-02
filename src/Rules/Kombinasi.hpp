@@ -3,12 +3,20 @@
 #include <iostream>
 #include "FindValue.hpp"
 #include "../Card/DeckCard.hpp"
+#include "../Card/DeckCardCollection.hpp"
 
 class Kombinasi : protected FindValue{
     private:
         //0-1 player, sisanya table
         vector<DeckCard> arr;
-
+        vector<DeckCard> arrPair;
+        vector<DeckCard> arrTwoPair;
+        vector<DeckCard> arrThreeOfKind;
+        vector<DeckCard> arrStraight;
+        vector<DeckCard> arrFlush;
+        vector<DeckCard> arrFullHouse;
+        vector<DeckCard> arrFourAKind;
+        vector<DeckCard> arrStraightFlush;
     public:
         /* Default Constructor */
         Kombinasi();

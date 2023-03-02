@@ -21,11 +21,11 @@ class DeckCard : public Warna, public Angka{
         int value();        // Perlu dibuat
 
         void printInfo();
-
+        double getValue();
         // Operator overloading
-        DeckCard& operator>(DeckCard&);
-        DeckCard& operator<(DeckCard&);
-        DeckCard& operator==(DeckCard&);
+        bool operator>(DeckCard&);
+        bool operator<(DeckCard&);
+        bool operator==(DeckCard&);
 };
 
 #endif

@@ -11,6 +11,20 @@ T maxArr(T (&arr) [n]){
     return maks;
 }
 
+template<class T>
+T maxVector(vector<T>& v)
+{
+    T temp = v[0];
+    for (int i = 0 ; i < v.size() ; i++)
+    {
+        if (v[i]>temp)
+        {
+            temp = v[i];
+        }
+    }
+    return temp;
+}
+
 // template <class T>
 // T maxArr (vector<T> arr){
 //     T maks = arr[0];
@@ -44,6 +58,12 @@ double Kombinasi::value(){
     }
     return temp;
     */
+   if (isPair())
+   {
+        DeckCard max = maxVector(arrPair);
+        return (2 + max.getValue());
+   }
+   /*Implementasi kombinasi berlanjut*/
     return 0;
 }
 
@@ -63,8 +83,16 @@ Kombinasi& Kombinasi::operator==(Kombinasi& other){
 double Kombinasi::HighCard()
 { 
     /* rumus = konstanta/10 + (warna-1) * 0.3*/
-    double ret = (arr[0].getNum()+ arr[1].getNum())/10 + (arr[0].getType()-1)*0.3 + (arr[1].getType()-1)*0.3;   
-    return ret;
+    double ret1 = arr[0].getValue();
+    double ret2 = arr[1].getValue();
+    if (ret1>ret2)
+    {
+        return ret1;
+    }
+    else
+    {
+        return ret2;
+    }
 }
 
 bool Kombinasi::isPair()
@@ -75,6 +103,8 @@ bool Kombinasi::isPair()
         {
             if(arr[i].getNum() == arr[j].getNum())
             {
+                arrPair.push_back(arr[i]);
+                arrPair.push_back(arr[j]);
                 return true;
             }
         }
