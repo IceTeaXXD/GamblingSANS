@@ -8,6 +8,8 @@ Player::Player()
 {
     this->countofTableCard= 0;
     this->countofPlayerCards = 0;
+    countOfPlayers++;
+    this->id = countOfPlayers;
 }
 
 Player::Player(string nom):name(nom), point(0), countofPlayerCards(0), countofTableCard(0)

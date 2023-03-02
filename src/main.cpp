@@ -9,17 +9,19 @@ int main()
     GameManager* game = new GameManager();
     int round = 1;
     while(true){
+        cout << "ROUND " << round << endl;
         if (round == 1){
             // for each player give 2 cards from table cards
             for (int i = 0 ; i < 7 ; i++){
                 //Implementasi penunjuk player yg main
                 //CONTOH : "Sekarang saatnya Player I"
+                cout << "Sekarang adalah giliran Player " << game->players.getPlayer(i).getName() << endl;
                 DeckCard* temp1 = game->tableCards.takeCard();
                 DeckCard* temp2 = game->tableCards.takeCard();
                 game->players.getPlayer(i)+*temp1;
                 game->players.getPlayer(i)+*temp2;
-                cout<<"Kamu dapat kartu "<<temp1->getNum()<<" "<<temp1->getType()<<endl;
-                cout<<"Kamu dapat kartu "<<temp2->getNum()<<" "<<temp2->getType()<<endl;
+                cout<<"Kamu dapat kartu "<<temp1->getNum()<<" "<<temp1->translateToString()<<endl;
+                cout<<"Kamu dapat kartu "<<temp2->getNum()<<" "<<temp1->translateToString()<<endl;
                 //Mulai aksi player                
                 cout<<"Tentukan aksi anda: "<<endl;
                 cout<<"1. Next"<<endl;
@@ -37,11 +39,12 @@ int main()
         else if(round >= 2 && round <= 6){
             DeckCard* temp = game->tableCards.takeCard();
             game->playCards+*temp;
-            cout<<"Kartu "<<temp->getNum()<<" "<<temp->getType()<<" telah ditambahkan di meja"<<endl;
+            cout<<"Kartu "<<temp->getNum()<<" "<<temp->translateToString()<<" telah ditambahkan di meja"<<endl;
             //Implementasi penunjuk player yg main
             //CONTOH : "Sekarang saatnya Player I"
             //Tambahin juga buat tampilin kartu apa aja yang dimeja + dipunya player
             for (int i = 0 ; i < 7 ; i++){
+                cout << "Sekarang adalah giliran Player " << game->players.getPlayer(i).getName() << endl;
                 cout<<"Tentukan aksi anda: "<<endl;
                 cout<<"1. Next"<<endl;
                 cout<<"2. Double"<<endl;
@@ -53,6 +56,9 @@ int main()
             }
         }
         round++;
+
+        // Ubah Turn
+        game->players.nextTurn();
     }
     return 0;
 }
