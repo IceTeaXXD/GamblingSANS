@@ -18,5 +18,6 @@ class DeckCardCollection{
         DeckCard takeCard();
         void setCard(DeckCard&);
         void operator+(DeckCard&);
+        void displayDeckCard();
 };
 #endif
