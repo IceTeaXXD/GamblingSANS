@@ -371,3 +371,61 @@ bool Kombinasi::isStraightFlush(){
     }
     return false;
 }
+
+bool Kombinasi::isFullHouse(){
+    bool threeKind = false;
+    bool fullHouse = false;
+    vector<DeckCard> tempThreeKind;
+    for(int i = 0; i < 7 ; i++){
+        int temp_num = arr[i].getNum();
+        vector<DeckCard> temp;
+        temp.push_back(arr[i]);
+        int count_same = 1;
+
+        for (int j = i+1; j < 7; j++){
+            if(temp_num == arr[j].getNum()){
+                count_same++;
+                temp.push_back(arr[j]);
+            }
+            if(count_same == 3){
+                for(int k = 0; k < 3 ; k++){
+                    tempThreeKind.push_back(temp[k]);
+                }
+                threeKind = true;
+                break ;
+            }
+        }
+        if (threeKind)
+        {
+            break;
+        }
+        if(count_same != 3){
+            temp.clear();
+            count_same = 0;
+        }
+    }
+
+    if (threeKind)
+    {
+        for (int i = 0 ; i < 7 ; i++)
+        {
+            for (int j = i+1 ; j < 7 ; i++)
+            {
+                if(arr[i] == arr[j])
+                {
+                    if (!(arr[i]==tempThreeKind[0]))
+                    {
+                        arrPair.push_back(arr[i]);
+                        arrPair.push_back(arr[j]);
+                        fullHouse = true;
+                        break;
+                    }
+                }
+            }
+            if (fullHouse)
+            break;
+        }
+    }
+
+    return fullHouse;
+}

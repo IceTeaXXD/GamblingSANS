@@ -10,7 +10,7 @@
 using namespace std;
 
 /* Kelas untuk Player */
-class Player : protected FindValue{
+class Player{
     private:
         /* Nama dari Pemain */
         int id;
@@ -42,13 +42,13 @@ class Player : protected FindValue{
         void operator+(DeckCard&);
         void addTableCard(DeckCard&);
         void viewAllCard();
+        DeckCardCollection getCard();
         bool operator<(Player&);
         bool operator>(Player&);
         bool operator==(Player&);
 
         /* Value yang digunakan untuk mencari nilai high card
             dari kartu yang dimiliki seorang player */
-        double value();
 };
 
 #endif

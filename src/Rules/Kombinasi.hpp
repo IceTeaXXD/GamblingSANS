@@ -21,15 +21,15 @@ class Kombinasi : protected FindValue{
         vector<DeckCard> arrFourAKind;
         vector<DeckCard> arrStraightFlush;
 
-        const double MAX_HIGH_CARD = 1.39;
-        const double MAX_PAIR = MAX_HIGH_CARD + 1.39 + 1.36;
-        const double MAX_TWO_PAIR = MAX_PAIR + 1.33 + 1.3;
-        const double MAX_THREE_KIND = MAX_TWO_PAIR + 1.39 + 1.36 + 1.33;
-        const double MAX_STRAIGHT = MAX_THREE_KIND + 1.39 + 1.29 + 1.19 + 1.09 + 0.99;
-        const double MAX_FLUSH = MAX_STRAIGHT + 1.39 + 1.29 + 1.19 + 1.09 + 0.99;
-        const double MAX_FULL_HOUSE = MAX_FLUSH + 1.39 + 1.36 + 1.33;
-        const double MAX_FOUR_KIND = MAX_FULL_HOUSE + 1.39 + 1.36 + 1.33 + 1.30;
-        const double MAX_STRAIGHT_FLUSH = MAX_FULL_HOUSE + 1.39 + 1.29 + 1.19 + 1.09 + 0.99;
+        const double MAX_HIGH_CARD = 1.31;
+        const double MAX_PAIR = MAX_HIGH_CARD + 1.31 + 1.301;
+        const double MAX_TWO_PAIR = MAX_PAIR + 1.3001 + 1.3;
+        const double MAX_THREE_KIND = MAX_TWO_PAIR + 1.31 + 1.301 + 1.3001;
+        const double MAX_STRAIGHT = MAX_THREE_KIND + 1.31 + 1.21 + 1.11 + 1.01 + 0.91;
+        const double MAX_FLUSH = MAX_STRAIGHT + 1.31 + 1.21 + 1.11 + 1.01 + 0.91;
+        const double MAX_FULL_HOUSE = MAX_FLUSH + 1.31 + 1.301 + 1.3001;
+        const double MAX_FOUR_KIND = MAX_FULL_HOUSE + 1.31 + 1.301 + 1.3001 + 1.30;
+        const double MAX_STRAIGHT_FLUSH = MAX_FULL_HOUSE + 1.31 + 1.21 + 1.11 + 1.01 + 0.91;
 
     public:
         /* Default Constructor */

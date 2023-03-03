@@ -58,6 +58,11 @@ void Player::viewAllCard()
     }
 }
 
+DeckCardCollection Player::getCard()
+{
+    return this->playerCard;
+}
+
 bool Player::operator<(Player& other){
     return (this->point < other.point);
 }
@@ -70,7 +75,3 @@ bool Player::operator==(Player& other){
     return (this->point == other.point);
 }
 
-double Player::value()
-{
-    return (playerCard.getCard(0).getNum()/10+playerCard.getCard(1).getNum()/10 + (playerCard.getCard(0).getType()-1) * 0.3 + (playerCard.getCard(1).getType()-1) * 0.3);
-}
