@@ -22,6 +22,7 @@ class ArrOfPlayer {
         void setPlayerPoint(int, int);
         void addPlayerCard(int, DeckCard&);
         void clearCard(int i);
+        void printDeque();
 };
 
 #endif

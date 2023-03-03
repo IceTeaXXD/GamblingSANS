@@ -16,8 +16,12 @@ ArrOfPlayer::~ArrOfPlayer(){
 }
 
 void ArrOfPlayer::nextTurn(){
-    arr.push_back(arr[0]);
+    cout << "AWAL\n";
+    this->printDeque();
+    arr.push_back(arr.at(0));
     arr.pop_front();
+    cout << "AKHIR\n";
+    this->printDeque();
 }
 
 void ArrOfPlayer::reverseTurn(){
@@ -44,3 +48,9 @@ void ArrOfPlayer::clearCard(int i){
     arr[i].clearCards();
 }
 
+void ArrOfPlayer::printDeque(){
+    for (int i = 0; i < arr.size(); i++)
+    {
+        cout << arr[i].getName() << endl;
+    }
+}
