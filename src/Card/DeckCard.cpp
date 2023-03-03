@@ -31,8 +31,8 @@ bool DeckCard::operator>(DeckCard& other){
 }
 
 bool DeckCard::operator==(DeckCard& other){
-    double val1 = this->getValue();
-    double val2 = other.getValue();
+    double val1 = this->getNum();
+    double val2 = other.getNum();
     return (val1==val2);
 }
 
