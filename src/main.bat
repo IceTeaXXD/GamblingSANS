@@ -1,13 +1,13 @@
-g++ -c "./Card/AbilityCard.cpp" -o AbilityCard.o
-g++ -c "./Card/Warna.cpp" -o Warna.o
-g++ -c "./Card/Angka.cpp" -o Angka.o
-g++ -c "./Card/DeckCard.cpp" -o DeckCard.o
-g++ -c "./Card/DeckCardCollection.cpp" -o DeckCardCollection.o
-g++ -c "./GameManager/GameManager.cpp" -o GameManager.o
-g++ -c "./Player/Player.cpp" -o Player.o
-g++ -c "./Player/ArrOfPlayer.cpp" -o ArrOfPlayer.o
-g++ -c "./Rules/FindValue.cpp" -o FindValue.o
-g++ -c "./Rules/Kombinasi.cpp" -o Kombinasi.o
-g++ main.cpp AbilityCard.o DeckCard.o GameManager.o Player.o ArrOfPlayer.o FindValue.o Kombinasi.o Warna.o Angka.o DeckCardCollection.o
+g++ -c "./Card/AbilityCard.cpp" -o ../bin/AbilityCard.o
+g++ -c "./Card/Warna.cpp" -o ../bin/Warna.o
+g++ -c "./Card/Angka.cpp" -o ../bin/Angka.o
+g++ -c "./Card/DeckCard.cpp" -o ../bin/DeckCard.o
+g++ -c "./Card/DeckCardCollection.cpp" -o ../bin/DeckCardCollection.o
+g++ -c "./GameManager/GameManager.cpp" -o ../bin/GameManager.o
+g++ -c "./Player/Player.cpp" -o ../bin/Player.o
+g++ -c "./Player/ArrOfPlayer.cpp" -o ../bin/ArrOfPlayer.o
+g++ -c "./Rules/FindValue.cpp" -o ../bin/FindValue.o
+g++ -c "./Rules/Kombinasi.cpp" -o ../bin/Kombinasi.o
+g++ main.cpp ../bin/AbilityCard.o ../bin/DeckCard.o ../bin/GameManager.o ../bin/Player.o ../bin/ArrOfPlayer.o ../bin/FindValue.o ../bin/Kombinasi.o ../bin/Warna.o ../bin/Angka.o ../bin/DeckCardCollection.o
 test&cls
 a.exe
