@@ -17,15 +17,15 @@ int main()
                 for (int i = 0 ; i < 7 ; i++){
                     //Implementasi penunjuk player yg main
                     //CONTOH : "Sekarang saatnya Player I"
-                    cout << "Sekarang adalah giliran Player " << game->players.getPlayer(i).getName() << endl;
+                    cout << "Sekarang adalah giliran Player " << game->players.getPlayer(0).getName() << endl;
                     DeckCard temp1 = game->tableCards.takeCard();
                     DeckCard temp2 = game->tableCards.takeCard();
-                    game->players.addPlayerCard(i, temp1);
-                    game->players.addPlayerCard(i, temp2);
+                    game->players.addPlayerCard(0, temp1);
+                    game->players.addPlayerCard(0, temp2);
                     cout<<"Kamu dapat kartu "<<temp1.getNum()<<" "<<temp1.translateToString()<<endl;
                     cout<<"Kamu dapat kartu "<<temp2.getNum()<<" "<<temp2.translateToString()<<endl;
                     //Mulai aksi player                
-                    game->players.getPlayer(i).viewAllCard();
+                    game->players.getPlayer(0).viewAllCard();
                     cout<<endl;
                     cout<<"Tentukan aksi anda: "<<endl;
                     cout<<"1. Next"<<endl;
@@ -41,15 +41,16 @@ int main()
                     else if (aksi == "2"){
                         //Implementasi double
                         game->setPoint(game->point*2);
-                        cout << game->players.getPlayer(i).getName() << " melakukan DOUBLE! Poin hadiah naik dari " << game->point/2 << " menjadi " << game->point  << "!" << endl;
+                        cout << game->players.getPlayer(0).getName() << " melakukan DOUBLE! Poin hadiah naik dari " << game->point/2 << " menjadi " << game->point  << "!" << endl;
                     }
                     else if (aksi == "3"){
                         //Implementasi half
                         game->setPoint(game->point/2);
-                        cout << game->players.getPlayer(i).getName() << " melakukan HALF! Poin hadiah turun dari " << game->point*2 << " menjadi " << game->point  << "!" << endl;
+                        cout << game->players.getPlayer(0).getName() << " melakukan HALF! Poin hadiah turun dari " << game->point*2 << " menjadi " << game->point  << "!" << endl;
                     }else{
                         throw "Input Anda salah, silakan ulangi!\n";
                     }
+                    game->players.nextTurn();
                 }
                 // Give 1 ability card to each player
                 /* TODO */
@@ -74,7 +75,7 @@ int main()
                 //CONTOH : "Sekarang saatnya PlayerI"
                 //Tambahin juga buat tampilin kartu apa aja yang dimeja + dipunya player
                 for (int i = 0 ; i < 7 ; i++){
-                    cout << "Sekarang adalah giliran Player " << game->players.getPlayer(i).getName() << endl;
+                    cout << "Sekarang adalah giliran Player " << game->players.getPlayer(0).getName() << endl;
                     cout<<"Tentukan aksi anda: "<<endl;
                     cout<<"1. Next"<<endl;
                     cout<<"2. Double"<<endl;
@@ -89,15 +90,16 @@ int main()
                     else if (aksi == "2"){
                         //Implementasi double
                         game->setPoint(game->point*2);
-                        cout << game->players.getPlayer(i).getName() << " melakukan DOUBLE! Poin hadiah naik dari " << game->point/2 << " menjadi " << game->point  << "!" << endl;
+                        cout << game->players.getPlayer(0).getName() << " melakukan DOUBLE! Poin hadiah naik dari " << game->point/2 << " menjadi " << game->point  << "!" << endl;
                     }
                     else if (aksi == "3"){
                         //Implementasi half
                         game->setPoint(game->point/2);
-                        cout << game->players.getPlayer(i).getName() << " melakukan HALF! Poin hadiah turun dari " << game->point*2 << " menjadi " << game->point  << "!" << endl;
+                        cout << game->players.getPlayer(0).getName() << " melakukan HALF! Poin hadiah turun dari " << game->point*2 << " menjadi " << game->point  << "!" << endl;
                     }else{
                         throw "Input Anda salah, silakan ulangi!\n";
                     }
+                    game->players.nextTurn();
                 }
                 if (round == 6)
                 {
