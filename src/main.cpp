@@ -23,7 +23,7 @@ int main()
                     game->players.addPlayerCard(i, temp1);
                     game->players.addPlayerCard(i, temp2);
                     cout<<"Kamu dapat kartu "<<temp1.getNum()<<" "<<temp1.translateToString()<<endl;
-                    cout<<"Kamu dapat kartu "<<temp2.getNum()<<" "<<temp1.translateToString()<<endl;
+                    cout<<"Kamu dapat kartu "<<temp2.getNum()<<" "<<temp2.translateToString()<<endl;
                     //Mulai aksi player                
                     game->players.getPlayer(i).viewAllCard();
                     cout<<endl;
