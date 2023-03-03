@@ -7,6 +7,7 @@
 #include <ctime>
 #include "Angka.hpp"
 #include "Warna.hpp"
+#include "../Rules/FindValue.hpp"
 using namespace std;
 
 class DeckCard : public Warna, public Angka{
@@ -18,10 +19,9 @@ class DeckCard : public Warna, public Angka{
         DeckCard(int,int);
         ~DeckCard();
         
-        int value();        // Perlu dibuat
 
         void printInfo();
-        double getValue();
+        double value();
         // Operator overloading
         bool operator>(DeckCard&);
         bool operator<(DeckCard&);
