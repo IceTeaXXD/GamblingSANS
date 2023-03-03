@@ -1,6 +1,7 @@
 #ifndef KOMBINASI_HPP
 #define KOMBINASI_HPP
 #include <iostream>
+#include <algorithm>
 #include "FindValue.hpp"
 #include "../Card/DeckCard.hpp"
 #include "../Card/DeckCardCollection.hpp"
@@ -56,5 +57,7 @@ class Kombinasi : protected FindValue{
         bool isFourAKind();
         bool isStraightFlush();
 };
+
+
 
 #endif

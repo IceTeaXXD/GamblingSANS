@@ -1,5 +1,13 @@
 #include "DeckCard.hpp"
 
+bool compareAngka(DeckCard c, DeckCard other){
+    return (c.getNum()<other.getNum());
+}
+
+bool compareWarna(DeckCard c, DeckCard other){
+    return (c.getType()<other.getType());
+}
+
 DeckCard::DeckCard(){}
 
 DeckCard::DeckCard(int t, int n):Warna(t), Angka(n) 
@@ -36,10 +44,3 @@ bool DeckCard::operator==(DeckCard& other){
     return (val1==val2);
 }
 
-bool DeckCard::compareAngka(DeckCard& other){
-    return (this->getNum()<other.getNum());
-}
-
-bool DeckCard::compareWarna(DeckCard& other){
-    return (this->getType()<other.getType());
-}

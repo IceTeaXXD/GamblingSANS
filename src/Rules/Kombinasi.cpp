@@ -1,5 +1,7 @@
 #include "Kombinasi.hpp"
 
+
+
 template <class T, size_t n>
 T maxArr(T (&arr) [n]){
     T maks = arr[0];
@@ -201,7 +203,7 @@ bool Kombinasi::isFourAKind(){
 
 bool Kombinasi::isStraight(){
     bool straight = false;
-    sort(this->arr.begin(), this->arr.end(), DeckCard::compareAngka);
+    sort(this->arr.begin(), this->arr.end(), compareAngka);
     for (int i = 4; i<this->arr.size(); i++)
     {
         if (this->arr[i].getNum()-this->arr[i-4].getNum()==4)
@@ -231,7 +233,7 @@ bool Kombinasi::isStraight(){
 }
 
 bool Kombinasi::isFlush(){
-    sort(this->arr.begin(), this->arr.end(), DeckCard::compareWarna);
+    sort(this->arr.begin(), this->arr.end(), compareWarna);
     for (int i = 4; i<this->arr.size(); i++)
     {
         if (this->arr[i].getType()==this->arr[i-4].getType())
@@ -247,7 +249,7 @@ bool Kombinasi::isFlush(){
 
 bool Kombinasi::isStraightFlush(){
     bool straight = false;
-    sort(this->arr.begin(), this->arr.end(), DeckCard::compareAngka);
+    sort(this->arr.begin(), this->arr.end(), compareAngka);
     for (int i = 4; i<this->arr.size(); i++)
     {
         if (this->arr[i].getNum()-this->arr[i-4].getNum()==4)
