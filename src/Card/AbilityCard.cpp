@@ -103,6 +103,22 @@ void ReverseDirection::use(GameManager* game){
     game->players.reverseTurn();
 }
 
+SwapCard::SwapCard(){}
+
+void SwapCard::use(Player* p1, Player* p2){
+    DeckCard temp = p1->getCard().getCard(0);
+    p1->getCard().getCard(0) = p2->getCard().getCard(0);
+    p2->getCard().getCard(0) = temp;
+}
+
+Switch::Switch(){}
+
+void Switch::use(Player* p1, Player* p2){
+    DeckCardCollection temp = p1->getCard();
+    p1->getCard() = p2->getCard();
+    p2->getCard() = temp;
+}
+
 void Abilityless::use()
 {
     if (isAvailable())

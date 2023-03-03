@@ -48,14 +48,14 @@ class SwapCard : AbilityCard
 {
     //Kalau ngerjain swab sekalian di switch karena mirip
     public :
-        // SwapCard(Player*);
-        void use();
+        SwapCard();
+        void use(Player*, Player*);
 };
 class Switch : AbilityCard
 {
     public :
-        // Switch(Player*);
-        void use();
+        Switch();
+        void use(Player*, Player*);
 };
 class Abilityless : public AbilityCard
 {
