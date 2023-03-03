@@ -2,20 +2,13 @@
 
 template <class T>
 T maxArr(T* arr, int n){
-    if (n==0)
-    {
-        return "Array Kosong\n";
-    }
-    else
-    {
-        T maks = arr[0];
-        for (int i = 1; i < n; i++){
-            if (arr[i]>maks){
-                maks = arr[i];
-            }
+    T maks = arr[0];
+    for (int i = 1; i < n; i++){
+        if (arr[i]>maks){
+            maks = arr[i];
         }
-        return maks;
     }
+    return maks;
 }
 
 template <class T, size_t n>
@@ -36,28 +29,17 @@ T maxArr(T (&arr) [n]){
     }
 }
 
-template<class T>
-T maxVector(vector<T>& v)
-{
-    if (v.size()>0)
-    {
-        T temp = v[0];
-        for (int i = 0 ; i < v.size() ; i++)
-        {
-            if (v[i]>temp)
-            {
-                temp = v[i];
-            }
-        }
-        return temp;
-    }
-    else
-    {
-        return "Vektor kosong\n";
-    }
-}
 
 Kombinasi::Kombinasi(){}
+Kombinasi::Kombinasi(DeckCardCollection playerCards, DeckCardCollection tableCards)
+{
+    this->arr.push_back(playerCards.getCard(0));
+    this->arr.push_back(playerCards.getCard(1));
+    for(int i = 0 ; i < 5 ; i++)
+    {
+        this->arr.push_back(tableCards.getCard(i));
+    }
+}
 Kombinasi::~Kombinasi(){}
 
 void Kombinasi::setCards(DeckCardCollection playerCards, DeckCardCollection tableCards){
@@ -157,9 +139,6 @@ double Kombinasi::value(){
         val = max_element(arr.begin(), arr.end(), compareValue)->value();
         return val;
    }
-
-   /*Implementasi kombinasi berlanjut*/
-    return 0;
 }
 
 /* Belum dikerjain */
@@ -189,7 +168,46 @@ Kombinasi& Kombinasi::operator==(Kombinasi& other){
 //         return ret2;
 //     }
 // }
-
+string Kombinasi::getCombinationName()
+{
+    double val;
+    if (isStraightFlush())
+    {
+        return "Straight Flush";
+    }
+    else if (isFourAKind())
+    {
+        return "Four a kind";
+    }
+    else if (isFullHouse())
+    {
+        return "Full House";
+    }
+    else if (isFlush())
+    {
+        return "Flush";
+    }
+    else if (isStraight())
+    {
+        return "Straight";
+    }
+    else if (isThreeOfKind())
+    {
+        return "Three of kind";
+    }
+    else if (isTwoPair())
+    {
+        return "Two Pair";
+    }
+    else if (isPair())
+    {
+        return "Pair";
+    }
+    else
+    {
+        return "High Card";
+    }
+}
 bool Kombinasi::isPair()
 {   
     sort(arr.begin(), arr.end(), compareAngka);

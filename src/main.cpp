@@ -3,6 +3,7 @@
 #include "Card/DeckCard.hpp"
 #include "GameManager/GameManager.hpp"
 #include "Player/Player.hpp"
+#include "Rules/Kombinasi.hpp"
 
 int main()
 {
@@ -100,12 +101,48 @@ int main()
                 }
                 if (round == 6)
                 {
+                    vector<Kombinasi> tempKombinasi;
+                    tempKombinasi.push_back(Kombinasi(game->players.getPlayer(0).getCard(),game->playCards));
+                    tempKombinasi.push_back(Kombinasi(game->players.getPlayer(1).getCard(),game->playCards));
+                    tempKombinasi.push_back(Kombinasi(game->players.getPlayer(2).getCard(),game->playCards));
+                    tempKombinasi.push_back(Kombinasi(game->players.getPlayer(3).getCard(),game->playCards));
+                    tempKombinasi.push_back(Kombinasi(game->players.getPlayer(4).getCard(),game->playCards));
+                    tempKombinasi.push_back(Kombinasi(game->players.getPlayer(5).getCard(),game->playCards));
+                    tempKombinasi.push_back(Kombinasi(game->players.getPlayer(6).getCard(),game->playCards));
 
+                    double idx;
+                    vector<double> temp;
+                    for (int i = 0 ; i < 7 ; i++)
+                    {
+                        temp.push_back(tempKombinasi[i].value());
+                    }
+
+                    cout<<"Nilai Tertinggi yaitu "<<maxVector<double>(temp)<<endl;
+                    if (temp.size()>0)
+                    {
+                        double tempval = temp[0];
+                        for (int i = 0 ; i < temp.size() ; i++)
+                        {
+                            if (temp[i]>tempval)
+                            {
+                                tempval = temp[i];
+                                idx = i;
+                            }
+                        }
+                    }
+                    cout<<tempKombinasi[idx].getCombinationName()<<endl;
+                    cout<<"Menambahkan poin pada player "<<idx+1<<endl;
+                    cout<<"Sebesar "<<game->point<<endl;
+                    long long tempPoin = game->players.getPlayer(idx).getPoint();
+                    game->players.setPlayerPoint(idx,game->point + tempPoin);
                 }
             }
             round++;
-
             // Ubah Turn
+            if (round > 6)
+            {
+                break;
+            }
             game->players.nextTurn();
         }
         catch (const char* e){

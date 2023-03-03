@@ -34,6 +34,7 @@ class Kombinasi : protected FindValue{
     public:
         /* Default Constructor */
         Kombinasi();
+        Kombinasi(DeckCardCollection playerCards, DeckCardCollection tableCards);
         ~Kombinasi();
         /* Setter */
         /* Set Kartu dari playerCards dan tableCards*/
@@ -41,6 +42,7 @@ class Kombinasi : protected FindValue{
 
         /* Nentuin value kartu untuk kombinasi */
         double value();
+        string getCombinationName();
 
         /* Bruteforcing untuk Kombinasi Kartu */
         int getCombination(DeckCard x, DeckCard tc);
@@ -68,7 +70,19 @@ class Kombinasi : protected FindValue{
         bool isFourAKind();
         bool isStraightFlush();
 };
-
+template<class T>
+T maxVector(vector<T>& v)
+{
+    T temp = v[0];
+    for (int i = 0 ; i < v.size() ; i++)
+    {
+        if (v[i]>temp)
+        {
+            temp = v[i];
+        }
+    }
+    return temp;
+}
 
 
 #endif
