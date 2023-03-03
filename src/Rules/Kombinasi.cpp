@@ -146,9 +146,6 @@ double Kombinasi::value(){
         val = max_element(arr.begin(), arr.end(), compareValue)->value();
         return val;
    }
-
-   /*Implementasi kombinasi berlanjut*/
-    return 0;
 }
 
 /* Belum dikerjain */
@@ -178,7 +175,46 @@ Kombinasi& Kombinasi::operator==(Kombinasi& other){
 //         return ret2;
 //     }
 // }
-
+string Kombinasi::getCombinationName()
+{
+    double val;
+    if (isStraightFlush())
+    {
+        return "Straight Flush";
+    }
+    else if (isFourAKind())
+    {
+        return "Four a kind";
+    }
+    else if (isFullHouse())
+    {
+        return "Full House";
+    }
+    else if (isFlush())
+    {
+        return "Flush";
+    }
+    else if (isStraight())
+    {
+        return "Straight";
+    }
+    else if (isThreeOfKind())
+    {
+        return "Three of kind";
+    }
+    else if (isTwoPair())
+    {
+        return "Two Pair";
+    }
+    else if (isPair())
+    {
+        return "Pair";
+    }
+    else
+    {
+        return "High Card";
+    }
+}
 bool Kombinasi::isPair()
 {   
     sort(arr.begin(), arr.end(), compareAngka);

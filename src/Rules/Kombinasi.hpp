@@ -42,6 +42,7 @@ class Kombinasi : protected FindValue{
 
         /* Nentuin value kartu untuk kombinasi */
         double value();
+        string getCombinationName();
 
         /* Bruteforcing untuk Kombinasi Kartu */
         int getCombination(DeckCard x, DeckCard tc);

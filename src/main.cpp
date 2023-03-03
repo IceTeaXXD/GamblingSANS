@@ -17,7 +17,7 @@ int main()
                 for (int i = 0 ; i < 7 ; i++){
                     //Implementasi penunjuk player yg main
                     //CONTOH : "Sekarang saatnya Player I"
-                    cout << "Sekarang adalah g  iliran Player " << game->players.getPlayer(i).getName() << endl;
+                    cout << "Sekarang adalah giliran Player " << game->players.getPlayer(i).getName() << endl;
                     DeckCard temp1 = game->tableCards.takeCard();
                     DeckCard temp2 = game->tableCards.takeCard();
                     game->players.addPlayerCard(i, temp1);
@@ -101,22 +101,21 @@ int main()
                 }
                 if (round == 6)
                 {
-                    Kombinasi p1 = Kombinasi(game->players.getPlayer(0).getCard(),game->playCards);
-                    Kombinasi p2 = Kombinasi(game->players.getPlayer(1).getCard(),game->playCards);
-                    Kombinasi p3 = Kombinasi(game->players.getPlayer(2).getCard(),game->playCards);
-                    Kombinasi p4 = Kombinasi(game->players.getPlayer(3).getCard(),game->playCards);
-                    Kombinasi p5 = Kombinasi(game->players.getPlayer(4).getCard(),game->playCards);
-                    Kombinasi p6 = Kombinasi(game->players.getPlayer(5).getCard(),game->playCards);
-                    Kombinasi p7 = Kombinasi(game->players.getPlayer(6).getCard(),game->playCards);
+                    vector<Kombinasi> tempKombinasi;
+                    tempKombinasi.push_back(Kombinasi(game->players.getPlayer(0).getCard(),game->playCards));
+                    tempKombinasi.push_back(Kombinasi(game->players.getPlayer(1).getCard(),game->playCards));
+                    tempKombinasi.push_back(Kombinasi(game->players.getPlayer(2).getCard(),game->playCards));
+                    tempKombinasi.push_back(Kombinasi(game->players.getPlayer(3).getCard(),game->playCards));
+                    tempKombinasi.push_back(Kombinasi(game->players.getPlayer(4).getCard(),game->playCards));
+                    tempKombinasi.push_back(Kombinasi(game->players.getPlayer(5).getCard(),game->playCards));
+                    tempKombinasi.push_back(Kombinasi(game->players.getPlayer(6).getCard(),game->playCards));
+
                     double idx;
                     vector<double> temp;
-                    temp.push_back(p1.value());
-                    temp.push_back(p2.value());
-                    temp.push_back(p3.value());
-                    temp.push_back(p4.value());
-                    temp.push_back(p5.value());
-                    temp.push_back(p6.value());
-                    temp.push_back(p7.value());
+                    for (int i = 0 ; i < 7 ; i++)
+                    {
+                        temp.push_back(tempKombinasi[i].value());
+                    }
 
                     cout<<"Nilai Tertinggi yaitu "<<maxVector<double>(temp)<<endl;
                     if (temp.size()>0)
@@ -131,6 +130,7 @@ int main()
                             }
                         }
                     }
+                    cout<<tempKombinasi[idx].getCombinationName()<<endl;
                     cout<<"Menambahkan poin pada player "<<idx+1<<endl;
                     cout<<"Sebesar "<<game->point<<endl;
                     long long tempPoin = game->players.getPlayer(idx).getPoint();
@@ -138,8 +138,11 @@ int main()
                 }
             }
             round++;
-
             // Ubah Turn
+            if (round > 6)
+            {
+                break;
+            }
             game->players.nextTurn();
         }
         catch (const char* e){
