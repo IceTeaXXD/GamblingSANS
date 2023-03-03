@@ -1,6 +1,9 @@
 #ifndef ABILITY_CARD_HPP
 #define ABILITY_CARD_HPP
+
 #include <iostream>
+#include <vector>
+#include "../GameManager/GameManager.hpp"
 
 class AbilityCard{
     private:
@@ -18,21 +21,21 @@ class REROLL : AbilityCard
         //Re-Roll, membuang 2 kartu dari main deck yang dimiliki oleh diri sendiri dan mengambil ulang 2 kartu.
         REROLL();
         // void use(DeckCard* gameManager,DeckCard* PlayerCard);
-        void use(AbilityCard *);
+        void use(GameManager *game, int i);
 };
 class Quadruple : AbilityCard
 {
     public:
         //Quadruple, sama seperti aksi double hanya saja multipliernya menjadi 4x.
-        Quadruple(int);
-        void use(int);
+        Quadruple();
+        void use(int, GameManager*);
 };
 class Quarter : AbilityCard
 {
     public:
         //Quarter, sama seperti aksi half hanya saja multipliernya menjadi 0.25x.
-        Quarter(int);
-        void use(int);
+        Quarter();
+        void use(int, GameManager*);
 };
 class ReverseDirection : AbilityCard
 {

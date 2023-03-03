@@ -27,27 +27,76 @@ void AbilityCard::use()
 {
     cout<<"Menggunakan ability card"<<endl;
 }
-void REROLL::use(AbilityCard* )
+
+REROLL::REROLL(){}
+
+void REROLL::use(GameManager* game, int i)
 {
     //Buat array dg isi objek kartu dulu baru bisa diimplementasi
     if (isAvailable())
     {
         this->setNotAvailable();
+
+        /* Kosongkan Kartu terlebih dahulu */
+        game->players.clearCard(i);
+
+        /* Tambahin Kartu Baru */
+        DeckCard temp1 = game->tableCards.takeCard();
+        DeckCard temp2 = game->tableCards.takeCard();
+        game->players.addPlayerCard(i, temp1);
+        game->players.addPlayerCard(i, temp2);
+
+        /* OUTPUT */
+        cout<<"RE-ROLLED"<<endl;
+        cout<<"Kamu dapat kartu "<<temp1.getNum()<<" "<<temp1.translateToString()<<endl;
+        cout<<"Kamu dapat kartu "<<temp2.getNum()<<" "<<temp1.translateToString()<<endl;
     }
     else
-    {}
+    {
+        cout << "Anda tidak punya kartu ini!" << endl;
+    }
 }
 
-void Quadruple::use(int a)
+Quadruple::Quadruple(){}
+
+void Quadruple::use(int a, GameManager* game)
 {
     if (isAvailable())
     {
         this->setNotAvailable();
+
+        /* Set point jadi 4 kali */
+        game->setPoint(a*4);
+
+        /* OUTPUT */
+        cout << "Point berubah menjadi " << game->point << endl;
+        
     }
     else
     {
+        cout << "Anda tidak punya kartu ini!" << endl;
     }
 }
+
+Quarter::Quarter(){}
+
+void Quarter::use(int i, GameManager* game){
+    if (isAvailable())
+    {
+        this->setNotAvailable();
+
+        /* Set point jadi 4 kali */
+        game->setPoint(i/4);
+        
+        /* OUTPUT */
+        cout << "Point berubah menjadi " << game->point << endl;
+    }
+    else
+    {
+        cout << "Anda tidak punya kartu ini!" << endl;
+    }
+}
+
 void Abilityless::use()
 {
     if (isAvailable())

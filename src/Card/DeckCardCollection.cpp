@@ -82,3 +82,7 @@ void DeckCardCollection::displayDeckCard()
         it->printInfo();
     }
 }
+
+void DeckCardCollection::clear(){
+    this->buffer.clear();
+}

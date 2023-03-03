@@ -75,3 +75,6 @@ bool Player::operator==(Player& other){
     return (this->point == other.point);
 }
 
+void Player::clearCards(){
+    this->playerCard.clear();
+}

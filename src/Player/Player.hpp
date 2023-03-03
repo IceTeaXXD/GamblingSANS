@@ -46,7 +46,7 @@ class Player{
         bool operator<(Player&);
         bool operator>(Player&);
         bool operator==(Player&);
-
+        void clearCards();
         /* Value yang digunakan untuk mencari nilai high card
             dari kartu yang dimiliki seorang player */
 };
