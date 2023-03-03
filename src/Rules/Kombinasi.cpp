@@ -85,7 +85,7 @@ double Kombinasi::value(){
         val = MAX_FOUR_KIND;
         for (DeckCard i : arrStraightFlush)
         {
-            val += i.getValue();
+            val += i.value();
         }
         return val;
    }
@@ -94,7 +94,7 @@ double Kombinasi::value(){
         val = MAX_FULL_HOUSE;
         for (DeckCard i : arrFourAKind)
         {
-            val += i.getValue();
+            val += i.value();
         }
         return val;
    }
@@ -103,7 +103,7 @@ double Kombinasi::value(){
         val = MAX_FLUSH;
         for (int i = 0; i < 3; i++)
         {
-            val += arrFullHouse[i].getValue();
+            val += arrFullHouse[i].value();
         }
         return val;
    }
@@ -112,7 +112,7 @@ double Kombinasi::value(){
         val = MAX_STRAIGHT;
         for (DeckCard i : arrFlush)
         {
-            val += i.getValue();
+            val += i.value();
         }
         return val;
    }
@@ -121,7 +121,7 @@ double Kombinasi::value(){
         val = MAX_THREE_KIND;
         for (DeckCard i : arrStraight)
         {
-            val += i.getValue();
+            val += i.value();
         }
         return val;
    }
@@ -130,7 +130,7 @@ double Kombinasi::value(){
         val = MAX_TWO_PAIR;
         for (DeckCard i : arrThreeOfKind)
         {
-            val += i.getValue();
+            val += i.value();
         }
         return val;
    }
@@ -139,7 +139,7 @@ double Kombinasi::value(){
         val = MAX_PAIR;
         for (DeckCard i : arrTwoPair)
         {
-            val += i.getValue();
+            val += i.value();
         }
         return val;
    }
@@ -148,13 +148,13 @@ double Kombinasi::value(){
         val = MAX_HIGH_CARD;
         for (DeckCard i : arrPair)
         {
-            val += i.getValue();
+            val += i.value();
         }
         return val;
    }
    else
    {
-        val = max_element(arr.begin(), arr.end(), compareValue)->getValue();
+        val = max_element(arr.begin(), arr.end(), compareValue)->value();
         return val;
    }
 
@@ -178,8 +178,8 @@ Kombinasi& Kombinasi::operator==(Kombinasi& other){
 // double Kombinasi::HighCard()
 // { 
 //     /* rumus = konstanta/10 + (warna-1) * 0.3*/
-//     double ret1 = arr[0].getValue();
-//     double ret2 = arr[1].getValue();
+//     double ret1 = arr[0].value();
+//     double ret2 = arr[1].value();
 //     if (ret1>ret2)
 //     {
 //         return ret1;

@@ -9,7 +9,7 @@ bool compareWarna(DeckCard c, DeckCard other){
 }
 
 bool compareValue(DeckCard c, DeckCard other){
-    return (c.getValue()<other.getValue());
+    return (c.value()<other.value());
 }
 
 DeckCard::DeckCard(){}
@@ -24,21 +24,21 @@ void DeckCard::printInfo()
     cout<<this->getNum()<<" "<<this->translateToString()<<endl;
 }
 
-double DeckCard::getValue()
+double DeckCard::value()
 {
     return this->getNum()/10 + (this->getType()-1)*0.3;
 }
 
 bool DeckCard::operator<(DeckCard& other)
 {
-    double val1 = this->getValue();
-    double val2 = other.getValue();
+    double val1 = this->value();
+    double val2 = other.value();
     return (val1<val2);
 }
 
 bool DeckCard::operator>(DeckCard& other){
-    double val1 = this->getValue();
-    double val2 = other.getValue();
+    double val1 = this->value();
+    double val2 = other.value();
     return (val1>val2);
 }
 
