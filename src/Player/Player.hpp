@@ -46,7 +46,9 @@ class Player : protected FindValue{
         bool operator>(Player&);
         bool operator==(Player&);
 
-        int value(DeckCard c);
+        /* Value yang digunakan untuk mencari nilai high card
+            dari kartu yang dimiliki seorang player */
+        double value();
 };
 
 #endif
