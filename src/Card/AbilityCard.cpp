@@ -97,6 +97,12 @@ void Quarter::use(int i, GameManager* game){
     }
 }
 
+ReverseDirection::ReverseDirection(){}
+
+void ReverseDirection::use(GameManager* game){
+    game->players.reverseTurn();
+}
+
 void Abilityless::use()
 {
     if (isAvailable())
