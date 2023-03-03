@@ -133,6 +133,16 @@ int main()
                     cout<<tempKombinasi[idx].getCombinationName()<<endl;
                     cout<<"Menambahkan poin pada player "<<idx+1<<endl;
                     cout<<"Sebesar "<<game->point<<endl;
+
+                    cout<<"Table Card List"<<endl;
+                    game->playCards.displayDeckCard();
+
+                    cout<<"Player Card :"<<endl;
+                    for (int i = 0 ; i < 7 ; i++)
+                    {
+                        cout<<"Player "<<i<<endl;
+                        game->players.getPlayer(i).viewAllCard();
+                    }
                     long long tempPoin = game->players.getPlayer(idx).getPoint();
                     game->players.setPlayerPoint(idx,game->point + tempPoin);
                 }
