@@ -36,28 +36,17 @@ T maxArr(T (&arr) [n]){
     }
 }
 
-template<class T>
-T maxVector(vector<T>& v)
-{
-    if (v.size()>0)
-    {
-        T temp = v[0];
-        for (int i = 0 ; i < v.size() ; i++)
-        {
-            if (v[i]>temp)
-            {
-                temp = v[i];
-            }
-        }
-        return temp;
-    }
-    else
-    {
-        return "Vektor kosong\n";
-    }
-}
 
 Kombinasi::Kombinasi(){}
+Kombinasi::Kombinasi(DeckCardCollection playerCards, DeckCardCollection tableCards)
+{
+    this->arr.push_back(playerCards.getCard(0));
+    this->arr.push_back(playerCards.getCard(1));
+    for(int i = 0 ; i < 5 ; i++)
+    {
+        this->arr.push_back(tableCards.getCard(i));
+    }
+}
 Kombinasi::~Kombinasi(){}
 
 void Kombinasi::setCards(DeckCardCollection playerCards, DeckCardCollection tableCards){
