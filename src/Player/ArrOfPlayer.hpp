@@ -1,12 +1,12 @@
 #ifndef ARROFPLAYER_HPP
 #define ARROFPLAYER_HPP
 
-#include <vector>
+#include <deque>
 #include "Player.hpp"
 
 class ArrOfPlayer {
     private :
-        vector<Player> arr;
+        deque<Player> arr;
     public :
         //ctor
         ArrOfPlayer();
