@@ -19,8 +19,8 @@ int main()
                     cout << "Sekarang adalah giliran Player " << game->players.getPlayer(i).getName() << endl;
                     DeckCard temp1 = game->tableCards.takeCard();
                     DeckCard temp2 = game->tableCards.takeCard();
-                    game->players.getPlayer(i)+temp1;
-                    game->players.getPlayer(i)+temp2;
+                    game->players.addPlayerCard(i, temp1);
+                    game->players.addPlayerCard(i, temp2);
                     cout<<"Kamu dapat kartu "<<temp1.getNum()<<" "<<temp1.translateToString()<<endl;
                     cout<<"Kamu dapat kartu "<<temp2.getNum()<<" "<<temp1.translateToString()<<endl;
                     //Mulai aksi player                
@@ -53,9 +53,11 @@ int main()
             }
 
             else if(round >= 2 && round <= 6){
-                DeckCard temp = game->tableCards.takeCard();
-                game->playCards+temp;
-                cout<<"Kartu "<<temp.getNum()<<" "<<temp.translateToString()<<" telah ditambahkan di meja"<<endl;
+                if(round < 6){
+                    DeckCard temp = game->tableCards.takeCard();
+                    game->playCards+temp;
+                    cout<<"Kartu "<<temp.getNum()<<" "<<temp.translateToString()<<" telah ditambahkan di meja"<<endl;
+                }
                 //Implementasi penunjuk player yg main
                 //CONTOH : "Sekarang saatnya PlayerI"
                 //Tambahin juga buat tampilin kartu apa aja yang dimeja + dipunya player
