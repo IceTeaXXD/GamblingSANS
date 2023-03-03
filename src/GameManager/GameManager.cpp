@@ -4,7 +4,7 @@ int GameManager::round = 1;
 GameManager::~GameManager(){ cout << "Thank You For Playing The Game!" << endl;}
 
 
-GameManager::GameManager()
+GameManager::GameManager():point(64)
 {
     /* Inisialisasi DeckCard dengan memanggil MakeDeck()*/
     tableCards.MakeDeck();

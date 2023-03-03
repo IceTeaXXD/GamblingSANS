@@ -31,6 +31,19 @@ int main()
                 cin>>aksi;
                 //Implementasi poin disini
                 //pake getter dan setter poin yg di game manager
+                if (aksi == "1"){
+                    //Implementasi next
+                }
+                else if (aksi == "2"){
+                    //Implementasi double
+                    game->setPoint(game->point*2);
+                    cout << game->players.getPlayer(i).getName() << " melakukan DOUBLE! Poin hadiah naik dari " << game->point/2 << " menjadi " << game->point  << "!" << endl;
+                }
+                else if (aksi == "3"){
+                    //Implementasi half
+                    game->setPoint(game->point/2);
+                    cout << game->players.getPlayer(i).getName() << " melakukan HALF! Poin hadiah turun dari " << game->point*2 << " menjadi " << game->point  << "!" << endl;
+                }
             }
             // Give 1 ability card to each player
             /* TODO */
@@ -53,6 +66,19 @@ int main()
                 cin>>aksi;
                 //Implementasi poin disini
                 //pake getter dan setter poin yg di game manager
+                if (aksi == "1"){
+                    //Implementasi next
+                }
+                else if (aksi == "2"){
+                    //Implementasi double
+                    game->setPoint(game->point*2);
+                    cout << game->players.getPlayer(i).getName() << " melakukan DOUBLE! Poin hadiah naik dari " << game->point/2 << " menjadi " << game->point  << "!" << endl;
+                }
+                else if (aksi == "3"){
+                    //Implementasi half
+                    game->setPoint(game->point/2);
+                    cout << game->players.getPlayer(i).getName() << " melakukan HALF! Poin hadiah turun dari " << game->point*2 << " menjadi " << game->point  << "!" << endl;
+                }
             }
         }
         round++;
