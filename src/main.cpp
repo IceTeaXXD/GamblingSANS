@@ -24,6 +24,8 @@ int main()
                     cout<<"Kamu dapat kartu "<<temp1.getNum()<<" "<<temp1.translateToString()<<endl;
                     cout<<"Kamu dapat kartu "<<temp2.getNum()<<" "<<temp1.translateToString()<<endl;
                     //Mulai aksi player                
+                    game->players.getPlayer(i).viewAllCard();
+                    cout<<endl;
                     cout<<"Tentukan aksi anda: "<<endl;
                     cout<<"1. Next"<<endl;
                     cout<<"2. Double"<<endl;
@@ -50,14 +52,23 @@ int main()
                 }
                 // Give 1 ability card to each player
                 /* TODO */
+                cout<<"Ronde I telah berakhir"<<endl;
+                DeckCard temp = game->tableCards.takeCard();
+                game->playCards+temp;
+                cout<<"Kartu "<<temp.getNum()<<" "<<temp.translateToString()<<" telah ditambahkan di meja"<<endl;
+                cout<<endl;
+                game->playCards.displayDeckCard();
             }
 
-            else if(round >= 2 && round <= 6){
+            else if(round >= 2 && round <= 6)
+            {
                 if(round < 6){
                     DeckCard temp = game->tableCards.takeCard();
                     game->playCards+temp;
                     cout<<"Kartu "<<temp.getNum()<<" "<<temp.translateToString()<<" telah ditambahkan di meja"<<endl;
                 }
+                cout<<endl;
+                game->playCards.displayDeckCard();
                 //Implementasi penunjuk player yg main
                 //CONTOH : "Sekarang saatnya PlayerI"
                 //Tambahin juga buat tampilin kartu apa aja yang dimeja + dipunya player
@@ -86,6 +97,10 @@ int main()
                     }else{
                         throw "Input Anda salah, silakan ulangi!\n";
                     }
+                }
+                if (round == 6)
+                {
+
                 }
             }
             round++;

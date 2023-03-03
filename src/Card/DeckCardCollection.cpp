@@ -1,5 +1,5 @@
 #include "DeckCardCollection.hpp"
-
+using namespace std;
 
 DeckCardCollection::DeckCardCollection(){}
 
@@ -74,4 +74,11 @@ DeckCard DeckCardCollection::takeCard(){
 
 void DeckCardCollection::operator+(DeckCard& c){
     this->buffer.push_back(c);
+}
+void DeckCardCollection::displayDeckCard()
+{
+    for (auto it = buffer.begin(); it != buffer.end(); it++) 
+    {
+        it->printInfo();
+    }
 }
