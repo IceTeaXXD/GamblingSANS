@@ -101,9 +101,9 @@ double Kombinasi::value(){
    else if (isFullHouse())
    {
         val = MAX_FLUSH;
-        for (int i = 0; i < 3; i++)
+        for (DeckCard i : arrFullHouse)
         {
-            val += arrFullHouse[i].value();
+            val += i.value();
         }
         return val;
    }
