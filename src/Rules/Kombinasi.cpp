@@ -229,3 +229,34 @@ bool Kombinasi::isStraight(){
     }
     return false;
 }
+
+
+bool Kombinasi::isFlush(){
+
+    for(int i = 0; i < 7 ; i++){
+        int temp_type = arr[i].getType();
+        vector<DeckCard> temp;
+        temp.push_back(arr[i]);
+        int count_same = 1;
+
+        for (int j = i+1; j < 7; j++){
+            if(temp_type == arr[j].getType()){
+                count_same++;
+                temp.push_back(arr[j]);
+            }
+            if(count_same == 4){
+                for(int k = 0; k < 4 ; k++){
+                    arrThreeOfKind.push_back(temp[k]);
+                }
+                return true;
+            }
+        }
+
+        if(count_same != 4){
+            temp.clear();
+            count_same = 0;
+        }
+    }
+
+    return false;
+}
