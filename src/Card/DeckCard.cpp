@@ -26,7 +26,25 @@ void DeckCard::printInfo()
 
 double DeckCard::value()
 {
-    return this->getNum()/10 + (this->getType()-1)*0.3;
+    double tempwarna;
+    if (getType()==1)
+    {
+        tempwarna = 0;
+    }
+    else if(getType()==2)
+    {
+        tempwarna = 0.0001;
+    }
+    else if(getType()==3)
+    {
+        tempwarna = 0.001;
+    }
+    else
+    {
+        tempwarna = 0.01;
+    }
+    double temp_num = (double)this->getNum()/10.0;
+    return temp_num + tempwarna;
 }
 
 bool DeckCard::operator<(DeckCard& other)
