@@ -198,3 +198,34 @@ bool Kombinasi::isFourAKind(){
     return false;
 
 }
+
+bool Kombinasi::isStraight(){
+    bool straight = false;
+    sort(this->arr.begin(), this->arr.end());
+    for (int i = 4; i<this->arr.size(); i++)
+    {
+        if (this->arr[i].getNum()-this->arr[i-4].getNum()==4)
+        {
+            int temp = this->arr[i-4].getNum()-1;
+            for(int j = i-4; j<i+1; j++)
+            {
+                if ((this->arr[j].getNum()-temp)==1)
+                {
+                    temp = this->arr[j].getNum();
+                    this->arrStraight.push_back(this->arr[j]);
+                }
+                else
+                {
+                    this->arrStraight.clear();
+                    straight = false;
+                    break;
+                }
+            }
+            if (straight)
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
