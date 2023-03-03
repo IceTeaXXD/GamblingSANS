@@ -72,5 +72,5 @@ bool Player::operator==(Player& other){
 
 double Player::value()
 {
-    return (playerCard.getCard(0)->getNum()/10+playerCard.getCard(1)->getNum()/10 + (playerCard.getCard(0)->getType()-1) * 0.3 + (playerCard.getCard(1)->getType()-1) * 0.3);
+    return (playerCard.getCard(0).getNum()/10+playerCard.getCard(1).getNum()/10 + (playerCard.getCard(0).getType()-1) * 0.3 + (playerCard.getCard(1).getType()-1) * 0.3);
 }
