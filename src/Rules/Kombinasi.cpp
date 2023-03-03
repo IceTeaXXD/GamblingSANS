@@ -415,8 +415,6 @@ bool Kombinasi::isFullHouse(){
                 {
                     if (!(arr[i]==tempThreeKind[0]))
                     {
-                        arrPair.push_back(arr[i]);
-                        arrPair.push_back(arr[j]);
                         fullHouse = true;
                         break;
                     }
