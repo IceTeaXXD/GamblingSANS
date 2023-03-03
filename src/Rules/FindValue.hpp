@@ -3,7 +3,7 @@
 
 class FindValue{
     public:
-        virtual int value() const;
+        virtual double value() const;
 };
 
 #endif

@@ -2,20 +2,13 @@
 
 template <class T>
 T maxArr(T* arr, int n){
-    if (n==0)
-    {
-        return "Array Kosong\n";
-    }
-    else
-    {
-        T maks = arr[0];
-        for (int i = 1; i < n; i++){
-            if (arr[i]>maks){
-                maks = arr[i];
-            }
+    T maks = arr[0];
+    for (int i = 1; i < n; i++){
+        if (arr[i]>maks){
+            maks = arr[i];
         }
-        return maks;
     }
+    return maks;
 }
 
 template <class T, size_t n>

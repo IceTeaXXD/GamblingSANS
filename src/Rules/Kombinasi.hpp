@@ -73,18 +73,15 @@ class Kombinasi : protected FindValue{
 template<class T>
 T maxVector(vector<T>& v)
 {
-    if (v.size()>0)
+    T temp = v[0];
+    for (int i = 0 ; i < v.size() ; i++)
     {
-        T temp = v[0];
-        for (int i = 0 ; i < v.size() ; i++)
+        if (v[i]>temp)
         {
-            if (v[i]>temp)
-            {
-                temp = v[i];
-            }
+            temp = v[i];
         }
-        return temp;
     }
+    return temp;
 }
 
 
