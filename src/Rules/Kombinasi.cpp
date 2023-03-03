@@ -244,3 +244,35 @@ bool Kombinasi::isFlush(){
     }
     return false;
 }
+
+bool Kombinasi::isStraightFlush(){
+    bool straight = false;
+    sort(this->arr.begin(), this->arr.end(), DeckCard::compareAngka);
+    for (int i = 4; i<this->arr.size(); i++)
+    {
+        if (this->arr[i].getNum()-this->arr[i-4].getNum()==4)
+        {
+            int tempNum = this->arr[i-4].getNum()-1;
+            int tempType = this->arr[i-4].getType();
+            for(int j = i-4; j<i+1; j++)
+            {
+                if (((this->arr[j].getNum()-tempNum)==1)&&(this->arr[j].getType()==tempType))
+                {
+                    tempNum = this->arr[j].getNum();
+                    this->arrStraight.push_back(this->arr[j]);
+                }
+                else
+                {
+                    this->arrStraight.clear();
+                    straight = false;
+                    break;
+                }
+            }
+            if (straight)
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
