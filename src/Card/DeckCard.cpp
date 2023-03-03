@@ -8,6 +8,10 @@ bool compareWarna(DeckCard c, DeckCard other){
     return (c.getType()<other.getType());
 }
 
+bool compareValue(DeckCard c, DeckCard other){
+    return (c.getValue()<other.getValue());
+}
+
 DeckCard::DeckCard(){}
 
 DeckCard::DeckCard(int t, int n):Warna(t), Angka(n) 

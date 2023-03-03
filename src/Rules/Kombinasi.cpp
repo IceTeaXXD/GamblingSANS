@@ -1,42 +1,61 @@
 #include "Kombinasi.hpp"
 
-
+template <class T>
+T maxArr(T* arr, int n){
+    if (n==0)
+    {
+        return "Array Kosong\n";
+    }
+    else
+    {
+        T maks = arr[0];
+        for (int i = 1; i < n; i++){
+            if (arr[i]>maks){
+                maks = arr[i];
+            }
+        }
+        return maks;
+    }
+}
 
 template <class T, size_t n>
 T maxArr(T (&arr) [n]){
-    T maks = arr[0];
-    for (int i = 1; i < n; i++){
-        if (arr[i]>maks){
-            maks = arr[i];
-        }
+    if (n==0)
+    {
+        return "Array Kosong\n";
     }
-    return maks;
+    else
+    {
+        T maks = arr[0];
+        for (int i = 1; i < n; i++){
+            if (arr[i]>maks){
+                maks = arr[i];
+            }
+        }
+        return maks;
+    }
 }
 
 template<class T>
 T maxVector(vector<T>& v)
 {
-    T temp = v[0];
-    for (int i = 0 ; i < v.size() ; i++)
+    if (v.size()>0)
     {
-        if (v[i]>temp)
+        T temp = v[0];
+        for (int i = 0 ; i < v.size() ; i++)
         {
-            temp = v[i];
+            if (v[i]>temp)
+            {
+                temp = v[i];
+            }
         }
+        return temp;
     }
-    return temp;
+    else
+    {
+        return "Vektor kosong\n";
+    }
 }
-
-// template <class T>
-// T maxArr (vector<T> arr){
-//     T maks = arr[0];
-//     for (int i = 1; i < n; i++){
-//         if (arr[i]>maks){
-//             maks = arr[i];
-//         }
-//     }
-//     return maks;
-// }
 
 Kombinasi::Kombinasi(){}
 Kombinasi::~Kombinasi(){}
@@ -60,11 +79,85 @@ double Kombinasi::value(){
     }
     return temp;
     */
-   if (isPair())
+   double val;
+   if (isStraightFlush())
    {
-        DeckCard max = maxVector(arrPair);
-        return (2 + max.getValue());
+        val = MAX_FOUR_KIND;
+        for (DeckCard i : arrStraightFlush)
+        {
+            val += i.getValue();
+        }
+        return val;
    }
+   else if (isFourAKind())
+   {
+        val = MAX_FULL_HOUSE;
+        for (DeckCard i : arrFourAKind)
+        {
+            val += i.getValue();
+        }
+        return val;
+   }
+   else if (isFullHouse())
+   {
+        val = MAX_FLUSH;
+        for (int i = 0; i < 3; i++)
+        {
+            val += arrFullHouse[i].getValue();
+        }
+        return val;
+   }
+   else if (isFlush())
+   {
+        val = MAX_STRAIGHT;
+        for (DeckCard i : arrFlush)
+        {
+            val += i.getValue();
+        }
+        return val;
+   }
+   else if (isStraight())
+   {
+        val = MAX_THREE_KIND;
+        for (DeckCard i : arrStraight)
+        {
+            val += i.getValue();
+        }
+        return val;
+   }
+   else if (isThreeOfKind())
+   {
+        val = MAX_TWO_PAIR;
+        for (DeckCard i : arrThreeOfKind)
+        {
+            val += i.getValue();
+        }
+        return val;
+   }
+   else if (isTwoPair())
+   {
+        val = MAX_PAIR;
+        for (DeckCard i : arrTwoPair)
+        {
+            val += i.getValue();
+        }
+        return val;
+   }
+   else if (isPair())
+   {
+        val = MAX_HIGH_CARD;
+        for (DeckCard i : arrPair)
+        {
+            val += i.getValue();
+        }
+        return val;
+   }
+   else
+   {
+        val = max_element(arr.begin(), arr.end(), compareValue)->getValue();
+        return val;
+   }
+
    /*Implementasi kombinasi berlanjut*/
     return 0;
 }
@@ -82,20 +175,20 @@ Kombinasi& Kombinasi::operator==(Kombinasi& other){
     return *this;
 }
 
-double Kombinasi::HighCard()
-{ 
-    /* rumus = konstanta/10 + (warna-1) * 0.3*/
-    double ret1 = arr[0].getValue();
-    double ret2 = arr[1].getValue();
-    if (ret1>ret2)
-    {
-        return ret1;
-    }
-    else
-    {
-        return ret2;
-    }
-}
+// double Kombinasi::HighCard()
+// { 
+//     /* rumus = konstanta/10 + (warna-1) * 0.3*/
+//     double ret1 = arr[0].getValue();
+//     double ret2 = arr[1].getValue();
+//     if (ret1>ret2)
+//     {
+//         return ret1;
+//     }
+//     else
+//     {
+//         return ret2;
+//     }
+// }
 
 bool Kombinasi::isPair()
 {
@@ -204,7 +297,7 @@ bool Kombinasi::isFourAKind(){
 bool Kombinasi::isStraight(){
     bool straight = false;
     sort(this->arr.begin(), this->arr.end(), compareAngka);
-    for (int i = 4; i<this->arr.size(); i++)
+    for (int i = this->arr.size()-1; i>3; i--)
     {
         if (this->arr[i].getNum()-this->arr[i-4].getNum()==4)
         {
@@ -234,7 +327,7 @@ bool Kombinasi::isStraight(){
 
 bool Kombinasi::isFlush(){
     sort(this->arr.begin(), this->arr.end(), compareWarna);
-    for (int i = 4; i<this->arr.size(); i++)
+    for (int i = this->arr.size()-1; i>3; i--)
     {
         if (this->arr[i].getType()==this->arr[i-4].getType())
         {
@@ -250,7 +343,7 @@ bool Kombinasi::isFlush(){
 bool Kombinasi::isStraightFlush(){
     bool straight = false;
     sort(this->arr.begin(), this->arr.end(), compareAngka);
-    for (int i = 4; i<this->arr.size(); i++)
+    for (int i = this->arr.size()-1; i>3; i--)
     {
         if (this->arr[i].getNum()-this->arr[i-4].getNum()==4)
         {

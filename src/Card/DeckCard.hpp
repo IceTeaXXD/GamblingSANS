@@ -30,5 +30,6 @@ class DeckCard : public Warna, public Angka{
 
 bool compareAngka(DeckCard c, DeckCard other);
 bool compareWarna(DeckCard c, DeckCard other);
+bool compareValue(DeckCard c, DeckCard other);
 
 #endif

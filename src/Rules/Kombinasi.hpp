@@ -20,6 +20,17 @@ class Kombinasi : protected FindValue{
         vector<DeckCard> arrFullHouse;
         vector<DeckCard> arrFourAKind;
         vector<DeckCard> arrStraightFlush;
+
+        const double MAX_HIGH_CARD = 1.39;
+        const double MAX_PAIR = MAX_HIGH_CARD + 1.39 + 1.36;
+        const double MAX_TWO_PAIR = MAX_PAIR + 1.33 + 1.3;
+        const double MAX_THREE_KIND = MAX_TWO_PAIR + 1.39 + 1.36 + 1.33;
+        const double MAX_STRAIGHT = MAX_THREE_KIND + 1.39 + 1.29 + 1.19 + 1.09 + 0.99;
+        const double MAX_FLUSH = MAX_STRAIGHT + 1.39 + 1.29 + 1.19 + 1.09 + 0.99;
+        const double MAX_FULL_HOUSE = MAX_FLUSH + 1.39 + 1.36 + 1.33;
+        const double MAX_FOUR_KIND = MAX_FULL_HOUSE + 1.39 + 1.36 + 1.33 + 1.30;
+        const double MAX_STRAIGHT_FLUSH = MAX_FULL_HOUSE + 1.39 + 1.29 + 1.19 + 1.09 + 0.99;
+
     public:
         /* Default Constructor */
         Kombinasi();
@@ -47,7 +58,7 @@ class Kombinasi : protected FindValue{
             - dst (inc 2)
             - Jadi nanti buat di fungsi yg value tinggal panggil aja ini semua dijumlahin
         */
-        double HighCard();
+        // double HighCard(); Digabung sama value()
         bool isPair();
         bool isTwoPair();
         bool isThreeOfKind();
