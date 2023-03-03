@@ -60,7 +60,7 @@ void GameManager::initDistribute(int idplayer)
 }
 // void GameManager::setGiliran(int g){this->giliran = 0;}
 
-void GameManager::setPoint(int p){this -> point = p;}
+void GameManager::setPoint(long long p){this -> point = p;}
 
 // DeckCard* GameManager::getCard()
 // {

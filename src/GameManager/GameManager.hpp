@@ -30,7 +30,7 @@ class GameManager{
 
         // AbilityCard* abilityCardList;
         static int numOfTableCards;
-        int point;
+        long long point;
 
         /* Game Round */
         static int round;
@@ -43,7 +43,7 @@ class GameManager{
         void setGiliran(int);
         int getGiliran();
         /* Mengubah Point */
-        void setPoint(int);
+        void setPoint(long long);
 
         // void startGame();
         void displayPlayer();
