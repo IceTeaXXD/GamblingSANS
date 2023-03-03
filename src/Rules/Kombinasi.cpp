@@ -191,75 +191,117 @@ Kombinasi& Kombinasi::operator==(Kombinasi& other){
 // }
 
 bool Kombinasi::isPair()
-{
-    for (int i = 0 ; i < 7 ; i++)
+{   
+    sort(arr.begin(), arr.end(), compareAngka);
+    for (int i = this->arr.size()-1; i>0; i--)
     {
-        for (int j = i+1 ; j < 7 ; i++)
+        if(arr[i]==arr[i-1])
         {
-            if(arr[i].getNum() == arr[j].getNum())
-            {
-                arrPair.push_back(arr[i]);
-                arrPair.push_back(arr[j]);
-                return true;
-            }
+            arrPair.push_back(arr[i]);
+            arrPair.push_back(arr[i-1]);
+            return true;
         }
     }
     return false;
+    // for (int i = 0 ; i < 7 ; i++)
+    // {
+    //     for (int j = i+1 ; j < 7 ; i++)
+    //     {
+    //         if(arr[i].getNum() == arr[j].getNum())
+    //         {
+    //             arrPair.push_back(arr[i]);
+    //             arrPair.push_back(arr[j]);
+    //             return true;
+    //         }
+    //     }
+    // }
+    // return false;
 }
 
 bool Kombinasi::isTwoPair()
-{
-    int count_pair = 0;
-    vector<DeckCard> temp;
-    for (int i = 0 ; i < 7 ; i++)
+{   
+    sort(arr.begin(), arr.end(), compareAngka);
+    for (int i = this->arr.size()-1; i>0; i--)
     {
-        for (int j = i+1 ; j < 7 ; j++)
+        if(arr[i]==arr[i-1])
         {
-            if(arr[i].getNum() == arr[j].getNum()){
-                count_pair++;
-                temp.push_back(arr[i]);
-                temp.push_back(arr[j]);
-            }
-            if(count_pair == 2){
-                /* Ditemukan Two Pair */
-                for(int i = 0;i<4;i++){
-                    arrTwoPair.push_back(temp[i]);
+            for (int j = i-1; i>0; i--)
+            {
+                if (!(arr[j]==arr[i]) && (arr[j]==arr[j-1]))
+                {
+                    arrTwoPair.push_back(arr[i]);
+                    arrTwoPair.push_back(arr[i-1]);
+                    arrTwoPair.push_back(arr[j]);
+                    arrTwoPair.push_back(arr[j-1]);
+                    return true;
                 }
-                return true;
             }
         }
     }
     return false;
+    // int count_pair = 0;
+    // vector<DeckCard> temp;
+    // for (int i = 0 ; i < 7 ; i++)
+    // {
+    //     for (int j = i+1 ; j < 7 ; j++)
+    //     {
+    //         if(arr[i].getNum() == arr[j].getNum()){
+    //             count_pair++;
+    //             temp.push_back(arr[i]);
+    //             temp.push_back(arr[j]);
+    //         }
+    //         if(count_pair == 2){
+    //             /* Ditemukan Two Pair */
+    //             for(int i = 0;i<4;i++){
+    //                 arrTwoPair.push_back(temp[i]);
+    //             }
+    //             return true;
+    //         }
+    //     }
+    // }
+    // return false;
 }
 
 bool Kombinasi::isThreeOfKind(){
 
-    for(int i = 0; i < 7 ; i++){
-        int temp_num = arr[i].getNum();
-        vector<DeckCard> temp;
-        temp.push_back(arr[i]);
-        int count_same = 1;
-
-        for (int j = i+1; j < 7; j++){
-            if(temp_num == arr[j].getNum()){
-                count_same++;
-                temp.push_back(arr[j]);
-            }
-            if(count_same == 3){
-                for(int k = 0; k < 3 ; k++){
-                    arrThreeOfKind.push_back(temp[k]);
-                }
-                return true;
-            }
+    sort(arr.begin(), arr.end(), compareAngka);
+    for (int i = this->arr.size()-1; i>1; i--)
+    {
+        if (arr[i]==arr[i-2])
+        {
+            arrThreeOfKind.push_back(arr[i]);
+            arrThreeOfKind.push_back(arr[i-1]);
+            arrThreeOfKind.push_back(arr[i-2]);
         }
-
-        if(count_same != 3){
-            temp.clear();
-            count_same = 0;
-        }
+        return true;
     }
-
     return false;
+    // for(int i = 0; i < 7 ; i++){
+    //     int temp_num = arr[i].getNum();
+    //     vector<DeckCard> temp;
+    //     temp.push_back(arr[i]);
+    //     int count_same = 1;
+
+    //     for (int j = i+1; j < 7; j++){
+    //         if(temp_num == arr[j].getNum()){
+    //             count_same++;
+    //             temp.push_back(arr[j]);
+    //         }
+    //         if(count_same == 3){
+    //             for(int k = 0; k < 3 ; k++){
+    //                 arrThreeOfKind.push_back(temp[k]);
+    //             }
+    //             return true;
+    //         }
+    //     }
+
+    //     if(count_same != 3){
+    //         temp.clear();
+    //         count_same = 0;
+    //     }
+    // }
+
+    // return false;
 
 }
 
