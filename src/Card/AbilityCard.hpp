@@ -42,7 +42,7 @@ class ReverseDirection : AbilityCard
     public :
         ReverseDirection();
         //ini perlu queue buat nentuin urutan
-        void use();
+        void use(GameManager*);
 };
 class SwapCard : AbilityCard
 {
