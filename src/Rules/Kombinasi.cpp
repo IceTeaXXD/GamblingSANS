@@ -201,7 +201,7 @@ bool Kombinasi::isFourAKind(){
 
 bool Kombinasi::isStraight(){
     bool straight = false;
-    sort(this->arr.begin(), this->arr.end());
+    sort(this->arr.begin(), this->arr.end(), DeckCard::compareAngka);
     for (int i = 4; i<this->arr.size(); i++)
     {
         if (this->arr[i].getNum()-this->arr[i-4].getNum()==4)
@@ -225,6 +225,21 @@ bool Kombinasi::isStraight(){
             {
                 return true;
             }
+        }
+    }
+    return false;
+}
+
+bool Kombinasi::isFlush(){
+    sort(this->arr.begin(), this->arr.end(), DeckCard::compareWarna);
+    for (int i = 4; i<this->arr.size(); i++)
+    {
+        if (this->arr[i].getType()==this->arr[i-4].getType())
+        {
+            for (int j = i-4; j < i+1; j++){
+                this->arrFlush.push_back(this->arr[i]);
+            }
+            return true;
         }
     }
     return false;

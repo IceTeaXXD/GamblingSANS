@@ -26,6 +26,8 @@ class DeckCard : public Warna, public Angka{
         bool operator>(DeckCard&);
         bool operator<(DeckCard&);
         bool operator==(DeckCard&);
+        bool compareAngka(DeckCard&);
+        bool compareWarna(DeckCard&);
 };
 
 #endif

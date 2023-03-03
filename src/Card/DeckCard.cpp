@@ -21,38 +21,25 @@ bool DeckCard::operator<(DeckCard& other)
 {
     double val1 = this->getValue();
     double val2 = other.getValue();
-    if(val1<val2)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return (val1<val2);
 }
 
 bool DeckCard::operator>(DeckCard& other){
     double val1 = this->getValue();
     double val2 = other.getValue();
-    if(val1>val2)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return (val1>val2);
 }
 
 bool DeckCard::operator==(DeckCard& other){
     double val1 = this->getValue();
     double val2 = other.getValue();
-    if(val1==val2)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return (val1==val2);
+}
+
+bool DeckCard::compareAngka(DeckCard& other){
+    return (this->getNum()<other.getNum());
+}
+
+bool DeckCard::compareWarna(DeckCard& other){
+    return (this->getType()<other.getType());
 }
