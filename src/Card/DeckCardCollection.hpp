@@ -20,5 +20,6 @@ class DeckCardCollection{
         void operator+(DeckCard&);
         void displayDeckCard();
         void clear();
+        void addCard(DeckCard&);
 };
 #endif
