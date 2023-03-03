@@ -246,7 +246,7 @@ bool Kombinasi::isFlush(){
             }
             if(count_same == 4){
                 for(int k = 0; k < 4 ; k++){
-                    arrThreeOfKind.push_back(temp[k]);
+                    arrFlush.push_back(temp[k]);
                 }
                 return true;
             }
