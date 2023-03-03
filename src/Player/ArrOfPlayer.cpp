@@ -16,16 +16,17 @@ ArrOfPlayer::~ArrOfPlayer(){
 }
 
 void ArrOfPlayer::nextTurn(){
-    cout << "AWAL\n";
     this->printDeque();
     arr.push_back(arr.at(0));
     arr.pop_front();
-    cout << "AKHIR\n";
-    this->printDeque();
+
 }
 
-void ArrOfPlayer::reverseTurn(){
+void ArrOfPlayer::reverseTurn(int round){
     reverse(arr.begin(), arr.end());
+    for (int i = 0 ; i < round ; i++){
+        nextTurn();
+    }
 }
 
 Player ArrOfPlayer::getPlayer(int idx){
