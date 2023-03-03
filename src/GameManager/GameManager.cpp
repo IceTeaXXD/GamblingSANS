@@ -53,9 +53,9 @@ void GameManager::initDistribute(int idplayer)
 {
     for (int i = 0 ; i < 7 ; i++)
     {
-        DeckCard* card = tableCards.DeckCardCollection::getCard(0);
+        DeckCard card = tableCards.DeckCardCollection::getCard(0);
         //ini harus dihapus sih yg awal
-        players.getPlayer(idplayer)+*card;
+        players.getPlayer(idplayer)+card;
     }
 }
 // void GameManager::setGiliran(int g){this->giliran = 0;}

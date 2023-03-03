@@ -54,7 +54,7 @@ void Player::viewAllCard()
     cout<<"List of Player Cards : "<<endl;
     for (int i = 0 ; i<countofPlayerCards ; i++)
     {
-        this->playerCard.getCard(i)->printInfo();
+        this->playerCard.getCard(i).printInfo();
     }
 }
 

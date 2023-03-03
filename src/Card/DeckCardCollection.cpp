@@ -56,16 +56,16 @@ void DeckCardCollection::MakeDeck(){
 
 DeckCardCollection::~DeckCardCollection(){}
 
-DeckCard* DeckCardCollection::getCard(int a){
-    return(&this->buffer[a]);
+DeckCard DeckCardCollection::getCard(int a){
+    return(this->buffer[a]);
 }
 
 void DeckCardCollection::setCard(DeckCard& c){
     this->buffer.push_back(c);
 }
 
-DeckCard* DeckCardCollection::takeCard(){
-    DeckCard* c = new DeckCard(this->buffer[0]);
+DeckCard DeckCardCollection::takeCard(){
+    DeckCard c = DeckCard(this->buffer[0]);
     this->buffer.erase(this->buffer.begin());
     // cout<<"Kamu dapat kartu "<<c->getNum()<<" "<<c->getType()<<endl;
     //Get Type perlu dibikin supaya per warnanya yang keluar bukan angka

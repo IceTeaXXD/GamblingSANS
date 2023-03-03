@@ -40,11 +40,11 @@ Kombinasi::Kombinasi(){}
 Kombinasi::~Kombinasi(){}
 
 void Kombinasi::setCards(DeckCardCollection playerCards, DeckCardCollection tableCards){
-    this->arr.push_back(*playerCards.getCard(0));
-    this->arr.push_back(*playerCards.getCard(1));
+    this->arr.push_back(playerCards.getCard(0));
+    this->arr.push_back(playerCards.getCard(1));
     for(int i = 0 ; i < 5 ; i++)
     {
-        this->arr.push_back(*tableCards.getCard(i));
+        this->arr.push_back(tableCards.getCard(i));
     }
 }
 

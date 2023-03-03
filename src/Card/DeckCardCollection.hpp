@@ -14,8 +14,8 @@ class DeckCardCollection{
         /*  Membuat deck kartu sebanyak 52 kartu    */
         void MakeDeck();
         
-        DeckCard* getCard(int);
-        DeckCard* takeCard();
+        DeckCard getCard(int);
+        DeckCard takeCard();
         void setCard(DeckCard&);
         void operator+(DeckCard&);
 };
