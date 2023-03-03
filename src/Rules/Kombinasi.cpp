@@ -136,3 +136,65 @@ bool Kombinasi::isTwoPair()
     }
     return false;
 }
+
+bool Kombinasi::isThreeOfKind(){
+
+    for(int i = 0; i < 7 ; i++){
+        int temp_num = arr[i].getNum();
+        vector<DeckCard> temp;
+        temp.push_back(arr[i]);
+        int count_same = 1;
+
+        for (int j = i+1; j < 7; j++){
+            if(temp_num == arr[j].getNum()){
+                count_same++;
+                temp.push_back(arr[j]);
+            }
+            if(count_same == 3){
+                for(int k = 0; k < 3 ; k++){
+                    arrThreeOfKind.push_back(temp[k]);
+                }
+                return true;
+            }
+        }
+
+        if(count_same != 3){
+            temp.clear();
+            count_same = 0;
+        }
+    }
+
+    return false;
+
+}
+
+bool Kombinasi::isFourAKind(){
+
+    for(int i = 0; i < 7 ; i++){
+        int temp_num = arr[i].getNum();
+        vector<DeckCard> temp;
+        temp.push_back(arr[i]);
+        int count_same = 1;
+
+        for (int j = i+1; j < 7; j++){
+            if(temp_num == arr[j].getNum()){
+                count_same++;
+                temp.push_back(arr[j]);
+            }
+            if(count_same == 4){
+                for(int k = 0; k < 4 ; k++){
+                    arrThreeOfKind.push_back(temp[k]);
+                }
+                return true;
+            }
+        }
+
+        if(count_same != 4){
+            temp.clear();
+            count_same = 0;
+        }
+    }
+
+    return false;
+
+}
