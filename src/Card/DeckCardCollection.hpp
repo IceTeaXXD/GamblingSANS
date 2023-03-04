@@ -1,6 +1,7 @@
 #ifndef DECKCARDCOLLECTION_HPP
 #define DECKCARDCOLLECTION_HPP
 #include <iostream>
+#include <fstream>
 #include "DeckCard.hpp"
 
 class DeckCardCollection{
@@ -13,6 +14,9 @@ class DeckCardCollection{
 
         /*  Membuat deck kartu sebanyak 52 kartu    */
         void MakeDeck();
+
+        /* Make A Deck from A File */
+        void MakeDeck(string filename);
         
         DeckCard getCard(int);
         DeckCard takeCard();
