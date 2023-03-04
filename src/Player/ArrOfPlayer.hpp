@@ -1,12 +1,12 @@
 #ifndef ARROFPLAYER_HPP
 #define ARROFPLAYER_HPP
 
-#include <vector>
+#include <deque>
 #include "Player.hpp"
 
 class ArrOfPlayer {
     private :
-        vector<Player> arr;
+        deque<Player> arr;
     public :
         //ctor
         ArrOfPlayer();
@@ -16,12 +16,13 @@ class ArrOfPlayer {
 
         // Function
         void nextTurn();
-        void reverseTurn();
+        void reverseTurn(int);
         Player getPlayer(int);
         void changePlayerName(int, string);
         void setPlayerPoint(int, int);
         void addPlayerCard(int, DeckCard&);
         void clearCard(int i);
+        void printDeque();
 };
 
 #endif

@@ -99,8 +99,8 @@ void Quarter::use(int i, GameManager* game){
 
 ReverseDirection::ReverseDirection(){}
 
-void ReverseDirection::use(GameManager* game){
-    game->players.reverseTurn();
+void ReverseDirection::use(GameManager* game, int round){
+    game->players.reverseTurn(round);
 }
 
 SwapCard::SwapCard(){}

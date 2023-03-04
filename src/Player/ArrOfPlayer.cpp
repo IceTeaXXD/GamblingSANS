@@ -16,22 +16,17 @@ ArrOfPlayer::~ArrOfPlayer(){
 }
 
 void ArrOfPlayer::nextTurn(){
-    vector<Player> temp;
-    for (int i = 1; i < 7; i++){
-        temp.push_back(this->arr[i]);
-    }
-    temp.push_back(this->arr[0]);
-    this->arr.clear();
-    this->arr = temp;
+    this->printDeque();
+    arr.push_back(arr.at(0));
+    arr.pop_front();
+
 }
 
-void ArrOfPlayer::reverseTurn(){
-    vector<Player> temp;
-    for (int i = 6; i >= 0; i--){
-        temp.push_back(this->arr[i]);
+void ArrOfPlayer::reverseTurn(int round){
+    reverse(arr.begin(), arr.end());
+    for (int i = 0 ; i < round ; i++){
+        nextTurn();
     }
-    this->arr.clear();
-    this->arr = temp;
 }
 
 Player ArrOfPlayer::getPlayer(int idx){
@@ -54,3 +49,9 @@ void ArrOfPlayer::clearCard(int i){
     arr[i].clearCards();
 }
 
+void ArrOfPlayer::printDeque(){
+    for (int i = 0; i < arr.size(); i++)
+    {
+        cout << arr[i].getName() << endl;
+    }
+}

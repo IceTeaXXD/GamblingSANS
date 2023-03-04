@@ -115,3 +115,7 @@ void DeckCardCollection::displayDeckCard()
 void DeckCardCollection::clear(){
     this->buffer.clear();
 }
+void DeckCardCollection::addCard(DeckCard& add)
+{
+    this->buffer.push_back(add);
+}
