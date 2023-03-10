@@ -110,10 +110,14 @@ double Kombinasi::value(){
    else if (isThreeOfKind())
    {
         val = MAX_TWO_PAIR;
-        for (DeckCard i : arrThreeOfKind)
+        cout<<arrThreeOfKind.size()<<endl;
+        for (auto i : arrThreeOfKind)
         {
+            cout<<"HELO"<<endl;
+            i.printInfo();
             val += i.value();
         }
+        cout<<"tolol";
         return val;
    }
    else if (isTwoPair())
@@ -173,38 +177,47 @@ string Kombinasi::getCombinationName()
     double val;
     if (isStraightFlush())
     {
+        cout<<MAX_FOUR_KIND<<endl;
         return "Straight Flush";
     }
     else if (isFourAKind())
     {
+        cout<<MAX_FULL_HOUSE<<endl;
         return "Four a kind";
     }
     else if (isFullHouse())
     {
+        cout<<MAX_FLUSH<<endl;
         return "Full House";
     }
     else if (isFlush())
     {
+        cout<<MAX_STRAIGHT<<endl;
         return "Flush";
     }
     else if (isStraight())
     {
+        cout<<MAX_THREE_KIND<<endl;
         return "Straight";
     }
     else if (isThreeOfKind())
     {
+        cout<<MAX_TWO_PAIR<<endl;
         return "Three of kind";
     }
     else if (isTwoPair())
     {
+        cout<<MAX_PAIR<<endl;
         return "Two Pair";
     }
     else if (isPair())
     {
+        cout<<MAX_HIGH_CARD<<endl;
         return "Pair";
     }
     else
     {
+        cout<<'0'<<endl;
         return "High Card";
     }
 }
@@ -290,37 +303,10 @@ bool Kombinasi::isThreeOfKind(){
             arrThreeOfKind.push_back(arr[i]);
             arrThreeOfKind.push_back(arr[i-1]);
             arrThreeOfKind.push_back(arr[i-2]);
+            return true;
         }
-        return true;
     }
     return false;
-    // for(int i = 0; i < 7 ; i++){
-    //     int temp_num = arr[i].getNum();
-    //     vector<DeckCard> temp;
-    //     temp.push_back(arr[i]);
-    //     int count_same = 1;
-
-    //     for (int j = i+1; j < 7; j++){
-    //         if(temp_num == arr[j].getNum()){
-    //             count_same++;
-    //             temp.push_back(arr[j]);
-    //         }
-    //         if(count_same == 3){
-    //             for(int k = 0; k < 3 ; k++){
-    //                 arrThreeOfKind.push_back(temp[k]);
-    //             }
-    //             return true;
-    //         }
-    //     }
-
-    //     if(count_same != 3){
-    //         temp.clear();
-    //         count_same = 0;
-    //     }
-    // }
-
-    // return false;
-
 }
 
 bool Kombinasi::isFourAKind(){
