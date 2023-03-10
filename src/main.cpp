@@ -7,9 +7,26 @@
 
 int main()
 {
-    GameManager* game = new GameManager();
+
+ cout << "_______ _______ __   _ ______  __   __      _______ _______  ______ ______  _______"<<endl;
+ cout << "|       |_____| | \\  | |     /\\   \\_/        |       |_____| |_____/ |     \\ |______"<<endl;
+ cout << "|_____  |     | |  \\_| |_____/    |         |_____  |     | |    \\_ |_____/ ______|"<<endl;
+                                                                                    
+
+    cout << "Masukkan metode pembuatan kartu (auto/file): " << endl;
+    string makeCardMethod;
+    cin >> makeCardMethod;
+    GameManager* game;
+    if(makeCardMethod == "auto"){
+        game = new GameManager();
+    }else{
+        string fileName;
+        game = new GameManager(fileName);
+    }
     int round = 1;
     while(true){
+        
+        
         try{
             cout << "ROUND " << round << endl;
             if (round == 1){

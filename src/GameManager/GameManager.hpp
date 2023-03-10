@@ -37,6 +37,8 @@ class GameManager{
 
         /* Inisiator Game */
         GameManager();
+        /* Bikin deck card dari file */
+        GameManager(string);
         ~GameManager();
 
         /* Mengubah Giliran dan Mendapatkan Giliran */

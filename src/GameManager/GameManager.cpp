@@ -19,6 +19,11 @@ GameManager::GameManager():point(64)
     // abilityCardList[6] = new Abilityless();
 }
 
+GameManager::GameManager(string f): point(64)
+{
+    tableCards.MakeDeck(f);
+}
+
 // void GameManager::startGame()
 // {
 //     if (round == 1)
