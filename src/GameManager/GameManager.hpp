@@ -51,6 +51,7 @@ class GameManager{
         DeckCard* getCard();
         // AbilityCard* getAbilityCard();
         void distributeTableCard();
+        bool isInputTrue(string, string);
 };
 
 #endif
