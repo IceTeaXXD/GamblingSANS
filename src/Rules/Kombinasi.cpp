@@ -82,6 +82,7 @@ double Kombinasi::value(){
    }
    else if (isFullHouse())
    {
+        cout << "MASUK FULLHOUSE\n";
         val = MAX_FLUSH;
         for (DeckCard i : arrFullHouse)
         {
@@ -294,19 +295,26 @@ bool Kombinasi::isTwoPair()
 }
 
 bool Kombinasi::isThreeOfKind(){
-
+    bool threeKind = false;
     sort(arr.begin(), arr.end(), compareAngka);
     for (int i = this->arr.size()-1; i>1; i--)
     {
+        // cout << "\n--------------------------  " << i << "  -------------------------\n";
+        // arr[i].printInfo();
+        // arr[i-1].printInfo();
+        // arr[i-2].printInfo();
+        // cout << "arr[i].getNum() << arr[i-2].getNum()" << endl; 
         if (arr[i]==arr[i-2])
         {
+
             arrThreeOfKind.push_back(arr[i]);
             arrThreeOfKind.push_back(arr[i-1]);
             arrThreeOfKind.push_back(arr[i-2]);
-            return true;
+            threeKind = true;
+            cout << threeKind << endl;
         }
     }
-    return false;
+    return threeKind;
 }
 
 bool Kombinasi::isFourAKind(){
@@ -420,34 +428,17 @@ bool Kombinasi::isStraightFlush(){
 
 bool Kombinasi::isFullHouse(){
     bool threeKind = false;
-    bool fullHouse = false;
     vector<DeckCard> tempThreeKind;
-    for(int i = 0; i < 7 ; i++){
-        int temp_num = arr[i].getNum();
-        vector<DeckCard> temp;
-        temp.push_back(arr[i]);
-        int count_same = 1;
-
-        for (int j = i+1; j < 7; j++){
-            if(temp_num == arr[j].getNum()){
-                count_same++;
-                temp.push_back(arr[j]);
-            }
-            if(count_same == 3){
-                for(int k = 0; k < 3 ; k++){
-                    tempThreeKind.push_back(temp[k]);
-                }
-                threeKind = true;
-                break ;
-            }
-        }
-        if (threeKind)
+    sort(arr.begin(), arr.end(), compareAngka);
+    for (int i = this->arr.size()-1; i>1; i--)
+    {
+        if (arr[i]==arr[i-2])
         {
+            tempThreeKind.push_back(arr[i]);
+            tempThreeKind.push_back(arr[i-1]);
+            tempThreeKind.push_back(arr[i-2]);
+            threeKind = true;
             break;
-        }
-        if(count_same != 3){
-            temp.clear();
-            count_same = 0;
         }
     }
 
@@ -455,21 +446,18 @@ bool Kombinasi::isFullHouse(){
     {
         for (int i = 0 ; i < 7 ; i++)
         {
-            for (int j = i+1 ; j < 7 ; i++)
+            for (int j = i+1 ; j < 7 ; j++)
             {
                 if(arr[i] == arr[j])
                 {
-                    if (!(arr[i]==tempThreeKind[0]))
+                    if (!(arr[i]==tempThreeKind[0]) && !(arr[i]==tempThreeKind[1]) && !(arr[i]==tempThreeKind[2]))
                     {
-                        fullHouse = true;
-                        break;
+                        return true;
                     }
+
                 }
             }
-            if (fullHouse)
-            break;
         }
     }
-
-    return fullHouse;
+    return false;
 }
