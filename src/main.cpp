@@ -8,7 +8,7 @@
 int main()
 {
     cout << "_______ _______ __   _ ______  __   __      _______ _______  ______ ______  _______"<<endl;
-    cout << "|       |_____| | \\  | |     /\\   \\_/        |       |_____| |_____/ |     \\ |______"<<endl;
+    cout << "|       |_____| | \\  | |     \\   \\_/        |       |_____| |_____/ |     \\ |______"<<endl;
     cout << "|_____  |     | |  \\_| |_____/    |         |_____  |     | |    \\_ |_____/ ______|"<<endl;
                                                                                     
     cout << "Masukkan metode pembuatan kartu (auto/file): " << endl;
@@ -116,9 +116,10 @@ int main()
                 AbilityCard* temp = game->abilityCardList.takeCard();
                 game->players.addAbilityCard(i, *temp);
                 cout << "Pemain " << game->players.getPlayer(i).getName() << " mendapatkan kartu ability: ";
-                // game->players.getPlayer(i).getAbilityCard().printInfo();
+                game->players.getPlayer(i).getAbilityCard().printInfo();
                 // game->manipulate<AbilityCard>(game->players.getPlayer(i).getAbilityCard());
             }
+            cout << endl;
         }
 
         /* TOLONG CEK DI SINI*/ 
