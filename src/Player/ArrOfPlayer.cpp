@@ -16,7 +16,7 @@ ArrOfPlayer::~ArrOfPlayer(){
 }
 
 void ArrOfPlayer::nextTurn(){
-    this->printDeque();
+    // this->printDeque();
     arr.push_back(arr.at(0));
     arr.pop_front();
 
@@ -24,7 +24,7 @@ void ArrOfPlayer::nextTurn(){
 
 void ArrOfPlayer::reverseTurn(int round){
     reverse(arr.begin(), arr.end());
-    for (int i = 0 ; i < round ; i++){
+    for (int i = 0 ; i < round-1 ; i++){
         nextTurn();
     }
 }
