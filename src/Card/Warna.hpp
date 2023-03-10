@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 class Warna{
-    private:
+    protected:
         /* Type 
         1. Hijau
         2. Biru
