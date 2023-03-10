@@ -3,7 +3,8 @@
 
 #include <iostream>
 #include "../Card/DeckCard.hpp"
-#include "../Card/DeckCardCollection.hpp"
+// #include "../Card/DeckCardCollection.hpp"
+#include "../Card/CardCollection.hpp"
 // #include "../Card/AbilityCard.hpp
 #include "../Rules/FindValue.hpp"
 
@@ -18,7 +19,7 @@ class Player{
         int point;
 
         /* Player Cards */
-        DeckCardCollection playerCard;
+        CardCollection<DeckCard> playerCard;
         
         /* Ability Cards */
         // AbilityCard* abilityCards;
@@ -42,7 +43,7 @@ class Player{
         void operator+(DeckCard&);
         void addTableCard(DeckCard&);
         void viewAllCard();
-        DeckCardCollection getCard();
+        CardCollection<DeckCard> getCard();
         bool operator<(Player&);
         bool operator>(Player&);
         bool operator==(Player&);

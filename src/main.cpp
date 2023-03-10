@@ -7,7 +7,6 @@
 
 int main()
 {
-
     cout << "_______ _______ __   _ ______  __   __      _______ _______  ______ ______  _______"<<endl;
     cout << "|       |_____| | \\  | |     /\\   \\_/        |       |_____| |_____/ |     \\ |______"<<endl;
     cout << "|_____  |     | |  \\_| |_____/    |         |_____  |     | |    \\_ |_____/ ______|"<<endl;
@@ -27,6 +26,13 @@ int main()
     while(true){
         cout << "ROUND " << round << endl;
             // for each player give 2 cards from table cards
+
+        if(round < 6 && round > 1){
+            DeckCard temp = game->tableCards.takeCard();
+            game->playCards+temp;
+            cout<<"Kartu "<<temp.getNum()<<" "<<temp.translateToString()<<" telah ditambahkan di meja"<<endl;
+        }
+
         for (int i = 0 ; i < 7 ; i++){
             //Implementasi penunjuk player yg main
             //CONTOH : "Sekarang saatnya Player I"
@@ -41,12 +47,6 @@ int main()
                 //Mulai aksi player                
                 game->players.getPlayer(0).viewAllCard();
                 cout<<endl;
-            }
-
-            if(round < 6 && round > 1){
-                DeckCard temp = game->tableCards.takeCard();
-                game->playCards+temp;
-                cout<<"Kartu "<<temp.getNum()<<" "<<temp.translateToString()<<" telah ditambahkan di meja"<<endl;
             }
 
             bool input = false;

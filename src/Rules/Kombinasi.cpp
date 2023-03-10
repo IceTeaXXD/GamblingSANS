@@ -31,7 +31,7 @@ T maxArr(T (&arr) [n]){
 
 
 Kombinasi::Kombinasi(){}
-Kombinasi::Kombinasi(DeckCardCollection playerCards, DeckCardCollection tableCards)
+Kombinasi::Kombinasi(CardCollection<DeckCard> playerCards, CardCollection<DeckCard> tableCards)
 {
     this->arr.push_back(playerCards.getCard(0));
     this->arr.push_back(playerCards.getCard(1));
@@ -42,7 +42,7 @@ Kombinasi::Kombinasi(DeckCardCollection playerCards, DeckCardCollection tableCar
 }
 Kombinasi::~Kombinasi(){}
 
-void Kombinasi::setCards(DeckCardCollection playerCards, DeckCardCollection tableCards){
+void Kombinasi::setCards(CardCollection<DeckCard> playerCards, CardCollection<DeckCard> tableCards){
     this->arr.push_back(playerCards.getCard(0));
     this->arr.push_back(playerCards.getCard(1));
     for(int i = 0 ; i < 5 ; i++)

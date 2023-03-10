@@ -4,7 +4,7 @@
 #include "../Player/Player.hpp"
 #include "../Player/ArrOfPlayer.hpp"
 #include "../Card/DeckCard.hpp"
-#include "../Card/DeckCardCollection.hpp"
+#include "../Card/CardCollection.hpp"
 
 #include <iostream>
 using namespace std;
@@ -24,9 +24,9 @@ class GameManager{
         /* Vector of Players */
         ArrOfPlayer players;
         /* Card Deck */
-        DeckCardCollection tableCards;
+        CardCollection<DeckCard> tableCards;
         /* Play Cards */
-        DeckCardCollection playCards;
+        CardCollection<DeckCard> playCards;
 
         // AbilityCard* abilityCardList;
         static int numOfTableCards;

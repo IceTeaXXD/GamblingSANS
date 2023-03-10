@@ -4,7 +4,8 @@
 #include <algorithm>
 #include "FindValue.hpp"
 #include "../Card/DeckCard.hpp"
-#include "../Card/DeckCardCollection.hpp"
+// #include "../Card/DeckCardCollection.hpp"
+#include "../Card/CardCollection.hpp"
 
 class Kombinasi : protected FindValue{
     private:
@@ -34,11 +35,11 @@ class Kombinasi : protected FindValue{
     public:
         /* Default Constructor */
         Kombinasi();
-        Kombinasi(DeckCardCollection playerCards, DeckCardCollection tableCards);
+        Kombinasi(CardCollection<DeckCard> playerCards, CardCollection<DeckCard> tableCards);
         ~Kombinasi();
         /* Setter */
         /* Set Kartu dari playerCards dan tableCards*/
-        void setCards(DeckCardCollection playerCards, DeckCardCollection tableCards);
+        void setCards(CardCollection<DeckCard> playerCards, CardCollection<DeckCard> tableCards);
 
         /* Nentuin value kartu untuk kombinasi */
         double value();

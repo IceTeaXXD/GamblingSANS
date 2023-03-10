@@ -59,7 +59,7 @@ void GameManager::initDistribute(int idplayer)
 {
     for (int i = 0 ; i < 7 ; i++)
     {
-        DeckCard card = tableCards.DeckCardCollection::getCard(0);
+        DeckCard card = tableCards.CardCollection::getCard(0);
         //ini harus dihapus sih yg awal
         players.getPlayer(idplayer)+card;
     }
@@ -81,6 +81,9 @@ bool GameManager::isInputTrue(string input, string giliran)
         return true;
     }
     else if (input == "half" && giliran == "half"){
+        return true;
+    }
+    else if (input == "help" && giliran == "help"){
         return true;
     }
     else{

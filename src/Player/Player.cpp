@@ -58,7 +58,7 @@ void Player::viewAllCard()
     }
 }
 
-DeckCardCollection Player::getCard()
+CardCollection<DeckCard> Player::getCard()
 {
     return this->playerCard;
 }
