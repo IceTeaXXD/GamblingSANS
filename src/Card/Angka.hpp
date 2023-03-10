@@ -4,7 +4,7 @@
 using namespace std;
 
 class Angka{
-    private:
+    protected:
         int num;
     public:
         void setNum(int);
