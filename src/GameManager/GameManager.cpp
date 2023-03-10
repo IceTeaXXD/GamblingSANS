@@ -1,4 +1,5 @@
 #include "GameManager.hpp"
+#include <string>
 int GameManager::numOfTableCards = 52;
 int GameManager::round = 1;
 GameManager::~GameManager(){ cout << "Thank You For Playing The Game!" << endl;}
@@ -61,6 +62,26 @@ void GameManager::initDistribute(int idplayer)
 // void GameManager::setGiliran(int g){this->giliran = 0;}
 
 void GameManager::setPoint(long long p){this -> point = p;}
+
+bool GameManager::isInputTrue(string input, string giliran)
+{
+    for (int i = 0; i < input.length(); i++)
+    {
+        input[i] = tolower(input[i]);
+    }
+    if (input == "next" && giliran == "next"){
+        return true;
+    }
+    else if (input == "double" && giliran == "double"){
+        return true;
+    }
+    else if (input == "half" && giliran == "half"){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 
 // DeckCard* GameManager::getCard()
 // {

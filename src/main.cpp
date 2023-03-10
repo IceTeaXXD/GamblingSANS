@@ -35,15 +35,15 @@ int main()
                     cin>>aksi;
                     //Implementasi poin disini
                     //pake getter dan setter poin yg di game manager
-                    if (aksi == "1"){
+                    if (game->isInputTrue(aksi, "next")){
                         //Implementasi next
                     }
-                    else if (aksi == "2"){
+                    else if (game->isInputTrue(aksi, "double")){
                         //Implementasi double
                         game->setPoint(game->point*2);
                         cout << game->players.getPlayer(0).getName() << " melakukan DOUBLE! Poin hadiah naik dari " << game->point/2 << " menjadi " << game->point  << "!" << endl;
                     }
-                    else if (aksi == "3"){
+                    else if (game->isInputTrue(aksi, "half")){
                         //Implementasi half
                         game->setPoint(game->point/2);
                         cout << game->players.getPlayer(0).getName() << " melakukan HALF! Poin hadiah turun dari " << game->point*2 << " menjadi " << game->point  << "!" << endl;
@@ -84,15 +84,15 @@ int main()
                     cin>>aksi;
                     //Implementasi poin disini
                     //pake getter dan setter poin yg di game manager
-                    if (aksi == "1"){
+                    if (game->isInputTrue(aksi, "next")){
                         //Implementasi next
                     }
-                    else if (aksi == "2"){
+                    else if (game->isInputTrue(aksi, "double")){
                         //Implementasi double
                         game->setPoint(game->point*2);
                         cout << game->players.getPlayer(0).getName() << " melakukan DOUBLE! Poin hadiah naik dari " << game->point/2 << " menjadi " << game->point  << "!" << endl;
                     }
-                    else if (aksi == "3"){
+                    else if (game->isInputTrue(aksi, "half")){
                         //Implementasi half
                         game->setPoint(game->point/2);
                         cout << game->players.getPlayer(0).getName() << " melakukan HALF! Poin hadiah turun dari " << game->point*2 << " menjadi " << game->point  << "!" << endl;
