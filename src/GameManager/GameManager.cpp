@@ -9,6 +9,7 @@ GameManager::GameManager():point(64)
 {
     /* Inisialisasi DeckCard dengan memanggil MakeDeck()*/
     tableCards.MakeDeck();
+    abilityCardList.MakeDeck();
     // abilityCardList = new AbilityCard[7];
     // abilityCardList[0] = new REROLL();
     // abilityCardList[1] = new Quadruple();
@@ -111,3 +112,19 @@ bool GameManager::isInputTrue(string input, string giliran)
 //  //Krtu ability yang udah diambil dihapus dari list
 //  //sama kyk yang getCard()   
 // } 
+
+template <>
+void GameManager::manipulate(AbilityCard c){
+    /* Kayaknya templatenya bisa kita ubah sedemikian shg lbh OOP */
+    if (c.isAvailable() && c.getType() == "quadruple"){
+        c.setNotAvailable();
+
+        /* Set point jadi 4 kali */
+        setPoint(this->point*4);
+
+        /* OUTPUT */
+        cout << "Point berubah menjadi " << this->point << endl;
+    }else{
+        cout << "Gak ada mas" << endl;
+    }
+}

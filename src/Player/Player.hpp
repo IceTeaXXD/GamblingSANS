@@ -22,7 +22,7 @@ class Player{
         CardCollection<DeckCard> playerCard;
         
         /* Ability Cards */
-        // AbilityCard* abilityCards;
+        AbilityCard* abilityCards;
 
     public:
         /* ctor */
@@ -41,9 +41,11 @@ class Player{
         int countofPlayerCards;
         int countofTableCard;
         void operator+(DeckCard&);
+        void operator+(AbilityCard&);
         void addTableCard(DeckCard&);
         void viewAllCard();
         CardCollection<DeckCard> getCard();
+        AbilityCard& getAbilityCard();
         bool operator<(Player&);
         bool operator>(Player&);
         bool operator==(Player&);

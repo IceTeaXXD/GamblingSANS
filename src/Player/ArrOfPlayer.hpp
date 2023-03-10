@@ -21,6 +21,7 @@ class ArrOfPlayer {
         void changePlayerName(int, string);
         void setPlayerPoint(int, int);
         void addPlayerCard(int, DeckCard&);
+        void addAbilityCard(int, AbilityCard&);
         void clearCard(int i);
         void printDeque();
 };

@@ -5,6 +5,8 @@
 #include "../Player/ArrOfPlayer.hpp"
 #include "../Card/DeckCard.hpp"
 #include "../Card/CardCollection.hpp"
+#include "../Card/Abilities.hpp"
+#include "../Card/AbilityCard.hpp"
 
 #include <iostream>
 using namespace std;
@@ -27,8 +29,9 @@ class GameManager{
         CardCollection<DeckCard> tableCards;
         /* Play Cards */
         CardCollection<DeckCard> playCards;
-
-        // AbilityCard* abilityCardList;
+        /* List of Ability Cards */
+        CardCollection<AbilityCard*> abilityCardList;
+        
         static int numOfTableCards;
         long long point;
 
@@ -54,6 +57,10 @@ class GameManager{
         // AbilityCard* getAbilityCard();
         void distributeTableCard();
         bool isInputTrue(string, string);
+
+        /* Manipulasi */
+        template<class T>
+        void manipulate(T);
 };
 
 #endif

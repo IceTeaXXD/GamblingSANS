@@ -48,6 +48,9 @@ void Player::operator+(DeckCard& cardInput){
     this->countofPlayerCards++;
 }
 
+void Player::operator+(AbilityCard& ac){
+    this -> abilityCards = &ac;
+}
 
 void Player::viewAllCard()
 {
@@ -61,6 +64,10 @@ void Player::viewAllCard()
 CardCollection<DeckCard> Player::getCard()
 {
     return this->playerCard;
+}
+
+AbilityCard& Player::getAbilityCard(){
+    return *abilityCards;
 }
 
 bool Player::operator<(Player& other){

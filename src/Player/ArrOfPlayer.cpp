@@ -45,6 +45,11 @@ void ArrOfPlayer::addPlayerCard(int idx, DeckCard& card){
     this->arr[idx] + card;
 }
 
+void ArrOfPlayer::addAbilityCard(int idx, AbilityCard& card){
+    this->arr[idx] + card;
+}
+
+
 void ArrOfPlayer::clearCard(int i){
     arr[i].clearCards();
 }

@@ -5,7 +5,7 @@
 
 #include "DeckCard.hpp"
 #include "AbilityCard.hpp"
-// #include "Abilities.hpp"
+#include "Abilities.hpp"
 
 template <class T>
 class CardCollection{
@@ -30,6 +30,6 @@ class CardCollection{
 };
 
 template class CardCollection<DeckCard>;
-// template class CardCollection<AbilityCard*>;
+template class CardCollection<AbilityCard*>;
 
 #endif

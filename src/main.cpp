@@ -109,6 +109,16 @@ int main()
             cout<<"Kartu "<<temp.getNum()<<" "<<temp.translateToString()<<" telah ditambahkan di meja"<<endl;
             cout<<endl;
             game->playCards.displayDeckCard();
+            cout << endl;
+
+            cout << "Pembagian Ability Card" << endl;
+            for(int i = 0; i < 7 ; i++){
+                AbilityCard* temp = game->abilityCardList.takeCard();
+                game->players.addAbilityCard(i, *temp);
+                cout << "Pemain " << game->players.getPlayer(i).getName() << " mendapatkan kartu ability: ";
+                // game->players.getPlayer(i).getAbilityCard().printInfo();
+                // game->manipulate<AbilityCard>(game->players.getPlayer(i).getAbilityCard());
+            }
         }
 
         /* TOLONG CEK DI SINI*/ 
