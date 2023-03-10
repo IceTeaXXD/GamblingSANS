@@ -2,8 +2,8 @@
 g++ -c "./Card/Warna.cpp" -o ../bin/Warna.o
 g++ -c "./Card/Angka.cpp" -o ../bin/Angka.o
 g++ -c "./Card/DeckCard.cpp" -o ../bin/DeckCard.o
-@REM g++ -c "./Card/DeckCardCollection.cpp" -o ../bin/DeckCardCollection.o
 g++ -c "./Card/CardCollection.cpp" -o ../bin/CardCollection.o
+@REM g++ -c "./Card/Abilities.cpp" -o ../bin/Abilities.o
 g++ -c "./GameManager/GameManager.cpp" -o ../bin/GameManager.o
 g++ -c "./Player/Player.cpp" -o ../bin/Player.o
 g++ -c "./Player/ArrOfPlayer.cpp" -o ../bin/ArrOfPlayer.o

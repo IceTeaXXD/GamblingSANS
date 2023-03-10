@@ -32,6 +32,38 @@ void CardCollection<DeckCard>::MakeDeck(){
         }
 }
 
+// template <>
+// void CardCollection<AbilityCard*>::MakeDeck(){
+//     REROLL* Reroll = new REROLL();
+//     Quadruple* quadruple = new Quadruple();
+//     Quarter* quarter = new Quarter();
+//     ReverseDirection* reverseDirection = new ReverseDirection();
+//     SwapCard* swapCard = new SwapCard();
+//     Switch* SWITCH = new Switch();
+//     Abilityless* abilityless = new Abilityless();
+
+//     /* Mengacak Kartu */
+//     vector<AbilityCard*> cards;
+//     cards.push_back(Reroll);
+//     cards.push_back(quadruple);
+//     cards.push_back(quarter);
+//     cards.push_back(reverseDirection);
+//     cards.push_back(swapCard);
+//     cards.push_back(SWITCH);
+//     cards.push_back(abilityless);
+
+//     srand(time(0));
+//     vector<int> num;
+//     for (int i = 1; i <= 7; i++){
+//         num.push_back(i);
+//     }
+//     for (int i = 0; i < 7; i++){
+//         int randIdx = rand() % (7 - i);
+//         this->buffer.push_back(cards[num[randIdx]-1]);
+//         num.erase(num.begin() + randIdx);
+//     }
+// }
+
 template <class T>
 void CardCollection<T>::MakeDeck(string filename){}
 
@@ -125,6 +157,15 @@ void CardCollection<T>::displayDeckCard()
     {
         it->printInfo();
     }
+}
+
+template <>
+void CardCollection<AbilityCard*>::displayDeckCard()
+{
+    // for (auto it = buffer.begin(); it != buffer.end(); it++) 
+    // {
+    //     it[]->printInfo();
+    // }
 }
 
 template <class T>

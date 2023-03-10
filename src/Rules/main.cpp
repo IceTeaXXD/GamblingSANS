@@ -3,14 +3,14 @@
 
 int main()
 {
-    DeckCardCollection table;
-    DeckCardCollection p1;
-    DeckCardCollection p2;
-    DeckCardCollection p3;
-    DeckCardCollection p4;
-    DeckCardCollection p5;
-    DeckCardCollection p6;
-    DeckCardCollection p7;
+    CardCollection<DeckCard> table;
+    CardCollection<DeckCard> p1;
+    CardCollection<DeckCard> p2;
+    CardCollection<DeckCard> p3;
+    CardCollection<DeckCard> p4;
+    CardCollection<DeckCard> p5;
+    CardCollection<DeckCard> p6;
+    CardCollection<DeckCard> p7;
 
     //table card
     DeckCard k4 = DeckCard(2,4);

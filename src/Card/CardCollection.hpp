@@ -4,7 +4,8 @@
 #include <fstream>
 
 #include "DeckCard.hpp"
-// #include "AbilityCard.hpp"
+#include "AbilityCard.hpp"
+// #include "Abilities.hpp"
 
 template <class T>
 class CardCollection{
@@ -14,7 +15,7 @@ class CardCollection{
         CardCollection();
         ~CardCollection();
 
-        /* Membuat sebuah deck untuk kartu X*/
+        /* Membuat sebuah deck untuk kartu T */
         void MakeDeck();
         void MakeDeck(string filename);
 
