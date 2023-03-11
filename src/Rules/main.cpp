@@ -75,7 +75,7 @@ int main()
     p7.addCard(h9);
 
     //KOMBINASI
-    Kombinasi c1 = Kombinasi(p1,table);
+    Kombinasi c1 = Kombinasi(p2,table);
     cout<<c1.getCombinationName()<<endl;
     cout<<c1.value()<<endl;
 }

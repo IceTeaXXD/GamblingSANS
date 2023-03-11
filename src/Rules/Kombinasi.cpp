@@ -82,7 +82,7 @@ double Kombinasi::value(){
    }
    else if (isFullHouse())
    {
-        cout << "MASUK FULLHOUSE\n";
+        // cout << "MASUK FULLHOUSE\n";
         val = MAX_FLUSH;
         for (DeckCard i : arrFullHouse)
         {
@@ -111,14 +111,10 @@ double Kombinasi::value(){
    else if (isThreeOfKind())
    {
         val = MAX_TWO_PAIR;
-        cout<<arrThreeOfKind.size()<<endl;
         for (auto i : arrThreeOfKind)
         {
-            cout<<"HELO"<<endl;
-            i.printInfo();
             val += i.value();
         }
-        cout<<"tolol";
         return val;
    }
    else if (isTwoPair())
