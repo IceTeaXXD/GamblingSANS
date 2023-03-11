@@ -261,8 +261,6 @@ bool Kombinasi::isTableCardPair()
     {
         if(tempArr[i]==tempArr[i-1])
         {
-            arrPair.push_back(tempArr[i]);
-            arrPair.push_back(tempArr[i-1]);
             return true;
         }
     }
@@ -341,10 +339,6 @@ bool Kombinasi::isTableCardTwoPair()
             {
                 if (!(tempArr[j]==tempArr[i]) && (tempArr[j]==tempArr[j-1]))
                 {
-                    arrTwoPair.push_back(tempArr[i]);
-                    arrTwoPair.push_back(tempArr[i-1]);
-                    arrTwoPair.push_back(tempArr[j]);
-                    arrTwoPair.push_back(tempArr[j-1]);
                     return true;
                 }
             }
@@ -399,9 +393,6 @@ bool Kombinasi::isTableCardThreeOfKind(){
     {
         if (tempArr[i]==tempArr[i-2])
         {
-            arrThreeOfKind.push_back(tempArr[i]);
-            arrThreeOfKind.push_back(tempArr[i-1]);
-            arrThreeOfKind.push_back(tempArr[i-2]);
             return true;
         }
     }
@@ -445,25 +436,17 @@ bool Kombinasi::isTableCardFourAKind(){
     vector<DeckCard> tempArr(first, last);
     for(int i = 0; i < tempArr.size() ; i++){
         int temp_num = tempArr[i].getNum();
-        vector<DeckCard> temp;
-        temp.push_back(tempArr[i]);
         int count_same = 1;
-
         for (int j = i+1; j < tempArr.size(); j++){
             if(temp_num == tempArr[j].getNum()){
                 count_same++;
-                temp.push_back(tempArr[j]);
             }
             if(count_same == 4){
-                for(int k = 0; k < 4 ; k++){
-                    arrThreeOfKind.push_back(temp[k]);
-                }
                 return true;
             }
         }
 
         if(count_same != 4){
-            temp.clear();
             count_same = 0;
         }
     }
@@ -604,9 +587,6 @@ bool Kombinasi::isTableCardFlush(){
     {
         if (tempArr[i].getType()==tempArr[i-4].getType())
         {
-            for (int j = i-4; j < i+1; j++){
-                this->arrFlush.push_back(tempArr[i]);
-            }
             return true;
         }
     }
@@ -714,11 +694,16 @@ bool Kombinasi::isFullHouse(){
             {
                 if(tempArr[i] == tempArr[j])
                 {
-                    if (!(tempArr[i]==tempThreeKind[0]) && !(tempArr[i]==tempThreeKind[1]) && !(tempArr[i]==tempThreeKind[2]))
+                    if (!(tempArr[i]==tempThreeKind[0]))
                     {
+                        this->arrFullHouse.push_back(tempArr[i]);
+                        this->arrFullHouse.push_back(tempArr[j]);
+                        for (auto card : tempThreeKind)
+                        {
+                            this->arrFullHouse.push_back(card);
+                        }
                         return true;
                     }
-
                 }
             }
         }
