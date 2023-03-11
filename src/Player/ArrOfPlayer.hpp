@@ -10,6 +10,7 @@ class ArrOfPlayer {
     public :
         //ctor
         ArrOfPlayer();
+        ArrOfPlayer(int);
 
         //dtor
         ~ArrOfPlayer();

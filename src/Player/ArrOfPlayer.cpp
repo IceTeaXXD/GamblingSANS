@@ -11,6 +11,16 @@ ArrOfPlayer::ArrOfPlayer(){
     
 }
 
+ArrOfPlayer :: ArrOfPlayer(int n){
+    string name;
+    for (int i = 0; i < n; i++){
+        cout << "Masukan nama player " << i+1 << " : ";
+        cin >> name;
+        Player p(name);
+        this->arr.push_back(p);
+    }
+}
+
 ArrOfPlayer::~ArrOfPlayer(){
     this->arr.clear();
 }
