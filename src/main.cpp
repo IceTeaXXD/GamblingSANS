@@ -20,7 +20,7 @@ int main()
         cout<<"Pilihan Game :"<<endl;
         cout<<"1. Kartu Permen"<<endl;
         cout<<"2. Capcha"<<endl;
-        cout<<">>";
+        cout<<">> ";
         cin>>inputGame;
         if (inputGame == "1")
         {
@@ -142,6 +142,7 @@ int main()
                     }
                 }
                 cout << endl;
+                cout << "NEXT TURN" << endl;
                 game->getPlayers().nextTurn();
             }
 
@@ -159,7 +160,6 @@ int main()
                 cout << "Pembagian Ability Card" << endl;
                 for(int i = 0; i < 7 ; i++){
                     AbilityCard* temp = game->getAbilityCardList().takeCard();
-                    cout<<"SIGNAL 1"<<endl;
                     game->getPlayers().addAbilityCard(i, *temp);
                     cout << "Pemain " << game->getPlayers().getPlayer(i).getName() << " mendapatkan kartu ability: ";
                     game->getPlayers().getPlayer(i).getAbilityCard().printInfo();

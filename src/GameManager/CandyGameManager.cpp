@@ -9,11 +9,11 @@ CandyGameManager::CandyGameManager(string f) : GameManager(f)
     abilityCardList.MakeDeck();
 }
 
-CardCollection<AbilityCard*> CandyGameManager::getAbilityCardList()
+CardCollection<AbilityCard*>& CandyGameManager::getAbilityCardList()
 {
     return abilityCardList;
 }
-CardCollection<DeckCard> CandyGameManager::getPlayCards()
+CardCollection<DeckCard>& CandyGameManager::getPlayCards()
 {
     return playCards;
 }

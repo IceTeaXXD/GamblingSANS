@@ -20,8 +20,8 @@ class CandyGameManager : public GameManager
     public:
         CandyGameManager();
         CandyGameManager(string);
-        CardCollection<DeckCard> getPlayCards();
-        CardCollection<AbilityCard*> getAbilityCardList();
+        CardCollection<DeckCard>& getPlayCards();
+        CardCollection<AbilityCard*>& getAbilityCardList();
 
         /*Manipulasi*/
         template<class T>

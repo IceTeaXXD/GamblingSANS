@@ -21,11 +21,11 @@ GameManager::GameManager(string f): point(64)
     tableCards.MakeDeck(f);
 }
 
-CardCollection<DeckCard> GameManager::getTableCards()
+CardCollection<DeckCard>& GameManager::getTableCards()
 {
     return tableCards;
 }
-ArrOfPlayer GameManager::getPlayers()
+ArrOfPlayer& GameManager::getPlayers()
 {
     return players;
 }

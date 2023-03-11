@@ -43,8 +43,8 @@ class GameManager{
         void setPoint(long long);
         long long getPoint();
         DeckCard gameManager;
-        CardCollection<DeckCard> getTableCards();
-        ArrOfPlayer getPlayers();
+        CardCollection<DeckCard>& getTableCards();
+        ArrOfPlayer& getPlayers();
         void displayPlayer();
         DeckCard* getCard();
         bool isInputTrue(string);
