@@ -61,6 +61,7 @@ double Kombinasi::value(){
     }
     return temp;
     */
+   cout<<"SIG"<<endl;
    double val;
    if (isStraightFlush() && !isTableCardStraightFlush())
    {
@@ -486,6 +487,7 @@ bool Kombinasi::isStraight(){
                 {
                     temp = tempArr[j].getNum();
                     this->arrStraight.push_back(tempArr[j]);
+                    straight = true;
                 }
                 else
                 {
@@ -520,6 +522,7 @@ bool Kombinasi::isTableCardStraight(){
                 {
                     temp = tempArr[j].getNum();
                     this->arrStraight.push_back(tempArr[j]);
+                    straight = true;
                 }
                 else
                 {
@@ -586,11 +589,12 @@ bool Kombinasi::isStraightFlush(){
                 if (((tempArr[j].getNum()-tempNum)==1)&&(tempArr[j].getType()==tempType))
                 {
                     tempNum = tempArr[j].getNum();
-                    this->arrStraight.push_back(tempArr[j]);
+                    this->arrStraightFlush.push_back(tempArr[j]);
+                    straight = true;
                 }
                 else
                 {
-                    this->arrStraight.clear();
+                    this->arrStraightFlush.clear();
                     straight = false;
                     break;
                 }
@@ -622,6 +626,7 @@ bool Kombinasi::isTableCardStraightFlush(){
                 {
                     tempNum = tempArr[j].getNum();
                     this->arrStraight.push_back(tempArr[j]);
+                    straight = true;
                 }
                 else
                 {
