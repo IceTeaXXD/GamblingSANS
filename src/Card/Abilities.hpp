@@ -2,7 +2,6 @@
 #define ABILITIES_HPP
 
 #include "AbilityCard.hpp"
-
 #include <iostream>
 using namespace std;
 

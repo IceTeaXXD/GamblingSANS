@@ -7,6 +7,7 @@
 
 int main()
 {
+    cout << "\033[2J\033[1;1H";
     cout << "_______ _______ __   _ ______  __   __      _______ _______  ______ ______  _______"<<endl;
     cout << "|       |_____| | \\  | |     \\   \\_/        |       |_____| |_____/ |     \\ |______"<<endl;
     cout << "|_____  |     | |  \\_| |_____/    |         |_____  |     | |    \\_ |_____/ ______|"<<endl;
@@ -23,6 +24,7 @@ int main()
         game = new GameManager(fileName);
     }
     int round = 1;
+    game->setRound(round);
     while(true){
         cout << "ROUND " << round << endl;
             // for each player give 2 cards from table cards
@@ -118,7 +120,7 @@ int main()
                 game->players.addAbilityCard(i, *temp);
                 cout << "Pemain " << game->players.getPlayer(i).getName() << " mendapatkan kartu ability: ";
                 game->players.getPlayer(i).getAbilityCard().printInfo();
-                // game->manipulate<AbilityCard>(game->players.getPlayer(i).getAbilityCard());
+                game->manipulate<AbilityCard&>(game->players.getPlayer(i).getAbilityCard());
             }
             cout << endl;
         }
@@ -172,6 +174,7 @@ int main()
             game->players.setPlayerPoint(idx,game->point + tempPoin);
         }
         round++;
+        game->setRound(round);
         // Ubah Turn
 
         if (round > 7)

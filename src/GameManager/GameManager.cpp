@@ -1,9 +1,13 @@
 #include "GameManager.hpp"
 #include <string>
 int GameManager::numOfTableCards = 52;
-int GameManager::round = 1;
 GameManager::~GameManager(){ cout << "Thank You For Playing The Game!" << endl;}
 
+void GameManager::setRound(int r){
+    this->round = r;
+}
+
+int GameManager::getRound(){ return this->round; }
 
 GameManager::GameManager():point(64)
 {
@@ -113,18 +117,142 @@ bool GameManager::isInputTrue(string input, string giliran)
 //  //sama kyk yang getCard()   
 // } 
 
+template<>
+void GameManager::manipulate<REROLL&>(REROLL& C){
+    if (C.isAvailable())
+    {
+        C.setNotAvailable();
+
+        /* Kosongkan Kartu terlebih dahulu */
+        players.getPlayer(0).clearCards();
+
+        /* Tambahin Kartu Baru */
+        players.getPlayer(0) + tableCards.takeCard();
+
+        /* OUTPUT */
+        cout<<"RE-ROLLED"<<endl;
+        players.getPlayer(0).viewAllCard();
+    }
+    else
+    {
+        cout << "Anda tidak punya kartu ini!" << endl;
+    }
+}
+
 template <>
-void GameManager::manipulate(AbilityCard c){
-    /* Kayaknya templatenya bisa kita ubah sedemikian shg lbh OOP */
-    if (c.isAvailable() && c.getType() == "quadruple"){
-        c.setNotAvailable();
+void GameManager::manipulate<Quadruple&>(Quadruple& C){
+    if (C.isAvailable()){
+        C.setNotAvailable();
 
         /* Set point jadi 4 kali */
         setPoint(this->point*4);
 
         /* OUTPUT */
         cout << "Point berubah menjadi " << this->point << endl;
-    }else{
-        cout << "Gak ada mas" << endl;
+    }
+    else{
+        cout << "Anda tidak memiliki kartu ini" << endl;
+    }
+}
+
+template<>
+void GameManager::manipulate<Quarter&>(Quarter& C){
+    if (C.isAvailable()){
+        C.setNotAvailable();
+
+        /* Set point jadi 1/4 */
+        setPoint(this->point/4);
+
+        /* OUTPUT */
+        cout << "Point berubah menjadi " << this->point << endl;
+    }
+    else{
+        cout << "Anda tidak memiliki kartu ini" << endl;
+    }
+}
+
+template<>
+void GameManager::manipulate<ReverseDirection&>(ReverseDirection& C){
+    if (C.isAvailable()){
+        C.setNotAvailable();
+
+        /* Reverse direction */
+        players.reverseTurn(this->round);
+
+        /* OUTPUT */
+        cout << "Direction berubah" << endl;
+    }
+    else{
+        cout << "Anda tidak memiliki kartu ini" << endl;
+    }
+}
+
+template<>
+void GameManager::manipulate<SwapCard&>(SwapCard& C){
+    if (C.isAvailable()){
+        C.setNotAvailable();
+
+        /* Swap Card */
+        // players.swapCard();
+
+        /* OUTPUT */
+        cout << "Kartu ditukar" << endl;
+    }
+    else{
+        cout << "Anda tidak memiliki kartu ini" << endl;
+    }
+}
+
+template<>
+void GameManager::manipulate<Switch&>(Switch& C){
+    if (C.isAvailable()){
+        C.setNotAvailable();
+
+        /* Switch */
+        // players.switch();
+
+        /* OUTPUT */
+        cout << "Switch" << endl;
+    }
+    else{
+        cout << "Anda tidak memiliki kartu ini" << endl;
+    }
+}
+
+template<>
+void GameManager::manipulate<Abilityless&>(Abilityless& C){
+    if (C.isAvailable()){
+        C.setNotAvailable();
+
+        /* OUTPUT */
+        cout << "Kartu tanpa ability" << endl;
+    }
+    else{
+        cout << "Anda tidak memiliki kartu ini" << endl;
+    }
+}
+
+template<>
+void GameManager::manipulate<AbilityCard&>(AbilityCard& C){
+    if (C.getType() == "quadruple"){
+        manipulate<Quadruple&>(dynamic_cast<Quadruple&>(C));
+    }
+    else if (C.getType() == "reverse"){
+        manipulate<ReverseDirection&>(dynamic_cast<ReverseDirection&>(C));
+    }
+    else if (C.getType() == "rerroll"){
+        manipulate<REROLL&>(dynamic_cast<REROLL&>(C));
+    }
+    else if (C.getType() == "quarter"){
+        manipulate<Quarter&>(dynamic_cast<Quarter&>(C));
+    }
+    else if (C.getType() == "swap"){
+        manipulate<SwapCard&>(dynamic_cast<SwapCard&>(C));
+    }
+    else if (C.getType() == "switch"){
+        manipulate<Switch&>(dynamic_cast<Switch&>(C));
+    }
+    else if (C.getType() == "abilityless"){
+        manipulate<Abilityless&>(dynamic_cast<Abilityless&>(C));
     }
 }

@@ -1,5 +1,4 @@
 #include "Abilities.hpp"
-
 REROLL::REROLL(){ this-> type = "rerroll"; }
 
 // void REROLL::use(CardCollection<DeckCard>* cardPlayer, CardCollection<DeckCard>* game,  int i)

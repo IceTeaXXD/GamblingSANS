@@ -43,7 +43,7 @@ void Player::setPoint(int p){
     this->point = p;
 }
 
-void Player::operator+(DeckCard& cardInput){
+void Player::operator+(DeckCard cardInput){
     this->playerCard + cardInput;
     this->countofPlayerCards++;
 }
@@ -84,4 +84,8 @@ bool Player::operator==(Player& other){
 
 void Player::clearCards(){
     this->playerCard.clear();
+}
+
+bool Player::isabilityCardEmpty(){
+    return (this->abilityCards == NULL);
 }

@@ -40,7 +40,7 @@ class Player{
         static int countOfPlayers;
         int countofPlayerCards;
         int countofTableCard;
-        void operator+(DeckCard&);
+        void operator+(DeckCard);
         void operator+(AbilityCard&);
         void addTableCard(DeckCard&);
         void viewAllCard();
@@ -50,6 +50,7 @@ class Player{
         bool operator>(Player&);
         bool operator==(Player&);
         void clearCards();
+        bool isabilityCardEmpty();
         /* Value yang digunakan untuk mencari nilai high card
             dari kartu yang dimiliki seorang player */
 };

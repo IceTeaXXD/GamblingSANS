@@ -22,6 +22,7 @@ using namespace std;
 */
 class GameManager{
     private:
+        int round;
     public:
         /* Vector of Players */
         ArrOfPlayer players;
@@ -36,7 +37,8 @@ class GameManager{
         long long point;
 
         /* Game Round */
-        static int round;
+        void setRound(int);
+        int getRound();
 
         /* Inisiator Game */
         GameManager();

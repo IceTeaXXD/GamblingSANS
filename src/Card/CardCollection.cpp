@@ -35,13 +35,13 @@ void CardCollection<DeckCard>::MakeDeck(){
 /* Buatan 13521024 */
 template <>
 void CardCollection<AbilityCard*>::MakeDeck(){
-    REROLL* Reroll = new REROLL();
-    Quadruple* quadruple = new Quadruple();
-    Quarter* quarter = new Quarter();
-    ReverseDirection* reverseDirection = new ReverseDirection();
-    SwapCard* swapCard = new SwapCard();
-    Switch* SWITCH = new Switch();
-    Abilityless* abilityless = new Abilityless();
+    AbilityCard* Reroll = new REROLL();
+    AbilityCard* quadruple = new Quadruple();
+    AbilityCard* quarter = new Quarter();
+    AbilityCard* reverseDirection = new ReverseDirection();
+    AbilityCard* swapCard = new SwapCard();
+    AbilityCard* SWITCH = new Switch();
+    AbilityCard* abilityless = new Abilityless();
 
     /* Mengacak Kartu */
     vector<AbilityCard*> cards;
