@@ -10,10 +10,11 @@ run: build
 
 build:
 	$(C) -c $(SOURCE_FOLDER)/Card/AbilityCard.cpp -o $(OUTPUT_FOLDER)/AbilityCard.o
+	$(C) -c $(SOURCE_FOLDER)/Card/Abilities.cpp -o $(OUTPUT_FOLDER)/Abilities.o
 	$(C) -c $(SOURCE_FOLDER)/Card/Warna.cpp -o $(OUTPUT_FOLDER)/Warna.o
 	$(C) -c $(SOURCE_FOLDER)/Card/Angka.cpp -o $(OUTPUT_FOLDER)/Angka.o
+	$(C) -c $(SOURCE_FOLDER)/Card/CardCollection.cpp -o $(OUTPUT_FOLDER)/CardCollection.o
 	$(C) -c $(SOURCE_FOLDER)/Card/DeckCard.cpp -o $(OUTPUT_FOLDER)/DeckCard.o
-	$(C) -c $(SOURCE_FOLDER)/Card/DeckCardCollection.cpp -o $(OUTPUT_FOLDER)/DeckCardCollection.o
 	$(C) -c $(SOURCE_FOLDER)/GameManager/GameManager.cpp -o $(OUTPUT_FOLDER)/GameManager.o
 	$(C) -c $(SOURCE_FOLDER)/Player/Player.cpp -o $(OUTPUT_FOLDER)/Player.o
 	$(C) -c $(SOURCE_FOLDER)/Player/ArrOfPlayer.cpp -o $(OUTPUT_FOLDER)/ArrOfPlayer.o
@@ -21,6 +22,5 @@ build:
 	$(C) -c $(SOURCE_FOLDER)/Rules/FindValue.cpp -o $(OUTPUT_FOLDER)/FindValue.o	
 	$(C) $(SOURCE_FOLDER)/main.cpp $(OUTPUT_FOLDER)/*.o -o $(OUTPUT_FOLDER)/main.exe
 	@rm $(OUTPUT_FOLDER)/*.o
-	@clear
 
 # g++ -o bin/main src/main.cpp src/Card/AbilityCard.cpp src/Card/Warna.cpp src/Card/Angka.cpp src/Card/DeckCard.cpp src/Card/DeckCardCollection.cpp src/GameManager/GameManager.cpp src/Player/Player.cpp src/Player/ArrOfPlayer.cpp src/Rules/Kombinasi.cpp src/Rules/FindValue.cpp
