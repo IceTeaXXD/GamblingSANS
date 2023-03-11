@@ -25,6 +25,7 @@ class ArrOfPlayer {
         void addAbilityCard(int, AbilityCard&);
         void clearCard(int i);
         void printDeque();
+        Player* getPlayerAddress(int idx);
 };
 
 #endif

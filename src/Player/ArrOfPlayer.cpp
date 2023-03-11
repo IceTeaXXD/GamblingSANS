@@ -10,7 +10,6 @@ ArrOfPlayer::ArrOfPlayer(){
     }
     
 }
-
 ArrOfPlayer :: ArrOfPlayer(int n){
     string name;
     for (int i = 0; i < n; i++){
@@ -42,6 +41,11 @@ void ArrOfPlayer::reverseTurn(int round){
 
 Player ArrOfPlayer::getPlayer(int idx){
     return this->arr[idx];
+}
+
+Player* ArrOfPlayer::getPlayerAddress(int idx)
+{
+    return &this->arr[idx];
 }
 
 void ArrOfPlayer::changePlayerName(int idx, string name){

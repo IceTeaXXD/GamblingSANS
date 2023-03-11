@@ -24,7 +24,7 @@ int main()
         cin>>inputGame;
         if (inputGame == "1")
         {
-            inputValid == true;
+            inputValid = true;
         }
         else if (inputGame == "2")
         {
@@ -35,10 +35,42 @@ int main()
             cout<<"Masukan tidak valid, silahkan ulangi."<<endl;
         }
     }
+    cout<<inputGame<<endl;
     if (inputGame == "1")
     {
-        //DO NOTHING
-        cout<<"DALAM TAHAP PENGEMBANGAN HEHE"<<endl;
+        deque<Player*> temp; 
+        ArrOfPlayer playerList = ArrOfPlayer(4);
+        int end = 0;
+        bool menang = false;
+        string inputPlayer;
+        while (!menang)
+        {
+            for (int i = 0 ; i < temp.size() ; i++)
+            {
+                cout<<"1"<<endl;
+                temp.push_back(playerList.getPlayerAddress(i));
+            }
+            while(!temp.empty())
+            {
+                cout<<"Sekarang giliran player "<<temp[end];
+                cout<<"Masukkan aksi :"<<endl;
+                cout<<">> ";
+                cin>>inputPlayer;
+                
+                if (inputPlayer == "1")
+                {
+                    cout<<"NEXT"<<endl;
+                    temp.pop_front();
+                }
+                else
+                {
+                    cout<<"IN"<<endl;
+                    temp.push_back(temp.at(0));
+                    temp.pop_front();
+                }
+            }
+            playerList.nextTurn();
+        }
     }
     else
     {

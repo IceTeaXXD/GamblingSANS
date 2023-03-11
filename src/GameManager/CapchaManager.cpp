@@ -18,6 +18,7 @@ void CapchaManager::setGiliran(int giliran)
         this->giliran = random;
     }
 }
+
 void CapchaManager::initDistribute(int id)
 {
     for (int i = 0 ; i < 13 ; i++)
