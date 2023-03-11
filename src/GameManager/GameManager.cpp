@@ -75,7 +75,7 @@ void GameManager::setPoint(long long p){this -> point = p;}
 
 bool GameManager::isInputTrue(string input)
 {
-    return input == "next" || input == "double" || input == "half" || input == "quadruple" || input == "quarter" || input == "reroll" || input == "reverse" || input == "switch" || input == "swap" || input == "help";
+    return input == "next" || input == "double" || input == "half" || input == "quadruple" || input == "quarter" || input == "reroll" || input == "reverse" || input == "switch" || input == "swap" || input == "help" || input == "abilityless";
 }
 
 string GameManager::inputToLower(string str){
@@ -230,7 +230,7 @@ void GameManager::manipulate<AbilityCard&>(AbilityCard& C){
     else if (C.getType() == "reverse"){
         manipulate<ReverseDirection&>(dynamic_cast<ReverseDirection&>(C));
     }
-    else if (C.getType() == "rerroll"){
+    else if (C.getType() == "reroll"){
         manipulate<REROLL&>(dynamic_cast<REROLL&>(C));
     }
     else if (C.getType() == "quarter"){
