@@ -63,6 +63,8 @@ class GameManager{
         /* Manipulasi */
         template<class T>
         void manipulate(T);
+
+        string inputToLower(string);
 };
 
 #endif

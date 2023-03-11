@@ -62,6 +62,7 @@ int main()
 
                     string aksi;
                     cin>>aksi;
+                    aksi = game->inputToLower(aksi);
                     //Implementasi poin disini
                     //pake getter dan setter poin yg di game manager
                     if (game->isInputTrue(aksi)){
