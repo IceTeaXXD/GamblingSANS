@@ -70,6 +70,15 @@ class Kombinasi : protected FindValue{
         bool isFullHouse();
         bool isFourAKind();
         bool isStraightFlush();
+
+        bool isTableCardPair();
+        bool isTableCardTwoPair();
+        bool isTableCardThreeOfKind();
+        bool isTableCardStraight();
+        bool isTableCardFlush();
+        bool isTableCardFullHouse();
+        bool isTableCardFourAKind();
+        bool isTableCardStraightFlush();
 };
 template<class T>
 T maxVector(vector<T>& v)

@@ -62,7 +62,7 @@ double Kombinasi::value(){
     return temp;
     */
    double val;
-   if (isStraightFlush())
+   if (isStraightFlush() && !isTableCardStraightFlush())
    {
         val = MAX_FOUR_KIND;
         for (DeckCard i : arrStraightFlush)
@@ -82,7 +82,6 @@ double Kombinasi::value(){
    }
    else if (isFullHouse())
    {
-        // cout << "MASUK FULLHOUSE\n";
         val = MAX_FLUSH;
         for (DeckCard i : arrFullHouse)
         {
@@ -111,10 +110,14 @@ double Kombinasi::value(){
    else if (isThreeOfKind())
    {
         val = MAX_TWO_PAIR;
+        cout<<arrThreeOfKind.size()<<endl;
         for (auto i : arrThreeOfKind)
         {
+            cout<<"HELO"<<endl;
+            i.printInfo();
             val += i.value();
         }
+        cout<<"tolol";
         return val;
    }
    else if (isTwoPair())
@@ -220,20 +223,52 @@ string Kombinasi::getCombinationName()
 }
 bool Kombinasi::isPair()
 {   
-    sort(arr.begin(), arr.end(), compareAngka);
-    for (int i = this->arr.size()-1; i>0; i--)
+    vector<DeckCard> tempArr = arr;
+    sort(tempArr.begin(), tempArr.end(), compareAngka);
+    for (int i = tempArr.size()-1; i>0; i--)
     {
-        if(arr[i]==arr[i-1])
+        if(tempArr[i]==tempArr[i-1])
         {
-            arrPair.push_back(arr[i]);
-            arrPair.push_back(arr[i-1]);
+            arrPair.push_back(tempArr[i]);
+            arrPair.push_back(tempArr[i-1]);
             return true;
         }
     }
     return false;
-    // for (int i = 0 ; i < 7 ; i++)
+    // for (int i = 0 ; i < tempArr.size() ; i++)
     // {
-    //     for (int j = i+1 ; j < 7 ; i++)
+    //     for (int j = i+1 ; j < tempArr.size() ; i++)
+    //     {
+    //         if(arr[i].getNum() == arr[j].getNum())
+    //         {
+    //             arrPair.push_back(arr[i]);
+    //             arrPair.push_back(arr[j]);
+    //             return true;
+    //         }
+    //     }
+    // }
+    // return false;
+}
+
+bool Kombinasi::isTableCardPair()
+{   
+    auto first = arr.begin() + 2;
+    auto last = arr.end() - 1;
+    vector<DeckCard> tempArr(first, last);
+    sort(tempArr.begin(), tempArr.end(), compareAngka);
+    for (int i = tempArr.size()-1; i>0; i--)
+    {
+        if(tempArr[i]==tempArr[i-1])
+        {
+            arrPair.push_back(tempArr[i]);
+            arrPair.push_back(tempArr[i-1]);
+            return true;
+        }
+    }
+    return false;
+    // for (int i = 0 ; i < tempArr.size() ; i++)
+    // {
+    //     for (int j = i+1 ; j < tempArr.size() ; i++)
     //     {
     //         if(arr[i].getNum() == arr[j].getNum())
     //         {
@@ -248,19 +283,20 @@ bool Kombinasi::isPair()
 
 bool Kombinasi::isTwoPair()
 {   
-    sort(arr.begin(), arr.end(), compareAngka);
-    for (int i = this->arr.size()-1; i>0; i--)
+    vector<DeckCard> tempArr = arr;
+    sort(tempArr.begin(), tempArr.end(), compareAngka);
+    for (int i = tempArr.size()-1; i>0; i--)
     {
-        if(arr[i]==arr[i-1])
+        if(tempArr[i]==tempArr[i-1])
         {
             for (int j = i-1; i>0; i--)
             {
-                if (!(arr[j]==arr[i]) && (arr[j]==arr[j-1]))
+                if (!(tempArr[j]==tempArr[i]) && (tempArr[j]==tempArr[j-1]))
                 {
-                    arrTwoPair.push_back(arr[i]);
-                    arrTwoPair.push_back(arr[i-1]);
-                    arrTwoPair.push_back(arr[j]);
-                    arrTwoPair.push_back(arr[j-1]);
+                    arrTwoPair.push_back(tempArr[i]);
+                    arrTwoPair.push_back(tempArr[i-1]);
+                    arrTwoPair.push_back(tempArr[j]);
+                    arrTwoPair.push_back(tempArr[j-1]);
                     return true;
                 }
             }
@@ -269,9 +305,56 @@ bool Kombinasi::isTwoPair()
     return false;
     // int count_pair = 0;
     // vector<DeckCard> temp;
-    // for (int i = 0 ; i < 7 ; i++)
+    // for (int i = 0 ; i < tempArr.size() ; i++)
     // {
-    //     for (int j = i+1 ; j < 7 ; j++)
+    //     for (int j = i+1 ; j < tempArr.size() ; j++)
+    //     {
+    //         if(arr[i].getNum() == arr[j].getNum()){
+    //             count_pair++;
+    //             temp.push_back(arr[i]);
+    //             temp.push_back(arr[j]);
+    //         }
+    //         if(count_pair == 2){
+    //             /* Ditemukan Two Pair */
+    //             for(int i = 0;i<4;i++){
+    //                 arrTwoPair.push_back(temp[i]);
+    //             }
+    //             return true;
+    //         }
+    //     }
+    // }
+    // return false;
+}
+
+bool Kombinasi::isTableCardTwoPair()
+{   
+    auto first = arr.begin() + 2;
+    auto last = arr.end() - 1;
+    vector<DeckCard> tempArr(first, last);
+    sort(tempArr.begin(), tempArr.end(), compareAngka);
+    for (int i = tempArr.size()-1; i>0; i--)
+    {
+        if(tempArr[i]==tempArr[i-1])
+        {
+            for (int j = i-1; i>0; i--)
+            {
+                if (!(tempArr[j]==tempArr[i]) && (tempArr[j]==tempArr[j-1]))
+                {
+                    arrTwoPair.push_back(tempArr[i]);
+                    arrTwoPair.push_back(tempArr[i-1]);
+                    arrTwoPair.push_back(tempArr[j]);
+                    arrTwoPair.push_back(tempArr[j-1]);
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+    // int count_pair = 0;
+    // vector<DeckCard> temp;
+    // for (int i = 0 ; i < tempArr.size() ; i++)
+    // {
+    //     for (int j = i+1 ; j < tempArr.size() ; j++)
     //     {
     //         if(arr[i].getNum() == arr[j].getNum()){
     //             count_pair++;
@@ -291,40 +374,84 @@ bool Kombinasi::isTwoPair()
 }
 
 bool Kombinasi::isThreeOfKind(){
-    bool threeKind = false;
-    sort(arr.begin(), arr.end(), compareAngka);
-    for (int i = this->arr.size()-1; i>1; i--)
+    vector<DeckCard> tempArr = arr;
+    sort(tempArr.begin(), tempArr.end(), compareAngka);
+    for (int i = tempArr.size()-1; i>1; i--)
     {
-        // cout << "\n--------------------------  " << i << "  -------------------------\n";
-        // arr[i].printInfo();
-        // arr[i-1].printInfo();
-        // arr[i-2].printInfo();
-        // cout << "arr[i].getNum() << arr[i-2].getNum()" << endl; 
-        if (arr[i]==arr[i-2])
+        if (tempArr[i]==tempArr[i-2])
         {
-
-            arrThreeOfKind.push_back(arr[i]);
-            arrThreeOfKind.push_back(arr[i-1]);
-            arrThreeOfKind.push_back(arr[i-2]);
-            threeKind = true;
-            cout << threeKind << endl;
+            arrThreeOfKind.push_back(tempArr[i]);
+            arrThreeOfKind.push_back(tempArr[i-1]);
+            arrThreeOfKind.push_back(tempArr[i-2]);
+            return true;
         }
     }
-    return threeKind;
+    return false;
+}
+
+bool Kombinasi::isTableCardThreeOfKind(){
+    auto first = arr.begin() + 2;
+    auto last = arr.end() - 1;
+    vector<DeckCard> tempArr(first, last);
+    sort(tempArr.begin(), tempArr.end(), compareAngka);
+    for (int i = tempArr.size()-1; i>1; i--)
+    {
+        if (tempArr[i]==tempArr[i-2])
+        {
+            arrThreeOfKind.push_back(tempArr[i]);
+            arrThreeOfKind.push_back(tempArr[i-1]);
+            arrThreeOfKind.push_back(tempArr[i-2]);
+            return true;
+        }
+    }
+    return false;
 }
 
 bool Kombinasi::isFourAKind(){
-
-    for(int i = 0; i < 7 ; i++){
-        int temp_num = arr[i].getNum();
+    vector<DeckCard> tempArr = arr;
+    for(int i = 0; i < tempArr.size() ; i++){
+        int temp_num = tempArr[i].getNum();
         vector<DeckCard> temp;
-        temp.push_back(arr[i]);
+        temp.push_back(tempArr[i]);
         int count_same = 1;
 
-        for (int j = i+1; j < 7; j++){
-            if(temp_num == arr[j].getNum()){
+        for (int j = i+1; j < tempArr.size(); j++){
+            if(temp_num == tempArr[j].getNum()){
                 count_same++;
-                temp.push_back(arr[j]);
+                temp.push_back(tempArr[j]);
+            }
+            if(count_same == 4){
+                for(int k = 0; k < 4 ; k++){
+                    arrThreeOfKind.push_back(temp[k]);
+                }
+                return true;
+            }
+        }
+
+        if(count_same != 4){
+            temp.clear();
+            count_same = 0;
+        }
+    }
+
+    return false;
+
+}
+
+bool Kombinasi::isTableCardFourAKind(){
+    auto first = arr.begin() + 2;
+    auto last = arr.end() - 1;
+    vector<DeckCard> tempArr(first, last);
+    for(int i = 0; i < tempArr.size() ; i++){
+        int temp_num = tempArr[i].getNum();
+        vector<DeckCard> temp;
+        temp.push_back(tempArr[i]);
+        int count_same = 1;
+
+        for (int j = i+1; j < tempArr.size(); j++){
+            if(temp_num == tempArr[j].getNum()){
+                count_same++;
+                temp.push_back(tempArr[j]);
             }
             if(count_same == 4){
                 for(int k = 0; k < 4 ; k++){
@@ -345,19 +472,54 @@ bool Kombinasi::isFourAKind(){
 }
 
 bool Kombinasi::isStraight(){
+    vector<DeckCard> tempArr = arr;
     bool straight = false;
-    sort(this->arr.begin(), this->arr.end(), compareAngka);
-    for (int i = this->arr.size()-1; i>3; i--)
+    sort(tempArr.begin(), tempArr.end(), compareAngka);
+    for (int i = tempArr.size()-1; i>3; i--)
     {
-        if (this->arr[i].getNum()-this->arr[i-4].getNum()==4)
+        if (tempArr[i].getNum()-tempArr[i-4].getNum()==4)
         {
-            int temp = this->arr[i-4].getNum()-1;
+            int temp = tempArr[i-4].getNum()-1;
             for(int j = i-4; j<i+1; j++)
             {
-                if ((this->arr[j].getNum()-temp)==1)
+                if ((tempArr[j].getNum()-temp)==1)
                 {
-                    temp = this->arr[j].getNum();
-                    this->arrStraight.push_back(this->arr[j]);
+                    temp = tempArr[j].getNum();
+                    this->arrStraight.push_back(tempArr[j]);
+                }
+                else
+                {
+                    this->arrStraight.clear();
+                    straight = false;
+                    break;
+                }
+            }
+            if (straight)
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+bool Kombinasi::isTableCardStraight(){
+    auto first = arr.begin() + 2;
+    auto last = arr.end() - 1;
+    vector<DeckCard> tempArr(first, last);
+    bool straight = false;
+    sort(tempArr.begin(), tempArr.end(), compareAngka);
+    for (int i = tempArr.size()-1; i>3; i--)
+    {
+        if (tempArr[i].getNum()-tempArr[i-4].getNum()==4)
+        {
+            int temp = tempArr[i-4].getNum()-1;
+            for(int j = i-4; j<i+1; j++)
+            {
+                if ((tempArr[j].getNum()-temp)==1)
+                {
+                    temp = tempArr[j].getNum();
+                    this->arrStraight.push_back(tempArr[j]);
                 }
                 else
                 {
@@ -376,13 +538,32 @@ bool Kombinasi::isStraight(){
 }
 
 bool Kombinasi::isFlush(){
-    sort(this->arr.begin(), this->arr.end(), compareWarna);
-    for (int i = this->arr.size()-1; i>3; i--)
+    vector<DeckCard> tempArr = arr;
+    sort(tempArr.begin(), tempArr.end(), compareWarna);
+    for (int i = tempArr.size()-1; i>3; i--)
     {
-        if (this->arr[i].getType()==this->arr[i-4].getType())
+        if (tempArr[i].getType()==tempArr[i-4].getType())
         {
             for (int j = i-4; j < i+1; j++){
-                this->arrFlush.push_back(this->arr[i]);
+                this->arrFlush.push_back(tempArr[i]);
+            }
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Kombinasi::isTableCardFlush(){
+    auto first = arr.begin() + 2;
+    auto last = arr.end() - 1;
+    vector<DeckCard> tempArr(first, last);
+    sort(tempArr.begin(), tempArr.end(), compareWarna);
+    for (int i = tempArr.size()-1; i>3; i--)
+    {
+        if (tempArr[i].getType()==tempArr[i-4].getType())
+        {
+            for (int j = i-4; j < i+1; j++){
+                this->arrFlush.push_back(tempArr[i]);
             }
             return true;
         }
@@ -391,20 +572,56 @@ bool Kombinasi::isFlush(){
 }
 
 bool Kombinasi::isStraightFlush(){
+    vector<DeckCard> tempArr = arr;
     bool straight = false;
-    sort(this->arr.begin(), this->arr.end(), compareAngka);
-    for (int i = this->arr.size()-1; i>3; i--)
+    sort(tempArr.begin(), tempArr.end(), compareAngka);
+    for (int i = tempArr.size()-1; i>3; i--)
     {
-        if (this->arr[i].getNum()-this->arr[i-4].getNum()==4)
+        if (tempArr[i].getNum()-tempArr[i-4].getNum()==4)
         {
-            int tempNum = this->arr[i-4].getNum()-1;
-            int tempType = this->arr[i-4].getType();
+            int tempNum = tempArr[i-4].getNum()-1;
+            int tempType = tempArr[i-4].getType();
             for(int j = i-4; j<i+1; j++)
             {
-                if (((this->arr[j].getNum()-tempNum)==1)&&(this->arr[j].getType()==tempType))
+                if (((tempArr[j].getNum()-tempNum)==1)&&(tempArr[j].getType()==tempType))
                 {
-                    tempNum = this->arr[j].getNum();
-                    this->arrStraight.push_back(this->arr[j]);
+                    tempNum = tempArr[j].getNum();
+                    this->arrStraight.push_back(tempArr[j]);
+                }
+                else
+                {
+                    this->arrStraight.clear();
+                    straight = false;
+                    break;
+                }
+            }
+            if (straight)
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+bool Kombinasi::isTableCardStraightFlush(){
+    auto first = arr.begin() + 2;
+    auto last = arr.end() - 1;
+    vector<DeckCard> tempArr(first, last);
+    bool straight = false;
+    sort(tempArr.begin(), tempArr.end(), compareAngka);
+    for (int i = tempArr.size()-1; i>3; i--)
+    {
+        if (tempArr[i].getNum()-tempArr[i-4].getNum()==4)
+        {
+            int tempNum = tempArr[i-4].getNum()-1;
+            int tempType = tempArr[i-4].getType();
+            for(int j = i-4; j<i+1; j++)
+            {
+                if (((tempArr[j].getNum()-tempNum)==1)&&(tempArr[j].getType()==tempType))
+                {
+                    tempNum = tempArr[j].getNum();
+                    this->arrStraight.push_back(tempArr[j]);
                 }
                 else
                 {
@@ -423,16 +640,17 @@ bool Kombinasi::isStraightFlush(){
 }
 
 bool Kombinasi::isFullHouse(){
+    vector<DeckCard> tempArr = arr;
     bool threeKind = false;
     vector<DeckCard> tempThreeKind;
-    sort(arr.begin(), arr.end(), compareAngka);
+    sort(tempArr.begin(), tempArr.end(), compareAngka);
     for (int i = this->arr.size()-1; i>1; i--)
     {
         if (arr[i]==arr[i-2])
         {
-            tempThreeKind.push_back(arr[i]);
-            tempThreeKind.push_back(arr[i-1]);
-            tempThreeKind.push_back(arr[i-2]);
+            tempThreeKind.push_back(tempArr[i]);
+            tempThreeKind.push_back(tempArr[i-1]);
+            tempThreeKind.push_back(tempArr[i-2]);
             threeKind = true;
             break;
         }
@@ -440,13 +658,52 @@ bool Kombinasi::isFullHouse(){
 
     if (threeKind)
     {
-        for (int i = 0 ; i < 7 ; i++)
+        for (int i = 0 ; i < tempArr.size() ; i++)
         {
-            for (int j = i+1 ; j < 7 ; j++)
+            for (int j = i+1 ; j < tempArr.size() ; j++)
             {
-                if(arr[i] == arr[j])
+                if(tempArr[i] == tempArr[j])
                 {
-                    if (!(arr[i]==tempThreeKind[0]) && !(arr[i]==tempThreeKind[1]) && !(arr[i]==tempThreeKind[2]))
+                    if (!(tempArr[i]==tempThreeKind[0]) && !(tempArr[i]==tempThreeKind[1]) && !(tempArr[i]==tempThreeKind[2]))
+                    {
+                        return true;
+                    }
+
+                }
+            }
+        }
+    }
+    return false;
+}
+
+bool Kombinasi::isTableCardFullHouse(){
+    auto first = arr.begin() + 2;
+    auto last = arr.end() - 1;
+    vector<DeckCard> tempArr(first, last);
+    bool threeKind = false;
+    vector<DeckCard> tempThreeKind;
+    sort(tempArr.begin(), tempArr.end(), compareAngka);
+    for (int i = this->arr.size()-1; i>1; i--)
+    {
+        if (tempArr[i]==tempArr[i-2])
+        {
+            tempThreeKind.push_back(tempArr[i]);
+            tempThreeKind.push_back(tempArr[i-1]);
+            tempThreeKind.push_back(tempArr[i-2]);
+            threeKind = true;
+            break;
+        }
+    }
+
+    if (threeKind)
+    {
+        for (int i = 0 ; i < tempArr.size() ; i++)
+        {
+            for (int j = i+1 ; j < tempArr.size() ; j++)
+            {
+                if(tempArr[i] == tempArr[j])
+                {
+                    if (!(tempArr[i]==tempThreeKind[0]))
                     {
                         return true;
                     }
