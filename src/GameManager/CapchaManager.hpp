@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "../Player/Player.hpp"
+#include "GameManager.hpp"
 #include "../Player/ArrOfPlayer.hpp"
 #include "../Card/DeckCard.hpp"
 #include "../Card/CardCollection.hpp"
@@ -11,7 +12,8 @@
 
 using namespace std;
 
-class CapchaManager{
+class CapchaManager : public GameManager
+{
     private:
         ArrOfPlayer players;
         int giliran;
@@ -26,7 +28,6 @@ class CapchaManager{
         void printInfoPlayer();
         void printInfoPlayerCard(int); //buat ngecek player punya kartu apa aja
 
-        void initDistribute(int);
         void setGiliran(int);
         int getGiliran();
         void setPoint(int);

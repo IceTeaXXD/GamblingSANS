@@ -15,6 +15,13 @@ GameManager::GameManager():point(64)
     tableCards.MakeDeck();
     // abilityCardList.MakeDeck();
 }
+GameManager::GameManager(int a):point(64)
+{
+    /* Inisialisasi DeckCard dengan memanggil MakeDeck()*/
+    tableCards.MakeDeck();
+    // abilityCardList.MakeDeck();
+    ArrOfPlayer players = ArrOfPlayer(a);
+}
 
 GameManager::GameManager(string f): point(64)
 {

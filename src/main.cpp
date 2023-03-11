@@ -3,8 +3,10 @@
 #include "Card/DeckCard.hpp"
 #include "GameManager/GameManager.hpp"
 #include "GameManager/CandyGameManager.hpp"
+#include "GameManager/CapchaManager.hpp"
 #include "Player/Player.hpp"
 #include "Rules/Kombinasi.hpp"
+using namespace std;
 
 int main()
 {
@@ -38,12 +40,27 @@ int main()
     cout<<inputGame<<endl;
     if (inputGame == "1")
     {
+        //List Of Player
         deque<Player*> pointerArr;
         deque<Player*> temp;
         ArrOfPlayer playerList = ArrOfPlayer(4);
-        int end = 0;
+
+        //Variables
         bool menang = false;
         string inputPlayer;
+
+        //Capcha GM
+        CapchaManager* game = new CapchaManager();
+        cout<<"TEST"<<endl;
+        for (int i = 0 ; i<4 ; i++)
+        {
+            for (int j = 0  ; j < 13 ; j++)
+            {
+                DeckCard tempCard = game->getTableCards().takeCard();
+                game->getPlayers().addPlayerCard(i, tempCard);
+            }
+        } 
+        //Game
         for (int i = 0 ; i < 4 ; i++)
         {
             pointerArr.push_back(playerList.getPlayerAddress(i));
@@ -53,10 +70,11 @@ int main()
             while(!pointerArr.empty())
             {
                 cout<<"Sekarang giliran player "<<pointerArr[0]->getName()<<endl;
+                pointerArr[0]->viewAllCard();
                 cout<<"Masukkan aksi :"<<endl;
                 cout<<">> ";
                 cin>>inputPlayer;
-                
+
                 if (inputPlayer == "1")
                 {
                     cout<<"NEXT"<<endl;

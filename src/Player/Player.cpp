@@ -62,7 +62,16 @@ void Player::viewAllCard()
         this->playerCard.getCard(i).printInfo();
     }
 }
-
+void Player::viewAllCardCapsa()
+{
+    cout<<"List of Player Cards : "<<endl;
+    cout<<"[";
+    for (int i = 0 ; i<countofPlayerCards ; i++)
+    {
+        this->playerCard.getCard(i).printType();
+    }
+    cout<<"]"<<endl;
+}
 CardCollection<DeckCard> Player::getCard()
 {
     return this->playerCard;

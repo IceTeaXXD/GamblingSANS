@@ -45,6 +45,7 @@ class Player{
         void operator+(AbilityCard&);
         void addTableCard(DeckCard&);
         void viewAllCard();
+        void viewAllCardCapsa();
         CardCollection<DeckCard> getCard();
         AbilityCard& getAbilityCard();
         bool operator<(Player&);

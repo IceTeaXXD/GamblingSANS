@@ -160,6 +160,16 @@ void CardCollection<T>::displayDeckCard()
     }
 }
 
+// template <class T>
+// void CardCollection<T>::displayCapsa()
+// {
+//     cout<<"[";
+//     for (auto it = buffer.begin(); it != buffer.end(); it++) 
+//     {
+//         it->printType();
+//     }
+//     cout<<"]";
+// }
 template <>
 void CardCollection<AbilityCard*>::displayDeckCard()
 {

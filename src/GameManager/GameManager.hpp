@@ -35,6 +35,7 @@ class GameManager{
         int getRound();
         /* Inisiator Game */
         GameManager();
+        GameManager(int);
         /* Bikin deck card dari file */
         GameManager(string);
         ~GameManager();
