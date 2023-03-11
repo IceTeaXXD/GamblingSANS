@@ -92,10 +92,14 @@ int main()
                             cout << "10. Help" << endl;
                             input = true;
                         }else{
-                            if(!game->players.getPlayer(0).isabilityCardEmpty()){
-                                game->manipulate<AbilityCard&>(game->players.getPlayer(0).getAbilityCard());
+                            if(aksi == game->players.getPlayer(0).getAbilityCard().getType()){
+                                if(!game->players.getPlayer(0).isabilityCardEmpty()){
+                                    game->manipulate<AbilityCard&>(game->players.getPlayer(0).getAbilityCard());
+                                }else{
+                                    cout << "Anda belum memiliki kartu ability" << endl;
+                                }
                             }else{
-                                cout << "Anda belum memiliki kartu ability" << endl;
+                                throw "Anda tidak memiliki kartu ini!\n";
                             }
                         }
                         input = true;
