@@ -18,8 +18,8 @@ int main()
     while (!inputValid)
     {
         cout<<"Pilihan Game :"<<endl;
-        cout<<"1. Kartu Permen"<<endl;
-        cout<<"2. Capcha"<<endl;
+        cout<<"1. Capcha"<<endl;
+        cout<<"2. Kartu Permen"<<endl;
         cout<<">> ";
         cin>>inputGame;
         if (inputGame == "1")
@@ -38,21 +38,21 @@ int main()
     cout<<inputGame<<endl;
     if (inputGame == "1")
     {
-        deque<Player*> temp; 
+        deque<Player*> pointerArr;
+        deque<Player*> temp;
         ArrOfPlayer playerList = ArrOfPlayer(4);
         int end = 0;
         bool menang = false;
         string inputPlayer;
+        for (int i = 0 ; i < 4 ; i++)
+        {
+            pointerArr.push_back(playerList.getPlayerAddress(i));
+        }
         while (!menang)
         {
-            for (int i = 0 ; i < temp.size() ; i++)
+            while(!pointerArr.empty())
             {
-                cout<<"1"<<endl;
-                temp.push_back(playerList.getPlayerAddress(i));
-            }
-            while(!temp.empty())
-            {
-                cout<<"Sekarang giliran player "<<temp[end];
+                cout<<"Sekarang giliran player "<<pointerArr[0]->getName()<<endl;
                 cout<<"Masukkan aksi :"<<endl;
                 cout<<">> ";
                 cin>>inputPlayer;
@@ -60,16 +60,20 @@ int main()
                 if (inputPlayer == "1")
                 {
                     cout<<"NEXT"<<endl;
-                    temp.pop_front();
+                    temp.push_front(pointerArr.at(0));
+                    pointerArr.pop_front();
                 }
                 else
                 {
                     cout<<"IN"<<endl;
-                    temp.push_back(temp.at(0));
-                    temp.pop_front();
+                    pointerArr.push_back(pointerArr.at(0));
+                    pointerArr.pop_front();
                 }
             }
-            playerList.nextTurn();
+            for(int i = 0 ; i < 4 ; i++)
+            {
+                pointerArr.push_back(temp.at(i));
+            }
         }
     }
     else
