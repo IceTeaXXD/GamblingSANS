@@ -14,6 +14,9 @@ using namespace std;
 class CapchaManager{
     private:
         ArrOfPlayer players;
+        int giliran;
+        int point;
+
     public:
         CapchaManager();
         ~CapchaManager();
