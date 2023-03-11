@@ -290,7 +290,7 @@ bool Kombinasi::isTwoPair()
     {
         if(tempArr[i]==tempArr[i-1])
         {
-            for (int j = i-1; i>0; i--)
+            for (int j = i-1; j>0; j--)
             {
                 if (!(tempArr[j]==tempArr[i]) && (tempArr[j]==tempArr[j-1]))
                 {

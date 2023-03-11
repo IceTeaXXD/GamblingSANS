@@ -84,8 +84,8 @@ int main()
     p1.addCard(m1);
     p1.addCard(m7);
 
-    p2.addCard(b3);
-    p2.addCard(m7);
+    p2.addCard(b2);
+    p2.addCard(h1);
 
     p3.addCard(h1);
     p3.addCard(h4);
