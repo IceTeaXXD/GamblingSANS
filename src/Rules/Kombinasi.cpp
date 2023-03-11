@@ -507,19 +507,24 @@ bool Kombinasi::isTableCardFourAKind(){
 
 bool Kombinasi::isStraight(){
     vector<DeckCard> tempArr = arr;
+    vector<int> arrAngka;
     bool straight = false;
+
+    for(int i = 0; i < tempArr.size(); i++)
+    {
+        arrAngka.push_back(tempArr[i].getNum());
+    }
     for (int i = 0; i < tempArr.size(); i++)
     {
         int tempAngka = tempArr[i].getNum();
         for (int j = tempAngka; j < tempAngka+5; j++)
         {
-            DeckCard val(1, j);
-            auto itr = find(tempArr.begin(), tempArr.end(), val); 
+            int val = j;
+            auto itr = find(arrAngka.begin(), arrAngka.end(), val); 
             
-            if (itr != tempArr.end())
+            if (itr != arrAngka.end())
             {   
-                cout << (*itr).getNum() << endl;
-                this->arrStraight.push_back(*itr);
+                this->arrStraight.push_back(tempArr[itr-arrAngka.begin()]);
                 straight = true;
             }
             else
@@ -541,16 +546,22 @@ bool Kombinasi::isTableCardStraight(){
     auto first = arr.begin() + 2;
     auto last = arr.end() - 1;
     vector<DeckCard> tempArr(first, last);
+    vector<int> arrAngka;
     bool straight = false;
+
+    for(int i = 0; i < tempArr.size(); i++)
+    {
+        arrAngka.push_back(tempArr[i].getNum());
+    }
     for (int i = 0; i < tempArr.size(); i++)
     {
         int tempAngka = tempArr[i].getNum();
         for (int j = tempAngka; j < tempAngka+5; j++)
         {
-            DeckCard val(1, j);
-            auto itr = find(tempArr.begin(), tempArr.end(), val); 
+            int val = j;
+            auto itr = find(arrAngka.begin(), arrAngka.end(), val); 
             
-            if (itr != tempArr.end())
+            if (itr != arrAngka.end())
             {   
                 straight = true;
             }
@@ -604,67 +615,78 @@ bool Kombinasi::isTableCardFlush(){
 
 bool Kombinasi::isStraightFlush(){
     vector<DeckCard> tempArr = arr;
-    bool straightFlush = false;
+    vector<int> arrAngka;
+    bool straight = false;
+
+    for(int i = 0; i < tempArr.size(); i++)
+    {
+        arrAngka.push_back(tempArr[i].getNum());
+    }
     for (int i = 0; i < tempArr.size(); i++)
     {
         int tempAngka = tempArr[i].getNum();
         int tempWarna = tempArr[i].getType();
         for (int j = tempAngka; j < tempAngka+5; j++)
         {
-            DeckCard val(tempWarna, j);
-            auto itr = find(tempArr.begin(), tempArr.end(), val); 
+            int val = j;
+            auto itr = find(arrAngka.begin(), arrAngka.end(), val); 
             
-            if (itr != tempArr.end() && (*itr).getType()==tempWarna)
+            if (itr != arrAngka.end() && tempArr[itr-arrAngka.begin()].getType() == tempWarna)
             {   
-                cout << (*itr).getNum() << endl;
-                this->arrStraight.push_back(*itr);
-                straightFlush = true;
+                this->arrStraightFlush.push_back(tempArr[itr-arrAngka.begin()]);
+                straight = true;
             }
             else
             {
-                this->arrStraight.clear();
-                straightFlush = false;
+                this->arrStraightFlush.clear();
+                straight = false;
                 break;
             }
         }
-        if (straightFlush)
+        if (straight)
         {
-            return straightFlush;
+            return straight;
         }
     }
-    return straightFlush;
+    return straight;
 }
 
 bool Kombinasi::isTableCardStraightFlush(){
     auto first = arr.begin() + 2;
     auto last = arr.end() - 1;
     vector<DeckCard> tempArr(first, last);
-    bool straightFlush = false;
+    vector<int> arrAngka;
+    bool straight = false;
+
+    for(int i = 0; i < tempArr.size(); i++)
+    {
+        arrAngka.push_back(tempArr[i].getNum());
+    }
     for (int i = 0; i < tempArr.size(); i++)
     {
         int tempAngka = tempArr[i].getNum();
         int tempWarna = tempArr[i].getType();
         for (int j = tempAngka; j < tempAngka+5; j++)
         {
-            DeckCard val(tempWarna, j);
-            auto itr = find(tempArr.begin(), tempArr.end(), val); 
+            int val = j;
+            auto itr = find(arrAngka.begin(), arrAngka.end(), val); 
             
-            if (itr != tempArr.end() && (*itr).getType()==tempWarna)
-            {
-                straightFlush = true;
+            if (itr != arrAngka.end() && tempArr[itr-arrAngka.begin()].getType() == tempWarna)
+            {   
+                straight = true;
             }
             else
             {
-                straightFlush = false;
+                straight = false;
                 break;
             }
         }
-        if (straightFlush)
+        if (straight)
         {
-            return straightFlush;
+            return straight;
         }
     }
-    return straightFlush;
+    return straight;
 }
 
 bool Kombinasi::isFullHouse(){
