@@ -75,10 +75,15 @@ void GameManager::setPoint(long long p){this -> point = p;}
 
 bool GameManager::isInputTrue(string input)
 {
-    for(int i = 0; i < input.length(); i++)
-        input[i] = tolower(input[i]);
-    
     return input == "next" || input == "double" || input == "half" || input == "quadruple" || input == "quarter" || input == "reroll" || input == "reverse" || input == "switch" || input == "swap" || input == "help";
+}
+
+string GameManager::inputToLower(string str){
+    for (int i = 0 ; i < str.length() ; i++)
+    {
+        str[i] = tolower(str[i]);
+    }
+    return str;
 }
 
 // DeckCard* GameManager::getCard()
