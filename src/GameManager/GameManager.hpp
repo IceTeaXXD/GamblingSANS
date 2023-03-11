@@ -21,48 +21,35 @@ using namespace std;
     6. Implementasi poin dan aksi (next, double, half)
 */
 class GameManager{
-    private:
+    protected:
         int round;
-    public:
         /* Vector of Players */
         ArrOfPlayer players;
         /* Card Deck */
         CardCollection<DeckCard> tableCards;
-        /* Play Cards */
-        CardCollection<DeckCard> playCards;
-        /* List of Ability Cards */
-        CardCollection<AbilityCard*> abilityCardList;
-        
         static int numOfTableCards;
         long long point;
-
+    public:        
         /* Game Round */
         void setRound(int);
         int getRound();
-
         /* Inisiator Game */
         GameManager();
         /* Bikin deck card dari file */
         GameManager(string);
         ~GameManager();
 
-        /* Mengubah Giliran dan Mendapatkan Giliran */
-        void setGiliran(int);
-        int getGiliran();
         /* Mengubah Point */
         void setPoint(long long);
-
-        // void startGame();
+        long long getPoint();
+        DeckCard gameManager;
+        CardCollection<DeckCard>& getTableCards();
+        ArrOfPlayer& getPlayers();
         void displayPlayer();
-        void initDistribute(int);
         DeckCard* getCard();
-        // AbilityCard* getAbilityCard();
-        void distributeTableCard();
         bool isInputTrue(string);
 
         /* Manipulasi */
-        template<class T>
-        void manipulate(T);
 
         string inputToLower(string);
 };

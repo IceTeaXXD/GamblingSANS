@@ -27,9 +27,10 @@ ArrOfPlayer::~ArrOfPlayer(){
 
 void ArrOfPlayer::nextTurn(){
     // this->printDeque();
+    // cout << endl;
     arr.push_back(arr.at(0));
     arr.pop_front();
-
+    // this->printDeque();
 }
 
 void ArrOfPlayer::reverseTurn(int round){

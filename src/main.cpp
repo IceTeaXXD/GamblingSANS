@@ -2,6 +2,7 @@
 // #include "Card/AbilityCard.hpp"
 #include "Card/DeckCard.hpp"
 #include "GameManager/GameManager.hpp"
+#include "GameManager/CandyGameManager.hpp"
 #include "Player/Player.hpp"
 #include "Rules/Kombinasi.hpp"
 
@@ -19,7 +20,7 @@ int main()
         cout<<"Pilihan Game :"<<endl;
         cout<<"1. Kartu Permen"<<endl;
         cout<<"2. Capcha"<<endl;
-        cout<<">>";
+        cout<<">> ";
         cin>>inputGame;
         if (inputGame == "1")
         {
@@ -45,12 +46,12 @@ int main()
         cout << ">> ";
         string makeCardMethod;
         cin >> makeCardMethod;
-        GameManager* game;
+        CandyGameManager* game;
         if(makeCardMethod == "auto"){
-            game = new GameManager();
+            game = new CandyGameManager();
         }else{
             string fileName;
-            game = new GameManager(fileName);
+            game = new CandyGameManager(fileName);
         }
         int round = 1;
         game->setRound(round);
@@ -59,24 +60,24 @@ int main()
                 // for each player give 2 cards from table cards
 
             if(round < 7 && round > 1){
-                DeckCard temp = game->tableCards.takeCard();
-                game->playCards+temp;
+                DeckCard temp = game->getTableCards().takeCard();
+                game->getPlayCards()+temp;
                 cout<<"Kartu "<<temp.getNum()<<" "<<temp.translateToString()<<" telah ditambahkan di meja"<<endl;
             }
 
             for (int i = 0 ; i < 7 ; i++){
                 //Implementasi penunjuk player yg main
                 //CONTOH : "Sekarang saatnya Player I"
-                cout << "Sekarang adalah giliran Player " << game->players.getPlayer(0).getName() << endl;
+                cout << "Sekarang adalah giliran Player " << game->getPlayers().getPlayer(0).getName() << endl;
                 if(round == 1){
-                    DeckCard temp1 = game->tableCards.takeCard();
-                    DeckCard temp2 = game->tableCards.takeCard();
-                    game->players.addPlayerCard(0, temp1);
-                    game->players.addPlayerCard(0, temp2);
+                    DeckCard temp1 = game->getTableCards().takeCard();
+                    DeckCard temp2 = game->getTableCards().takeCard();
+                    game->getPlayers().addPlayerCard(0, temp1);
+                    game->getPlayers().addPlayerCard(0, temp2);
                     cout<<"Kamu dapat kartu "<<temp1.getNum()<<" "<<temp1.translateToString()<<endl;
                     cout<<"Kamu dapat kartu "<<temp2.getNum()<<" "<<temp2.translateToString()<<endl;
                     //Mulai aksi player                
-                    game->players.getPlayer(0).viewAllCard();
+                    game->getPlayers().getPlayer(0).viewAllCard();
                     cout<<endl;
                 }
 
@@ -98,12 +99,12 @@ int main()
                             if(aksi == "next"){
                                 /* Do Nothing */
                             }else if(aksi == "double" || aksi == "2"){
-                                game->setPoint(game->point*2);
-                                cout << game->players.getPlayer(0).getName() << " melakukan DOUBLE! Poin hadiah naik dari " << game->point/2 << " menjadi " << game->point  << "!" << endl;
+                                game->setPoint(game->getPoint()*2);
+                                cout << game->getPlayers().getPlayer(0).getName() << " melakukan DOUBLE! Poin hadiah naik dari " << game->getPoint()/2 << " menjadi " << game->getPoint()  << "!" << endl;
                             }else if(aksi == "half"){
-                                game->setPoint(game->point/2);
-                                if(game->point != 0){
-                                    cout << game->players.getPlayer(0).getName() << " melakukan HALF! Poin hadiah turun dari " << game->point*2 << " menjadi " << game->point  << "!" << endl;
+                                game->setPoint(game->getPoint()/2);
+                                if(game->getPoint() != 0){
+                                    cout << game->getPlayers().getPlayer(0).getName() << " melakukan HALF! Poin hadiah turun dari " << game->getPoint()*2 << " menjadi " << game->getPoint()  << "!" << endl;
                                 }else{
                                     cout << "Nothing happened" << endl;
                                     game->setPoint(1);
@@ -122,9 +123,9 @@ int main()
                                 cout << "10. Help" << endl;
                                 input = true;
                             }else{
-                                if(aksi == game->players.getPlayer(0).getAbilityCard().getType()){
-                                    if(!game->players.getPlayer(0).isabilityCardEmpty()){
-                                        game->manipulate<AbilityCard&>(game->players.getPlayer(0).getAbilityCard());
+                                if(aksi == game->getPlayers().getPlayer(0).getAbilityCard().getType()){
+                                    if(!game->getPlayers().getPlayer(0).isabilityCardEmpty()){
+                                        game->manipulate<AbilityCard&>(game->getPlayers().getPlayer(0).getAbilityCard());
                                     }else{
                                         cout << "Anda belum memiliki kartu ability" << endl;
                                     }
@@ -141,27 +142,28 @@ int main()
                     }
                 }
                 cout << endl;
-                game->players.nextTurn();
+                cout << "NEXT TURN" << endl;
+                game->getPlayers().nextTurn();
             }
 
             if(round == 1){
                 // Give 1 ability card to each player
                 /* TODO */
                 cout<<"Ronde I telah berakhir"<<endl;
-                DeckCard temp = game->tableCards.takeCard();
-                game->playCards+temp;
+                DeckCard temp = game->getTableCards().takeCard();
+                game->getPlayCards()+temp;
                 cout<<"Kartu "<<temp.getNum()<<" "<<temp.translateToString()<<" telah ditambahkan di meja"<<endl;
                 cout<<endl;
-                game->playCards.displayDeckCard();
+                game->getPlayCards().displayDeckCard();
                 cout << endl;
 
                 cout << "Pembagian Ability Card" << endl;
                 for(int i = 0; i < 7 ; i++){
-                    AbilityCard* temp = game->abilityCardList.takeCard();
-                    game->players.addAbilityCard(i, *temp);
-                    cout << "Pemain " << game->players.getPlayer(i).getName() << " mendapatkan kartu ability: ";
-                    game->players.getPlayer(i).getAbilityCard().printInfo();
-                    // game->manipulate<AbilityCard&>(game->players.getPlayer(i).getAbilityCard());
+                    AbilityCard* temp = game->getAbilityCardList().takeCard();
+                    game->getPlayers().addAbilityCard(i, *temp);
+                    cout << "Pemain " << game->getPlayers().getPlayer(i).getName() << " mendapatkan kartu ability: ";
+                    game->getPlayers().getPlayer(i).getAbilityCard().printInfo();
+                    // game->manipulate<AbilityCard&>(game->getPlayers().getPlayer(i).getAbilityCard());
                 }
                 cout << endl;
             }
@@ -170,13 +172,13 @@ int main()
             if (round == 7)
             {
                 vector<Kombinasi> tempKombinasi;
-                tempKombinasi.push_back(Kombinasi(game->players.getPlayer(0).getCard(),game->playCards));
-                tempKombinasi.push_back(Kombinasi(game->players.getPlayer(1).getCard(),game->playCards));
-                tempKombinasi.push_back(Kombinasi(game->players.getPlayer(2).getCard(),game->playCards));
-                tempKombinasi.push_back(Kombinasi(game->players.getPlayer(3).getCard(),game->playCards));
-                tempKombinasi.push_back(Kombinasi(game->players.getPlayer(4).getCard(),game->playCards));
-                tempKombinasi.push_back(Kombinasi(game->players.getPlayer(5).getCard(),game->playCards));
-                tempKombinasi.push_back(Kombinasi(game->players.getPlayer(6).getCard(),game->playCards));
+                tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(0).getCard(),game->getPlayCards()));
+                tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(1).getCard(),game->getPlayCards()));
+                tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(2).getCard(),game->getPlayCards()));
+                tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(3).getCard(),game->getPlayCards()));
+                tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(4).getCard(),game->getPlayCards()));
+                tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(5).getCard(),game->getPlayCards()));
+                tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(6).getCard(),game->getPlayCards()));
 
                 double idx;
                 vector<double> temp;
@@ -200,19 +202,19 @@ int main()
                 }
                 cout<<tempKombinasi[idx].getCombinationName()<<endl;
                 cout<<"Menambahkan poin pada player "<<idx+1<<endl;
-                cout<<"Sebesar "<<game->point<<endl;
+                cout<<"Sebesar "<<game->getPoint()<<endl;
 
                 cout<<"Table Card List"<<endl;
-                game->playCards.displayDeckCard();
+                game->getPlayCards().displayDeckCard();
 
                 cout<<"Player Card :"<<endl;
                 for (int i = 0 ; i < 7 ; i++)
                 {
                     cout<<"Player "<<i+1<<endl;
-                    game->players.getPlayer(i).viewAllCard();
+                    game->getPlayers().getPlayer(i).viewAllCard();
                 }
-                long long tempPoin = game->players.getPlayer(idx).getPoint();
-                game->players.setPlayerPoint(idx,game->point + tempPoin);
+                long long tempPoin = game->getPlayers().getPlayer(idx).getPoint();
+                game->getPlayers().setPlayerPoint(idx,game->getPoint() + tempPoin);
             }
             round++;
             game->setRound(round);
@@ -222,7 +224,7 @@ int main()
             {
                 break;
             }
-            game->players.nextTurn();
+            game->getPlayers().nextTurn();
         }
     }
     return 0;
