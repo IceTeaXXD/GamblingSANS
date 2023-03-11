@@ -64,34 +64,41 @@ int main()
                     cin>>aksi;
                     //Implementasi poin disini
                     //pake getter dan setter poin yg di game manager
-                    if (game->isInputTrue(aksi, "next")){
-                        //Implementasi next
-                        input = true;
-                        cout << endl;
-                    }
-                    else if (game->isInputTrue(aksi, "double")){
-                        //Implementasi double
-                        game->setPoint(game->point*2);
-                        cout << game->players.getPlayer(0).getName() << " melakukan DOUBLE! Poin hadiah naik dari " << game->point/2 << " menjadi " << game->point  << "!" << endl;
-                        input = true;
-                    }
-                    else if (game->isInputTrue(aksi, "half")){
-                        //Implementasi half
-                        game->setPoint(game->point/2);
-                        if(game->point != 0){
-                            cout << game->players.getPlayer(0).getName() << " melakukan HALF! Poin hadiah turun dari " << game->point*2 << " menjadi " << game->point  << "!" << endl;
+                    if (game->isInputTrue(aksi)){
+                        if(aksi == "next"){
+                            /* Do Nothing */
+                        }else if(aksi == "double"){
+                            game->setPoint(game->point*2);
+                            cout << game->players.getPlayer(0).getName() << " melakukan DOUBLE! Poin hadiah naik dari " << game->point/2 << " menjadi " << game->point  << "!" << endl;
+                        }else if(aksi == "half"){
+                            game->setPoint(game->point/2);
+                            if(game->point != 0){
+                                cout << game->players.getPlayer(0).getName() << " melakukan HALF! Poin hadiah turun dari " << game->point*2 << " menjadi " << game->point  << "!" << endl;
+                            }else{
+                                cout << "Nothing happened" << endl;
+                                game->setPoint(1);
+                            }
+                        }else if(aksi == "help"){
+                            cout << "Berikut adalah beberapa perintah: " << endl;
+                            cout << "1. Next"<< endl;
+                            cout << "2. Double"<< endl;
+                            cout << "3. Half"<< endl;
+                            cout << "4. Quadruple" << endl;
+                            cout << "5. Quarter" << endl;
+                            cout << "6. Reroll" << endl;
+                            cout << "7. Reverse "<< endl;
+                            cout << "8. Switch" << endl;
+                            cout << "9. Swap" << endl;
+                            cout << "10. Help" << endl;
+                            input = true;
                         }else{
-                            cout << "Nothing happened" << endl;
-                            game->setPoint(1);
+                            if(!game->players.getPlayer(0).isabilityCardEmpty()){
+                                game->manipulate<AbilityCard&>(game->players.getPlayer(0).getAbilityCard());
+                            }else{
+                                cout << "Anda belum memiliki kartu ability" << endl;
+                            }
                         }
                         input = true;
-                    }else if(game->isInputTrue(aksi, "help")){
-                        cout << "Berikut adalah beberapa perintah: " << endl;
-                        cout << "1. Next"<< endl;
-                        cout << "2. Double"<< endl;
-                        cout << "3. Half"<< endl;
-                        cout << "4. Quadruple" << endl;
-                        cout << "..." << endl;
                     }else{
                         throw "Input Anda salah, silakan ulangi!\n";
                     }
@@ -120,7 +127,7 @@ int main()
                 game->players.addAbilityCard(i, *temp);
                 cout << "Pemain " << game->players.getPlayer(i).getName() << " mendapatkan kartu ability: ";
                 game->players.getPlayer(i).getAbilityCard().printInfo();
-                game->manipulate<AbilityCard&>(game->players.getPlayer(i).getAbilityCard());
+                // game->manipulate<AbilityCard&>(game->players.getPlayer(i).getAbilityCard());
             }
             cout << endl;
         }
