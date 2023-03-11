@@ -10,12 +10,14 @@ Player::Player()
     this->countofPlayerCards = 0;
     countOfPlayers++;
     this->id = countOfPlayers;
+    this->hasAbility = false;
 }
 
 Player::Player(string nom):name(nom), point(0), countofPlayerCards(0), countofTableCard(0)
 { 
     countOfPlayers++; 
     this->id = countOfPlayers;
+    this->hasAbility = false;
 }
 
 Player::~Player()
@@ -89,3 +91,9 @@ void Player::clearCards(){
 bool Player::isabilityCardEmpty(){
     return (this->abilityCards == NULL);
 }
+
+void Player::setHasAbility(bool s){
+    this->hasAbility = s;
+}
+
+bool Player::getHasAbility(){ return this->hasAbility; }

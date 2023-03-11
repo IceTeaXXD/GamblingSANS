@@ -17,6 +17,7 @@ class Player{
         int id;
         string name;
         int point;
+        bool hasAbility;
 
         /* Player Cards */
         CardCollection<DeckCard> playerCard;
@@ -51,6 +52,8 @@ class Player{
         bool operator==(Player&);
         void clearCards();
         bool isabilityCardEmpty();
+        void setHasAbility(bool s);
+        bool getHasAbility();
         /* Value yang digunakan untuk mencari nilai high card
             dari kartu yang dimiliki seorang player */
 };
