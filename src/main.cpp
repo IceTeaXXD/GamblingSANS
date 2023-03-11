@@ -27,7 +27,7 @@ int main()
         cout << "ROUND " << round << endl;
             // for each player give 2 cards from table cards
 
-        if(round < 6 && round > 1){
+        if(round < 7 && round > 1){
             DeckCard temp = game->tableCards.takeCard();
             game->playCards+temp;
             cout<<"Kartu "<<temp.getNum()<<" "<<temp.translateToString()<<" telah ditambahkan di meja"<<endl;
@@ -97,6 +97,7 @@ int main()
                     cout << "Error: " << err << endl;
                 }
             }
+            cout << endl;
             game->players.nextTurn();
         }
 
@@ -123,7 +124,7 @@ int main()
         }
 
         /* TOLONG CEK DI SINI*/ 
-        if (round == 6)
+        if (round == 7)
         {
             vector<Kombinasi> tempKombinasi;
             tempKombinasi.push_back(Kombinasi(game->players.getPlayer(0).getCard(),game->playCards));
@@ -173,7 +174,7 @@ int main()
         round++;
         // Ubah Turn
 
-        if (round > 6)
+        if (round > 7)
         {
             break;
         }
