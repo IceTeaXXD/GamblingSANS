@@ -77,15 +77,15 @@ int main()
     DeckCard k13 = DeckCard(2,13);
     table.addCard(m1);
     table.addCard(m2);
-    table.addCard(k3);
-    table.addCard(m4);
-    table.addCard(h5);
+    table.addCard(k2);
+    table.addCard(m3);
+    table.addCard(h3);
 
-    p1.addCard(m1);
+    p1.addCard(m13);
     p1.addCard(m7);
 
-    p2.addCard(b2);
-    p2.addCard(h1);
+    p2.addCard(b4);
+    p2.addCard(h5);
 
     p3.addCard(h1);
     p3.addCard(h4);
