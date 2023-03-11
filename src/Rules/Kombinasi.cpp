@@ -51,6 +51,88 @@ void Kombinasi::setCards(CardCollection<DeckCard> playerCards, CardCollection<De
     }
 }
 
+double Kombinasi::tableValue(){
+    double val;
+    if (isTableCardStraightFlush())
+    {
+        val = MAX_FOUR_KIND;
+        for (DeckCard i : arrTableCardCombination)
+        {
+            val += i.value();
+        }
+        return val;
+    }
+    else if (isTableCardFourAKind())
+    {
+        val = MAX_FULL_HOUSE;
+        for (DeckCard i : arrTableCardCombination)
+        {
+            val += i.value();
+        }
+        return val;
+    }
+    else if (isTableCardFullHouse())
+    {
+        val = MAX_FLUSH;
+        for (DeckCard i : arrTableCardCombination)
+        {
+            val += i.value();
+        }
+        return val;
+    }
+    else if (isTableCardFlush())
+    {
+        val = MAX_STRAIGHT;
+        for (DeckCard i : arrTableCardCombination)
+        {
+            val += i.value();
+        }
+        return val;
+    }
+    else if (isTableCardStraight())
+    {
+        val = MAX_THREE_KIND;
+        for (DeckCard i : arrTableCardCombination)
+        {
+            val += i.value();
+        }
+        return val;
+    }
+    else if (isTableCardThreeOfKind())
+    {
+        val = MAX_TWO_PAIR;
+        for (DeckCard i : arrTableCardCombination)
+        {
+            val += i.value();
+        }
+        return val;
+    }
+    else if (isTableCardTwoPair())
+    {
+        val = MAX_PAIR;
+        for (DeckCard i : arrTableCardCombination)
+        {
+            val += i.value();
+        }
+        return val;
+    }
+    else if (isTableCardPair())
+    {
+        val = MAX_HIGH_CARD;
+        for (DeckCard i : arrTableCardCombination)
+        {
+            val += i.value();
+        }
+        return val;
+    }
+    else
+    {
+        val = max_element(arr.begin()+2, arr.end(), compareValue)->value();
+        return val;
+    }
+
+}
+
 double Kombinasi::value(){
     /* Ini kayaknya mending terima satu kartu terus tentuin valuenya berapa */
     /*double temp = 
@@ -61,55 +143,356 @@ double Kombinasi::value(){
     }
     return temp;
     */
-   cout<<"SIG"<<endl;
-   double val;
-   if (isStraightFlush() && !isTableCardStraightFlush())
-   {
+    cout<<"SIG"<<endl;
+    double val;
+    double tableVal = tableValue();
+    if (isStraightFlush())
+    {
         val = MAX_FOUR_KIND;
         for (DeckCard i : arrStraightFlush)
         {
             val += i.value();
         }
-        return val;
-   }
-   else if (isFourAKind())
-   {
+        if (val != tableVal)
+        {
+            return val;
+        }
+        else
+        {
+            if (isFourAKind())
+            {
+                val = MAX_FULL_HOUSE;
+                for (DeckCard i : arrFourAKind)
+                {
+                    val += i.value();
+                }
+                return val;
+            }
+            else if (isFullHouse())
+            {
+                val = MAX_FLUSH;
+                for (DeckCard i : arrFullHouse)
+                {
+                    val += i.value();
+                }
+                return val;
+            }
+            else if (isFlush())
+            {
+                val = MAX_STRAIGHT;
+                for (DeckCard i : arrFlush)
+                {
+                    val += i.value();
+                }
+                return val;
+            }
+            else if (isStraight())
+            {
+                val = MAX_THREE_KIND;
+                for (DeckCard i : arrStraight)
+                {
+                    val += i.value();
+                }
+                return val;
+            }
+            else if (isThreeOfKind())
+            {
+                val = MAX_TWO_PAIR;
+                cout<<arrThreeOfKind.size()<<endl;
+                for (auto i : arrThreeOfKind)
+                {
+                    cout<<"HELO"<<endl;
+                    i.printInfo();
+                    val += i.value();
+                }
+                cout<<"tolol";
+                return val;
+            }
+            else if (isTwoPair())
+            {
+                val = MAX_PAIR;
+                for (DeckCard i : arrTwoPair)
+                {
+                    val += i.value();
+                }
+                return val;
+            }
+            else if (isPair())
+            {
+                val = MAX_HIGH_CARD;
+                for (DeckCard i : arrPair)
+                {
+                    val += i.value();
+                }
+                return val;
+            }
+            else
+            {
+                val = max_element(arr.begin(), arr.end(), compareValue)->value();
+                return val;
+            }
+        }
+    }
+    else if (isFourAKind())
+    {      
         val = MAX_FULL_HOUSE;
         for (DeckCard i : arrFourAKind)
         {
             val += i.value();
         }
-        return val;
-   }
-   else if (isFullHouse())
-   {
+        if (val != tableVal)
+        {
+            return val;
+        }
+        else
+        {
+            if (isFullHouse())
+            {
+                val = MAX_FLUSH;
+                for (DeckCard i : arrFullHouse)
+                {
+                    val += i.value();
+                }
+                return val;
+            }
+            else if (isFlush())
+            {
+                val = MAX_STRAIGHT;
+                for (DeckCard i : arrFlush)
+                {
+                    val += i.value();
+                }
+                return val;
+            }
+            else if (isStraight())
+            {
+                val = MAX_THREE_KIND;
+                for (DeckCard i : arrStraight)
+                {
+                    val += i.value();
+                }
+                return val;
+            }
+            else if (isThreeOfKind())
+            {
+                val = MAX_TWO_PAIR;
+                cout<<arrThreeOfKind.size()<<endl;
+                for (auto i : arrThreeOfKind)
+                {
+                    cout<<"HELO"<<endl;
+                    i.printInfo();
+                    val += i.value();
+                }
+                cout<<"tolol";
+                return val;
+            }
+            else if (isTwoPair())
+            {
+                val = MAX_PAIR;
+                for (DeckCard i : arrTwoPair)
+                {
+                    val += i.value();
+                }
+                return val;
+            }
+            else if (isPair())
+            {
+                val = MAX_HIGH_CARD;
+                for (DeckCard i : arrPair)
+                {
+                    val += i.value();
+                }
+                return val;
+            }
+            else
+            {
+                val = max_element(arr.begin(), arr.end(), compareValue)->value();
+                return val;
+            }
+        }
+    }
+    else if (isFullHouse())
+    {
         val = MAX_FLUSH;
         for (DeckCard i : arrFullHouse)
         {
             val += i.value();
         }
-        return val;
-   }
-   else if (isFlush())
-   {
+        if (val != tableVal)
+        {
+            return val;
+        }
+        else
+        {
+            if (isFlush())
+            {
+                val = MAX_STRAIGHT;
+                for (DeckCard i : arrFlush)
+                {
+                    val += i.value();
+                }
+                return val;
+            }
+            else if (isStraight())
+            {
+                val = MAX_THREE_KIND;
+                for (DeckCard i : arrStraight)
+                {
+                    val += i.value();
+                }
+                return val;
+            }
+            else if (isThreeOfKind())
+            {
+                val = MAX_TWO_PAIR;
+                cout<<arrThreeOfKind.size()<<endl;
+                for (auto i : arrThreeOfKind)
+                {
+                    cout<<"HELO"<<endl;
+                    i.printInfo();
+                    val += i.value();
+                }
+                cout<<"tolol";
+                return val;
+            }
+            else if (isTwoPair())
+            {
+                val = MAX_PAIR;
+                for (DeckCard i : arrTwoPair)
+                {
+                    val += i.value();
+                }
+                return val;
+            }
+            else if (isPair())
+            {
+                val = MAX_HIGH_CARD;
+                for (DeckCard i : arrPair)
+                {
+                    val += i.value();
+                }
+                return val;
+            }
+            else
+            {
+                val = max_element(arr.begin(), arr.end(), compareValue)->value();
+                return val;
+            }
+        }
+    }
+    else if (isFlush())
+    {
         val = MAX_STRAIGHT;
         for (DeckCard i : arrFlush)
         {
             val += i.value();
         }
-        return val;
-   }
-   else if (isStraight())
-   {
+        if (val != tableVal)
+        {
+            return val;
+        }
+        else
+        {
+            if (isStraight())
+            {
+                val = MAX_THREE_KIND;
+                for (DeckCard i : arrStraight)
+                {
+                    val += i.value();
+                }
+                return val;
+            }
+            else if (isThreeOfKind())
+            {
+                val = MAX_TWO_PAIR;
+                cout<<arrThreeOfKind.size()<<endl;
+                for (auto i : arrThreeOfKind)
+                {
+                    cout<<"HELO"<<endl;
+                    i.printInfo();
+                    val += i.value();
+                }
+                cout<<"tolol";
+                return val;
+            }
+            else if (isTwoPair())
+            {
+                val = MAX_PAIR;
+                for (DeckCard i : arrTwoPair)
+                {
+                    val += i.value();
+                }
+                return val;
+            }
+            else if (isPair())
+            {
+                val = MAX_HIGH_CARD;
+                for (DeckCard i : arrPair)
+                {
+                    val += i.value();
+                }
+                return val;
+            }
+            else
+            {
+                val = max_element(arr.begin(), arr.end(), compareValue)->value();
+                return val;
+            }
+        }
+    }
+    else if (isStraight())
+    {
         val = MAX_THREE_KIND;
         for (DeckCard i : arrStraight)
         {
             val += i.value();
         }
-        return val;
-   }
-   else if (isThreeOfKind())
-   {
+        if (val != tableVal)
+        {
+            return val;
+        }
+        else
+        {
+            if (isThreeOfKind())
+            {
+                val = MAX_TWO_PAIR;
+                cout<<arrThreeOfKind.size()<<endl;
+                for (auto i : arrThreeOfKind)
+                {
+                    cout<<"HELO"<<endl;
+                    i.printInfo();
+                    val += i.value();
+                }
+                cout<<"tolol";
+                return val;
+            }
+            else if (isTwoPair())
+            {
+                val = MAX_PAIR;
+                for (DeckCard i : arrTwoPair)
+                {
+                    val += i.value();
+                }
+                return val;
+            }
+            else if (isPair())
+            {
+                val = MAX_HIGH_CARD;
+                for (DeckCard i : arrPair)
+                {
+                    val += i.value();
+                }
+                return val;
+            }
+            else
+            {
+                val = max_element(arr.begin(), arr.end(), compareValue)->value();
+                return val;
+            }
+        }
+    }
+    else if (isThreeOfKind())
+    {
         val = MAX_TWO_PAIR;
         cout<<arrThreeOfKind.size()<<endl;
         for (auto i : arrThreeOfKind)
@@ -119,31 +502,94 @@ double Kombinasi::value(){
             val += i.value();
         }
         cout<<"tolol";
-        return val;
-   }
-   else if (isTwoPair())
-   {
+        if (val != tableVal)
+        {
+            return val;
+        }
+        else
+        {
+            if (isTwoPair())
+            {
+                val = MAX_PAIR;
+                for (DeckCard i : arrTwoPair)
+                {
+                    val += i.value();
+                }
+                return val;
+            }
+            else if (isPair())
+            {
+                val = MAX_HIGH_CARD;
+                for (DeckCard i : arrPair)
+                {
+                    val += i.value();
+                }
+                return val;
+            }
+            else
+            {
+                val = max_element(arr.begin(), arr.end(), compareValue)->value();
+                return val;
+            }
+        }
+    }
+    else if (isTwoPair())
+    {
         val = MAX_PAIR;
         for (DeckCard i : arrTwoPair)
         {
             val += i.value();
         }
-        return val;
-   }
-   else if (isPair())
-   {
+        if (val != tableVal)
+        {
+            return val;
+        }
+        else
+        {
+            if (isPair())
+            {
+                val = MAX_HIGH_CARD;
+                for (DeckCard i : arrPair)
+                {
+                    val += i.value();
+                }
+                return val;
+            }
+            else
+            {
+                val = max_element(arr.begin(), arr.end(), compareValue)->value();
+                return val;
+            }
+        }
+    }
+    else if (isPair())
+    {
         val = MAX_HIGH_CARD;
         for (DeckCard i : arrPair)
         {
             val += i.value();
         }
-        return val;
-   }
-   else
-   {
+        if (val != tableVal)
+        {
+            return val;
+        }
+        else
+        {
+            return max_element(arr.begin(), arr.end(), compareValue)->value();   
+        }
+    }
+    else
+    {
         val = max_element(arr.begin(), arr.end(), compareValue)->value();
-        return val;
-   }
+        if (val != tableVal)
+        {
+            return val;
+        }   
+        else
+        {
+            return max_element(arr.begin(), arr.begin()+1, compareValue)->value();
+        }
+    }
 }
 
 /* Belum dikerjain */
@@ -261,6 +707,8 @@ bool Kombinasi::isTableCardPair()
     {
         if(tempArr[i]==tempArr[i-1])
         {
+            arrTableCardCombination.push_back(tempArr[i]);
+            arrTableCardCombination.push_back(tempArr[i-1]);
             return true;
         }
     }
@@ -339,6 +787,10 @@ bool Kombinasi::isTableCardTwoPair()
             {
                 if (!(tempArr[j]==tempArr[i]) && (tempArr[j]==tempArr[j-1]))
                 {
+                    arrTableCardCombination.push_back(tempArr[i]);
+                    arrTableCardCombination.push_back(tempArr[i-1]);
+                    arrTableCardCombination.push_back(tempArr[j]);
+                    arrTableCardCombination.push_back(tempArr[j-1]);
                     return true;
                 }
             }
@@ -393,6 +845,9 @@ bool Kombinasi::isTableCardThreeOfKind(){
     {
         if (tempArr[i]==tempArr[i-2])
         {
+            arrTableCardCombination.push_back(tempArr[i]);
+            arrTableCardCombination.push_back(tempArr[i-1]);
+            arrTableCardCombination.push_back(tempArr[i-2]);
             return true;
         }
     }
@@ -414,7 +869,7 @@ bool Kombinasi::isFourAKind(){
             }
             if(count_same == 4){
                 for(int k = 0; k < 4 ; k++){
-                    arrThreeOfKind.push_back(temp[k]);
+                    arrFourAKind.push_back(temp[k]);
                 }
                 return true;
             }
@@ -436,16 +891,20 @@ bool Kombinasi::isTableCardFourAKind(){
     vector<DeckCard> tempArr(first, last);
     for(int i = 0; i < tempArr.size() ; i++){
         int temp_num = tempArr[i].getNum();
+        vector<DeckCard> temp;
+        temp.push_back(tempArr[i]);
         int count_same = 1;
         for (int j = i+1; j < tempArr.size(); j++){
             if(temp_num == tempArr[j].getNum()){
                 count_same++;
             }
             if(count_same == 4){
+                for(int k = 0; k < 4 ; k++){
+                    arrTableCardCombination.push_back(temp[k]);
+                }
                 return true;
             }
         }
-
         if(count_same != 4){
             count_same = 0;
         }
@@ -455,38 +914,7 @@ bool Kombinasi::isTableCardFourAKind(){
 
 }
 
-// bool Kombinasi::isStraight(){
-//     vector<DeckCard> tempArr = arr;
-//     bool straight = false;
-//     sort(tempArr.begin(), tempArr.end(), compareAngka);
-//     for (int i = tempArr.size()-1; i>3; i--)
-//     {
-//         if (tempArr[i].getNum()-tempArr[i-4].getNum()==4)
-//         {
-//             int temp = tempArr[i-4].getNum()-1;
-//             for(int j = i-4; j<i+1; j++)
-//             {
-//                 if ((tempArr[j].getNum()-temp)==1)
-//                 {
-//                     temp = tempArr[j].getNum();
-//                     this->arrStraight.push_back(tempArr[j]);
-//                     straight = true;
-//                 }
-//                 else
-//                 {
-//                     this->arrStraight.clear();
-//                     straight = false;
-//                     break;
-//                 }
-//             }
-//             if (straight)
-//             {
-//                 return true;
-//             }
-//         }
-//     }
-//     return false;
-// }
+
 
 bool Kombinasi::isStraight(){
     vector<DeckCard> tempArr = arr;
@@ -546,10 +974,12 @@ bool Kombinasi::isTableCardStraight(){
             
             if (itr != arrAngka.end())
             {   
+                this->arrStraight.push_back(tempArr[itr-arrAngka.begin()]);
                 straight = true;
             }
             else
             {
+                this->arrStraight.clear();
                 straight = false;
                 break;
             }
@@ -587,6 +1017,9 @@ bool Kombinasi::isTableCardFlush(){
     {
         if (tempArr[i].getType()==tempArr[i-4].getType())
         {
+            for (int j = i-4; j < i+1; j++){
+                this->arrFlush.push_back(tempArr[i]);
+            }
             return true;
         }
     }
@@ -653,10 +1086,12 @@ bool Kombinasi::isTableCardStraightFlush(){
             
             if (itr != arrAngka.end() && tempArr[itr-arrAngka.begin()].getType() == tempWarna)
             {   
+                this->arrStraightFlush.push_back(tempArr[itr-arrAngka.begin()]);
                 straight = true;
             }
             else
             {
+                this->arrStraightFlush.clear();
                 straight = false;
                 break;
             }
@@ -740,9 +1175,14 @@ bool Kombinasi::isTableCardFullHouse(){
                 {
                     if (!(tempArr[i]==tempThreeKind[0]))
                     {
+                        this->arrTableCardCombination.push_back(tempArr[i]);
+                        this->arrTableCardCombination.push_back(tempArr[j]);
+                        for (auto card : tempThreeKind)
+                        {
+                            this->arrTableCardCombination.push_back(card);
+                        }
                         return true;
                     }
-
                 }
             }
         }

@@ -22,6 +22,8 @@ class Kombinasi : protected FindValue{
         vector<DeckCard> arrFourAKind;
         vector<DeckCard> arrStraightFlush;
 
+        vector<DeckCard> arrTableCardCombination;
+
         const double MAX_HIGH_CARD = 1.31;
         const double MAX_PAIR = MAX_HIGH_CARD + 1.31 + 1.301;
         const double MAX_TWO_PAIR = MAX_PAIR + 1.31 + 1.3101 + 1.3001 + 1.3;
@@ -43,6 +45,7 @@ class Kombinasi : protected FindValue{
 
         /* Nentuin value kartu untuk kombinasi */
         double value();
+        double tableValue();
         string getCombinationName();
 
         /* Bruteforcing untuk Kombinasi Kartu */
