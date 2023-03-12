@@ -101,6 +101,10 @@ int main()
         string makeCardMethod;
         string fileName;
         cin >> makeCardMethod;
+        for(int i = 0; i < makeCardMethod.length(); i++)
+        {
+            makeCardMethod[i] =  tolower(makeCardMethod[i]);
+        }
         CandyGameManager* game;
         if(makeCardMethod == "auto"){
             game = new CandyGameManager();
@@ -113,7 +117,7 @@ int main()
             cout << "ROUND " << game->getRound() << endl;
                 // for each player give 2 cards from table cards
 
-            if(game->getRound() < 7 && game->getRound() > 1){
+            if(game->getRound() < 6 && game->getRound() > 1){
                 DeckCard temp;
                 game->getTableCards()-temp;
                 game->getPlayCards()+temp;
@@ -134,14 +138,14 @@ int main()
                     cout<<"Kamu dapat kartu "<<temp1.getNum()<<" "<<temp1.translateToString()<<endl;
                     cout<<"Kamu dapat kartu "<<temp2.getNum()<<" "<<temp2.translateToString()<<endl;
                     //Mulai aksi player                
-                    game->getPlayers().getPlayer(0).viewAllCard();
+                    // game->getPlayers().getPlayer(0).viewAllCard();
                     cout<<endl;
                 }
 
                 bool input = false;
                 while(!input){
                     try{
-                        cout<<"Tentukan aksi anda: "<<endl;
+                        cout<<"Tentukan aksi anda: (Point hadiah: " << game->getPoint() << ")"<<endl;
                         cout<<"1. Next"<<endl;
                         cout<<"2. Double"<<endl;
                         cout<<"3. Half"<<endl;
@@ -155,9 +159,11 @@ int main()
                         if (game->isInputTrue(aksi)){
                             if(aksi == "next"){
                                 /* Do Nothing */
+                                input = true;
                             }else if(aksi == "double" || aksi == "2"){
                                 game->setPoint(game->getPoint()*2);
                                 cout << game->getPlayers().getPlayer(0).getName() << " melakukan DOUBLE! Poin hadiah naik dari " << game->getPoint()/2 << " menjadi " << game->getPoint()  << "!" << endl;
+                                input = true;
                             }else if(aksi == "half"){
                                 game->setPoint(game->getPoint()/2);
                                 if(game->getPoint() != 0){
@@ -166,6 +172,11 @@ int main()
                                     cout << "Nothing happened" << endl;
                                     game->setPoint(1);
                                 }
+                                input = true;
+                            }else if(aksi == "viewcards"){
+                                game->getPlayers().getPlayer(0).viewAllCard();
+                                cout << endl;
+                                input == false;
                             }else if(aksi == "help"){
                                 cout << "Berikut adalah beberapa perintah: " << endl;
                                 cout << "1. Next"<< endl;
@@ -178,18 +189,21 @@ int main()
                                 cout << "8. Switch" << endl;
                                 cout << "9. Swap" << endl;
                                 cout << "10. Help" << endl;
+                                cout << "11. ViewCards" << endl;
+                                cout << endl;
                             }else{
-                                if(aksi == game->getPlayers().getPlayer(0).getAbilityCard().getType()){
-                                    if(!game->getPlayers().getPlayer(0).isabilityCardEmpty()){
+                                if(game->getPlayers().getPlayer(0).getHasAbility()){
+                                    if(aksi == game->getPlayers().getPlayer(0).getAbilityCard().getType()){
                                         game->manipulate<AbilityCard&>(game->getPlayers().getPlayer(0).getAbilityCard());
                                     }else{
-                                        cout << "Anda belum memiliki kartu ability" << endl;
+                                        cout << "Anda tidak memiliki kartu ability ini" << endl;
                                     }
+                                    input = true;
                                 }else{
-                                    throw "Anda tidak memiliki kartu ini!\n";
+                                    throw "Anda belum memiliki kartu ability!\n";
                                 }
+                                input = true;
                             }
-                            input = true;
                         }else{
                             throw "Input Anda salah, silakan ulangi!\n";
                         }
@@ -215,13 +229,13 @@ int main()
                 game->getPlayCards().displayDeckCard();
                 cout << endl;
 
-                cout << "Pembagian Ability Card" << endl;
+                cout << "Pembagian Ability Card sudah dilakukan! :D" << endl;
                 for(int i = 0; i < 7 ; i++){
                     AbilityCard* temp;
                     game->getAbilityCardList()-temp;
                     game->getPlayers().addAbilityCard(i, *temp);
-                    cout << "Pemain " << game->getPlayers().getPlayer(i).getName() << " mendapatkan kartu ability: ";
-                    game->getPlayers().getPlayer(i).getAbilityCard().printInfo();
+                    // cout << "Pemain " << game->getPlayers().getPlayer(i).getName() << " mendapatkan kartu ability: ";
+                    // game->getPlayers().getPlayer(i).getAbilityCard().printInfo();
                     // game->manipulate<AbilityCard&>(game->getPlayers().getPlayer(i).getAbilityCard());
                 }
                 cout << endl;
@@ -293,7 +307,7 @@ int main()
                 cout<<"Player Card :"<<endl;
                 for (int i = 0 ; i < 7 ; i++)
                 {
-                    cout<<"Player "<<i+1<<endl;
+                    cout<<"Player "<<game->getPlayers().getPlayerAddress(i)->getName()<<endl;
                     game->getPlayers().getPlayer(i).viewAllCard();
                 }
 
@@ -335,6 +349,10 @@ int main()
 
                     cout << "Masukkan metode pembuatan kartu (auto/file): " << endl;
                     cin >> makeCardMethod;
+                    for(int i = 0; i < makeCardMethod.length(); i++)
+                    {
+                        makeCardMethod[i] =  tolower(makeCardMethod[i]);
+                    }
                     if(makeCardMethod == "auto"){
                         game->makeTableCards();
                     }else{

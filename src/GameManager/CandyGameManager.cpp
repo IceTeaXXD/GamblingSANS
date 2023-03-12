@@ -50,6 +50,7 @@ void CandyGameManager::reset()
     setPoint(64);
     for(int i = 0; i < 7;i++){
         players->clearCard(i);
+        players->getPlayerAddress(i)->setHasAbility(false);
     }
 }
 
