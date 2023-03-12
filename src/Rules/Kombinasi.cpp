@@ -984,8 +984,6 @@ bool Kombinasi::isStraight(){
 
                 this->arrCombination.push_back(tempArr[itr-arrAngka.begin()]);
                 count++;
-                tempArr[itr-arrAngka.begin()].printInfo();
-                cout << count << endl;
                 break;
                 itr = find(itr+1, arrAngka.end(), j);
             }
@@ -995,7 +993,6 @@ bool Kombinasi::isStraight(){
             return true;
         }
         arrCombination.clear();
-        cout << "--------------------------------------\n";
 
     }
     return false;
@@ -1065,13 +1062,10 @@ bool Kombinasi::isFlush(){
         arrTableCardCombination.clear();
         for (int i = tempPlayerCard.size()-1; i>-1; i--)
         {
-            for (int j = arrCombination.size(); j > -1; j--)
+            if (tempPlayerCard[i].getType() == arrCombination[0].getType())
             {
-                if (tempPlayerCard[i].getType() == arrCombination[j].getType())
-                {
-                    arrCombination[j] = tempPlayerCard[i];
-                    return true;
-                }
+                arrCombination[0] = tempPlayerCard[i];
+                return true;
             }
         }
         return false;
