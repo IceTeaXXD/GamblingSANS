@@ -37,7 +37,6 @@ int main()
             cout<<"Masukan tidak valid, silahkan ulangi."<<endl;
         }
     }
-    cout<<inputGame<<endl;
     if (inputGame == "1")
     {
         //List Of Player
@@ -96,7 +95,11 @@ int main()
     }
     else
     {
-        cout << "Masukkan metode pembuatan kartu (auto/file): " << endl;
+        cout << "\033[2J\033[1;1H" << endl;
+        cout << "====================" << endl;
+        cout << " GAME: KARTU PERMEN " << endl;
+        cout << "====================" << endl;
+        cout << "Masukkan metode pembuatan kartu (auto/file):" << endl;
         cout << ">> ";
         string makeCardMethod;
         string fileName;
@@ -109,10 +112,12 @@ int main()
         if(makeCardMethod == "auto"){
             game = new CandyGameManager();
         }else{
+            cout << "Masukkan nama file: ";
             cin >> fileName;
             game = new CandyGameManager(fileName);
         }
         game->setRound(1);
+        cout << "\033[2J\033[1;1H" << endl;
         while(true){
             cout << "ROUND " << game->getRound() << endl;
                 // for each player give 2 cards from table cards
@@ -325,15 +330,21 @@ int main()
                     string option;
                     cout << "Ulang permainan? (Y/N)" << endl;
                     cin>>option;
+                    cout << "\033[2J\033[1;1H" << endl;
                     if(option=="Y"){
                         /* reset */
                         delete game;
+                        cout << "Masukkan metode pembuatan kartu (auto/file):\n>> ";
+                        cin >> makeCardMethod;
                         if(makeCardMethod == "auto"){
                             game = new CandyGameManager();
                         }else{
+                            cout << "Masukkan nama file: ";
+                            cin >> fileName;
                             game = new CandyGameManager(fileName);
                         }
                         game->setRound(1);
+                        cout << "\033[2J\033[1;1H" << endl;
                     }else{
                         delete game;
                         break;
@@ -347,7 +358,7 @@ int main()
                     
                     game->makeAbilityCards();
 
-                    cout << "Masukkan metode pembuatan kartu (auto/file): " << endl;
+                    cout << "Masukkan metode pembuatan kartu (auto/file):\n>> ";
                     cin >> makeCardMethod;
                     for(int i = 0; i < makeCardMethod.length(); i++)
                     {
@@ -356,10 +367,11 @@ int main()
                     if(makeCardMethod == "auto"){
                         game->makeTableCards();
                     }else{
+                        cout << "Masukkan nama file: ";
                         cin >> fileName;
                         game->makeTableCards(fileName);
                     }
-
+                    cout << "\033[2J\033[1;1H" << endl;
                 }
             }
         }
