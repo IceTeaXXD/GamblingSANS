@@ -23,6 +23,12 @@ class CandyGameManager : public GameManager
         CardCollection<DeckCard>& getPlayCards();
         CardCollection<AbilityCard*>& getAbilityCardList();
 
+        void makeAbilityCards();
+
+        void leaderboard();
+        bool existWinner();
+        void reset();
+
         /*Manipulasi*/
         template<class T>
         void manipulate(T);

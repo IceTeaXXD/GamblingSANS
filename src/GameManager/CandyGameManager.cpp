@@ -3,10 +3,12 @@
 CandyGameManager::CandyGameManager()
 {
     abilityCardList.MakeDeck();
+    players = new ArrOfPlayer(7);
 }
 CandyGameManager::CandyGameManager(string f) : GameManager(f)
 {
     abilityCardList.MakeDeck();
+    players = new ArrOfPlayer(7);
 }
 
 CardCollection<AbilityCard*>& CandyGameManager::getAbilityCardList()
@@ -17,6 +19,45 @@ CardCollection<DeckCard>& CandyGameManager::getPlayCards()
 {
     return playCards;
 }
+
+void CandyGameManager::leaderboard(){
+    cout << "LEADERBOARD" << endl;
+    for (int i = 0; i < 7 ; i++){
+        cout << i+1;
+        cout << ". ";
+        cout << players->getPlayer(i).getName();
+        cout << ": ";
+        cout << players->getPlayer(i).getPoint() << endl;
+    }
+    cout << endl;
+}
+
+bool CandyGameManager::existWinner(){
+    for (int i = 0; i < 7 ; i++){
+        if(players->getPlayer(i).getPoint() >= 4294967296){
+            return true;
+        }
+    }
+    return false;
+}
+
+void CandyGameManager::reset()
+{
+    /* DELETE DECK, DELETE KARTU PER PLAYER, DELETE TABLE CARD, DELETE ABILITY CARD, ULANG DARI round 1 */
+    playCards.clear();
+    abilityCardList.clear();
+    tableCards.clear();
+    setPoint(64);
+    for(int i = 0; i < 7;i++){
+        players->clearCard(i);
+    }
+}
+
+void CandyGameManager::makeAbilityCards()
+{
+    abilityCardList.MakeDeck();
+}
+
 template<>
 void CandyGameManager::manipulate<REROLL&>(REROLL& C){
     if (C.isAvailable())
@@ -24,14 +65,16 @@ void CandyGameManager::manipulate<REROLL&>(REROLL& C){
         C.setNotAvailable();
 
         /* Kosongkan Kartu terlebih dahulu */
-        players.getPlayer(0).clearCards();
+        players->getPlayer(0).clearCards();
 
         /* Tambahin Kartu Baru */
-        players.getPlayer(0) + tableCards.takeCard();
+        DeckCard add;
+        tableCards-add;
+        players->getPlayer(0) + add;
 
         /* OUTPUT */
         cout<<"RE-ROLLED"<<endl;
-        players.getPlayer(0).viewAllCard();
+        players->getPlayer(0).viewAllCard();
     }
     else
     {
@@ -77,7 +120,7 @@ void CandyGameManager::manipulate<ReverseDirection&>(ReverseDirection& C){
         C.setNotAvailable();
 
         /* Reverse direction */
-        players.reverseTurn(this->round);
+        players->reverseTurn(this->round);
 
         /* OUTPUT */
         cout << "Direction berubah" << endl;
@@ -92,10 +135,10 @@ void CandyGameManager::manipulate<SwapCard&>(SwapCard& C){
     if (C.isAvailable()){
         C.setNotAvailable();
 
-        cout << players.getPlayer(0).getName() << " melakukan SWAPCARD." << endl;
+        cout << players->getPlayer(0).getName() << " melakukan SWAPCARD." << endl;
         cout << "Silahkan pilih pemain yang kartunya ingin anda tukar:" << endl;
         for (int i = 1; i < 7; i++){
-            cout << i << ". " << players.getPlayer(i).getName() << endl;
+            cout << i << ". " << players->getPlayer(i).getName() << endl;
         }
         int pilihan1;
         cout << ">> ";
@@ -103,19 +146,19 @@ void CandyGameManager::manipulate<SwapCard&>(SwapCard& C){
         cout << "Silahkan pilih pemain lain yang kartunya ingin anda tukar:" << endl;
         for (int i = 1; i < 7; i++){
             if (i != pilihan1){
-                cout << i << ". " << players.getPlayer(i).getName() << endl;
+                cout << i << ". " << players->getPlayer(i).getName() << endl;
             }
         }
         int pilihan2;
         cout << ">> ";
         cin >> pilihan2;
-        cout << "Silakan pilih kartu kanan/kiri " << players.getPlayer(pilihan1).getName() << ":" << endl;
+        cout << "Silakan pilih kartu kanan/kiri " << players->getPlayer(pilihan1).getName() << ":" << endl;
         cout << "1. Kanan" << endl;
         cout << "2. Kiri" << endl;
         int pilihan3;
         cout << ">> ";
         cin >> pilihan3;
-        cout << "Silakan pilih kartu kanan/kiri " << players.getPlayer(pilihan2).getName() << ":" << endl;
+        cout << "Silakan pilih kartu kanan/kiri " << players->getPlayer(pilihan2).getName() << ":" << endl;
         cout << "1. Kanan" << endl;
         cout << "2. Kiri" << endl;
         int pilihan4;
@@ -123,31 +166,31 @@ void CandyGameManager::manipulate<SwapCard&>(SwapCard& C){
         cin >> pilihan4;
 
         // move to a temp card first
-        DeckCard p1Left = players.getPlayer(pilihan1).getCard().getLeftCard();
-        DeckCard p1Right = players.getPlayer(pilihan1).getCard().getRightCard();
-        DeckCard p2Left = players.getPlayer(pilihan2).getCard().getLeftCard();
-        DeckCard p2Right = players.getPlayer(pilihan2).getCard().getRightCard();
+        DeckCard p1Left = players->getPlayer(pilihan1).getCard().getLeftCard();
+        DeckCard p1Right = players->getPlayer(pilihan1).getCard().getRightCard();
+        DeckCard p2Left = players->getPlayer(pilihan2).getCard().getLeftCard();
+        DeckCard p2Right = players->getPlayer(pilihan2).getCard().getRightCard();
         
         // swap the card and remove swappee card
         if (pilihan3 == 1){
             if (pilihan4 == 1){
-                players.setPlayerRightCard(pilihan1, p2Right);
-                players.setPlayerRightCard(pilihan2, p1Right);
+                players->setPlayerRightCard(pilihan1, p2Right);
+                players->setPlayerRightCard(pilihan2, p1Right);
             }
             else{
-                players.setPlayerRightCard(pilihan1, p2Left);
-                players.setPlayerLeftCard(pilihan2, p1Right);
+                players->setPlayerRightCard(pilihan1, p2Left);
+                players->setPlayerLeftCard(pilihan2, p1Right);
 
             }
         }
         else{
             if (pilihan4 == 1){
-                players.setPlayerLeftCard(pilihan1, p2Right);
-                players.setPlayerRightCard(pilihan2, p1Left);
+                players->setPlayerLeftCard(pilihan1, p2Right);
+                players->setPlayerRightCard(pilihan2, p1Left);
             }
             else{
-                players.setPlayerLeftCard(pilihan1, p2Left);
-                players.setPlayerLeftCard(pilihan2, p1Left);
+                players->setPlayerLeftCard(pilihan1, p2Left);
+                players->setPlayerLeftCard(pilihan2, p1Left);
             }
         }
         
@@ -166,7 +209,7 @@ void CandyGameManager::manipulate<Switch&>(Switch& C){
         C.setNotAvailable();
 
         /* Switch */
-        // players.switch();
+        // players->switch();
 
         /* OUTPUT */
         cout << "Switch" << endl;

@@ -14,6 +14,7 @@ class Warna{
         void setWarna(string);
         int getType();
         string translateToString();
+        string translateToType();
         Warna(int);
         Warna();
 };

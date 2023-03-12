@@ -20,13 +20,14 @@ class ArrOfPlayer {
         void reverseTurn(int);
         Player getPlayer(int);
         void changePlayerName(int, string);
-        void setPlayerPoint(int, int);
+        void setPlayerPoint(int, long long);
         void addPlayerCard(int, DeckCard&);
         void addAbilityCard(int, AbilityCard&);
         void clearCard(int i);
         void printDeque();
         void setPlayerLeftCard(int, DeckCard&);
         void setPlayerRightCard(int, DeckCard&);
+        Player* getPlayerAddress(int idx);
 };
 
 #endif

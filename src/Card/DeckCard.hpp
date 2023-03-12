@@ -21,6 +21,7 @@ class DeckCard : public Warna, public Angka{
         
 
         void printInfo();
+        void printType();
         double value();
         // Operator overloading
         bool operator>(DeckCard&);

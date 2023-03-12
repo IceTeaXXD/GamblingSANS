@@ -10,7 +10,6 @@ ArrOfPlayer::ArrOfPlayer(){
     }
     
 }
-
 ArrOfPlayer :: ArrOfPlayer(int n){
     string name;
     for (int i = 0; i < n; i++){
@@ -44,11 +43,16 @@ Player ArrOfPlayer::getPlayer(int idx){
     return this->arr[idx];
 }
 
+Player* ArrOfPlayer::getPlayerAddress(int idx)
+{
+    return &this->arr[idx];
+}
+
 void ArrOfPlayer::changePlayerName(int idx, string name){
     this->arr[idx].setName(name);
 }
 
-void ArrOfPlayer::setPlayerPoint(int idx, int point){
+void ArrOfPlayer::setPlayerPoint(int idx, long long point){
     this->arr[idx].setPoint(point);
 }
 

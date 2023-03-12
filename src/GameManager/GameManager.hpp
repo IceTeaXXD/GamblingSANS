@@ -24,7 +24,7 @@ class GameManager{
     protected:
         int round;
         /* Vector of Players */
-        ArrOfPlayer players;
+        ArrOfPlayer* players;
         /* Card Deck */
         CardCollection<DeckCard> tableCards;
         static int numOfTableCards;
@@ -35,6 +35,7 @@ class GameManager{
         int getRound();
         /* Inisiator Game */
         GameManager();
+        GameManager(int);
         /* Bikin deck card dari file */
         GameManager(string);
         ~GameManager();
@@ -48,6 +49,9 @@ class GameManager{
         void displayPlayer();
         DeckCard* getCard();
         bool isInputTrue(string);
+
+        void makeTableCards();
+        void makeTableCards(string);
 
         /* Manipulasi */
 

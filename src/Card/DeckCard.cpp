@@ -23,7 +23,10 @@ void DeckCard::printInfo()
 {
     cout<<this->getNum()<<" "<<this->translateToString()<<endl;
 }
-
+void DeckCard::printType()
+{
+    cout<<"["<<this->getNum()<<" "<<this->translateToType()<<"]";
+}
 double DeckCard::value()
 {
     double tempwarna;

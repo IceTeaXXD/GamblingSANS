@@ -2,7 +2,8 @@
 
 CapchaManager::CapchaManager()
 {
-    this->players = ArrOfPlayer(4);
+    // this->players = ArrOfPlayer(4);
+    players = new ArrOfPlayer(4);
 }
 
 CapchaManager::~CapchaManager()
@@ -16,13 +17,5 @@ void CapchaManager::setGiliran(int giliran)
         srand(time(NULL));
         int random = rand() % 4;
         this->giliran = random;
-    }
-}
-void CapchaManager::initDistribute(int id)
-{
-    for (int i = 0 ; i < 13 ; i++)
-    {
-        DeckCard card = Cards.CardCollection::getCard(0);
-        
     }
 }

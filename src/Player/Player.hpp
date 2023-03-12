@@ -16,7 +16,7 @@ class Player{
         /* Nama dari Pemain */
         int id;
         string name;
-        int point;
+        long long point;
         bool hasAbility;
 
         /* Player Cards */
@@ -36,8 +36,8 @@ class Player{
         string getName();
         void setName(string);
         int getID();
-        int getPoint();
-        void setPoint(int);
+        long long getPoint();
+        void setPoint(long long);
         static int countOfPlayers;
         int countofPlayerCards;
         int countofTableCard;
@@ -45,9 +45,10 @@ class Player{
         void operator+(AbilityCard&);
         void addTableCard(DeckCard&);
         void viewAllCard();
-        CardCollection<DeckCard>& getCard();
         void setLeftCard(DeckCard&);
         void setRightCard(DeckCard&);
+        void viewAllCardCapsa();
+        CardCollection<DeckCard> getCard();
         AbilityCard& getAbilityCard();
         bool operator<(Player&);
         bool operator>(Player&);

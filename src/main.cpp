@@ -3,8 +3,10 @@
 #include "Card/DeckCard.hpp"
 #include "GameManager/GameManager.hpp"
 #include "GameManager/CandyGameManager.hpp"
+#include "GameManager/CapchaManager.hpp"
 #include "Player/Player.hpp"
 #include "Rules/Kombinasi.hpp"
+using namespace std;
 
 int main()
 {
@@ -18,13 +20,13 @@ int main()
     while (!inputValid)
     {
         cout<<"Pilihan Game :"<<endl;
-        cout<<"1. Kartu Permen"<<endl;
-        cout<<"2. Capcha"<<endl;
+        cout<<"1. Capcha"<<endl;
+        cout<<"2. Kartu Permen"<<endl;
         cout<<">> ";
         cin>>inputGame;
         if (inputGame == "1")
         {
-            inputValid == true;
+            inputValid = true;
         }
         else if (inputGame == "2")
         {
@@ -35,32 +37,85 @@ int main()
             cout<<"Masukan tidak valid, silahkan ulangi."<<endl;
         }
     }
+    cout<<inputGame<<endl;
     if (inputGame == "1")
     {
-        //DO NOTHING
-        cout<<"DALAM TAHAP PENGEMBANGAN HEHE"<<endl;
+        //List Of Player
+        deque<Player*> pointerArr;
+        deque<Player*> temp;
+
+        //Variables
+        bool menang = false;
+        string inputPlayer;
+
+        //Capcha GM
+        CapchaManager* game = new CapchaManager();
+        cout<<"TEST"<<endl;
+        for (int i = 0 ; i<4 ; i++)
+        {
+            for (int j = 0  ; j < 13 ; j++)
+            {
+                DeckCard tempCard;
+                game->getTableCards()-tempCard;
+                game->getPlayers().addPlayerCard(i, tempCard);
+            }
+        } 
+        //Game
+        for (int i = 0 ; i < 4 ; i++)
+        {
+            pointerArr.push_back(game->getPlayers().getPlayerAddress(i));
+        }
+        while (!menang)
+        {
+            while(!pointerArr.empty())
+            {
+                cout<<"Sekarang giliran player "<<pointerArr[0]->getName()<<endl;
+                pointerArr[0]->viewAllCard();
+                cout<<"Masukkan aksi :"<<endl;
+                cout<<">> ";
+                cin>>inputPlayer;
+
+                if (inputPlayer == "1")
+                {
+                    cout<<"NEXT"<<endl;
+                    temp.push_front(pointerArr.at(0));
+                    pointerArr.pop_front();
+                }
+                else
+                {
+                    cout<<"IN"<<endl;
+                    pointerArr.push_back(pointerArr.at(0));
+                    pointerArr.pop_front();
+                }
+            }
+            for(int i = 0 ; i < 4 ; i++)
+            {
+                pointerArr.push_back(temp.at(i));
+            }
+        }
     }
     else
     {
         cout << "Masukkan metode pembuatan kartu (auto/file): " << endl;
         cout << ">> ";
         string makeCardMethod;
+        string fileName;
         cin >> makeCardMethod;
         CandyGameManager* game;
         if(makeCardMethod == "auto"){
             game = new CandyGameManager();
         }else{
-            string fileName;
+            cin >> fileName;
             game = new CandyGameManager(fileName);
         }
-        int round = 1;
-        game->setRound(round);
+        game->setRound(1);
         while(true){
-            cout << "ROUND " << round << endl;
+            cout << "ROUND " << game->getRound() << endl;
                 // for each player give 2 cards from table cards
 
-            if(round < 7 && round > 1){
-                DeckCard temp = game->getTableCards().takeCard();
+            if(game->getRound() < 7 && game->getRound() > 1){
+                DeckCard temp;
+                game->getTableCards()-temp;
                 game->getPlayCards()+temp;
                 cout<<"Kartu "<<temp.getNum()<<" "<<temp.translateToString()<<" telah ditambahkan di meja"<<endl;
             }
@@ -69,9 +124,10 @@ int main()
                 //Implementasi penunjuk player yg main
                 //CONTOH : "Sekarang saatnya Player I"
                 cout << "Sekarang adalah giliran Player " << game->getPlayers().getPlayer(0).getName() << endl;
-                if(round == 1){
-                    DeckCard temp1 = game->getTableCards().takeCard();
-                    DeckCard temp2 = game->getTableCards().takeCard();
+                if(game->getRound() == 1){
+                    DeckCard temp1, temp2;
+                    game->getTableCards()-temp1;
+                    game->getTableCards()-temp2;
                     game->getPlayers().addPlayerCard(0, temp1);
                     game->getPlayers().addPlayerCard(0, temp2);
                     cout<<"Kamu dapat kartu "<<temp1.getNum()<<" "<<temp1.translateToString()<<endl;
@@ -121,7 +177,6 @@ int main()
                                 cout << "8. Switch" << endl;
                                 cout << "9. Swap" << endl;
                                 cout << "10. Help" << endl;
-                                input = true;
                             }else{
                                 if(aksi == game->getPlayers().getPlayer(0).getAbilityCard().getType()){
                                     if(!game->getPlayers().getPlayer(0).isabilityCardEmpty()){
@@ -139,6 +194,7 @@ int main()
                         }
                     }catch (const char* err){
                         cout << "Error: " << err << endl;
+                        input = false;
                     }
                 }
                 cout << endl;
@@ -146,11 +202,12 @@ int main()
                 game->getPlayers().nextTurn();
             }
 
-            if(round == 1){
+            if(game->getRound() == 1){
                 // Give 1 ability card to each player
                 /* TODO */
                 cout<<"Ronde I telah berakhir"<<endl;
-                DeckCard temp = game->getTableCards().takeCard();
+                DeckCard temp;
+                game->getTableCards()-temp;
                 game->getPlayCards()+temp;
                 cout<<"Kartu "<<temp.getNum()<<" "<<temp.translateToString()<<" telah ditambahkan di meja"<<endl;
                 cout<<endl;
@@ -159,7 +216,8 @@ int main()
 
                 cout << "Pembagian Ability Card" << endl;
                 for(int i = 0; i < 7 ; i++){
-                    AbilityCard* temp = game->getAbilityCardList().takeCard();
+                    AbilityCard* temp;
+                    game->getAbilityCardList()-temp;
                     game->getPlayers().addAbilityCard(i, *temp);
                     cout << "Pemain " << game->getPlayers().getPlayer(i).getName() << " mendapatkan kartu ability: ";
                     game->getPlayers().getPlayer(i).getAbilityCard().printInfo();
@@ -169,18 +227,14 @@ int main()
             }
 
             /* TOLONG CEK DI SINI*/ 
-            if (round == 7)
+            if (game->getRound() == 7)
             {
                 vector<Kombinasi> tempKombinasi;
-                tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(0).getCard(),game->getPlayCards()));
-                tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(1).getCard(),game->getPlayCards()));
-                tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(2).getCard(),game->getPlayCards()));
-                tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(3).getCard(),game->getPlayCards()));
-                tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(4).getCard(),game->getPlayCards()));
-                tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(5).getCard(),game->getPlayCards()));
-                tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(6).getCard(),game->getPlayCards()));
+                for(int i = 0; i < 7 ; i++){
+                    tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards()));
+                }
 
-                double idx;
+                int idx;
                 vector<double> temp;
                 for (int i = 0 ; i < 7 ; i++)
                 {
@@ -201,7 +255,7 @@ int main()
                     }
                 }
                 cout<<tempKombinasi[idx].getCombinationName()<<endl;
-                cout<<"Menambahkan poin pada player "<<idx+1<<endl;
+                cout<<"Menambahkan poin pada player "<<game->getPlayers().getPlayerAddress(idx)->getName()<<endl;
                 cout<<"Sebesar "<<game->getPoint()<<endl;
 
                 cout<<"Table Card List"<<endl;
@@ -216,15 +270,52 @@ int main()
                 long long tempPoin = game->getPlayers().getPlayer(idx).getPoint();
                 game->getPlayers().setPlayerPoint(idx,game->getPoint() + tempPoin);
             }
-            round++;
-            game->setRound(round);
+            game->setRound(game->getRound()+1);
             // Ubah Turn
-
-            if (round > 7)
-            {
-                break;
-            }
             game->getPlayers().nextTurn();
+            if (game->getRound() > 7)
+            {
+                /* SHOW LEADERBOARD */
+                game->leaderboard();
+                if(game->existWinner()){
+                    cout << "WINNER FOUND" << endl;
+                    /* OPSI BIKIN PERMAINAN BARU */
+                    string option;
+                    cout << "Ulang permainan? (Y/N)" << endl;
+                    cin>>option;
+                    if(option=="Y"){
+                        /* reset */
+                        delete game;
+                        game->setRound(1);
+                        if(makeCardMethod == "auto"){
+                            game = new CandyGameManager();
+                        }else{
+                            game = new CandyGameManager(fileName);
+                        }
+                    }else{
+                        delete game;
+                        break;
+                    }
+                }else{
+                    cout << "NO WINNER. STARTING FROM ROUND 1" << endl;
+
+                    game->setRound(1);
+
+                    game->reset();
+                    
+                    game->makeAbilityCards();
+
+                    cout << "Masukkan metode pembuatan kartu (auto/file): " << endl;
+                    cin >> makeCardMethod;
+                    if(makeCardMethod == "auto"){
+                        game->makeTableCards();
+                    }else{
+                        cin >> fileName;
+                        game->makeTableCards(fileName);
+                    }
+
+                }
+            }
         }
     }
     return 0;

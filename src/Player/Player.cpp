@@ -37,11 +37,11 @@ int Player::getID(){
     return this->id;
 }
 
-int Player::getPoint(){
+long long Player::getPoint(){
     return this->point;
 }
 
-void Player::setPoint(int p){
+void Player::setPoint(long long p){
     this->point = p;
 }
 
@@ -63,21 +63,23 @@ void Player::viewAllCard()
     }
 }
 
-CardCollection<DeckCard>& Player::getCard()
+void Player::viewAllCardCapsa()
+{
+    cout<<"List of Player Cards : "<<endl;
+    cout<<"[";
+    for (int i = 0 ; i<countofPlayerCards ; i++)
+    {
+        this->playerCard.getCard(i).printType();
+    }
+    cout<<"]"<<endl;
+}
+CardCollection<DeckCard> Player::getCard()
 {
     return this->playerCard;
 }
 
 void Player::setLeftCard(DeckCard& card){
-    cout << "------------------------" << endl;
-    Player::viewAllCard();
-    cout << "================" << endl;
-    cout << this->playerCard.getLeftCard().getNum() << endl;
     this->playerCard.setLeftCard(card);
-    cout << this->playerCard.getLeftCard().getNum() << endl;
-    cout << "================" << endl;
-    Player::viewAllCard();
-    cout << "------------------------" << endl;
 }
 
 void Player::setRightCard(DeckCard& card){
@@ -102,6 +104,7 @@ bool Player::operator==(Player& other){
 
 void Player::clearCards(){
     this->playerCard.clear();
+    this->countofPlayerCards = 0;
 }
 
 bool Player::isabilityCardEmpty(){
