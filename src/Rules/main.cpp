@@ -75,35 +75,61 @@ int main()
     DeckCard k11 = DeckCard(2,11);
     DeckCard k12 = DeckCard(2,12);
     DeckCard k13 = DeckCard(2,13);
-    table.addCard(m1);
-    table.addCard(m2);
-    table.addCard(k2);
-    table.addCard(m3);
-    table.addCard(h3);
+    table.addCard(m9);
+    table.addCard(k11);
+    table.addCard(k8);
+    table.addCard(k3);
+    table.addCard(m7);
+    table.addCard(h8);
 
-    p1.addCard(m13);
-    p1.addCard(m7);
+    p2.addCard(m3);
+    p2.addCard(b9);
 
-    p2.addCard(b4);
-    p2.addCard(h5);
+    p1.addCard(k2);
+    p1.addCard(h2);
 
-    p3.addCard(h1);
-    p3.addCard(h4);
+    p3.addCard(h9);
+    p3.addCard(b2);
 
-    p4.addCard(h2);
-    p4.addCard(h3);
+    p4.addCard(b3);
+    p4.addCard(m10);
 
-    p5.addCard(b4);
-    p5.addCard(b3);
+    p5.addCard(h6);
+    p5.addCard(m11);
 
-    p6.addCard(k6);
-    p6.addCard(k8);
+    p6.addCard(b6);
+    p6.addCard(m12);
 
-    p7.addCard(h8);
-    p7.addCard(h9);
+    p7.addCard(h5);
+    p7.addCard(h13);
 
     //KOMBINASI
-    Kombinasi c1 = Kombinasi(p2,table);
-    cout<<c1.getCombinationName()<<endl;
-    cout<<c1.value()<<endl;
+    // cout << "\np1\n";
+    // Kombinasi c1 = Kombinasi(p1,table);
+    // cout<<c1.getCombinationName()<<endl;
+    // cout<<c1.value()<<endl;
+    // cout << "\np2\n";
+    // Kombinasi c2 = Kombinasi(p2,table);
+    // cout<<c2.getCombinationName()<<endl;
+    // cout<<c2.value()<<endl;
+    // cout << "\np3\n";
+    // Kombinasi c3 = Kombinasi(p3,table);
+    // cout<<c3.getCombinationName()<<endl;
+    // cout<<c3.value()<<endl;
+    cout << "\np4\n";
+    Kombinasi c4 = Kombinasi(p4,table);
+    cout<<c4.getCombinationName()<<endl;
+    cout<<c4.value()<<endl;
+    // cout << "\np5\n";
+    // Kombinasi c5 = Kombinasi(p5,table);
+    // cout<<c5.getCombinationName()<<endl;
+    // cout<<c5.value()<<endl;
+    // cout << "\np6\n";
+    // Kombinasi c6 = Kombinasi(p6,table);
+    // cout<<c6.getCombinationName()<<endl;
+    // cout<<c6.value()<<endl;
+    // cout << "\np7\n";
+    // Kombinasi c7 = Kombinasi(p7,table);
+    // cout<<c7.getCombinationName()<<endl;
+    // cout<<c7.value()<<endl;
 }

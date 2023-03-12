@@ -457,6 +457,7 @@ double Kombinasi::value(){
         val = MAX_THREE_KIND;
         for (DeckCard i : arrCombination)
         {
+            // i.printInfo();
             val += i.value();
         }
         if (compareDouble(val, tableVal))
@@ -619,8 +620,8 @@ bool Kombinasi::operator>(Kombinasi& other){
     return this->value() > other.value();
 }
 
-bool Kombinasi::operator==(Kombinasi& other){
-    return this->value() == other.value();
+bool Kombinasi::operator==(const Kombinasi& other) const {
+    return (this->arr == other.arr) && (this->arrCombination == other.arrCombination) && (this->arrTableCardCombination == other.arrTableCardCombination);
 }
 
 Kombinasi& Kombinasi::operator=(Kombinasi& other){
@@ -980,8 +981,11 @@ bool Kombinasi::isStraight(){
             auto itr = find(arrAngka.begin(), arrAngka.end(), j);
             while (itr !=arrAngka.end())
             {
+
                 this->arrCombination.push_back(tempArr[itr-arrAngka.begin()]);
                 count++;
+                tempArr[itr-arrAngka.begin()].printInfo();
+                cout << count << endl;
                 break;
                 itr = find(itr+1, arrAngka.end(), j);
             }
@@ -991,6 +995,7 @@ bool Kombinasi::isStraight(){
             return true;
         }
         arrCombination.clear();
+        cout << "--------------------------------------\n";
 
     }
     return false;

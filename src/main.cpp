@@ -230,52 +230,63 @@ int main()
             /* TOLONG CEK DI SINI*/ 
             if (game->getRound() == 6)
             {
-                // vector<Kombinasi> tempKombinasi;
-                // map<Kombinasi, Player> mapKombinasi;
-                // map<Kombinasi, int> mapIndeks;
-                // for(int i = 0; i < 7 ; i++){
-                //     tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards()));
-                //     mapKombinasi.insert(make_pair(Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards()), game->getPlayers().getPlayer(i)));
-                //     mapIndeks.insert(make_pair(Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards()), i));
-                // }
-                // Kombinasi maxKombinasi = maxVector<Kombinasi>(tempKombinasi);
-                // cout<<"Nilai Tertinggi yaitu "<<maxKombinasi.value()<<endl;
-                // cout<<"Dengan kombinasi "<<maxKombinasi.getCombinationName()<<endl;
-                // cout<<"Menambahkan poin pada player "<<mapKombinasi[maxKombinasi].getName()<<endl;
-                // cout<<"Sebesar "<<game->getPoint()<<endl;
-
-                // long long tempPoin = mapKombinasi[maxKombinasi].getPoint();
-                // int idx = mapIndeks[maxKombinasi];
-                // game->getPlayers().setPlayerPoint(idx,game->getPoint() + tempPoin);
-
-                vector<Kombinasi> tempKombinasi;
+                map<double, Kombinasi> mapValue;
+                map<int, Player> mapPlayer;
+                map<int, Kombinasi> mapIndeks;
                 for(int i = 0; i < 7 ; i++){
-                    tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards()));
+                    mapIndeks.insert(make_pair(i, Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards())));
+                    mapValue.insert(make_pair(Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards()).value(), Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards())));
+                    mapPlayer.insert(make_pair(i, game->getPlayers().getPlayer(i)));
                 }
-                int idx;
-                vector<double> temp;
-                for (int i = 0 ; i < 7 ; i++)
-                {
-                    temp.push_back(tempKombinasi[i].value());
-                }
-
-                cout<<"Nilai Tertinggi yaitu "<<maxVector<double>(temp)<<endl;
-                if (temp.size()>0)
-                {
-                    double tempval = temp[0];
-                    for (int i = 0 ; i < temp.size() ; i++)
-                    {
-                        if (temp[i]>tempval)
-                        {
-                            tempval = temp[i];
-                            idx = i;
-                        }
-                    }
-                }
-                cout<<tempKombinasi[idx].getCombinationName()<<endl;
-                cout<<"Menambahkan poin pada player "<<game->getPlayers().getPlayerAddress(idx)->getName()<<endl;
+                double maxValue = maxKeyMap<double, Kombinasi>(mapValue);
+                int idx = findKey<int, Kombinasi>(mapIndeks, mapValue[maxValue]);
+                cout<<"Nilai Tertinggi yaitu "<<maxValue<<endl;
+                cout<<"Dengan kombinasi "<<mapValue[maxValue].getCombinationName()<<endl;
+                cout<<"Menambahkan poin pada player "<<mapPlayer[idx].getName()<<endl;
                 cout<<"Sebesar "<<game->getPoint()<<endl;
 
+                long long tempPoin = mapPlayer[idx].getPoint();
+                game->getPlayers().setPlayerPoint(idx,game->getPoint() + tempPoin);
+
+                // vector<Kombinasi> tempKombinasi;
+                // // map<Kombinasi, Player> mapKombinasi;
+                
+                // map<double, Kombinasi> mapValue;
+                // map<int, Player> mapPlayer;
+                // map<int, Kombinasi> mapIndeks;
+                // for(int i = 0; i < 7 ; i++){
+                //     tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards()));
+                //     // mapKombinasi.insert(make_pair(Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards()), game->getPlayers().getPlayer(i)));
+                //     mapIndeks.insert(make_pair(i, Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards())));
+                //     mapValue.insert(make_pair(Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards()).value(), Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards())));
+                //     mapPlayer.insert(make_pair(i, game->getPlayers().getPlayer(i)));
+                // }
+                // int idx;
+                // vector<double> temp;
+                // for (int i = 0 ; i < 7 ; i++)
+                // {
+                //     temp.push_back(tempKombinasi[i].value());
+                // }
+
+                // cout<<"Nilai Tertinggi yaitu "<<maxVector<double>(temp)<<endl;
+                // if (temp.size()>0)
+                // {
+                //     double tempval = temp[0];
+                //     for (int i = 0 ; i < temp.size() ; i++)
+                //     {
+                //         if (temp[i]>tempval)
+                //         {
+                //             tempval = temp[i];
+                //             idx = i;
+                //         }
+                //     }
+                // }
+                // cout<<tempKombinasi[idx].getCombinationName()<<endl;
+                // cout<<"Menambahkan poin pada player "<<game->getPlayers().getPlayerAddress(idx)->getName()<<endl;
+                // cout<<"Sebesar "<<game->getPoint()<<endl;
+
+                // long long tempPoin = game->getPlayers().getPlayer(idx).getPoint();
+                // game->getPlayers().setPlayerPoint(idx,game->getPoint() + tempPoin);
 
                 cout<<"Table Card List"<<endl;
                 game->getPlayCards().displayDeckCard();
@@ -285,8 +296,6 @@ int main()
                     cout<<"Player "<<i+1<<endl;
                     game->getPlayers().getPlayer(i).viewAllCard();
                 }
-                long long tempPoin = game->getPlayers().getPlayer(idx).getPoint();
-                game->getPlayers().setPlayerPoint(idx,game->getPoint() + tempPoin);
 
             }
             game->setRound(game->getRound()+1);

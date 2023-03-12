@@ -9,6 +9,7 @@ class Angka{
     public:
         void setNum(int);
         int getNum();
+        const int getNum() const;
         Angka(int);
         Angka();
 };

@@ -56,7 +56,7 @@ class Kombinasi : protected FindValue{
         /* Operator overloading buat bandingin value */
         bool operator>(Kombinasi&);
         bool operator<(Kombinasi&);
-        bool operator==(Kombinasi&);
+        bool operator==(const Kombinasi&) const;
 
         Kombinasi& operator=(Kombinasi&);
         
@@ -129,5 +129,28 @@ T maxArr(T (&arr) [n]){
         }
         return maks;
     }
+}
+
+template <class T, class N>
+T maxKeyMap(map<T, N> Map){
+    T maxKey = -1;
+    for (const auto& pair : Map) {
+        if (pair.first > maxKey) {
+            maxKey = pair.first;
+        }
+    }
+    return maxKey;
+}
+
+template <class T, class N>
+T findKey(map<T, N> Map, N value){
+    T key = -1;
+    for (const auto& pair : Map) {
+        if (pair.second == value) {
+            key = pair.first;
+            break;
+        }
+    }
+    return key;
 }
 #endif

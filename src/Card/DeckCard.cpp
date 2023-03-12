@@ -69,3 +69,9 @@ bool DeckCard::operator==(DeckCard& other){
     return (val1==val2);
 }
 
+bool DeckCard::operator==(const DeckCard& other)const{
+    double val1 = this->getNum();
+    double val2 = other.getNum();
+    return (val1==val2);
+}
+
