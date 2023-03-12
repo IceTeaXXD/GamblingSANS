@@ -2,6 +2,7 @@
 #define KOMBINASI_HPP
 #include <iostream>
 #include <algorithm>
+#include <map>
 #include "FindValue.hpp"
 #include "../Card/DeckCard.hpp"
 // #include "../Card/DeckCardCollection.hpp"
@@ -13,15 +14,16 @@ class Kombinasi : protected FindValue{
         vector<DeckCard> arr;
 
         /* Array of Pairs. Mungkin Kosong mungkin terisi */
-        vector<DeckCard> arrPair;
-        vector<DeckCard> arrTwoPair;
-        vector<DeckCard> arrThreeOfKind;
-        vector<DeckCard> arrStraight;
-        vector<DeckCard> arrFlush;
-        vector<DeckCard> arrFullHouse;
-        vector<DeckCard> arrFourAKind;
-        vector<DeckCard> arrStraightFlush;
+        // vector<DeckCard> arrPair;
+        // vector<DeckCard> arrTwoPair;
+        // vector<DeckCard> arrThreeOfKind;
+        // vector<DeckCard> arrStraight;
+        // vector<DeckCard> arrFlush;
+        // vector<DeckCard> arrFullHouse;
+        // vector<DeckCard> arrFourAKind;
+        // vector<DeckCard> arrStraightFlush;
 
+        vector<DeckCard> arrCombination;
         vector<DeckCard> arrTableCardCombination;
 
         const double MAX_HIGH_CARD = 1.31;
@@ -52,9 +54,11 @@ class Kombinasi : protected FindValue{
         int getCombination(DeckCard x, DeckCard tc);
 
         /* Operator overloading buat bandingin value */
-        Kombinasi& operator>(Kombinasi&);
-        Kombinasi& operator<(Kombinasi&);
-        Kombinasi& operator==(Kombinasi&);
+        bool operator>(Kombinasi&);
+        bool operator<(Kombinasi&);
+        bool operator==(Kombinasi&);
+
+        Kombinasi& operator=(Kombinasi&);
         
         /*  Rule:
             - highcard rumusnya ngikutin yg di docs, value = konstanta + 0.3*warna 
@@ -83,6 +87,7 @@ class Kombinasi : protected FindValue{
         bool isTableCardFourAKind();
         bool isTableCardStraightFlush();
 };
+
 template<class T>
 T maxVector(vector<T>& v)
 {
@@ -97,5 +102,32 @@ T maxVector(vector<T>& v)
     return temp;
 }
 
+template <class T>
+T maxArr(T* arr, int n){
+    T maks = arr[0];
+    for (int i = 1; i < n; i++){
+        if (arr[i]>maks){
+            maks = arr[i];
+        }
+    }
+    return maks;
+}
 
+template <class T, size_t n>
+T maxArr(T (&arr) [n]){
+    if (n==0)
+    {
+        return "Array Kosong\n";
+    }
+    else
+    {
+        T maks = arr[0];
+        for (int i = 1; i < n; i++){
+            if (arr[i]>maks){
+                maks = arr[i];
+            }
+        }
+        return maks;
+    }
+}
 #endif

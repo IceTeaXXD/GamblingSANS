@@ -13,34 +13,7 @@ bool compareDouble(double n1, double n2){
     
 }
 
-template <class T>
-T maxArr(T* arr, int n){
-    T maks = arr[0];
-    for (int i = 1; i < n; i++){
-        if (arr[i]>maks){
-            maks = arr[i];
-        }
-    }
-    return maks;
-}
 
-template <class T, size_t n>
-T maxArr(T (&arr) [n]){
-    if (n==0)
-    {
-        return "Array Kosong\n";
-    }
-    else
-    {
-        T maks = arr[0];
-        for (int i = 1; i < n; i++){
-            if (arr[i]>maks){
-                maks = arr[i];
-            }
-        }
-        return maks;
-    }
-}
 
 
 Kombinasi::Kombinasi(){}
@@ -171,7 +144,7 @@ double Kombinasi::value(){
     if (isStraightFlush())
     {
         val = MAX_FOUR_KIND;
-        for (DeckCard i : arrStraightFlush)
+        for (DeckCard i : arrCombination)
         {
             val += i.value();
         }
@@ -185,7 +158,7 @@ double Kombinasi::value(){
             if (isFourAKind())
             {
                 val = MAX_FULL_HOUSE;
-                for (DeckCard i : arrFourAKind)
+                for (DeckCard i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -195,7 +168,7 @@ double Kombinasi::value(){
             else if (isFullHouse())
             {
                 val = MAX_FLUSH;
-                for (DeckCard i : arrFullHouse)
+                for (DeckCard i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -205,7 +178,7 @@ double Kombinasi::value(){
             else if (isFlush())
             {
                 val = MAX_STRAIGHT;
-                for (DeckCard i : arrFlush)
+                for (DeckCard i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -215,7 +188,7 @@ double Kombinasi::value(){
             else if (isStraight())
             {
                 val = MAX_THREE_KIND;
-                for (DeckCard i : arrStraight)
+                for (DeckCard i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -225,7 +198,7 @@ double Kombinasi::value(){
             else if (isThreeOfKind())
             {
                 val = MAX_TWO_PAIR;
-                for (auto i : arrThreeOfKind)
+                for (auto i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -235,7 +208,7 @@ double Kombinasi::value(){
             else if (isTwoPair())
             {
                 val = MAX_PAIR;
-                for (DeckCard i : arrTwoPair)
+                for (DeckCard i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -245,7 +218,7 @@ double Kombinasi::value(){
             else if (isPair())
             {
                 val = MAX_HIGH_CARD;
-                for (DeckCard i : arrPair)
+                for (DeckCard i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -263,7 +236,7 @@ double Kombinasi::value(){
     else if (isFourAKind())
     {      
         val = MAX_FULL_HOUSE;
-        for (DeckCard i : arrFourAKind)
+        for (DeckCard i : arrCombination)
         {
             val += i.value();
         }
@@ -277,7 +250,7 @@ double Kombinasi::value(){
             if (isFullHouse())
             {
                 val = MAX_FLUSH;
-                for (DeckCard i : arrFullHouse)
+                for (DeckCard i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -287,7 +260,7 @@ double Kombinasi::value(){
             else if (isFlush())
             {
                 val = MAX_STRAIGHT;
-                for (DeckCard i : arrFlush)
+                for (DeckCard i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -297,7 +270,7 @@ double Kombinasi::value(){
             else if (isStraight())
             {
                 val = MAX_THREE_KIND;
-                for (DeckCard i : arrStraight)
+                for (DeckCard i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -307,8 +280,8 @@ double Kombinasi::value(){
             else if (isThreeOfKind())
             {
                 val = MAX_TWO_PAIR;
-                // cout<<arrThreeOfKind.size()<<endl;
-                for (auto i : arrThreeOfKind)
+                // cout<<arrCombination.size()<<endl;
+                for (auto i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -318,7 +291,7 @@ double Kombinasi::value(){
             else if (isTwoPair())
             {
                 val = MAX_PAIR;
-                for (DeckCard i : arrTwoPair)
+                for (DeckCard i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -328,7 +301,7 @@ double Kombinasi::value(){
             else if (isPair())
             {
                 val = MAX_HIGH_CARD;
-                for (DeckCard i : arrPair)
+                for (DeckCard i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -346,7 +319,7 @@ double Kombinasi::value(){
     else if (isFullHouse())
     {
         val = MAX_FLUSH;
-        for (DeckCard i : arrFullHouse)
+        for (DeckCard i : arrCombination)
         {
             val += i.value();
         }
@@ -360,7 +333,7 @@ double Kombinasi::value(){
             if (isFlush())
             {
                 val = MAX_STRAIGHT;
-                for (DeckCard i : arrFlush)
+                for (DeckCard i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -370,7 +343,7 @@ double Kombinasi::value(){
             else if (isStraight())
             {
                 val = MAX_THREE_KIND;
-                for (DeckCard i : arrStraight)
+                for (DeckCard i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -380,7 +353,7 @@ double Kombinasi::value(){
             else if (isThreeOfKind())
             {
                 val = MAX_TWO_PAIR;
-                for (auto i : arrThreeOfKind)
+                for (auto i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -390,7 +363,7 @@ double Kombinasi::value(){
             else if (isTwoPair())
             {
                 val = MAX_PAIR;
-                for (DeckCard i : arrTwoPair)
+                for (DeckCard i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -400,7 +373,7 @@ double Kombinasi::value(){
             else if (isPair())
             {
                 val = MAX_HIGH_CARD;
-                for (DeckCard i : arrPair)
+                for (DeckCard i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -418,7 +391,7 @@ double Kombinasi::value(){
     else if (isFlush())
     {
         val = MAX_STRAIGHT;
-        for (DeckCard i : arrFlush)
+        for (DeckCard i : arrCombination)
         {
             val += i.value();
         }
@@ -434,7 +407,7 @@ double Kombinasi::value(){
             if (isStraight())
             {
                 val = MAX_THREE_KIND;
-                for (DeckCard i : arrStraight)
+                for (DeckCard i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -444,7 +417,7 @@ double Kombinasi::value(){
             else if (isThreeOfKind())
             {
                 val = MAX_TWO_PAIR;
-                for (auto i : arrThreeOfKind)
+                for (auto i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -454,7 +427,7 @@ double Kombinasi::value(){
             else if (isTwoPair())
             {
                 val = MAX_PAIR;
-                for (DeckCard i : arrTwoPair)
+                for (DeckCard i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -464,7 +437,7 @@ double Kombinasi::value(){
             else if (isPair())
             {
                 val = MAX_HIGH_CARD;
-                for (DeckCard i : arrPair)
+                for (DeckCard i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -482,7 +455,7 @@ double Kombinasi::value(){
     else if (isStraight())
     {
         val = MAX_THREE_KIND;
-        for (DeckCard i : arrStraight)
+        for (DeckCard i : arrCombination)
         {
             val += i.value();
         }
@@ -496,7 +469,7 @@ double Kombinasi::value(){
             if (isThreeOfKind())
             {
                 val = MAX_TWO_PAIR;
-                for (auto i : arrThreeOfKind)
+                for (auto i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -506,7 +479,7 @@ double Kombinasi::value(){
             else if (isTwoPair())
             {
                 val = MAX_PAIR;
-                for (DeckCard i : arrTwoPair)
+                for (DeckCard i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -516,7 +489,7 @@ double Kombinasi::value(){
             else if (isPair())
             {
                 val = MAX_HIGH_CARD;
-                for (DeckCard i : arrPair)
+                for (DeckCard i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -534,7 +507,7 @@ double Kombinasi::value(){
     else if (isThreeOfKind())
     {
         val = MAX_TWO_PAIR;
-        for (auto i : arrThreeOfKind)
+        for (auto i : arrCombination)
         {
             val += i.value();
         }
@@ -548,7 +521,7 @@ double Kombinasi::value(){
             if (isTwoPair())
             {
                 val = MAX_PAIR;
-                for (DeckCard i : arrTwoPair)
+                for (DeckCard i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -558,7 +531,7 @@ double Kombinasi::value(){
             else if (isPair())
             {
                 val = MAX_HIGH_CARD;
-                for (DeckCard i : arrPair)
+                for (DeckCard i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -576,7 +549,7 @@ double Kombinasi::value(){
     else if (isTwoPair())
     {
         val = MAX_PAIR;
-        for (DeckCard i : arrTwoPair)
+        for (DeckCard i : arrCombination)
         {
             val += i.value();
         }
@@ -590,7 +563,7 @@ double Kombinasi::value(){
             if (isPair())
             {
                 val = MAX_HIGH_CARD;
-                for (DeckCard i : arrPair)
+                for (DeckCard i : arrCombination)
                 {
                     val += i.value();
                 }
@@ -608,7 +581,7 @@ double Kombinasi::value(){
     else if (isPair())
     {
         val = MAX_HIGH_CARD;
-        for (DeckCard i : arrPair)
+        for (DeckCard i : arrCombination)
         {
             val += i.value();
         }
@@ -638,16 +611,22 @@ double Kombinasi::value(){
     }
 }
 
-/* Belum dikerjain */
-Kombinasi& Kombinasi::operator<(Kombinasi& other){
-    return *this;
+bool Kombinasi::operator<(Kombinasi& other){
+    return this->value() < other.value();
 }
 
-Kombinasi& Kombinasi::operator>(Kombinasi& other){
-    return *this;
+bool Kombinasi::operator>(Kombinasi& other){
+    return this->value() > other.value();
 }
 
-Kombinasi& Kombinasi::operator==(Kombinasi& other){
+bool Kombinasi::operator==(Kombinasi& other){
+    return this->value() == other.value();
+}
+
+Kombinasi& Kombinasi::operator=(Kombinasi& other){
+    this->arr = other.arr;
+    this->arrCombination = other.arrCombination;
+    this->arrTableCardCombination = other.arrTableCardCombination;
     return *this;
 }
 
@@ -716,14 +695,15 @@ string Kombinasi::getCombinationName()
 }
 bool Kombinasi::isPair()
 {   
+    arrCombination.clear();
     vector<DeckCard> tempArr = arr;
     sort(tempArr.begin(), tempArr.end(), compareAngka);
     for (int i = tempArr.size()-1; i>0; i--)
     {
         if(tempArr[i]==tempArr[i-1])
         {
-            arrPair.push_back(tempArr[i]);
-            arrPair.push_back(tempArr[i-1]);
+            arrCombination.push_back(tempArr[i]);
+            arrCombination.push_back(tempArr[i-1]);
             return true;
         }
     }
@@ -734,8 +714,8 @@ bool Kombinasi::isPair()
     //     {
     //         if(arr[i].getNum() == arr[j].getNum())
     //         {
-    //             arrPair.push_back(arr[i]);
-    //             arrPair.push_back(arr[j]);
+    //             arrCombination.push_back(arr[i]);
+    //             arrCombination.push_back(arr[j]);
     //             return true;
     //         }
     //     }
@@ -745,6 +725,7 @@ bool Kombinasi::isPair()
 
 bool Kombinasi::isTableCardPair()
 {   
+    arrTableCardCombination.clear();
     auto first = arr.begin() + 2;
     auto last = arr.end();
     vector<DeckCard> tempArr(first, last);
@@ -765,8 +746,8 @@ bool Kombinasi::isTableCardPair()
     //     {
     //         if(arr[i].getNum() == arr[j].getNum())
     //         {
-    //             arrPair.push_back(arr[i]);
-    //             arrPair.push_back(arr[j]);
+    //             arrCombination.push_back(arr[i]);
+    //             arrCombination.push_back(arr[j]);
     //             return true;
     //         }
     //     }
@@ -776,6 +757,7 @@ bool Kombinasi::isTableCardPair()
 
 bool Kombinasi::isTwoPair()
 {   
+    arrCombination.clear();
     vector<DeckCard> tempArr = arr;
     sort(tempArr.begin(), tempArr.end(), compareAngka);
     for (int i = tempArr.size()-1; i>0; i--)
@@ -786,10 +768,10 @@ bool Kombinasi::isTwoPair()
             {
                 if (!(tempArr[j]==tempArr[i]) && (tempArr[j]==tempArr[j-1]))
                 {
-                    arrTwoPair.push_back(tempArr[i]);
-                    arrTwoPair.push_back(tempArr[i-1]);
-                    arrTwoPair.push_back(tempArr[j]);
-                    arrTwoPair.push_back(tempArr[j-1]);
+                    arrCombination.push_back(tempArr[i]);
+                    arrCombination.push_back(tempArr[i-1]);
+                    arrCombination.push_back(tempArr[j]);
+                    arrCombination.push_back(tempArr[j-1]);
                     return true;
                 }
             }
@@ -810,7 +792,7 @@ bool Kombinasi::isTwoPair()
     //         if(count_pair == 2){
     //             /* Ditemukan Two Pair */
     //             for(int i = 0;i<4;i++){
-    //                 arrTwoPair.push_back(temp[i]);
+    //                 arrCombination.push_back(temp[i]);
     //             }
     //             return true;
     //         }
@@ -821,6 +803,7 @@ bool Kombinasi::isTwoPair()
 
 bool Kombinasi::isTableCardTwoPair()
 {   
+    arrTableCardCombination.clear();
     auto first = arr.begin() + 2;
     auto last = arr.end();
     vector<DeckCard> tempArr(first, last);
@@ -857,7 +840,7 @@ bool Kombinasi::isTableCardTwoPair()
     //         if(count_pair == 2){
     //             /* Ditemukan Two Pair */
     //             for(int i = 0;i<4;i++){
-    //                 arrTwoPair.push_back(temp[i]);
+    //                 arrCombination.push_back(temp[i]);
     //             }
     //             return true;
     //         }
@@ -867,15 +850,16 @@ bool Kombinasi::isTableCardTwoPair()
 }
 
 bool Kombinasi::isThreeOfKind(){
+    arrCombination.clear();
     vector<DeckCard> tempArr = arr;
     sort(tempArr.begin(), tempArr.end(), compareAngka);
     for (int i = tempArr.size()-1; i>1; i--)
     {
         if (tempArr[i]==tempArr[i-2])
         {
-            arrThreeOfKind.push_back(tempArr[i]);
-            arrThreeOfKind.push_back(tempArr[i-1]);
-            arrThreeOfKind.push_back(tempArr[i-2]);
+            arrCombination.push_back(tempArr[i]);
+            arrCombination.push_back(tempArr[i-1]);
+            arrCombination.push_back(tempArr[i-2]);
             return true;
         }
     }
@@ -883,6 +867,7 @@ bool Kombinasi::isThreeOfKind(){
 }
 
 bool Kombinasi::isTableCardThreeOfKind(){
+    arrTableCardCombination.clear();
     auto first = arr.begin() + 2;
     auto last = arr.end();
     vector<DeckCard> tempArr(first, last);
@@ -901,6 +886,7 @@ bool Kombinasi::isTableCardThreeOfKind(){
 }
 
 bool Kombinasi::isFourAKind(){
+    arrCombination.clear();
     vector<DeckCard> tempArr = arr;
     for(int i = 0; i < tempArr.size() ; i++){
         int temp_num = tempArr[i].getNum();
@@ -915,7 +901,7 @@ bool Kombinasi::isFourAKind(){
             }
             if(count_same == 4){
                 for(int k = 0; k < 4 ; k++){
-                    arrFourAKind.push_back(temp[k]);
+                    arrCombination.push_back(temp[k]);
                 }
                 return true;
             }
@@ -932,6 +918,7 @@ bool Kombinasi::isFourAKind(){
 }
 
 bool Kombinasi::isTableCardFourAKind(){
+    arrTableCardCombination.clear();
     auto first = arr.begin() + 2;
     auto last = arr.end();
     vector<DeckCard> tempArr(first, last);
@@ -963,6 +950,7 @@ bool Kombinasi::isTableCardFourAKind(){
 
 
 bool Kombinasi::isStraight(){
+    arrCombination.clear();
     vector<DeckCard> tempArr = arr;
     vector<int> arrAngka;
     int maxAngkaTable = 0;
@@ -992,7 +980,7 @@ bool Kombinasi::isStraight(){
             auto itr = find(arrAngka.begin(), arrAngka.end(), j);
             while (itr !=arrAngka.end())
             {
-                this->arrStraight.push_back(tempArr[itr-arrAngka.begin()]);
+                this->arrCombination.push_back(tempArr[itr-arrAngka.begin()]);
                 count++;
                 break;
                 itr = find(itr+1, arrAngka.end(), j);
@@ -1002,13 +990,14 @@ bool Kombinasi::isStraight(){
         {
             return true;
         }
-        arrStraight.clear();
+        arrCombination.clear();
 
     }
     return false;
 }
 
 bool Kombinasi::isTableCardStraight(){
+    arrTableCardCombination.clear();
     auto first = arr.begin() + 2;
     auto last = arr.end();
     vector<DeckCard> tempArr(first, last);
@@ -1048,7 +1037,8 @@ bool Kombinasi::isTableCardStraight(){
 }
 
 bool Kombinasi::isFlush(){
-    arrFlush.clear();
+    
+    arrCombination.clear();
     bool flush = false;
     vector<DeckCard> tempArr = arr;
     vector<DeckCard> tempPlayerCard(arr.begin(), arr.begin()+2);
@@ -1059,7 +1049,7 @@ bool Kombinasi::isFlush(){
         if (tempArr[i].getType()==tempArr[i-4].getType())
         {
             for (int j = i; j > i-5; j--){
-                this->arrFlush.push_back(tempArr[j]);
+                this->arrCombination.push_back(tempArr[j]);
             }
             flush = true;
             break;
@@ -1070,11 +1060,11 @@ bool Kombinasi::isFlush(){
         arrTableCardCombination.clear();
         for (int i = tempPlayerCard.size()-1; i>-1; i--)
         {
-            for (int j = arrFlush.size(); j > -1; j--)
+            for (int j = arrCombination.size(); j > -1; j--)
             {
-                if (tempPlayerCard[i].getType() == arrFlush[j].getType())
+                if (tempPlayerCard[i].getType() == arrCombination[j].getType())
                 {
-                    arrFlush[j] = tempPlayerCard[i];
+                    arrCombination[j] = tempPlayerCard[i];
                     return true;
                 }
             }
@@ -1104,6 +1094,7 @@ bool Kombinasi::isTableCardFlush(){
 }
 
 bool Kombinasi::isStraightFlush(){
+    arrCombination.clear();
     vector<DeckCard> tempArr = arr;
     vector<int> arrAngka;
     int maxAngkaTable = 0;
@@ -1138,7 +1129,7 @@ bool Kombinasi::isStraightFlush(){
             {
                 if (tempArr[itr-arrAngka.begin()].getType() == tempWarna)
                 {
-                    this->arrStraightFlush.push_back(tempArr[itr-arrAngka.begin()]);
+                    this->arrCombination.push_back(tempArr[itr-arrAngka.begin()]);
                     count++;
                     break;
                 }
@@ -1155,6 +1146,7 @@ bool Kombinasi::isStraightFlush(){
 }
 
 bool Kombinasi::isTableCardStraightFlush(){
+    arrTableCardCombination.clear();
     auto first = arr.begin() + 2;
     auto last = arr.end();
     vector<DeckCard> tempArr(first, last);
@@ -1195,6 +1187,7 @@ bool Kombinasi::isTableCardStraightFlush(){
 }
 
 bool Kombinasi::isFullHouse(){
+    arrCombination.clear();
     vector<DeckCard> tempArr = arr;
     vector<int> arrAngka;
     vector<int> arrAngkaFullHouse;
@@ -1226,13 +1219,13 @@ bool Kombinasi::isFullHouse(){
             {
                 if((tempArr[i] == tempArr[j]) && !(tempArr[i]==tempThreeKind[0]))
                 {
-                    this->arrFullHouse.push_back(tempArr[i]);
-                    this->arrFullHouse.push_back(tempArr[j]);
+                    this->arrCombination.push_back(tempArr[i]);
+                    this->arrCombination.push_back(tempArr[j]);
                     arrAngkaFullHouse.push_back(tempArr[i].getNum());
                     arrAngkaFullHouse.push_back(tempArr[j].getNum());
                     for (auto card : tempThreeKind)
                     {
-                        this->arrFullHouse.push_back(card);
+                        this->arrCombination.push_back(card);
                         arrAngkaFullHouse.push_back(card.getNum());
                     }
                     fullHouse = true;
@@ -1250,26 +1243,27 @@ bool Kombinasi::isFullHouse(){
         auto itr2 = find(arrAngka.begin(), arrAngka.end(), arr[1].getNum());
         if ((arr[0].getNum() > arr[1].getNum()) && (itr1 != arrAngkaFullHouse.end()))
         {
-            this->arrFullHouse[itr1-arrAngkaFullHouse.begin()] = arr[0];
+            this->arrCombination[itr1-arrAngkaFullHouse.begin()] = arr[0];
         }
         else if (itr2 != arrAngkaFullHouse.end())
         {
-            this->arrFullHouse[itr2-arrAngkaFullHouse.begin()+1] = arr[1];
+            this->arrCombination[itr2-arrAngkaFullHouse.begin()+1] = arr[1];
         }
         else if (itr1 != arrAngkaFullHouse.end())
         {
-            this->arrFullHouse[itr1-arrAngkaFullHouse.begin()] = arr[0];
+            this->arrCombination[itr1-arrAngkaFullHouse.begin()] = arr[0];
         }
         else
         {
             fullHouse = false;
-            arrFullHouse.clear();
+            arrCombination.clear();
         }
     }
     return fullHouse;
 }
 
 bool Kombinasi::isTableCardFullHouse(){
+    arrTableCardCombination.clear();
     auto first = arr.begin() + 2;
     auto last = arr.end();
     vector<DeckCard> tempArr(first, last);
