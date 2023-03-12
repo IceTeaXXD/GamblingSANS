@@ -43,7 +43,6 @@ int main()
         //List Of Player
         deque<Player*> pointerArr;
         deque<Player*> temp;
-        ArrOfPlayer playerList = ArrOfPlayer(4);
 
         //Variables
         bool menang = false;
@@ -64,7 +63,7 @@ int main()
         //Game
         for (int i = 0 ; i < 4 ; i++)
         {
-            pointerArr.push_back(playerList.getPlayerAddress(i));
+            pointerArr.push_back(game->getPlayers().getPlayerAddress(i));
         }
         while (!menang)
         {

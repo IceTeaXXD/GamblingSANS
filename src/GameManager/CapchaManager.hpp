@@ -15,7 +15,6 @@ using namespace std;
 class CapchaManager : public GameManager
 {
     private:
-        ArrOfPlayer players;
         int giliran;
         int point;
         CardCollection<DeckCard> Cards;

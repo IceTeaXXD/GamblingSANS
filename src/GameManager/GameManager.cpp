@@ -34,13 +34,13 @@ CardCollection<DeckCard>& GameManager::getTableCards()
 }
 ArrOfPlayer& GameManager::getPlayers()
 {
-    return players;
+    return *players;
 }
 void GameManager::displayPlayer()
 {
     for (int i = 0 ; i < 7 ; i++)
     {
-        cout << "Player Number " << i+1 << players.getPlayer(i).getName() << endl;
+        cout << "Player Number " << i+1 << players->getPlayer(i).getName() << endl;
     }
 }
 

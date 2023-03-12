@@ -3,10 +3,12 @@
 CandyGameManager::CandyGameManager()
 {
     abilityCardList.MakeDeck();
+    players = new ArrOfPlayer(7);
 }
 CandyGameManager::CandyGameManager(string f) : GameManager(f)
 {
     abilityCardList.MakeDeck();
+    players = new ArrOfPlayer(7);
 }
 
 CardCollection<AbilityCard*>& CandyGameManager::getAbilityCardList()
@@ -24,16 +26,16 @@ void CandyGameManager::manipulate<REROLL&>(REROLL& C){
         C.setNotAvailable();
 
         /* Kosongkan Kartu terlebih dahulu */
-        players.getPlayer(0).clearCards();
+        players->getPlayer(0).clearCards();
 
         /* Tambahin Kartu Baru */
         DeckCard add;
         tableCards-add;
-        players.getPlayer(0) + add;
+        players->getPlayer(0) + add;
 
         /* OUTPUT */
         cout<<"RE-ROLLED"<<endl;
-        players.getPlayer(0).viewAllCard();
+        players->getPlayer(0).viewAllCard();
     }
     else
     {
@@ -79,7 +81,7 @@ void CandyGameManager::manipulate<ReverseDirection&>(ReverseDirection& C){
         C.setNotAvailable();
 
         /* Reverse direction */
-        players.reverseTurn(this->round);
+        players->reverseTurn(this->round);
 
         /* OUTPUT */
         cout << "Direction berubah" << endl;

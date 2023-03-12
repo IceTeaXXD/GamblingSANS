@@ -24,7 +24,7 @@ class GameManager{
     protected:
         int round;
         /* Vector of Players */
-        ArrOfPlayer players;
+        ArrOfPlayer* players;
         /* Card Deck */
         CardCollection<DeckCard> tableCards;
         static int numOfTableCards;

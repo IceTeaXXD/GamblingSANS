@@ -1,8 +1,9 @@
 #include "CapchaManager.hpp"
 
-CapchaManager::CapchaManager() : GameManager(4)
+CapchaManager::CapchaManager()
 {
     // this->players = ArrOfPlayer(4);
+    players = new ArrOfPlayer(4);
 }
 
 CapchaManager::~CapchaManager()
