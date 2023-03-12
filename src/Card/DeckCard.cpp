@@ -25,7 +25,7 @@ void DeckCard::printInfo()
 }
 void DeckCard::printType()
 {
-    cout<<"["<<this->getNum()<<" "<<this->translateToType()<<"]";
+    cout<<this->getNum()<<" "<<this->translateToType();
 }
 double DeckCard::value()
 {

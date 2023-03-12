@@ -70,7 +70,7 @@ int main()
             while(!pointerArr.empty())
             {
                 cout<<"Sekarang giliran player "<<pointerArr[0]->getName()<<endl;
-                pointerArr[0]->viewAllCard();
+                pointerArr[0]->viewAllCardCapsa();
                 cout<<"Masukkan aksi :"<<endl;
                 cout<<">> ";
                 cin>>inputPlayer;

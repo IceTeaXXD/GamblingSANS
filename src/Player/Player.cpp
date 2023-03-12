@@ -77,16 +77,18 @@ void Player::viewAllCard()
         cout << "Belum ada ability card" << endl;
     }
 }
-
 void Player::viewAllCardCapsa()
 {
     cout<<"List of Player Cards : "<<endl;
     cout<<"[";
-    for (int i = 0 ; i<countofPlayerCards ; i++)
+    for (int i = 0 ; i<countofPlayerCards-1 ; i++)
     {
         this->playerCard.getCard(i).printType();
+        cout<<",";
     }
-    cout<<"]"<<endl;
+    playerCard.getCard(countofPlayerCards-1).printType();
+    cout<<"]";
+    cout << endl;
 }
 CardCollection<DeckCard> Player::getCard()
 {
