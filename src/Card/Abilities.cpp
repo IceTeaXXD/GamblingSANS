@@ -1,5 +1,5 @@
 #include "Abilities.hpp"
-REROLL::REROLL(){ this-> type = "rerroll"; }
+REROLL::REROLL(){ this-> type = "reroll"; }
 
 Quadruple::Quadruple(){ this-> type = "quadruple"; }
 
