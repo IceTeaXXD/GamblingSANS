@@ -45,7 +45,9 @@ class Player{
         void operator+(AbilityCard&);
         void addTableCard(DeckCard&);
         void viewAllCard();
-        CardCollection<DeckCard> getCard();
+        CardCollection<DeckCard>& getCard();
+        void setLeftCard(DeckCard&);
+        void setRightCard(DeckCard&);
         AbilityCard& getAbilityCard();
         bool operator<(Player&);
         bool operator>(Player&);

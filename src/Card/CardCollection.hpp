@@ -26,6 +26,10 @@ class CardCollection{
         void displayDeckCard();
         void clear();
         void addCard(T&);
+        T& getRightCard();
+        T& getLeftCard();
+        void setLeftCard(T&);
+        void setRightCard(T&);
         
 };
 

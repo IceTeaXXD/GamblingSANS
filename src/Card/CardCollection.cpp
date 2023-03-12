@@ -179,3 +179,23 @@ void CardCollection<T>::addCard(T& add)
 {
     this->buffer.push_back(add);
 }
+
+template <class T>
+T& CardCollection<T>::getLeftCard(){
+    return this->buffer[0];
+}
+
+template <class T>
+T& CardCollection<T>::getRightCard(){
+    return this->buffer[1];
+}
+
+template <class T>
+void CardCollection<T>::setLeftCard(T& c){
+    this->buffer[0] = c;
+}
+
+template <class T>
+void CardCollection<T>::setRightCard(T& c){
+    this->buffer[1] = c;
+}

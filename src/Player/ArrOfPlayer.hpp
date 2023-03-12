@@ -25,6 +25,8 @@ class ArrOfPlayer {
         void addAbilityCard(int, AbilityCard&);
         void clearCard(int i);
         void printDeque();
+        void setPlayerLeftCard(int, DeckCard&);
+        void setPlayerRightCard(int, DeckCard&);
 };
 
 #endif

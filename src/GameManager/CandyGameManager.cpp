@@ -92,11 +92,68 @@ void CandyGameManager::manipulate<SwapCard&>(SwapCard& C){
     if (C.isAvailable()){
         C.setNotAvailable();
 
-        /* Swap Card */
-        // players.swapCard();
+        cout << players.getPlayer(0).getName() << " melakukan SWAPCARD." << endl;
+        cout << "Silahkan pilih pemain yang kartunya ingin anda tukar:" << endl;
+        for (int i = 1; i < 7; i++){
+            cout << i << ". " << players.getPlayer(i).getName() << endl;
+        }
+        int pilihan1;
+        cout << ">> ";
+        cin >> pilihan1;
+        cout << "Silahkan pilih pemain lain yang kartunya ingin anda tukar:" << endl;
+        for (int i = 1; i < 7; i++){
+            if (i != pilihan1){
+                cout << i << ". " << players.getPlayer(i).getName() << endl;
+            }
+        }
+        int pilihan2;
+        cout << ">> ";
+        cin >> pilihan2;
+        cout << "Silakan pilih kartu kanan/kiri " << players.getPlayer(pilihan1).getName() << ":" << endl;
+        cout << "1. Kanan" << endl;
+        cout << "2. Kiri" << endl;
+        int pilihan3;
+        cout << ">> ";
+        cin >> pilihan3;
+        cout << "Silakan pilih kartu kanan/kiri " << players.getPlayer(pilihan2).getName() << ":" << endl;
+        cout << "1. Kanan" << endl;
+        cout << "2. Kiri" << endl;
+        int pilihan4;
+        cout << ">> ";
+        cin >> pilihan4;
 
+        // move to a temp card first
+        DeckCard p1Left = players.getPlayer(pilihan1).getCard().getLeftCard();
+        DeckCard p1Right = players.getPlayer(pilihan1).getCard().getRightCard();
+        DeckCard p2Left = players.getPlayer(pilihan2).getCard().getLeftCard();
+        DeckCard p2Right = players.getPlayer(pilihan2).getCard().getRightCard();
+        
+        // swap the card and remove swappee card
+        if (pilihan3 == 1){
+            if (pilihan4 == 1){
+                players.setPlayerRightCard(pilihan1, p2Right);
+                players.setPlayerRightCard(pilihan2, p1Right);
+            }
+            else{
+                players.setPlayerRightCard(pilihan1, p2Left);
+                players.setPlayerLeftCard(pilihan2, p1Right);
+
+            }
+        }
+        else{
+            if (pilihan4 == 1){
+                players.setPlayerLeftCard(pilihan1, p2Right);
+                players.setPlayerRightCard(pilihan2, p1Left);
+            }
+            else{
+                players.setPlayerLeftCard(pilihan1, p2Left);
+                players.setPlayerLeftCard(pilihan2, p1Left);
+            }
+        }
+        
         /* OUTPUT */
-        cout << "Kartu ditukar" << endl;
+        cout << "Kartu berhasil ditukar" << endl;
+
     }
     else{
         cout << "Anda tidak memiliki kartu ini" << endl;

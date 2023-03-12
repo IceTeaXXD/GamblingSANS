@@ -71,3 +71,11 @@ void ArrOfPlayer::printDeque(){
         cout << arr[i].getName() << endl;
     }
 }
+
+void ArrOfPlayer::setPlayerLeftCard(int idx, DeckCard& card){
+    this->arr[idx].setLeftCard(card);
+}
+
+void ArrOfPlayer::setPlayerRightCard(int idx, DeckCard& card){
+    this->arr[idx].setRightCard(card);
+}

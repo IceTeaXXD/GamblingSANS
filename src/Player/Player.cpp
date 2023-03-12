@@ -63,9 +63,25 @@ void Player::viewAllCard()
     }
 }
 
-CardCollection<DeckCard> Player::getCard()
+CardCollection<DeckCard>& Player::getCard()
 {
     return this->playerCard;
+}
+
+void Player::setLeftCard(DeckCard& card){
+    cout << "------------------------" << endl;
+    Player::viewAllCard();
+    cout << "================" << endl;
+    cout << this->playerCard.getLeftCard().getNum() << endl;
+    this->playerCard.setLeftCard(card);
+    cout << this->playerCard.getLeftCard().getNum() << endl;
+    cout << "================" << endl;
+    Player::viewAllCard();
+    cout << "------------------------" << endl;
+}
+
+void Player::setRightCard(DeckCard& card){
+    this->playerCard.setRightCard(card);
 }
 
 AbilityCard& Player::getAbilityCard(){
