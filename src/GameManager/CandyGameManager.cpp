@@ -223,11 +223,31 @@ void CandyGameManager::manipulate<Switch&>(Switch& C){
     if (C.isAvailable()){
         C.setNotAvailable();
 
-        /* Switch */
-        // players->switch();
+        cout << players->getPlayer(0).getName() << " melakukan SWITCH." << endl;
+        players->getPlayer(0).viewAllCard();
+        cout << "Silahkan pilih pemain yang kartunya ingin anda tukar:" << endl;
+        for (int i = 1; i < 7; i++){
+            cout << i << ". " << players->getPlayer(i).getName() << endl;
+        }
+        int pilihan1;
+        cout << ">> ";
+        cin >> pilihan1;
+        cout << "Kedua kartu " << players->getPlayer(0).getName() << " telah ditukar dengan " << players->getPlayer(pilihan1).getName() << "!" << endl;
 
-        /* OUTPUT */
-        cout << "Switch" << endl;
+        // Get the cards
+        DeckCard p1Left = players->getPlayer(0).getCard().getLeftCard();
+        DeckCard p1Right = players->getPlayer(0).getCard().getRightCard();
+        DeckCard p2Left = players->getPlayer(pilihan1).getCard().getLeftCard();
+        DeckCard p2Right = players->getPlayer(pilihan1).getCard().getRightCard();
+
+        // Switch card
+        players->setPlayerLeftCard(0, p2Left);
+        players->setPlayerRightCard(0, p2Right);
+        players->setPlayerLeftCard(pilihan1, p1Left);
+        players->setPlayerRightCard(pilihan1, p1Right);
+
+        cout << "Kartumu sekarang adalah:" << endl;
+        players->getPlayer(0).viewAllCard();
     }
     else{
         cout << "Anda tidak memiliki kartu ini" << endl;
