@@ -250,7 +250,7 @@ void CandyGameManager::manipulate<Switch&>(Switch& C){
         players->getPlayer(0).viewAllCard();
     }
     else{
-        cout << "Kartu anda telah dimatikan" << endl;
+        cout << "Oops, kartu ability switchmu telah dimatikan sebelumnya :(.\nSilahkan lakukan perintah lain."<<endl;
     }
 }
 
