@@ -101,6 +101,10 @@ int main()
         string makeCardMethod;
         string fileName;
         cin >> makeCardMethod;
+        for(int i = 0; i < makeCardMethod.length(); i++)
+        {
+            makeCardMethod[i] =  tolower(makeCardMethod[i]);
+        }
         CandyGameManager* game;
         if(makeCardMethod == "auto"){
             game = new CandyGameManager();
@@ -336,6 +340,10 @@ int main()
 
                     cout << "Masukkan metode pembuatan kartu (auto/file): " << endl;
                     cin >> makeCardMethod;
+                    for(int i = 0; i < makeCardMethod.length(); i++)
+                    {
+                        makeCardMethod[i] =  tolower(makeCardMethod[i]);
+                    }
                     if(makeCardMethod == "auto"){
                         game->makeTableCards();
                     }else{
