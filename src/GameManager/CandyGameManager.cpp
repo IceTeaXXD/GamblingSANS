@@ -171,6 +171,13 @@ void CandyGameManager::manipulate<SwapCard&>(SwapCard& C){
         DeckCard p2Left = players->getPlayer(pilihan2).getCard().getLeftCard();
         DeckCard p2Right = players->getPlayer(pilihan2).getCard().getRightCard();
         
+        cout << "============================" << endl;
+        cout << "KARTU SEBELUM DITUKAR : " << endl;
+        cout << players->getPlayer(pilihan1).getName() << endl;
+        players->getPlayer(pilihan1).viewAllCard();
+        cout << players->getPlayer(pilihan2).getName() << endl;
+        players->getPlayer(pilihan2).viewAllCard();
+
         // swap the card and remove swappee card
         if (pilihan3 == 1){
             if (pilihan4 == 1){
@@ -194,6 +201,14 @@ void CandyGameManager::manipulate<SwapCard&>(SwapCard& C){
             }
         }
         
+        cout << "============================" << endl;
+        cout << "KARTU SETELAH DITUKAR : " << endl;
+        cout << players->getPlayer(pilihan1).getName() << endl;
+        players->getPlayer(pilihan1).viewAllCard();
+        cout << players->getPlayer(pilihan2).getName() << endl;
+        players->getPlayer(pilihan2).viewAllCard();
+        cout << "============================" << endl;
+            
         /* OUTPUT */
         cout << "Kartu berhasil ditukar" << endl;
 
