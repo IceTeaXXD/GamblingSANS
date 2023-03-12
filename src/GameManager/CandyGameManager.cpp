@@ -27,7 +27,9 @@ void CandyGameManager::manipulate<REROLL&>(REROLL& C){
         players.getPlayer(0).clearCards();
 
         /* Tambahin Kartu Baru */
-        players.getPlayer(0) + tableCards.takeCard();
+        DeckCard add;
+        tableCards-add;
+        players.getPlayer(0) + add;
 
         /* OUTPUT */
         cout<<"RE-ROLLED"<<endl;

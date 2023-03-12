@@ -138,12 +138,11 @@ void CardCollection<T>::setCard(T& c){
 }
 
 template <class T>
-T CardCollection<T>::takeCard(){
-    T c = T(this->buffer[0]);
+void CardCollection<T>::operator-(T& ret){
+    ret = T(this->buffer[0]);
     this->buffer.erase(this->buffer.begin());
     // cout<<"Kamu dapat kartu "<<c->getNum()<<" "<<c->getType()<<endl;
     //Get Type perlu dibikin supaya per warnanya yang keluar bukan angka
-    return c;
 }
 
 template <class T>

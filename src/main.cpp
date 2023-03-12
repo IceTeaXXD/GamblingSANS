@@ -56,7 +56,8 @@ int main()
         {
             for (int j = 0  ; j < 13 ; j++)
             {
-                DeckCard tempCard = game->getTableCards().takeCard();
+                DeckCard tempCard;
+                game->getTableCards()-tempCard;
                 game->getPlayers().addPlayerCard(i, tempCard);
             }
         } 
@@ -99,12 +100,13 @@ int main()
         cout << "Masukkan metode pembuatan kartu (auto/file): " << endl;
         cout << ">> ";
         string makeCardMethod;
+        string fileName;
         cin >> makeCardMethod;
         CandyGameManager* game;
         if(makeCardMethod == "auto"){
             game = new CandyGameManager();
         }else{
-            string fileName;
+            cin >> fileName;
             game = new CandyGameManager(fileName);
         }
         int round = 1;
@@ -114,7 +116,8 @@ int main()
                 // for each player give 2 cards from table cards
 
             if(round < 7 && round > 1){
-                DeckCard temp = game->getTableCards().takeCard();
+                DeckCard temp;
+                game->getTableCards()-temp;
                 game->getPlayCards()+temp;
                 cout<<"Kartu "<<temp.getNum()<<" "<<temp.translateToString()<<" telah ditambahkan di meja"<<endl;
             }
@@ -124,8 +127,9 @@ int main()
                 //CONTOH : "Sekarang saatnya Player I"
                 cout << "Sekarang adalah giliran Player " << game->getPlayers().getPlayer(0).getName() << endl;
                 if(round == 1){
-                    DeckCard temp1 = game->getTableCards().takeCard();
-                    DeckCard temp2 = game->getTableCards().takeCard();
+                    DeckCard temp1, temp2;
+                    game->getTableCards()-temp1;
+                    game->getTableCards()-temp2;
                     game->getPlayers().addPlayerCard(0, temp1);
                     game->getPlayers().addPlayerCard(0, temp2);
                     cout<<"Kamu dapat kartu "<<temp1.getNum()<<" "<<temp1.translateToString()<<endl;
@@ -204,7 +208,8 @@ int main()
                 // Give 1 ability card to each player
                 /* TODO */
                 cout<<"Ronde I telah berakhir"<<endl;
-                DeckCard temp = game->getTableCards().takeCard();
+                DeckCard temp;
+                game->getTableCards()-temp;
                 game->getPlayCards()+temp;
                 cout<<"Kartu "<<temp.getNum()<<" "<<temp.translateToString()<<" telah ditambahkan di meja"<<endl;
                 cout<<endl;
@@ -213,7 +218,8 @@ int main()
 
                 cout << "Pembagian Ability Card" << endl;
                 for(int i = 0; i < 7 ; i++){
-                    AbilityCard* temp = game->getAbilityCardList().takeCard();
+                    AbilityCard* temp;
+                    game->getAbilityCardList()-temp;
                     game->getPlayers().addAbilityCard(i, *temp);
                     cout << "Pemain " << game->getPlayers().getPlayer(i).getName() << " mendapatkan kartu ability: ";
                     game->getPlayers().getPlayer(i).getAbilityCard().printInfo();
@@ -273,12 +279,28 @@ int main()
             round++;
             game->setRound(round);
             // Ubah Turn
-
+            game->getPlayers().nextTurn();
             if (round > 7)
             {
-                break;
+                /* ULANG GAME */
+                string option;
+                cout << "Ulang permainan? (Y/N)" << endl;
+                cin>>option;
+                if(option=="Y"){
+                    /* reset */
+                    delete game;
+                    round = 1;
+                    if(makeCardMethod == "auto"){
+                        game = new CandyGameManager();
+                    }else{
+                        game = new CandyGameManager(fileName);
+                    }
+                    game->setRound(round);
+                }else{
+                    delete game;
+                    break;
+                }
             }
-            game->getPlayers().nextTurn();
         }
     }
     return 0;

@@ -21,11 +21,6 @@ void AbilityCard::setNotAvailable()
     availability = false;
 }
 
-void AbilityCard::use()
-{
-    cout<<"Menggunakan ability card"<<endl;
-}
-
 string AbilityCard::getType()
 {
     return type;

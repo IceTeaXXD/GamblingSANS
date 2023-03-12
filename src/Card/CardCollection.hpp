@@ -20,9 +20,10 @@ class CardCollection{
         void MakeDeck(string filename);
 
         T getCard(int);
-        T takeCard();
+        // T takeCard();
         void setCard(T&);
         void operator+(T&);
+        void operator-(T&);
         void displayDeckCard();
         // void displayCapsa();
         void clear();
