@@ -47,6 +47,7 @@ void CandyGameManager::reset()
     playCards.clear();
     abilityCardList.clear();
     tableCards.clear();
+    setPoint(64);
     for(int i = 0; i < 7;i++){
         players->clearCard(i);
     }

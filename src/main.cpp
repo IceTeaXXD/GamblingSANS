@@ -108,13 +108,12 @@ int main()
             cin >> fileName;
             game = new CandyGameManager(fileName);
         }
-        int round = 1;
-        game->setRound(round);
+        game->setRound(1);
         while(true){
-            cout << "ROUND " << round << endl;
+            cout << "ROUND " << game->getRound() << endl;
                 // for each player give 2 cards from table cards
 
-            if(round < 7 && round > 1){
+            if(game->getRound() < 7 && game->getRound() > 1){
                 DeckCard temp;
                 game->getTableCards()-temp;
                 game->getPlayCards()+temp;
@@ -125,7 +124,7 @@ int main()
                 //Implementasi penunjuk player yg main
                 //CONTOH : "Sekarang saatnya Player I"
                 cout << "Sekarang adalah giliran Player " << game->getPlayers().getPlayer(0).getName() << endl;
-                if(round == 1){
+                if(game->getRound() == 1){
                     DeckCard temp1, temp2;
                     game->getTableCards()-temp1;
                     game->getTableCards()-temp2;
@@ -178,7 +177,6 @@ int main()
                                 cout << "8. Switch" << endl;
                                 cout << "9. Swap" << endl;
                                 cout << "10. Help" << endl;
-                                input = true;
                             }else{
                                 if(aksi == game->getPlayers().getPlayer(0).getAbilityCard().getType()){
                                     if(!game->getPlayers().getPlayer(0).isabilityCardEmpty()){
@@ -196,6 +194,7 @@ int main()
                         }
                     }catch (const char* err){
                         cout << "Error: " << err << endl;
+                        input = false;
                     }
                 }
                 cout << endl;
@@ -203,7 +202,7 @@ int main()
                 game->getPlayers().nextTurn();
             }
 
-            if(round == 1){
+            if(game->getRound() == 1){
                 // Give 1 ability card to each player
                 /* TODO */
                 cout<<"Ronde I telah berakhir"<<endl;
@@ -228,18 +227,14 @@ int main()
             }
 
             /* TOLONG CEK DI SINI*/ 
-            if (round == 7)
+            if (game->getRound() == 7)
             {
                 vector<Kombinasi> tempKombinasi;
-                tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(0).getCard(),game->getPlayCards()));
-                tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(1).getCard(),game->getPlayCards()));
-                tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(2).getCard(),game->getPlayCards()));
-                tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(3).getCard(),game->getPlayCards()));
-                tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(4).getCard(),game->getPlayCards()));
-                tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(5).getCard(),game->getPlayCards()));
-                tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(6).getCard(),game->getPlayCards()));
+                for(int i = 0; i < 7 ; i++){
+                    tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards()));
+                }
 
-                double idx;
+                int idx;
                 vector<double> temp;
                 for (int i = 0 ; i < 7 ; i++)
                 {
@@ -260,7 +255,7 @@ int main()
                     }
                 }
                 cout<<tempKombinasi[idx].getCombinationName()<<endl;
-                cout<<"Menambahkan poin pada player "<<idx+1<<endl;
+                cout<<"Menambahkan poin pada player "<<game->getPlayers().getPlayerAddress(idx)->getName()<<endl;
                 cout<<"Sebesar "<<game->getPoint()<<endl;
 
                 cout<<"Table Card List"<<endl;
@@ -275,11 +270,10 @@ int main()
                 long long tempPoin = game->getPlayers().getPlayer(idx).getPoint();
                 game->getPlayers().setPlayerPoint(idx,game->getPoint() + tempPoin);
             }
-            round++;
-            game->setRound(round);
+            game->setRound(game->getRound()+1);
             // Ubah Turn
             game->getPlayers().nextTurn();
-            if (round > 7)
+            if (game->getRound() > 7)
             {
                 /* SHOW LEADERBOARD */
                 game->leaderboard();
@@ -292,22 +286,20 @@ int main()
                     if(option=="Y"){
                         /* reset */
                         delete game;
-                        round = 1;
+                        game->setRound(1);
                         if(makeCardMethod == "auto"){
                             game = new CandyGameManager();
                         }else{
                             game = new CandyGameManager(fileName);
                         }
-                        game->setRound(round);
                     }else{
                         delete game;
                         break;
                     }
                 }else{
                     cout << "NO WINNER. STARTING FROM ROUND 1" << endl;
-                    /* DELETE DECK, DELETE KARTU PER PLAYER, DELETE TABLE CARD, DELETE ABILITY CARD, ULANG DARI round 1 */
-                    round = 1;
-                    game->setRound(round);
+
+                    game->setRound(1);
 
                     game->reset();
                     
