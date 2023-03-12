@@ -240,11 +240,28 @@ int main()
             /* TOLONG CEK DI SINI*/ 
             if (game->getRound() == 6)
             {
+                // vector<Kombinasi> tempKombinasi;
+                // map<Kombinasi, Player> mapKombinasi;
+                // map<Kombinasi, int> mapIndeks;
+                // for(int i = 0; i < 7 ; i++){
+                //     tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards()));
+                //     mapKombinasi.insert(make_pair(Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards()), game->getPlayers().getPlayer(i)));
+                //     mapIndeks.insert(make_pair(Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards()), i));
+                // }
+                // Kombinasi maxKombinasi = maxVector<Kombinasi>(tempKombinasi);
+                // cout<<"Nilai Tertinggi yaitu "<<maxKombinasi.value()<<endl;
+                // cout<<"Dengan kombinasi "<<maxKombinasi.getCombinationName()<<endl;
+                // cout<<"Menambahkan poin pada player "<<mapKombinasi[maxKombinasi].getName()<<endl;
+                // cout<<"Sebesar "<<game->getPoint()<<endl;
+
+                // long long tempPoin = mapKombinasi[maxKombinasi].getPoint();
+                // int idx = mapIndeks[maxKombinasi];
+                // game->getPlayers().setPlayerPoint(idx,game->getPoint() + tempPoin);
+
                 vector<Kombinasi> tempKombinasi;
                 for(int i = 0; i < 7 ; i++){
                     tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards()));
                 }
-
                 int idx;
                 vector<double> temp;
                 for (int i = 0 ; i < 7 ; i++)
@@ -269,9 +286,9 @@ int main()
                 cout<<"Menambahkan poin pada player "<<game->getPlayers().getPlayerAddress(idx)->getName()<<endl;
                 cout<<"Sebesar "<<game->getPoint()<<endl;
 
+
                 cout<<"Table Card List"<<endl;
                 game->getPlayCards().displayDeckCard();
-
                 cout<<"Player Card :"<<endl;
                 for (int i = 0 ; i < 7 ; i++)
                 {
@@ -280,6 +297,7 @@ int main()
                 }
                 long long tempPoin = game->getPlayers().getPlayer(idx).getPoint();
                 game->getPlayers().setPlayerPoint(idx,game->getPoint() + tempPoin);
+
             }
             game->setRound(game->getRound()+1);
             // Ubah Turn
