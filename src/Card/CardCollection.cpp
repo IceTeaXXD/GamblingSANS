@@ -79,9 +79,11 @@ void CardCollection<DeckCard>::MakeDeck(string filename){
         Angka dari 1-10, A, K, Q, J
     */
 
+   vector<DeckCard> cards;
+
     string out;
 
-    ifstream File(filename);
+    ifstream File("../config/"+filename);
 
     /* Compute number of cards */
     getline(File, out);
@@ -115,10 +117,22 @@ void CardCollection<DeckCard>::MakeDeck(string filename){
         }
 
         if(w > 0 && w <= 4 && a > 0 && a <= 13){
-            buffer.push_back(DeckCard(w,a));
+            DeckCard* c = new DeckCard(w,a);
+            cards.push_back(*c);
         }else{
             throw "Salah format. Perhatikan warna dan angka yang dimasukkan!\n";
         }
+    }
+    /* Mengacak */
+    srand(time(0));
+    vector<int> num;
+    for (int i = 1; i <= n; i++){
+        num.push_back(i);
+    }
+    for (int i = 0; i < n; i++){
+        int randIdx = rand() % (n - i);
+        this->buffer.push_back(cards[num[randIdx]-1]);
+        num.erase(num.begin() + randIdx);
     }
 
     File.close();
