@@ -61,6 +61,21 @@ void Player::viewAllCard()
     {
         this->playerCard.getCard(i).printInfo();
     }
+
+    cout << endl;
+    
+    cout << "Ability Cards: " << endl;
+    if(hasAbility){
+        this->abilityCards->printInfo();
+        cout << "Status: ";
+        if(this->abilityCards->isAvailable()){
+            cout << "Available" << endl;
+        }else{
+            cout << "Not Available" << endl;
+        }
+    }else{
+        cout << "Belum ada ability card" << endl;
+    }
 }
 
 void Player::viewAllCardCapsa()

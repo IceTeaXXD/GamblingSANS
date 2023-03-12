@@ -68,6 +68,7 @@ void ArrOfPlayer::addPlayerCard(int idx, DeckCard& card){
 
 void ArrOfPlayer::addAbilityCard(int idx, AbilityCard& card){
     this->arr[idx] + card;
+    this->arr[idx].setHasAbility(true);
 }
 
 
