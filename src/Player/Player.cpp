@@ -37,11 +37,11 @@ int Player::getID(){
     return this->id;
 }
 
-int Player::getPoint(){
+long long Player::getPoint(){
     return this->point;
 }
 
-void Player::setPoint(int p){
+void Player::setPoint(long long p){
     this->point = p;
 }
 
@@ -95,6 +95,7 @@ bool Player::operator==(Player& other){
 
 void Player::clearCards(){
     this->playerCard.clear();
+    this->countofPlayerCards = 0;
 }
 
 bool Player::isabilityCardEmpty(){

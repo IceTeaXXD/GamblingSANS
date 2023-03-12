@@ -19,6 +19,44 @@ CardCollection<DeckCard>& CandyGameManager::getPlayCards()
 {
     return playCards;
 }
+
+void CandyGameManager::leaderboard(){
+    cout << "LEADERBOARD" << endl;
+    for (int i = 0; i < 7 ; i++){
+        cout << i+1;
+        cout << ". ";
+        cout << players->getPlayer(i).getName();
+        cout << ": ";
+        cout << players->getPlayer(i).getPoint() << endl;
+    }
+    cout << endl;
+}
+
+bool CandyGameManager::existWinner(){
+    for (int i = 0; i < 7 ; i++){
+        if(players->getPlayer(i).getPoint() >= 4294967296){
+            return true;
+        }
+    }
+    return false;
+}
+
+void CandyGameManager::reset()
+{
+    /* DELETE DECK, DELETE KARTU PER PLAYER, DELETE TABLE CARD, DELETE ABILITY CARD, ULANG DARI round 1 */
+    playCards.clear();
+    abilityCardList.clear();
+    tableCards.clear();
+    for(int i = 0; i < 7;i++){
+        players->clearCard(i);
+    }
+}
+
+void CandyGameManager::makeAbilityCards()
+{
+    abilityCardList.MakeDeck();
+}
+
 template<>
 void CandyGameManager::manipulate<REROLL&>(REROLL& C){
     if (C.isAvailable())

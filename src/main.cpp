@@ -281,23 +281,47 @@ int main()
             game->getPlayers().nextTurn();
             if (round > 7)
             {
-                /* ULANG GAME */
-                string option;
-                cout << "Ulang permainan? (Y/N)" << endl;
-                cin>>option;
-                if(option=="Y"){
-                    /* reset */
-                    delete game;
-                    round = 1;
-                    if(makeCardMethod == "auto"){
-                        game = new CandyGameManager();
+                /* SHOW LEADERBOARD */
+                game->leaderboard();
+                if(game->existWinner()){
+                    cout << "WINNER FOUND" << endl;
+                    /* OPSI BIKIN PERMAINAN BARU */
+                    string option;
+                    cout << "Ulang permainan? (Y/N)" << endl;
+                    cin>>option;
+                    if(option=="Y"){
+                        /* reset */
+                        delete game;
+                        round = 1;
+                        if(makeCardMethod == "auto"){
+                            game = new CandyGameManager();
+                        }else{
+                            game = new CandyGameManager(fileName);
+                        }
+                        game->setRound(round);
                     }else{
-                        game = new CandyGameManager(fileName);
+                        delete game;
+                        break;
                     }
-                    game->setRound(round);
                 }else{
-                    delete game;
-                    break;
+                    cout << "NO WINNER. STARTING FROM ROUND 1" << endl;
+                    /* DELETE DECK, DELETE KARTU PER PLAYER, DELETE TABLE CARD, DELETE ABILITY CARD, ULANG DARI round 1 */
+                    round = 1;
+                    game->setRound(round);
+
+                    game->reset();
+                    
+                    game->makeAbilityCards();
+
+                    cout << "Masukkan metode pembuatan kartu (auto/file): " << endl;
+                    cin >> makeCardMethod;
+                    if(makeCardMethod == "auto"){
+                        game->makeTableCards();
+                    }else{
+                        cin >> fileName;
+                        game->makeTableCards(fileName);
+                    }
+
                 }
             }
         }

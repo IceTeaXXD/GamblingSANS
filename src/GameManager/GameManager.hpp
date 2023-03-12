@@ -50,6 +50,9 @@ class GameManager{
         DeckCard* getCard();
         bool isInputTrue(string);
 
+        void makeTableCards();
+        void makeTableCards(string);
+
         /* Manipulasi */
 
         string inputToLower(string);

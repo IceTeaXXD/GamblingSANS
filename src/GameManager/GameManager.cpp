@@ -28,6 +28,16 @@ GameManager::GameManager(string f): point(64)
     tableCards.MakeDeck(f);
 }
 
+void GameManager::makeTableCards()
+{
+    tableCards.MakeDeck();
+}
+
+void GameManager::makeTableCards(string f)
+{
+    tableCards.MakeDeck(f);
+}
+
 CardCollection<DeckCard>& GameManager::getTableCards()
 {
     return tableCards;
