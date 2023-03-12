@@ -23,6 +23,7 @@ using namespace std;
 class GameManager{
     protected:
         int round;
+        int turn;
         /* Vector of Players */
         ArrOfPlayer* players;
         /* Card Deck */
@@ -33,6 +34,9 @@ class GameManager{
         /* Game Round */
         void setRound(int);
         int getRound();
+        /* Game Turn */
+        void setTurn(int);
+        int getTurn();
         /* Inisiator Game */
         GameManager();
         GameManager(int);

@@ -123,6 +123,7 @@ int main()
             for (int i = 0 ; i < 7 ; i++){
                 //Implementasi penunjuk player yg main
                 //CONTOH : "Sekarang saatnya Player I"
+                game->setTurn(i);
                 cout << "Sekarang adalah giliran Player " << game->getPlayers().getPlayer(0).getName() << endl;
                 if(game->getRound() == 1){
                     DeckCard temp1, temp2;

@@ -9,6 +9,12 @@ void GameManager::setRound(int r){
 
 int GameManager::getRound(){ return this->round; }
 
+void GameManager::setTurn(int t){
+    this->turn = t;
+}
+
+int GameManager::getTurn(){ return this->turn; }
+
 GameManager::GameManager():point(64)
 {
     /* Inisialisasi DeckCard dengan memanggil MakeDeck()*/

@@ -120,7 +120,8 @@ void CandyGameManager::manipulate<ReverseDirection&>(ReverseDirection& C){
         C.setNotAvailable();
 
         /* Reverse direction */
-        players->reverseTurn(this->round);
+        cout << "TURNNNNNN: " << this->turn << endl;
+        players->reverseTurn(this->turn);
 
         /* OUTPUT */
         cout << "Direction berubah" << endl;

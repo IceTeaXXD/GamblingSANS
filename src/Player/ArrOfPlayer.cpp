@@ -32,10 +32,16 @@ void ArrOfPlayer::nextTurn(){
     // this->printDeque();
 }
 
-void ArrOfPlayer::reverseTurn(int round){
+void ArrOfPlayer::reverseTurn(int turn){
     reverse(arr.begin(), arr.end());
-    for (int i = 0 ; i < round-1 ; i++){
-        nextTurn();
+    if (turn == 0){
+        arr.push_front(arr.back());
+        arr.pop_back();
+    }else{
+        for (int i = 0 ; i < turn-1 ; i++){
+            cout << "NEXTT" << endl;
+            nextTurn();
+        }
     }
 }
 
