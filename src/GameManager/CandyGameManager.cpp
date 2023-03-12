@@ -78,7 +78,7 @@ void CandyGameManager::manipulate<REROLL&>(REROLL& C){
     }
     else
     {
-        cout << "Anda tidak memiliki kartu ini!" << endl;
+        cout << "Kartu anda telah dimatikan" << endl;
     }
 }
 
@@ -94,7 +94,7 @@ void CandyGameManager::manipulate<Quadruple&>(Quadruple& C){
         cout << "Point berubah menjadi " << this->point << endl;
     }
     else{
-        cout << "Anda tidak memiliki kartu ini" << endl;
+        cout << "Kartu anda telah dimatikan" << endl;
     }
 }
 
@@ -110,7 +110,7 @@ void CandyGameManager::manipulate<Quarter&>(Quarter& C){
         cout << "Point berubah menjadi " << this->point << endl;
     }
     else{
-        cout << "Anda tidak memiliki kartu ini" << endl;
+        cout << "Kartu anda telah dimatikan" << endl;
     }
 }
 
@@ -126,7 +126,7 @@ void CandyGameManager::manipulate<ReverseDirection&>(ReverseDirection& C){
         cout << "Direction berubah" << endl;
     }
     else{
-        cout << "Anda tidak memiliki kartu ini" << endl;
+        cout << "Kartu anda telah dimatikan" << endl;
     }
 }
 
@@ -214,7 +214,7 @@ void CandyGameManager::manipulate<SwapCard&>(SwapCard& C){
 
     }
     else{
-        cout << "Anda tidak memiliki kartu ini" << endl;
+        cout << "Kartu anda telah dimatikan" << endl;
     }
 }
 
@@ -250,7 +250,7 @@ void CandyGameManager::manipulate<Switch&>(Switch& C){
         players->getPlayer(0).viewAllCard();
     }
     else{
-        cout << "Anda tidak memiliki kartu ini" << endl;
+        cout << "Kartu anda telah dimatikan" << endl;
     }
 }
 
@@ -258,12 +258,32 @@ template<>
 void CandyGameManager::manipulate<Abilityless&>(Abilityless& C){
     if (C.isAvailable()){
         C.setNotAvailable();
-
-        /* OUTPUT */
-        cout << "Kartu tanpa ability" << endl;
+        cout << players->getPlayer(0).getName() << " akan mematikan kartu ability lawan!" << endl;
+        cout << "Silahkan pilih pemain yang kartu abilitynya ingin dimatikan:" << endl;
+        for (int i = 1; i < 7; i++){
+            cout << i << ". " << players->getPlayer(i).getName() << endl;
+        }
+        int pilihan1;
+        cout << ">> ";
+        cin >> pilihan1;
+        if (players->getPlayer(pilihan1).getAbilityCard().isAvailable()){
+            players->getPlayer(pilihan1).getAbilityCard().setNotAvailable();
+            cout << "Kartu ability " << players->getPlayer(pilihan1).getName() << " telah dimatikan." << endl;
+        }
+        else if (!players->getPlayer(pilihan1).getAbilityCard().isAvailable()){
+            cout << "Kartu ability " << players->getPlayer(pilihan1).getName() << " telah dipakai sebelumnya. Yah, sayang penggunaan kartu ini sia-sia 🙁" << endl;
+        }
+        else if(players->getPlayer(1).getAbilityCard().isAvailable() || 
+                players->getPlayer(2).getAbilityCard().isAvailable() || 
+                players->getPlayer(3).getAbilityCard().isAvailable() || 
+                players->getPlayer(4).getAbilityCard().isAvailable() || 
+                players->getPlayer(5).getAbilityCard().isAvailable() || 
+                players->getPlayer(6).getAbilityCard().isAvailable()){
+            cout << "Eits, ternyata semua pemain sudah memakai kartu kemampuan. Yah kamu kena sendiri deh, kemampuanmu menjadi abilityless. Yah, pengunaan kartu ini sia-sia" << endl;
+        }
     }
     else{
-        cout << "Anda tidak memiliki kartu ini" << endl;
+        cout << "Eits, kamu tidak punya kartunya 😛" << endl;
     }
 }
 
