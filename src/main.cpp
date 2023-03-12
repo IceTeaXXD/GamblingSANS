@@ -227,7 +227,7 @@ int main()
             }
 
             /* TOLONG CEK DI SINI*/ 
-            if (game->getRound() == 7)
+            if (game->getRound() == 6)
             {
                 vector<Kombinasi> tempKombinasi;
                 for(int i = 0; i < 7 ; i++){
@@ -273,7 +273,7 @@ int main()
             game->setRound(game->getRound()+1);
             // Ubah Turn
             game->getPlayers().nextTurn();
-            if (game->getRound() > 7)
+            if (game->getRound() > 6)
             {
                 /* SHOW LEADERBOARD */
                 game->leaderboard();
