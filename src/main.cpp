@@ -286,12 +286,12 @@ int main()
                     if(option=="Y"){
                         /* reset */
                         delete game;
-                        game->setRound(1);
                         if(makeCardMethod == "auto"){
                             game = new CandyGameManager();
                         }else{
                             game = new CandyGameManager(fileName);
                         }
+                        game->setRound(1);
                     }else{
                         delete game;
                         break;
