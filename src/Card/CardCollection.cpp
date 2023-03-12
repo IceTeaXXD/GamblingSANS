@@ -138,12 +138,11 @@ void CardCollection<T>::setCard(T& c){
 }
 
 template <class T>
-T CardCollection<T>::takeCard(){
-    T c = T(this->buffer[0]);
+void CardCollection<T>::operator-(T& ret){
+    ret = T(this->buffer[0]);
     this->buffer.erase(this->buffer.begin());
     // cout<<"Kamu dapat kartu "<<c->getNum()<<" "<<c->getType()<<endl;
     //Get Type perlu dibikin supaya per warnanya yang keluar bukan angka
-    return c;
 }
 
 template <class T>
@@ -160,6 +159,16 @@ void CardCollection<T>::displayDeckCard()
     }
 }
 
+// template <class T>
+// void CardCollection<T>::displayCapsa()
+// {
+//     cout<<"[";
+//     for (auto it = buffer.begin(); it != buffer.end(); it++) 
+//     {
+//         it->printType();
+//     }
+//     cout<<"]";
+// }
 template <>
 void CardCollection<AbilityCard*>::displayDeckCard()
 {
@@ -178,4 +187,24 @@ template <class T>
 void CardCollection<T>::addCard(T& add)
 {
     this->buffer.push_back(add);
+}
+
+template <class T>
+T& CardCollection<T>::getLeftCard(){
+    return this->buffer[0];
+}
+
+template <class T>
+T& CardCollection<T>::getRightCard(){
+    return this->buffer[1];
+}
+
+template <class T>
+void CardCollection<T>::setLeftCard(T& c){
+    this->buffer[0] = c;
+}
+
+template <class T>
+void CardCollection<T>::setRightCard(T& c){
+    this->buffer[1] = c;
 }

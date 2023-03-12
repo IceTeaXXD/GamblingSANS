@@ -10,6 +10,15 @@ ArrOfPlayer::ArrOfPlayer(){
     }
     
 }
+ArrOfPlayer :: ArrOfPlayer(int n){
+    string name;
+    for (int i = 0; i < n; i++){
+        cout << "Masukan nama player " << i+1 << " : ";
+        cin >> name;
+        Player p(name);
+        this->arr.push_back(p);
+    }
+}
 
 ArrOfPlayer::~ArrOfPlayer(){
     this->arr.clear();
@@ -17,9 +26,10 @@ ArrOfPlayer::~ArrOfPlayer(){
 
 void ArrOfPlayer::nextTurn(){
     // this->printDeque();
+    // cout << endl;
     arr.push_back(arr.at(0));
     arr.pop_front();
-
+    // this->printDeque();
 }
 
 void ArrOfPlayer::reverseTurn(int round){
@@ -33,11 +43,16 @@ Player ArrOfPlayer::getPlayer(int idx){
     return this->arr[idx];
 }
 
+Player* ArrOfPlayer::getPlayerAddress(int idx)
+{
+    return &this->arr[idx];
+}
+
 void ArrOfPlayer::changePlayerName(int idx, string name){
     this->arr[idx].setName(name);
 }
 
-void ArrOfPlayer::setPlayerPoint(int idx, int point){
+void ArrOfPlayer::setPlayerPoint(int idx, long long point){
     this->arr[idx].setPoint(point);
 }
 
@@ -59,4 +74,12 @@ void ArrOfPlayer::printDeque(){
     {
         cout << arr[i].getName() << endl;
     }
+}
+
+void ArrOfPlayer::setPlayerLeftCard(int idx, DeckCard& card){
+    this->arr[idx].setLeftCard(card);
+}
+
+void ArrOfPlayer::setPlayerRightCard(int idx, DeckCard& card){
+    this->arr[idx].setRightCard(card);
 }

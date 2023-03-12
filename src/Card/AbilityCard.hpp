@@ -13,7 +13,6 @@ class AbilityCard{
         AbilityCard(bool);
         bool isAvailable();
         void setNotAvailable();
-        virtual void use();
         string getType();
         virtual void printInfo();
 };
