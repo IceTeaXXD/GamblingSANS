@@ -45,7 +45,6 @@ void ArrOfPlayer<T>::reverseTurn(int turn){
         arr.pop_back();
     }else{
         for (int i = 0 ; i < turn-1 ; i++){
-            cout << "NEXTT" << endl;
             nextTurn();
         }
     }

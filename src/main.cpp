@@ -197,7 +197,7 @@ int main()
                                     if(aksi == game->getPlayers().getPlayer(0).getAbilityCard().getType()){
                                         game->manipulate<AbilityCard&>(game->getPlayers().getPlayer(0).getAbilityCard());
                                     }else{
-                                        cout << "Anda tidak memiliki kartu ability ini" << endl;
+                                        throw "Anda tidak memiliki kartu ability ini\n";
                                     }
                                     input = true;
                                 }else{
@@ -214,7 +214,7 @@ int main()
                     }
                 }
                 cout << endl;
-                cout << "\033[2J\033[1;1H" << endl;
+                // cout << "\033[2J\033[1;1H" << endl;
                 game->getPlayers().nextTurn();
             }
 
