@@ -135,7 +135,7 @@ void CardCollection<DeckCard>::MakeDeck(string filename){
         Angka dari 1-10, A, K, Q, J
     */
 
-   vector<DeckCard> cards;
+    vector<DeckCard> cards;
 
     string out;
 
