@@ -8,6 +8,7 @@
 #include "Angka.hpp"
 #include "Warna.hpp"
 #include "../Rules/FindValue.hpp"
+#include "../utils/printColor.hpp"
 using namespace std;
 
 class DeckCard : public Warna, public Angka{

@@ -2,31 +2,41 @@
 #define UNO_ACTION_CARD_HPP
 
 #include <iostream>
-#include <vector>
-#include "../GameManager/GameManager.hpp"
+using namespace std;
 #include "Warna.hpp"
-#include "AbilityCard.hpp"
+#include "UnoCard.hpp"
 
-
-class plus2 : public AbilityCard, public Warna
-{
+class plus2 : public UnoCard, public Warna{
     public:
         plus2();
-        void use(GameManager*);
+        plus2(int);
+        void printInfo();
 };
 
-class wildcard4 : public AbilityCard
-{
+class reversecard : public UnoCard, public Warna{
     public:
-        wildcard4();
-        void use(GameManager*);
+        reversecard();
+        reversecard(int);
+        void printInfo();
 };
 
-class wildcard : public AbilityCard
-{
+class skip : public UnoCard, public Warna{
+    public:
+        skip();
+        skip(int);
+        void printInfo();
+};
+
+class wildcard : public UnoCard{
     public:
         wildcard();
-        void use(GameManager*);
+        void printInfo();
+};
+
+class wildcardplus4 : public UnoCard{
+    public:
+        wildcardplus4();
+        void printInfo();
 };
 
 #endif

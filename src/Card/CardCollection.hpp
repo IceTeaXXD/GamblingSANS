@@ -6,6 +6,9 @@
 #include "DeckCard.hpp"
 #include "AbilityCard.hpp"
 #include "Abilities.hpp"
+#include "UnoCard.hpp"
+#include "UnoPlayCards.hpp"
+#include "UnoActionCard.hpp"
 
 template <class T>
 class CardCollection{
@@ -38,5 +41,5 @@ class CardCollection{
 
 template class CardCollection<DeckCard>;
 template class CardCollection<AbilityCard*>;
-
+template class CardCollection<UnoCard*>;
 #endif
