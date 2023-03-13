@@ -118,10 +118,14 @@ void CandyGameManager::manipulate<Quarter&>(Quarter& C){
         C.setNotAvailable();
 
         /* Set point jadi 1/4 */
-        setPoint(this->point/4);
+        if(this->point > 1){
+            setPoint(this->point/4);
 
-        /* OUTPUT */
-        cout << "Point berubah menjadi " << this->point << endl;
+            /* OUTPUT */
+            cout << "Point berubah menjadi " << this->point << endl;
+        }else{
+            cout << "Nothing happened" << endl;
+        }
     }
     else{
         cout << "Kartu anda telah dimatikan" << endl;
@@ -141,7 +145,7 @@ void CandyGameManager::manipulate<ReverseDirection&>(ReverseDirection& C){
         cout << "Direction berubah" << endl;
     }
     else{
-        cout << "Kartu anda telah dimatikan" << endl;
+        throw "Kartu anda telah dimatikan\nSilakan ulangi!\n";
     }
 }
 
@@ -325,6 +329,6 @@ void CandyGameManager::manipulate<AbilityCard&>(AbilityCard& C){
     else if (C.getType() == "abilityless"){
         manipulate<Abilityless&>(dynamic_cast<Abilityless&>(C));
     }else{
-        cout << "Anda tidak memiliki kartu ini!" << endl;
+        throw "Anda tidak memiliki kartu ini!\n";
     }
 }
