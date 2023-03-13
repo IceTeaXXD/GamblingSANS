@@ -192,6 +192,10 @@ void CardCollection<AbilityCard*>::displayDeckCard()
     //     it[]->printInfo();
     // }
 }
+template <class T>
+vector<T> CardCollection<T>::getBuffer(){
+    return this->buffer;
+}
 
 template <class T>
 void CardCollection<T>::clear(){

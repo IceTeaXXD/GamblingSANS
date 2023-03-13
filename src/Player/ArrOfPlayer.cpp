@@ -82,8 +82,8 @@ void ArrOfPlayer<CandyGamePlayer>::addAbilityCard(int idx, AbilityCard& card){
     this->arr[idx].setHasAbility(true);
 }
 
-template <class T>
-void ArrOfPlayer<T>::clearCard(int i){
+template <>
+void ArrOfPlayer<CandyGamePlayer>::clearCard(int i){
     arr[i].clearCards();
 }
 

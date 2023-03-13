@@ -184,7 +184,7 @@ int main()
                                 input == false;
                             }else if(aksi == "tablecards"){
                                 cout << " ==================== " << endl;
-                                cout << "      DECK CARDS       " << endl;
+                                cout << "       DECK CARDS       " << endl;
                                 cout << " ==================== " << endl;
                                 game->getPlayCards().displayDeckCard();
                                 cout << endl;
@@ -257,8 +257,8 @@ int main()
                 map<int, Player> mapPlayer;
                 map<int, Kombinasi> mapIndeks;
                 for(int i = 0; i < 7 ; i++){
-                    mapIndeks.insert(make_pair(i, Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getTableCards())));
-                    mapValue.insert(make_pair(Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getTableCards()).value(), Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getTableCards())));
+                    mapIndeks.insert(make_pair(i, Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards().getBuffer())));
+                    mapValue.insert(make_pair(Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards().getBuffer()).value(), Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards().getBuffer())));
                     mapPlayer.insert(make_pair(i, game->getPlayers().getPlayer(i)));
                 }
                 double maxValue = maxKeyMap<double, Kombinasi>(mapValue);
@@ -273,11 +273,12 @@ int main()
 
                 cout<<"Table Card List"<<endl;
                 game->getPlayCards().displayDeckCard();
-                cout<<"Player Card :"<<endl;
+                cout<<"\nPlayer Cards :"<<endl;
                 for (int i = 0 ; i < 7 ; i++)
                 {
                     cout<<"Player "<<game->getPlayers().getPlayerAddress(i)->getName()<<endl;
                     game->getPlayers().getPlayer(i).viewAllCard();
+                    cout << endl;
                 }
 
             }

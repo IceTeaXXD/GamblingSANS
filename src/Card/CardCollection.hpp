@@ -32,6 +32,7 @@ class CardCollection{
         T& getLeftCard();
         void setLeftCard(T&);
         void setRightCard(T&);
+        vector<T> getBuffer();
         
 };
 
