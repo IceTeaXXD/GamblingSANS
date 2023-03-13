@@ -27,11 +27,11 @@ class Kombinasi : protected FindValue{
     public:
         /* Default Constructor */
         Kombinasi();
-        Kombinasi(CardCollection<DeckCard> playerCards, CardCollection<DeckCard> tableCards);
+        Kombinasi(vector<DeckCard> playerCards, vector<DeckCard> tableCards);
         ~Kombinasi();
         /* Setter */
         /* Set Kartu dari playerCards dan tableCards*/
-        void setCards(CardCollection<DeckCard> playerCards, CardCollection<DeckCard> tableCards);
+        void setCards(vector<DeckCard> playerCards, vector<DeckCard> tableCards);
 
         /* Nentuin value kartu untuk kombinasi */
         double value();

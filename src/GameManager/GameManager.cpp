@@ -18,34 +18,34 @@ int GameManager::getTurn(){ return this->turn; }
 GameManager::GameManager():point(64)
 {
     /* Inisialisasi DeckCard dengan memanggil MakeDeck()*/
-    tableCards.MakeDeck();
+    CardCollection<DeckCard>::MakeDeck();
     // abilityCardList.MakeDeck();
 }
 GameManager::GameManager(int a):point(64)
 {
     /* Inisialisasi DeckCard dengan memanggil MakeDeck()*/
-    tableCards.MakeDeck();
+    CardCollection<DeckCard>::MakeDeck();
     // abilityCardList.MakeDeck();
 }
 
 GameManager::GameManager(string f): point(64)
 {
-    tableCards.MakeDeck(f);
+    CardCollection<DeckCard>::MakeDeck(f);
 }
 
 void GameManager::makeTableCards()
 {
-    tableCards.MakeDeck();
+    CardCollection<DeckCard>::MakeDeck();
 }
 
 void GameManager::makeTableCards(string f)
 {
-    tableCards.MakeDeck(f);
+    CardCollection<DeckCard>::MakeDeck(f);
 }
 
-CardCollection<DeckCard>& GameManager::getTableCards()
+vector<DeckCard>& GameManager::getTableCards()
 {
-    return tableCards;
+    return buffer;
 }
 
 void GameManager::displayPlayer()
