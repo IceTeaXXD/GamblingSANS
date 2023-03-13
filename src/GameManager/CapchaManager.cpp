@@ -3,7 +3,7 @@
 CapchaManager::CapchaManager()
 {
     // this->players = ArrOfPlayer(4);
-    players = new ArrOfPlayer(4);
+    players = new ArrOfPlayer<CandyGamePlayer>(4);
 }
 
 CapchaManager::~CapchaManager()

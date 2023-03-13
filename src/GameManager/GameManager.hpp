@@ -24,8 +24,6 @@ class GameManager{
     protected:
         int round;
         int turn;
-        /* Vector of Players */
-        ArrOfPlayer* players;
         /* Card Deck */
         CardCollection<DeckCard> tableCards;
         static int numOfTableCards;
@@ -49,8 +47,7 @@ class GameManager{
         long long getPoint();
         DeckCard gameManager;
         CardCollection<DeckCard>& getTableCards();
-        ArrOfPlayer& getPlayers();
-        void displayPlayer();
+        virtual void displayPlayer();
         DeckCard* getCard();
         bool isInputTrue(string);
 

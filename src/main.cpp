@@ -5,6 +5,7 @@
 #include "GameManager/CandyGameManager.hpp"
 #include "GameManager/CapchaManager.hpp"
 #include "Player/Player.hpp"
+#include "Player/ArrOfPlayer.hpp"
 #include "Rules/Kombinasi.hpp"
 using namespace std;
 
@@ -56,20 +57,20 @@ int main()
             {
                 DeckCard tempCard;
                 game->getTableCards()-tempCard;
-                game->getPlayers().addPlayerCard(i, tempCard);
+                // game->getPlayers().addPlayerCard(i, tempCard);
             }
         } 
         //Game
         for (int i = 0 ; i < 4 ; i++)
         {
-            pointerArr.push_back(game->getPlayers().getPlayerAddress(i));
+            // pointerArr.push_back(game->getPlayers().getPlayerAddress(i));
         }
         while (!menang)
         {
             while(!pointerArr.empty())
             {
                 cout<<"Sekarang giliran player "<<pointerArr[0]->getName()<<endl;
-                pointerArr[0]->viewAllCardCapsa();
+                // pointerArr[0]->viewAllCardCapsa();
                 cout<<"Masukkan aksi :"<<endl;
                 cout<<">> ";
                 cin>>inputPlayer;
@@ -120,7 +121,6 @@ int main()
         cout << "\033[2J\033[1;1H" << endl;
         while(true){
             cout << "ROUND " << game->getRound() << endl;
-                // for each player give 2 cards from table cards
 
             if(game->getRound() < 6 && game->getRound() > 1){
                 DeckCard temp;
@@ -130,8 +130,6 @@ int main()
             }
 
             for (int i = 0 ; i < 7 ; i++){
-                //Implementasi penunjuk player yg main
-                //CONTOH : "Sekarang saatnya Player I"
                 game->setTurn(i);
                 cout << "Sekarang adalah giliran Player " << game->getPlayers().getPlayer(0).getName() << endl;
                 if(game->getRound() == 1){
@@ -142,8 +140,6 @@ int main()
                     game->getPlayers().addPlayerCard(0, temp2);
                     cout<<"Kamu dapat kartu "<<temp1.getNum()<<" "<<temp1.translateToString()<<endl;
                     cout<<"Kamu dapat kartu "<<temp2.getNum()<<" "<<temp2.translateToString()<<endl;
-                    //Mulai aksi player                
-                    // game->getPlayers().getPlayer(0).viewAllCard();
                     cout<<endl;
                 }
 
@@ -239,14 +235,10 @@ int main()
                     AbilityCard* temp;
                     game->getAbilityCardList()-temp;
                     game->getPlayers().addAbilityCard(i, *temp);
-                    // cout << "Pemain " << game->getPlayers().getPlayer(i).getName() << " mendapatkan kartu ability: ";
-                    // game->getPlayers().getPlayer(i).getAbilityCard().printInfo();
-                    // game->manipulate<AbilityCard&>(game->getPlayers().getPlayer(i).getAbilityCard());
                 }
                 cout << endl;
             }
 
-            /* TOLONG CEK DI SINI*/ 
             if (game->getRound() == 6)
             {
                 map<double, Kombinasi> mapValue;
@@ -266,46 +258,6 @@ int main()
 
                 long long tempPoin = mapPlayer[idx].getPoint();
                 game->getPlayers().setPlayerPoint(idx,game->getPoint() + tempPoin);
-
-                // vector<Kombinasi> tempKombinasi;
-                // // map<Kombinasi, Player> mapKombinasi;
-                
-                // map<double, Kombinasi> mapValue;
-                // map<int, Player> mapPlayer;
-                // map<int, Kombinasi> mapIndeks;
-                // for(int i = 0; i < 7 ; i++){
-                //     tempKombinasi.push_back(Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards()));
-                //     // mapKombinasi.insert(make_pair(Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards()), game->getPlayers().getPlayer(i)));
-                //     mapIndeks.insert(make_pair(i, Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards())));
-                //     mapValue.insert(make_pair(Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards()).value(), Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards())));
-                //     mapPlayer.insert(make_pair(i, game->getPlayers().getPlayer(i)));
-                // }
-                // int idx;
-                // vector<double> temp;
-                // for (int i = 0 ; i < 7 ; i++)
-                // {
-                //     temp.push_back(tempKombinasi[i].value());
-                // }
-
-                // cout<<"Nilai Tertinggi yaitu "<<maxVector<double>(temp)<<endl;
-                // if (temp.size()>0)
-                // {
-                //     double tempval = temp[0];
-                //     for (int i = 0 ; i < temp.size() ; i++)
-                //     {
-                //         if (temp[i]>tempval)
-                //         {
-                //             tempval = temp[i];
-                //             idx = i;
-                //         }
-                //     }
-                // }
-                // cout<<tempKombinasi[idx].getCombinationName()<<endl;
-                // cout<<"Menambahkan poin pada player "<<game->getPlayers().getPlayerAddress(idx)->getName()<<endl;
-                // cout<<"Sebesar "<<game->getPoint()<<endl;
-
-                // long long tempPoin = game->getPlayers().getPlayer(idx).getPoint();
-                // game->getPlayers().setPlayerPoint(idx,game->getPoint() + tempPoin);
 
                 cout<<"Table Card List"<<endl;
                 game->getPlayCards().displayDeckCard();

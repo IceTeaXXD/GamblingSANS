@@ -13,10 +13,8 @@ bool compareDouble(double n1, double n2){
     
 }
 
-
-
-
 Kombinasi::Kombinasi(){}
+
 Kombinasi::Kombinasi(CardCollection<DeckCard> playerCards, CardCollection<DeckCard> tableCards)
 {
     this->arr.push_back(playerCards.getCard(0));

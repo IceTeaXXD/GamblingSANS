@@ -26,7 +26,6 @@ GameManager::GameManager(int a):point(64)
     /* Inisialisasi DeckCard dengan memanggil MakeDeck()*/
     tableCards.MakeDeck();
     // abilityCardList.MakeDeck();
-    ArrOfPlayer players = ArrOfPlayer(a);
 }
 
 GameManager::GameManager(string f): point(64)
@@ -48,16 +47,10 @@ CardCollection<DeckCard>& GameManager::getTableCards()
 {
     return tableCards;
 }
-ArrOfPlayer& GameManager::getPlayers()
-{
-    return *players;
-}
+
 void GameManager::displayPlayer()
 {
-    for (int i = 0 ; i < 7 ; i++)
-    {
-        cout << "Player Number " << i+1 << players->getPlayer(i).getName() << endl;
-    }
+    cout << "PLAYERS" << endl;
 }
 
 long long GameManager::getPoint()

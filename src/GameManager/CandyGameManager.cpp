@@ -3,12 +3,25 @@
 CandyGameManager::CandyGameManager()
 {
     abilityCardList.MakeDeck();
-    players = new ArrOfPlayer(7);
+    players = new ArrOfPlayer<CandyGamePlayer>(7);
 }
 CandyGameManager::CandyGameManager(string f) : GameManager(f)
 {
     abilityCardList.MakeDeck();
-    players = new ArrOfPlayer(7);
+    players = new ArrOfPlayer<CandyGamePlayer>(7);
+}
+
+ArrOfPlayer<CandyGamePlayer>& CandyGameManager::getPlayers()
+{
+    return *players;
+}
+
+void CandyGameManager::displayPlayer()
+{
+    for (int i = 0 ; i < 7 ; i++)
+    {
+        cout << "Player Number " << i+1 << players->getPlayer(i).getName() << endl;
+    }
 }
 
 CardCollection<AbilityCard*>& CandyGameManager::getAbilityCardList()

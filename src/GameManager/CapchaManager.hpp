@@ -18,6 +18,7 @@ class CapchaManager : public GameManager
         int giliran;
         int point;
         CardCollection<DeckCard> Cards;
+        ArrOfPlayer<CandyGamePlayer>* players;
 
     public:
         CapchaManager();

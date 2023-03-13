@@ -11,6 +11,8 @@
 class CandyGameManager : public GameManager
 {
     private:
+        /* Vector of Players */
+        ArrOfPlayer<CandyGamePlayer>* players;
         /* Kartu yang di meja */
         CardCollection<DeckCard> playCards;
         /* List of Ability Cards */
@@ -28,6 +30,9 @@ class CandyGameManager : public GameManager
         void leaderboard();
         bool existWinner();
         void reset();
+
+        ArrOfPlayer<CandyGamePlayer>& getPlayers();
+        void displayPlayer();
 
         /*Manipulasi*/
         template<class T>

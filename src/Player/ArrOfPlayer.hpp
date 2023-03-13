@@ -4,9 +4,10 @@
 #include <deque>
 #include "Player.hpp"
 
+template <class T>
 class ArrOfPlayer {
     private :
-        deque<Player> arr;
+        deque<T> arr;
     public :
         //ctor
         ArrOfPlayer();
@@ -18,7 +19,7 @@ class ArrOfPlayer {
         // Function
         void nextTurn();
         void reverseTurn(int);
-        Player getPlayer(int);
+        T getPlayer(int);
         void changePlayerName(int, string);
         void setPlayerPoint(int, long long);
         void addPlayerCard(int, DeckCard&);
@@ -27,7 +28,10 @@ class ArrOfPlayer {
         void printDeque();
         void setPlayerLeftCard(int, DeckCard&);
         void setPlayerRightCard(int, DeckCard&);
-        Player* getPlayerAddress(int idx);
+        T* getPlayerAddress(int idx);
 };
+
+
+template class ArrOfPlayer<CandyGamePlayer>;
 
 #endif

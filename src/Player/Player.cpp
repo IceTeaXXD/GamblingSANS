@@ -6,19 +6,29 @@ int Player::countOfPlayers = 0;
 
 Player::Player()
 {
-    this->countofTableCard= 0;
-    this->countofPlayerCards = 0;
     countOfPlayers++;
     this->id = countOfPlayers;
+}
+
+CandyGamePlayer::CandyGamePlayer() : Player()
+{
+    this->countofTableCard= 0;
+    this->countofPlayerCards = 0;
     this->hasAbility = false;
 }
 
-Player::Player(string nom):name(nom), point(0), countofPlayerCards(0), countofTableCard(0)
+Player::Player(string nom):name(nom), point(0)
 { 
     countOfPlayers++; 
     this->id = countOfPlayers;
+}
+
+CandyGamePlayer::CandyGamePlayer(string nom): countofPlayerCards(0), countofTableCard(0),Player(nom)
+{
     this->hasAbility = false;
 }
+
+CandyGamePlayer::~CandyGamePlayer(){}
 
 Player::~Player()
 { 
@@ -45,17 +55,21 @@ void Player::setPoint(long long p){
     this->point = p;
 }
 
-void Player::operator+(DeckCard cardInput){
+void CandyGamePlayer::operator+(DeckCard cardInput){
     this->playerCard + cardInput;
     this->countofPlayerCards++;
 }
 
-void Player::operator+(AbilityCard& ac){
+void CandyGamePlayer::operator+(AbilityCard& ac){
     this -> abilityCards = &ac;
 }
 
 void Player::viewAllCard()
 {
+    cout << "List of Cards" << endl;
+}
+
+void CandyGamePlayer::viewAllCard(){
     cout<<"List of Player Cards : "<<endl;
     for (int i = 0 ; i<countofPlayerCards ; i++)
     {
@@ -77,59 +91,55 @@ void Player::viewAllCard()
         cout << "Belum ada ability card" << endl;
     }
 }
-void Player::viewAllCardCapsa()
-{
-    cout<<"List of Player Cards : "<<endl;
-    cout<<"[";
-    for (int i = 0 ; i<countofPlayerCards-1 ; i++)
-    {
-        this->playerCard.getCard(i).printType();
-        cout<<",";
-    }
-    playerCard.getCard(countofPlayerCards-1).printType();
-    cout<<"]";
-    cout << endl;
-}
-CardCollection<DeckCard> Player::getCard()
+// void Player::viewAllCardCapsa()
+// {
+//     cout<<"List of Player Cards : "<<endl;
+//     cout<<"[";
+//     for (int i = 0 ; i<countofPlayerCards-1 ; i++)
+//     {
+//         this->playerCard.getCard(i).printType();
+//         cout<<",";
+//     }
+//     playerCard.getCard(countofPlayerCards-1).printType();
+//     cout<<"]";
+//     cout << endl;
+// }
+CardCollection<DeckCard> CandyGamePlayer::getCard()
 {
     return this->playerCard;
 }
 
-void Player::setLeftCard(DeckCard& card){
+void CandyGamePlayer::setLeftCard(DeckCard& card){
     this->playerCard.setLeftCard(card);
 }
 
-void Player::setRightCard(DeckCard& card){
+void CandyGamePlayer::setRightCard(DeckCard& card){
     this->playerCard.setRightCard(card);
 }
 
-AbilityCard& Player::getAbilityCard(){
+AbilityCard& CandyGamePlayer::getAbilityCard(){
     return *abilityCards;
 }
 
-bool Player::operator<(Player& other){
+bool CandyGamePlayer::operator<(CandyGamePlayer& other){
     return (this->point < other.point);
 }
 
-bool Player::operator>(Player& other){
+bool CandyGamePlayer::operator>(CandyGamePlayer& other){
     return (this->point > other.point);
 }
 
-bool Player::operator==(Player& other){
+bool CandyGamePlayer::operator==(CandyGamePlayer& other){
     return (this->point == other.point);
 }
 
-void Player::clearCards(){
+void CandyGamePlayer::clearCards(){
     this->playerCard.clear();
     this->countofPlayerCards = 0;
 }
 
-bool Player::isabilityCardEmpty(){
-    return (this->abilityCards == NULL);
-}
-
-void Player::setHasAbility(bool s){
+void CandyGamePlayer::setHasAbility(bool s){
     this->hasAbility = s;
 }
 
-bool Player::getHasAbility(){ return this->hasAbility; }
+bool CandyGamePlayer::getHasAbility(){ return this->hasAbility; }
