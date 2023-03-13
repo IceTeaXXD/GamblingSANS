@@ -12,7 +12,6 @@ Player::Player()
 
 CandyGamePlayer::CandyGamePlayer() : Player()
 {
-    this->countofTableCard= 0;
     this->countofPlayerCards = 0;
     this->hasAbility = false;
 }
@@ -23,7 +22,7 @@ Player::Player(string nom):name(nom), point(0)
     this->id = countOfPlayers;
 }
 
-CandyGamePlayer::CandyGamePlayer(string nom): countofPlayerCards(0), countofTableCard(0),Player(nom)
+CandyGamePlayer::CandyGamePlayer(string nom): countofPlayerCards(0), Player(nom)
 {
     this->hasAbility = false;
 }
@@ -55,8 +54,8 @@ void Player::setPoint(long long p){
     this->point = p;
 }
 
-void CandyGamePlayer::operator+(DeckCard cardInput){
-    this->playerCard + cardInput;
+void CandyGamePlayer::operator+(DeckCard& cardInput){
+    CardCollection<DeckCard>::buffer + &cardInput;
     this->countofPlayerCards++;
 }
 

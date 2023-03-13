@@ -33,11 +33,8 @@ class Player{
         static int countOfPlayers;
 };
 
-class CandyGamePlayer: public Player{
+class CandyGamePlayer: public Player, protected CardCollection<DeckCard>{
     private:
-        /* Player Cards */
-        CardCollection<DeckCard> playerCard;
-        
         /* Ability Cards */
         AbilityCard* abilityCards;
 
@@ -48,8 +45,7 @@ class CandyGamePlayer: public Player{
         CandyGamePlayer(string);
         ~CandyGamePlayer();
         int countofPlayerCards;
-        int countofTableCard;
-        void operator+(DeckCard);
+        void operator+(DeckCard&);
         void operator+(AbilityCard&);
         void viewAllCard();
         void setLeftCard(DeckCard&);
@@ -60,7 +56,7 @@ class CandyGamePlayer: public Player{
         bool operator>(CandyGamePlayer&);
         bool operator==(CandyGamePlayer&);
         void clearCards();
-        void setHasAbility(bool s);
+        void setHasAbility(bool);
         bool getHasAbility();
 };
 #endif

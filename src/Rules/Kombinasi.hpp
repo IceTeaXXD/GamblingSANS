@@ -5,24 +5,12 @@
 #include <map>
 #include "FindValue.hpp"
 #include "../Card/DeckCard.hpp"
-// #include "../Card/DeckCardCollection.hpp"
 #include "../Card/CardCollection.hpp"
 
 class Kombinasi : protected FindValue{
     private:
         //0-1 player, sisanya table
         vector<DeckCard> arr;
-
-        /* Array of Pairs. Mungkin Kosong mungkin terisi */
-        // vector<DeckCard> arrPair;
-        // vector<DeckCard> arrTwoPair;
-        // vector<DeckCard> arrThreeOfKind;
-        // vector<DeckCard> arrStraight;
-        // vector<DeckCard> arrFlush;
-        // vector<DeckCard> arrFullHouse;
-        // vector<DeckCard> arrFourAKind;
-        // vector<DeckCard> arrStraightFlush;
-
         vector<DeckCard> arrCombination;
         vector<DeckCard> arrTableCardCombination;
 
