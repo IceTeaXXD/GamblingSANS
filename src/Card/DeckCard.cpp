@@ -1,4 +1,5 @@
 #include "DeckCard.hpp"
+#include "../utils/printColor.hpp"
 
 bool compareAngka(DeckCard c, DeckCard other){
     return (c.getNum()<other.getNum());
@@ -21,7 +22,19 @@ DeckCard::~DeckCard(){}
 
 void DeckCard::printInfo()
 {
-    cout<<this->getNum()<<" "<<this->translateToString()<<endl;
+    // concat getNum() and translateToString()
+    string card = to_string(this->getNum()) + " " + this->translateToString();
+    if (this->translateToString() == "Biru"){
+        printBlue(card);
+    }else if (this->translateToString() == "Merah"){
+        printRed(card);
+    }else if (this->translateToString() == "Kuning"){
+        printYellow(card);
+    }else if (this->translateToString() == "Hijau"){
+        printGreen(card);
+    }else{
+        cout<< card <<endl;
+    }
 }
 void DeckCard::printType()
 {

@@ -170,6 +170,7 @@ void CardCollection<T>::displayDeckCard()
     for (auto it = buffer.begin(); it != buffer.end(); it++) 
     {
         it->printInfo();
+        cout << endl;
     }
 }
 

@@ -73,6 +73,7 @@ void CandyGamePlayer::viewAllCard(){
     for (int i = 0 ; i<countofPlayerCards ; i++)
     {
         CardCollection<DeckCard>::getCard(i).printInfo();
+        cout << "\n";
     }
 
     cout << endl;

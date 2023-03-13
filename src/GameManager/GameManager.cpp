@@ -62,7 +62,7 @@ void GameManager::setPoint(long long p){this -> point = p;}
 
 bool GameManager::isInputTrue(string input)
 {
-    return input == "viewcards" || input == "next" || input == "double" || input == "half" || input == "quadruple" || input == "quarter" || input == "reroll" || input == "reverse" || input == "switch" || input == "swap" || input == "help" || input == "abilityless" || input == "2";
+    return input=="tablecards" || input == "viewcards" || input == "next" || input == "double" || input == "half" || input == "quadruple" || input == "quarter" || input == "reroll" || input == "reverse" || input == "switch" || input == "swap" || input == "help" || input == "abilityless" || input == "2";
 }
 
 string GameManager::inputToLower(string str){

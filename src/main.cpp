@@ -126,7 +126,9 @@ int main()
                 DeckCard temp;
                 game->operator-(temp);
                 game->getPlayCards()+temp;
-                cout<<"Kartu "<<temp.getNum()<<" "<<temp.translateToString()<<" telah ditambahkan di meja"<<endl;
+                cout<<"Kartu ";
+                temp.printInfo(); 
+                cout << " telah ditambahkan di meja"<<endl;
             }
 
             for (int i = 0 ; i < 7 ; i++){
@@ -138,9 +140,11 @@ int main()
                     game->operator-(temp2);
                     game->getPlayers().addPlayerCard(0, temp1);
                     game->getPlayers().addPlayerCard(0, temp2);
-                    cout<<"Kamu dapat kartu "<<temp1.getNum()<<" "<<temp1.translateToString()<<endl;
-                    cout<<"Kamu dapat kartu "<<temp2.getNum()<<" "<<temp2.translateToString()<<endl;
-                    cout<<endl;
+                    cout<<"Kamu dapat kartu : " << endl;
+                    temp1.printInfo();
+                    cout << "\n";
+                    temp2.printInfo();
+                    cout << "\n";
                 }
 
                 bool input = false;
@@ -178,6 +182,13 @@ int main()
                                 game->getPlayers().getPlayer(0).viewAllCard();
                                 cout << endl;
                                 input == false;
+                            }else if(aksi == "tablecards"){
+                                cout << " ==================== " << endl;
+                                cout << "      DECK CARDS       " << endl;
+                                cout << " ==================== " << endl;
+                                game->getPlayCards().displayDeckCard();
+                                cout << endl;
+                                input == false;
                             }else if(aksi == "help"){
                                 cout << "Berikut adalah beberapa perintah: " << endl;
                                 cout << "1. Next"<< endl;
@@ -191,6 +202,7 @@ int main()
                                 cout << "9. Swap" << endl;
                                 cout << "10. Help" << endl;
                                 cout << "11. ViewCards" << endl;
+                                cout << "12. TableCards" << endl;
                                 cout << endl;
                             }else{
                                 if(game->getPlayers().getPlayer(0).getHasAbility()){
@@ -225,10 +237,10 @@ int main()
                 DeckCard temp;
                 game->operator-(temp);
                 game->getPlayCards()+temp;
-                cout<<"Kartu "<<temp.getNum()<<" "<<temp.translateToString()<<" telah ditambahkan di meja"<<endl;
+                cout<<"Kartu ";
+                temp.printInfo(); 
+                cout << " telah ditambahkan di meja"<<endl;
                 cout<<endl;
-                game->getPlayCards().displayDeckCard();
-                cout << endl;
 
                 cout << "Pembagian Ability Card sudah dilakukan! :D" << endl;
                 for(int i = 0; i < 7 ; i++){
