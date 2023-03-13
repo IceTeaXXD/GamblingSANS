@@ -91,8 +91,9 @@ void CandyGameManager::manipulate<REROLL&>(REROLL& C){
         /* OUTPUT */
         cout<<"RE-ROLLED"<<endl;
         cout << "Kartu anda sekarang : " << endl;
-        cout<<"1. "<<temp1.getNum()<<" "<<temp1.translateToString()<<endl;
-        cout<<"2. "<<temp2.getNum()<<" "<<temp2.translateToString()<<endl;
+        temp1.printInfo();
+        cout << "\n";
+        temp2.printInfo();
     }
     else
     {
@@ -291,7 +292,9 @@ void CandyGameManager::manipulate<Switch&>(Switch& C){
         players->setPlayerRightCard(pilihan1, p1Right);
 
         cout << "Kartumu sekarang adalah:" << endl;
-        players->getPlayer(0).viewAllCard();
+        p2Left.printInfo();
+        cout << "\n";
+        p2Right.printInfo();
     }
     else{
         cout << "Oops, kartu ability switchmu telah dimatikan sebelumnya :(.\nSilahkan lakukan perintah lain."<<endl;
