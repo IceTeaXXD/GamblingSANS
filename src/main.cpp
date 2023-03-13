@@ -56,7 +56,7 @@ int main()
             for (int j = 0  ; j < 13 ; j++)
             {
                 DeckCard tempCard;
-                game->getTableCards()-tempCard;
+                game->operator-(tempCard);
                 // game->getPlayers().addPlayerCard(i, tempCard);
             }
         } 
@@ -124,7 +124,7 @@ int main()
 
             if(game->getRound() < 6 && game->getRound() > 1){
                 DeckCard temp;
-                game->getTableCards()-temp;
+                game->operator-(temp);
                 game->getPlayCards()+temp;
                 cout<<"Kartu "<<temp.getNum()<<" "<<temp.translateToString()<<" telah ditambahkan di meja"<<endl;
             }
@@ -134,8 +134,8 @@ int main()
                 cout << "Sekarang adalah giliran Player " << game->getPlayers().getPlayer(0).getName() << endl;
                 if(game->getRound() == 1){
                     DeckCard temp1, temp2;
-                    game->getTableCards()-temp1;
-                    game->getTableCards()-temp2;
+                    game->operator-(temp1);
+                    game->operator-(temp2);
                     game->getPlayers().addPlayerCard(0, temp1);
                     game->getPlayers().addPlayerCard(0, temp2);
                     cout<<"Kamu dapat kartu "<<temp1.getNum()<<" "<<temp1.translateToString()<<endl;
@@ -214,7 +214,7 @@ int main()
                     }
                 }
                 cout << endl;
-                cout << "NEXT TURN" << endl;
+                cout << "\033[2J\033[1;1H" << endl;
                 game->getPlayers().nextTurn();
             }
 
@@ -223,7 +223,7 @@ int main()
                 /* TODO */
                 cout<<"Ronde I telah berakhir"<<endl;
                 DeckCard temp;
-                game->getTableCards()-temp;
+                game->operator-(temp);
                 game->getPlayCards()+temp;
                 cout<<"Kartu "<<temp.getNum()<<" "<<temp.translateToString()<<" telah ditambahkan di meja"<<endl;
                 cout<<endl;
@@ -245,8 +245,8 @@ int main()
                 map<int, Player> mapPlayer;
                 map<int, Kombinasi> mapIndeks;
                 for(int i = 0; i < 7 ; i++){
-                    mapIndeks.insert(make_pair(i, Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards())));
-                    mapValue.insert(make_pair(Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards()).value(), Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards())));
+                    mapIndeks.insert(make_pair(i, Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getTableCards())));
+                    mapValue.insert(make_pair(Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getTableCards()).value(), Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getTableCards())));
                     mapPlayer.insert(make_pair(i, game->getPlayers().getPlayer(i)));
                 }
                 double maxValue = maxKeyMap<double, Kombinasi>(mapValue);

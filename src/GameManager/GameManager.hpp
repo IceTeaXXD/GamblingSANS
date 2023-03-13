@@ -20,12 +20,12 @@ using namespace std;
     5. Implementasi queue buat nentuin giliran permainan (biar lebih gampang klo ada yang make reverse)
     6. Implementasi poin dan aksi (next, double, half)
 */
-class GameManager{
+class GameManager: public CardCollection<DeckCard>{
     protected:
         int round;
         int turn;
-        /* Card Deck */
-        CardCollection<DeckCard> tableCards;
+        // /* Card Deck */
+        // CardCollection<DeckCard> tableCards;
         static int numOfTableCards;
         long long point;
     public:        
@@ -46,7 +46,7 @@ class GameManager{
         void setPoint(long long);
         long long getPoint();
         DeckCard gameManager;
-        CardCollection<DeckCard>& getTableCards();
+        vector<DeckCard>& getTableCards();
         virtual void displayPlayer();
         DeckCard* getCard();
         bool isInputTrue(string);

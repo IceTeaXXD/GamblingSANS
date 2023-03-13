@@ -14,7 +14,7 @@ class AbilityCard{
         bool isAvailable();
         void setNotAvailable();
         string getType();
-        virtual void printInfo();
+        virtual void printInfo() = 0;
 };
 
 #endif

@@ -15,23 +15,23 @@ bool compareDouble(double n1, double n2){
 
 Kombinasi::Kombinasi(){}
 
-Kombinasi::Kombinasi(CardCollection<DeckCard> playerCards, CardCollection<DeckCard> tableCards)
+Kombinasi::Kombinasi(vector<DeckCard> playerCards, vector<DeckCard> tableCards)
 {
-    this->arr.push_back(playerCards.getCard(0));
-    this->arr.push_back(playerCards.getCard(1));
+    this->arr.push_back(playerCards[0]);
+    this->arr.push_back(playerCards[1]);
     for(int i = 0 ; i < 5 ; i++)
     {
-        this->arr.push_back(tableCards.getCard(i));
+        this->arr.push_back(tableCards[i]);
     }
 }
 Kombinasi::~Kombinasi(){}
 
-void Kombinasi::setCards(CardCollection<DeckCard> playerCards, CardCollection<DeckCard> tableCards){
-    this->arr.push_back(playerCards.getCard(0));
-    this->arr.push_back(playerCards.getCard(1));
+void Kombinasi::setCards(vector<DeckCard> playerCards, vector<DeckCard> tableCards){
+    this->arr.push_back(playerCards[0]);
+    this->arr.push_back(playerCards[1]);
     for(int i = 0 ; i < 5 ; i++)
     {
-        this->arr.push_back(tableCards.getCard(i));
+        this->arr.push_back(tableCards[i]);
     }
 }
 

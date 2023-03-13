@@ -59,7 +59,7 @@ void CandyGameManager::reset()
     /* DELETE DECK, DELETE KARTU PER PLAYER, DELETE TABLE CARD, DELETE ABILITY CARD, ULANG DARI round 1 */
     playCards.clear();
     abilityCardList.clear();
-    tableCards.clear();
+    buffer.clear();
     setPoint(64);
     for(int i = 0; i < 7;i++){
         players->clearCard(i);
@@ -83,7 +83,7 @@ void CandyGameManager::manipulate<REROLL&>(REROLL& C){
 
         /* Tambahin Kartu Baru */
         DeckCard add;
-        tableCards-add;
+        CardCollection<DeckCard>::operator-(add);
         players->getPlayer(0) + add;
 
         /* OUTPUT */
@@ -181,10 +181,10 @@ void CandyGameManager::manipulate<SwapCard&>(SwapCard& C){
         cin >> pilihan4;
 
         // move to a temp card first
-        DeckCard p1Left = players->getPlayer(pilihan1).getCard().getLeftCard();
-        DeckCard p1Right = players->getPlayer(pilihan1).getCard().getRightCard();
-        DeckCard p2Left = players->getPlayer(pilihan2).getCard().getLeftCard();
-        DeckCard p2Right = players->getPlayer(pilihan2).getCard().getRightCard();
+        DeckCard p1Left = players->getPlayer(pilihan1).getLeftCard();
+        DeckCard p1Right = players->getPlayer(pilihan1).getRightCard();
+        DeckCard p2Left = players->getPlayer(pilihan2).getLeftCard();
+        DeckCard p2Right = players->getPlayer(pilihan2).getRightCard();
         
         cout << "============================" << endl;
         cout << "KARTU SEBELUM DITUKAR : " << endl;
@@ -250,10 +250,10 @@ void CandyGameManager::manipulate<Switch&>(Switch& C){
         cout << "Kedua kartu " << players->getPlayer(0).getName() << " telah ditukar dengan " << players->getPlayer(pilihan1).getName() << "!" << endl;
 
         // Get the cards
-        DeckCard p1Left = players->getPlayer(0).getCard().getLeftCard();
-        DeckCard p1Right = players->getPlayer(0).getCard().getRightCard();
-        DeckCard p2Left = players->getPlayer(pilihan1).getCard().getLeftCard();
-        DeckCard p2Right = players->getPlayer(pilihan1).getCard().getRightCard();
+        DeckCard p1Left = players->getPlayer(0).getLeftCard();
+        DeckCard p1Right = players->getPlayer(0).getRightCard();
+        DeckCard p2Left = players->getPlayer(pilihan1).getLeftCard();
+        DeckCard p2Right = players->getPlayer(pilihan1).getRightCard();
 
         // Switch card
         players->setPlayerLeftCard(0, p2Left);
