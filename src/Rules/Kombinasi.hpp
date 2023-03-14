@@ -16,18 +16,19 @@ class Kombinasi : protected FindValue{
 
         const double MAX_HIGH_CARD = 1.31;
         const double MAX_PAIR = MAX_HIGH_CARD + 1.31 + 1.301;
-        const double MAX_TWO_PAIR = MAX_PAIR + 1.31 + 1.3101 + 1.3001 + 1.3;
+        const double MAX_TWO_PAIR = MAX_PAIR + 1.31 + 1.3101 + 1.3001 + 1.3;//
         const double MAX_THREE_KIND = MAX_TWO_PAIR + 1.31 + 1.301 + 1.3001;
-        const double MAX_STRAIGHT = MAX_THREE_KIND + 1.31 + 1.21 + 1.11 + 1.01 + 0.91;
-        const double MAX_FLUSH = MAX_STRAIGHT + 1.31 + 1.21 + 1.11 + 1.01 + 0.91;
-        const double MAX_FULL_HOUSE = MAX_FLUSH + 1.31 + 1.301 + 1.3001 + 1.21 + 1.201;
-        const double MAX_FOUR_KIND = MAX_FULL_HOUSE + 1.31 + 1.301 + 1.3001 + 1.30;
-        const double MAX_STRAIGHT_FLUSH = MAX_FULL_HOUSE + 1.31 + 1.21 + 1.11 + 1.01 + 0.91;
+        const double MAX_STRAIGHT = MAX_THREE_KIND + 1.31 + 1.21 + 1.11 + 1.01 + 0.91;//
+        const double MAX_FLUSH = MAX_STRAIGHT + 1.31 + 1.21 + 1.11 + 1.01 + 0.91;//
+        const double MAX_FULL_HOUSE = MAX_FLUSH + 1.31 + 1.301 + 1.3001 + 1.21 + 1.201;//
+        const double MAX_FOUR_KIND = MAX_FULL_HOUSE + 1.31 + 1.301 + 1.3001 + 1.30;//
+        const double MAX_STRAIGHT_FLUSH = MAX_FULL_HOUSE + 1.31 + 1.21 + 1.11 + 1.01 + 0.91;//
 
     public:
         /* Default Constructor */
         Kombinasi();
         Kombinasi(vector<DeckCard> playerCards, vector<DeckCard> tableCards);
+        Kombinasi(vector<DeckCard> playCards);
         ~Kombinasi();
         /* Setter */
         /* Set Kartu dari playerCards dan tableCards*/
@@ -37,17 +38,18 @@ class Kombinasi : protected FindValue{
         double value();
         double tableValue();
         string getCombinationName();
-
+        double getConst(int);
         /* Bruteforcing untuk Kombinasi Kartu */
         int getCombination(DeckCard x, DeckCard tc);
 
         /* Operator overloading buat bandingin value */
+        void printKombinasi();
         bool operator>(Kombinasi&);
         bool operator<(Kombinasi&);
         bool operator==(const Kombinasi&) const;
 
         Kombinasi& operator=(Kombinasi&);
-        
+        vector<DeckCard> getCombinationCard();
         /*  Rule:
             - highcard rumusnya ngikutin yg di docs, value = konstanta + 0.3*warna 
             - Pair bernilai 2

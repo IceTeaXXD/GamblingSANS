@@ -3,7 +3,7 @@
 CapchaManager::CapchaManager()
 {
     // this->players = ArrOfPlayer(4);
-    players = new ArrOfPlayer<CandyGamePlayer>(4);
+    players = new ArrOfPlayer<CapsaGamePlayer>(4);
 }
 
 CapchaManager::~CapchaManager()
@@ -18,4 +18,13 @@ void CapchaManager::setGiliran(int giliran)
         int random = rand() % 4;
         this->giliran = random;
     }
+}
+ArrOfPlayer<CapsaGamePlayer>& CapchaManager::getPlayers()
+{
+    return *players;
+}
+
+CardCollection<DeckCard>* CapchaManager::getCards()
+{
+    return &this->Cards;
 }
