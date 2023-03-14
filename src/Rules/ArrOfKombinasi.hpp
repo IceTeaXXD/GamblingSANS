@@ -29,5 +29,6 @@ class ArrOfKombinasi
         void displayCombinationList();
         void addKombinasi(Kombinasi& k);
         void displayKombinasi();
+        void displaySpecificCombination(string);
 };
 #endif

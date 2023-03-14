@@ -74,7 +74,6 @@ int main()
 
         //Capcha GM
         CapchaManager* game = new CapchaManager();
-        cout<<"TEST"<<endl;
         for (int i = 0 ; i<4 ; i++)
         {
             for (int j = 0  ; j < 13 ; j++)
@@ -88,22 +87,33 @@ int main()
             cout<<"---------------"<<endl;
         } 
         //Game
-        cout<<"TESTER"<<endl;
         for (int i = 0 ; i < 4 ; i++)
         {
             pointerArr.push_back(game->getPlayers().getPlayerAddress(i));
         }
-        cout<<"TESTER"<<endl;
         while (!menang)
         {
             if (flag)
             {
                 cout<<"List Kombinasi yang Anda punya"<<endl;
                 ArrOfKombinasi temp = ArrOfKombinasi(pointerArr[0]->getCard());
-                cout<<"TEST"<<endl;
+                ArrOfKombinasi temp2 = ArrOfKombinasi(pointerArr[1]->getCard());
+                ArrOfKombinasi temp3 = ArrOfKombinasi(pointerArr[2]->getCard());
+                ArrOfKombinasi temp4 = ArrOfKombinasi(pointerArr[3]->getCard());
                 temp.displayCombinationList();
-                cout<<"Masukkan Input Kombinasi :"<<endl;
-                cin>>inputPlayer;
+                cout<<"temp2"<<endl;
+                temp2.displayCombinationList();
+                cout<<"temp3"<<endl;
+                temp3.displayCombinationList();
+                cout<<"temp4"<<endl;
+                temp4.displayCombinationList();
+                cout<<"Masukkan Nama Kombinasi yang ingin dikeluarkan :"<<endl;
+                while(flag)
+                {
+                    cout<<">> ";
+                    cin>>inputPlayer;
+                    temp.displaySpecificCombination(inputPlayer);
+                }
                 flag = false;
             }
             while(!pointerArr.empty())

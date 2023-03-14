@@ -34,7 +34,7 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
                 val += i.value();
             }
             this->val = val;
-            this->combinationName = "Straight Flush";
+            this->combinationName = "StraightFlush";
         }
         else if (isTableCardFullHouse())
         {
@@ -44,7 +44,7 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
                 val += i.value();
             }
             this->val = val;
-            this->combinationName = "Full House";
+            this->combinationName = "FullHouse";
         }
         else if (isTableCardFlush())
         {
@@ -81,7 +81,7 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
                 val += i.value();
             }
             this->val = val;
-            this->combinationName = "Four A Kind";
+            this->combinationName = "FourAKind";
         }
         else if (isTwoPair())
         {
@@ -91,7 +91,7 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
                 val += i.value();
             }
             this->val = val;
-            this->combinationName = "Two Pair";
+            this->combinationName = "TwoPair";
         }
         else
         {
@@ -108,7 +108,7 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
                 val += i.value();
             }
             this->val = val;
-            this->combinationName = "Three a Kind";
+            this->combinationName = "ThreeAKind";
         }
         else
         {
@@ -137,7 +137,7 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
         // cout << "TABLE 9\n";
         val = arr.begin()->value();
         this->val = val;
-        this->combinationName = "High Card";
+        this->combinationName = "HighCard";
     }
 }
 
