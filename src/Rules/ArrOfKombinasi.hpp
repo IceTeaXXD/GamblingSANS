@@ -6,7 +6,11 @@
 class ArrOfKombinasi
 {
     private:
-        vector<Kombinasi> arr;
+        vector<Kombinasi> arrLima;
+        vector<Kombinasi> arrEmpat;
+        vector<Kombinasi> arrTiga;
+        vector<Kombinasi> arrDua;
+        vector<Kombinasi> arrSatu;
     public:
         ArrOfKombinasi();
         ArrOfKombinasi(vector<DeckCard>);

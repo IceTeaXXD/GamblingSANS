@@ -7,7 +7,7 @@ using namespace std;
 class Exception{
     public:
         Exception();
-        virtual void what() const = 0;
+        virtual void what() const throw() = 0;
 };
 
 class SalahFormatFile: public Exception{
@@ -39,4 +39,11 @@ class KartuDimatikan: public Exception{
         KartuDimatikan();
         void what() const throw();  
 };
+
+class ReverseNext: public Exception{
+    public:
+        ReverseNext();
+        void what() const throw();
+};
+
 #endif

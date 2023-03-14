@@ -13,6 +13,7 @@ class Kombinasi : protected FindValue{
         vector<DeckCard> arr;
         vector<DeckCard> arrCombination;
         vector<DeckCard> arrTableCardCombination;
+        double val;
 
         const double MAX_HIGH_CARD = 1.31;
         const double MAX_PAIR = MAX_HIGH_CARD + 1.31 + 1.301;
@@ -28,7 +29,7 @@ class Kombinasi : protected FindValue{
         /* Default Constructor */
         Kombinasi();
         Kombinasi(vector<DeckCard> playerCards, vector<DeckCard> tableCards);
-        Kombinasi(vector<DeckCard> playCards);
+        Kombinasi(vector<DeckCard>,int);
         ~Kombinasi();
         /* Setter */
         /* Set Kartu dari playerCards dan tableCards*/
@@ -36,6 +37,7 @@ class Kombinasi : protected FindValue{
 
         /* Nentuin value kartu untuk kombinasi */
         double value();
+        double getValue();
         double tableValue();
         string getCombinationName();
         double getConst(int);

@@ -169,7 +169,7 @@ void CandyGameManager::manipulate<ReverseDirection&>(ReverseDirection& C){
             cout << after.getPlayer(i).getName() << " ";
         }
         cout << endl;
-
+        throw ReverseNext();
     }
     else{
         throw KartuDimatikan();
@@ -374,5 +374,69 @@ void CandyGameManager::manipulate<AbilityCard&>(AbilityCard& C){
         manipulate<Abilityless&>(dynamic_cast<Abilityless&>(C));
     }else{
         throw TidakPunyaKartuAbility();
+    }
+}
+
+bool CandyGameManager::parseCommand(string aksi)
+{
+    if(!isInputTrue(aksi)){
+        throw InputSalah();
+    }else{
+        if(aksi == "next"){
+            /* Do Nothing */
+            return true;
+        }else if(aksi == "double" || aksi == "2"){
+            setPoint(getPoint()*2);
+            cout << getPlayers().getPlayer(0).getName() << " melakukan DOUBLE! Poin hadiah naik dari " << getPoint()/2 << " menjadi " << getPoint()  << "!" << endl;
+            return true;
+        }else if(aksi == "half"){
+            setPoint(getPoint()/2);
+            if(getPoint() != 0){
+                cout << getPlayers().getPlayer(0).getName() << " melakukan HALF! Poin hadiah turun dari " << getPoint()*2 << " menjadi " << getPoint()  << "!" << endl;
+            }else{
+                cout << "Nothing happened" << endl;
+                setPoint(1);
+            }
+            return true;
+        }else if(aksi == "viewcards"){
+            getPlayers().getPlayer(0).viewAllCard();
+            cout << endl;
+            return false;
+        }else if(aksi == "tablecards"){
+            cout << " ==================== " << endl;
+            cout << "       DECK CARDS       " << endl;
+            cout << " ==================== " << endl;
+            getPlayCards().displayDeckCard();
+            cout << endl;
+            return false;
+        }else if(aksi == "help"){
+            cout << "Berikut adalah beberapa perintah: " << endl;
+            cout << "1. Next"<< endl;
+            cout << "2. Double"<< endl;
+            cout << "3. Half"<< endl;
+            cout << "4. Quadruple" << endl;
+            cout << "5. Quarter" << endl;
+            cout << "6. Reroll" << endl;
+            cout << "7. Reverse "<< endl;
+            cout << "8. Switch" << endl;
+            cout << "9. Swap" << endl;
+            cout << "10. Help" << endl;
+            cout << "11. ViewCards" << endl;
+            cout << "12. TableCards" << endl;
+            cout << endl;
+            return false;
+        }else{
+            if(getPlayers().getPlayer(0).getHasAbility()){
+                if(aksi == getPlayers().getPlayer(0).getAbilityCard().getType()){
+                    manipulate<AbilityCard&>(getPlayers().getPlayer(0).getAbilityCard());
+                }else{
+                    throw TidakPunyaKartuAbility();
+                }
+                return true;
+            }else{
+                throw BelumAdaAbility();
+            }
+            return true;
+        }
     }
 }
