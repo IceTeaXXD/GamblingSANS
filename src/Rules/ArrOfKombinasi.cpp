@@ -20,7 +20,7 @@ ArrOfKombinasi::ArrOfKombinasi(vector<DeckCard> arrInput)
                         temp.push_back(arrInput[k]);
                         temp.push_back(arrInput[l]);
                         temp.push_back(arrInput[m]);
-                        Kombinasi tempC = Kombinasi(temp,5);
+                        KombinasiCapsa tempC = KombinasiCapsa(temp,5);
                         // if (tempC->value()>=tempC->getConst(5) && tempC->value()<=tempC->getConst(7) || tempC->value()>=tempC->getConst(9))
                         // {
                         cout<<"__"<<endl;
@@ -51,7 +51,7 @@ ArrOfKombinasi::ArrOfKombinasi(vector<DeckCard> arrInput)
                     temp.push_back(arrInput[k]);
                     temp.push_back(arrInput[l]);
                     temp.push_back(arrInput[m]);
-                    Kombinasi tempC = Kombinasi(temp,4);
+                    KombinasiCapsa tempC = KombinasiCapsa(temp,4);
                     // if (tempC->value()>=tempC->getConst(8) && tempC->value()<=tempC->getConst(9) || tempC->value()>=tempC->getConst(3) && tempC->value()<=tempC->getConst(4))
                     // {
                     if (tempC.getValue()!=0)
@@ -77,7 +77,7 @@ ArrOfKombinasi::ArrOfKombinasi(vector<DeckCard> arrInput)
                 temp.push_back(arrInput[k]);
                 temp.push_back(arrInput[l]);
                 temp.push_back(arrInput[m]);
-                Kombinasi tempC = Kombinasi(temp,3);
+                KombinasiCapsa tempC = KombinasiCapsa(temp,3);
                 // if (tempC->value()>=tempC->getConst(4) && tempC->value()<=tempC->getConst(5))
                 // {
                 if (tempC.getValue()!=0)
@@ -99,7 +99,7 @@ ArrOfKombinasi::ArrOfKombinasi(vector<DeckCard> arrInput)
             vector<DeckCard> temp;
             temp.push_back(arrInput[l]);
             temp.push_back(arrInput[m]);
-            Kombinasi tempC =  Kombinasi(temp,2);
+            KombinasiCapsa tempC =  KombinasiCapsa(temp,2);
             // if (tempC->value()>=tempC->getConst(2) && tempC->value()<=tempC->getConst(3))
             // {
             if (tempC.getValue()!=0)
@@ -119,7 +119,7 @@ ArrOfKombinasi::ArrOfKombinasi(vector<DeckCard> arrInput)
         cout<<"test1"<<endl;
         temp.push_back(arrInput[m]);
         cout<<"test2"<<endl;
-        Kombinasi tempC = Kombinasi(temp,1);
+        KombinasiCapsa tempC = KombinasiCapsa(temp,1);
         cout<<"test3"<<endl;
         //value ini ada yang salah
         // double tempValue = tempC->value();

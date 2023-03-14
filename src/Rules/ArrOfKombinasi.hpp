@@ -1,6 +1,7 @@
 #ifndef ARR_OF_KOMBINASI_HPP
 #define ARR_OF_KOMBINASI_HPP
 #include "Kombinasi.hpp"
+#include "KombinasiCapsa.hpp"
 #include "../Card/CardCollection.hpp"
 
 class ArrOfKombinasi
