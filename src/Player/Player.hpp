@@ -5,6 +5,7 @@
 #include "../Card/DeckCard.hpp"
 #include "../Card/CardCollection.hpp"
 #include "../Rules/FindValue.hpp"
+#include "../Rules/ArrOfKombinasi.hpp"
 
 using namespace std;
 
@@ -58,5 +59,21 @@ class CandyGamePlayer: public Player, public CardCollection<DeckCard>{
         void clearCards();
         void setHasAbility(bool);
         bool getHasAbility();
+};
+
+class CapsaGamePlayer : public Player , public CardCollection<DeckCard>
+{
+    private:
+        ArrOfKombinasi arr;
+        int countOfPlayerCards;
+    public:
+        CapsaGamePlayer();
+        CapsaGamePlayer(string);
+        ~CapsaGamePlayer();
+
+        vector<DeckCard>& getCard();
+        void operator+(DeckCard&);
+        void operator-(Kombinasi&);
+        void viewAllCard();
 };
 #endif

@@ -18,19 +18,19 @@ class CapchaManager : public GameManager
         int giliran;
         int point;
         CardCollection<DeckCard> Cards;
-        ArrOfPlayer<CandyGamePlayer>* players;
+        ArrOfPlayer<CapsaGamePlayer>* players;
 
     public:
         CapchaManager();
         ~CapchaManager();
-
-        void printInfo();
-        void printInfoPlayer();
-        void printInfoPlayerCard(int); //buat ngecek player punya kartu apa aja
-
+        CardCollection<DeckCard>* getCards();
+        // void printInfo();
+        // void printInfoPlayer();
+        // void printInfoPlayerCard(int); //buat ngecek player punya kartu apa aja
+        ArrOfPlayer<CapsaGamePlayer>& getPlayers();
         void setGiliran(int);
-        int getGiliran();
-        void setPoint(int);
+        // int getGiliran();
+        // void setPoint(int);
         
 
 };

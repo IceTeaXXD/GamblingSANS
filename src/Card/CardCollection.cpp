@@ -1,4 +1,5 @@
 #include "CardCollection.hpp"
+#include "../Exception/Exception.hpp"
 using namespace std;
 
 template <class T>
@@ -176,7 +177,7 @@ void CardCollection<DeckCard>::MakeDeck(string filename){
             DeckCard* c = new DeckCard(w,a);
             cards.push_back(*c);
         }else{
-            throw "Salah format. Perhatikan warna dan angka yang dimasukkan!\n";
+            throw SalahFormatFile();
         }
     }
     /* Mengacak */
@@ -225,6 +226,21 @@ void CardCollection<UnoCard*>::displayDeckCard(){
     for (int i = 0 ; i < this->buffer.size() ; i++){
         this->buffer[i]->printInfo();
         cout << endl;
+    }
+}
+
+template <class T>
+void CardCollection<T>::Del(T& el)
+{
+    auto it = std::find(buffer.begin(), buffer.end(), el);
+    if (it != buffer.end())
+    {
+        buffer.erase(it); // corrected line
+        cout<<"Berhasil menghapus elemen"<<endl;
+    }
+    else
+    {
+        cout<<"Value not found"<<endl;
     }
 }
 

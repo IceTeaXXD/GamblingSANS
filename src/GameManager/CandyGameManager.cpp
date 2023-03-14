@@ -1,4 +1,5 @@
 #include "CandyGameManager.hpp"
+#include "../Exception/Exception.hpp"
 
 CandyGameManager::CandyGameManager()
 {
@@ -171,7 +172,7 @@ void CandyGameManager::manipulate<ReverseDirection&>(ReverseDirection& C){
 
     }
     else{
-        throw "Kartu anda telah dimatikan\nSilakan ulangi!\n";
+        throw KartuDimatikan();
     }
 }
 
@@ -189,7 +190,7 @@ void CandyGameManager::manipulate<SwapCard&>(SwapCard& C){
         cout << ">> ";
         cin >> pilihan1;
         if(pilihan1 > 7 && pilihan1 < 1){
-            throw "Input Anda salah!\n";
+            throw InputSalah();
         }else{
             cout << "Silahkan pilih pemain lain yang kartunya ingin anda tukar:" << endl;
             for (int i = 1; i < 7; i++){
@@ -202,7 +203,7 @@ void CandyGameManager::manipulate<SwapCard&>(SwapCard& C){
         cout << ">> ";
         cin >> pilihan2;
         if(pilihan2> 7 && pilihan2 < 1 && pilihan2 == pilihan1){
-            throw "Input Anda salah!\n";
+            throw InputSalah();
         }else{
             cout << "Silakan pilih kartu kanan/kiri " << players->getPlayer(pilihan1).getName() << ":" << endl;
             cout << "1. Kanan" << endl;
@@ -325,7 +326,7 @@ void CandyGameManager::manipulate<Abilityless&>(Abilityless& C){
         cout << ">> ";
         cin >> pilihan1;
         if(pilihan1 > 7 && pilihan1 < 1){
-            throw "Input Anda salah!\n";
+            throw InputSalah();
         }else{
             if (players->getPlayer(pilihan1).getAbilityCard().isAvailable()){
                 players->getPlayer(pilihan1).getAbilityCard().setNotAvailable();
@@ -345,7 +346,7 @@ void CandyGameManager::manipulate<Abilityless&>(Abilityless& C){
         }
     }
     else{
-        throw "Eits, kamu tidak punya kartunya 😛\n";
+        throw TidakPunyaKartuAbility();
     }
 }
 
@@ -372,6 +373,6 @@ void CandyGameManager::manipulate<AbilityCard&>(AbilityCard& C){
     else if (C.getType() == "abilityless"){
         manipulate<Abilityless&>(dynamic_cast<Abilityless&>(C));
     }else{
-        throw "Anda tidak memiliki kartu ini!\n";
+        throw TidakPunyaKartuAbility();
     }
 }
