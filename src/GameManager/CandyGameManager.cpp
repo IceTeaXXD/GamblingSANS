@@ -169,7 +169,7 @@ void CandyGameManager::manipulate<ReverseDirection&>(ReverseDirection& C){
             cout << after.getPlayer(i).getName() << " ";
         }
         cout << endl;
-
+        throw ReverseNext();
     }
     else{
         throw KartuDimatikan();
