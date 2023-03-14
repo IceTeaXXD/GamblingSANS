@@ -210,65 +210,95 @@ void CapsaGamePlayer::deleteCard(DeckCard& el)
     }
 }
 
-void CapsaGamePlayer::viewAllGreaterCombination(Kombinasi c)
+void CapsaGamePlayer::getAllGreaterCombination(Kombinasi* c)
 {
-    if (c.getCName() == "StraightFlush" || c.getCName() == "Flush" || c.getCName() == "FullHouse" || c.getCName() == "Straight")
+    // this->arr.~ArrOfKombinasi();
+    // this->arr = ArrOfKombinasi(this->getBuffer());
+    this->canPlay = false;
+    cout<<"HALOHALO"<<endl;
+    cout<<c->getCName()<<endl;
+    if (c->getCName() == "StraightFlush" || c->getCName() == "Flush" || c->getCName() == "FullHouse" || c->getCName() == "Straight")
     {
         for (int i = 0 ; i < arr.getCombinationList(5).size() ; i++)
         {
-            if (arr.getCombinationList(5).at(i).getValue() > c.getValue())
+            if (arr.getCombinationList(5).at(i).getValue() > c->getValue())
             {
                 arr.getCombinationList(5).at(i).printKombinasi();
-                greateComb.push_back(&arr.getCombinationList(5).at(i));
+                greaterComb.push_back(&arr.getCombinationList(5).at(i));
                 cout<<endl;
+                this->canPlay = true;
+            }
+            else
+            {
+                cout<<"Sayang sekali, Anda tidak memiliki kartu Kombo 5 yang lebih tinggi"<<endl;
             }
         }
     }
-    else if (c.getCName() == "FourAKind" || c.getCName() == "TwoPair")
+    else if (c->getCName() == "FourAKind" || c->getCName() == "TwoPair")
     {
         for (int i = 0 ; i < arr.getCombinationList(4).size() ; i++)
         {
-            if (arr.getCombinationList(4).at(i).getValue() > c.getValue())
+            if (arr.getCombinationList(4).at(i).getValue() > c->getValue())
             {
                 arr.getCombinationList(4).at(i).printKombinasi();
-                greateComb.push_back(&arr.getCombinationList(4).at(i));
+                greaterComb.push_back(&arr.getCombinationList(4).at(i));
                 cout<<endl;
+                this->canPlay = true;
+            }
+            else
+            {
+                cout<<"Sayang sekali, Anda tidak memiliki kartu Kombo 4 yang lebih tinggi"<<endl;
             }
         }
     }
-    else if (c.getCName() == "ThreeAKind")
+    else if (c->getCName() == "ThreeAKind")
     {
         for (int i = 0 ; i < arr.getCombinationList(3).size() ; i++)
         {
-            if (arr.getCombinationList(3).at(i).getValue() > c.getValue())
+            if (arr.getCombinationList(3).at(i).getValue() > c->getValue())
             {
                 arr.getCombinationList(3).at(i).printKombinasi();
-                greateComb.push_back(&arr.getCombinationList(3).at(i));
+                greaterComb.push_back(&arr.getCombinationList(3).at(i));
                 cout<<endl;
+                this->canPlay = true;
+            }
+            else
+            {
+                cout<<"Sayang sekali, Anda tidak memiliki kartu Kombo 3 yang lebih tinggi"<<endl;
             }
         }
     }
-    else if (c.getCName() == "Pair")
+    else if (c->getCName() == "Pair")
     {
         for (int i = 0 ; i < arr.getCombinationList(2).size() ; i++)
         {
-            if (arr.getCombinationList(2).at(i).getValue() > c.getValue())
+            if (arr.getCombinationList(2).at(i).getValue() > c->getValue())
             {
                 arr.getCombinationList(2).at(i).printKombinasi();
-                greateComb.push_back(&arr.getCombinationList(2).at(i));
+                greaterComb.push_back(&arr.getCombinationList(2).at(i));
                 cout<<endl;
+                this->canPlay = true;
+            }
+            else
+            {
+                cout<<"Sayang sekali, Anda tidak memiliki kartu Kombo 2 yang lebih tinggi"<<endl;
             }
         }
     }
-    else if (c.getCName() == "HighCard")
+    else if (c->getCName() == "HighCard")
     {
         for (int i = 0 ; i < arr.getCombinationList(1).size() ; i++)
         {
-            if (arr.getCombinationList(1).at(i).getValue() > c.getValue())
+            if (arr.getCombinationList(1).at(i).getValue() > c->getValue())
             {
                 arr.getCombinationList(1).at(i).printKombinasi();
-                greateComb.push_back(&arr.getCombinationList(1).at(i));
+                greaterComb.push_back(&arr.getCombinationList(1).at(i));
                 cout<<endl;
+                this->canPlay = true;
+            }
+            else
+            {
+                cout<<"Sayang sekali, Anda tidak memiliki kartu High Card yang lebih tinggi"<<endl;
             }
         }
     }
@@ -277,3 +307,15 @@ ArrOfKombinasi* CapsaGamePlayer::getArrOfKombinasi()
 {
     return &this->arr;
 }   
+bool CapsaGamePlayer::isGreater()
+{
+    return canPlay;
+}
+void CapsaGamePlayer::displayGreaterComb()
+{
+    for (int i = 0 ; i < greaterComb.size() ; i++) 
+    {
+        cout<<i<<". ";
+        greaterComb[i]->printKombinasi();
+    }
+}
