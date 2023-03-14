@@ -7,6 +7,7 @@
 #include "Player/Player.hpp"
 #include "Player/ArrOfPlayer.hpp"
 #include "Rules/Kombinasi.hpp"
+#include "Rules/ArrOfKombinasi.hpp"
 using namespace std;
 
 int main()
