@@ -36,6 +36,25 @@ void DeckCard::printInfo()
         cout<< card <<endl;
     }
 }
+
+void DeckCard::printInfoCapsa()
+{
+    // concat getNum() and translateToString()
+    string card = to_string(this->getNum()) + " " + this->translateToType();
+    printColor pc;
+    if (this->translateToString() == "Diamond"){
+        pc.printRed(card);
+    }else if (this->translateToString() == "Club"){
+        pc.printBlue(card);
+    }else if (this->translateToString() == "Heart"){
+        pc.printRed(card);
+    }else if (this->translateToString() == "Spade"){
+        pc.printBlue(card);
+    }else{
+        cout<< card <<endl;
+    }
+}
+
 void DeckCard::printType()
 {
     cout<<this->getNum()<<" "<<this->translateToType();

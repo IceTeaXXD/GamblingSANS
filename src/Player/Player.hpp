@@ -74,6 +74,7 @@ class CapsaGamePlayer : public Player , public CardCollection<DeckCard>
         vector<DeckCard>& getCard();
         void operator+(DeckCard&);
         void operator-(Kombinasi&);
+        void deleteCard(DeckCard&);
         void viewAllCard();
 };
 #endif

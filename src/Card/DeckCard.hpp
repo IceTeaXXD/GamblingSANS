@@ -22,6 +22,7 @@ class DeckCard : public Warna, public Angka{
         
 
         void printInfo();
+        void printInfoCapsa();
         void printType();
         double value();
         // Operator overloading

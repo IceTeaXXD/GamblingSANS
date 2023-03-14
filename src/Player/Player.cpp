@@ -167,15 +167,45 @@ void CapsaGamePlayer::operator+(DeckCard& card)
 
 void CapsaGamePlayer::operator-(Kombinasi& c)
 {
-    for(auto it = c.getCombinationCard().begin(); it != c.getCombinationCard().end(); ++it)
+    for(DeckCard card : c.getCombinationCard())
     {
-        CardCollection<DeckCard>::Del(*it);
+        deleteCard(card);
     }
+    arr.~ArrOfKombinasi();
+    arr = ArrOfKombinasi(getCard());
     cout<<"Berhasil menghapus kartu"<<endl;
     //buat arrofkombinasi yang baru
 
 }
 void CapsaGamePlayer::viewAllCard()
 {
-    
+    for (DeckCard card : buffer)
+    {
+        card.printInfoCapsa();
+
+    }
+}
+
+
+void CapsaGamePlayer::deleteCard(DeckCard& el)
+{
+    vector<int> vecAngka;
+    for (int i =0; i < buffer.size(); i++)
+    {
+        vecAngka.push_back(buffer[i].getNum());
+    }
+    auto it = find(vecAngka.begin(), vecAngka.end(), el.getNum());
+    while (it != vecAngka.end() && buffer[it-vecAngka.begin()].getType() != el.getType())
+    {
+        it = find(it+1, vecAngka.end(), el.getNum());
+    }
+    if (it!=vecAngka.end())
+    {
+        buffer.erase(buffer.begin() + (it - vecAngka.begin())); // corrected line
+        // cout<<"Berhasil menghapus elemen"<<endl;
+    }
+    else
+    {
+        cout<<"Value not found"<<endl;
+    }
 }
