@@ -14,7 +14,7 @@ class Kombinasi : protected FindValue{
         vector<DeckCard> arrCombination;
         vector<DeckCard> arrTableCardCombination;
         double val;
-
+        string combinationName;
         const double MAX_HIGH_CARD = 1.31;
         const double MAX_PAIR = MAX_HIGH_CARD + 1.31 + 1.301;
         const double MAX_TWO_PAIR = MAX_PAIR + 1.31 + 1.3101 + 1.3001 + 1.3;//
@@ -40,6 +40,7 @@ class Kombinasi : protected FindValue{
         double getValue();
         double tableValue();
         string getCombinationName();
+        string getCName();
         double getConst(int);
         /* Bruteforcing untuk Kombinasi Kartu */
         int getCombination(DeckCard x, DeckCard tc);

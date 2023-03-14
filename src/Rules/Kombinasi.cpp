@@ -31,6 +31,7 @@ Kombinasi::Kombinasi(vector<DeckCard> playCards,int n)
     {
         this->arr.push_back(playCards[i]);
     }
+    this->arrCombination = playCards;
     double val;
     if (n==5)
     {
@@ -42,6 +43,7 @@ Kombinasi::Kombinasi(vector<DeckCard> playCards,int n)
                 val += i.value();
             }
             this->val = val;
+            this->combinationName = "Straight Flush";
         }
         else if (isTableCardFullHouse())
         {
@@ -51,6 +53,7 @@ Kombinasi::Kombinasi(vector<DeckCard> playCards,int n)
                 val += i.value();
             }
             this->val = val;
+            this->combinationName = "Full House";
         }
         else if (isTableCardFlush())
         {
@@ -60,6 +63,7 @@ Kombinasi::Kombinasi(vector<DeckCard> playCards,int n)
                 val += i.value();
             }
             this->val = val;
+            this->combinationName = "Flush";
         }
         else if(isTableCardStraight())
         {
@@ -69,6 +73,7 @@ Kombinasi::Kombinasi(vector<DeckCard> playCards,int n)
                 val += i.value();
             }
             this->val = val;
+            this->combinationName = "Straight";
         }
         else 
         {
@@ -85,6 +90,7 @@ Kombinasi::Kombinasi(vector<DeckCard> playCards,int n)
                 val += i.value();
             }
             this->val = val;
+            this->combinationName = "Four A Kind";
         }
         else if (isTwoPair())
         {
@@ -94,6 +100,7 @@ Kombinasi::Kombinasi(vector<DeckCard> playCards,int n)
                 val += i.value();
             }
             this->val = val;
+            this->combinationName = "Two Pair";
         }
         else
         {
@@ -110,6 +117,7 @@ Kombinasi::Kombinasi(vector<DeckCard> playCards,int n)
                 val += i.value();
             }
             this->val = val;
+            this->combinationName = "Three a Kind";
         }
         else
         {
@@ -126,6 +134,7 @@ Kombinasi::Kombinasi(vector<DeckCard> playCards,int n)
                 val += i.value();
             }
             this->val = val;
+            this->combinationName = "Pair";
         }
         else
         {
@@ -137,6 +146,7 @@ Kombinasi::Kombinasi(vector<DeckCard> playCards,int n)
         // cout << "TABLE 9\n";
         val = arr.begin()->value();
         this->val = val;
+        this->combinationName = "High Card";
     }
 }
 double Kombinasi::getValue()
@@ -256,11 +266,16 @@ vector<DeckCard> Kombinasi::getCombinationCard()
 }
 void Kombinasi::printKombinasi()
 {
-    cout<<getCombinationName();
+    cout<<getCName()<<endl;
     for(int i = 0 ; i < arrCombination.size() ; i++)
     {
         arrCombination[i].printType();
     }
+    cout<<endl;
+}
+string Kombinasi::getCName()
+{
+    return combinationName;
 }
 double Kombinasi::value(){
     /* Ini kayaknya mending terima satu kartu terus tentuin valuenya berapa */

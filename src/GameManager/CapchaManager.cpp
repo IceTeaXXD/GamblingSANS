@@ -30,5 +30,5 @@ CardCollection<DeckCard>* CapchaManager::getCards()
 }
 
 bool CapchaManager::parseCommand(string aksi){
-    
+    return true;
 }
