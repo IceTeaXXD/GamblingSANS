@@ -12,6 +12,17 @@ ArrOfPlayer<T>::ArrOfPlayer(){
     
 }
 
+template<>
+ArrOfPlayer<UnoGamePlayer>::ArrOfPlayer(){
+    string name;
+    for (int i = 0; i < 4; i++){
+        cout << "Masukan nama player " << i+1 << " : ";
+        cin >> name;
+        UnoGamePlayer p(name);
+        this->arr.push_back(p);
+    }
+}
+
 template <class T>
 ArrOfPlayer<T>:: ArrOfPlayer(int n){
     string name;
@@ -28,8 +39,8 @@ ArrOfPlayer<T>::~ArrOfPlayer(){
     this->arr.clear();
 }
 
-template <class T>
-void ArrOfPlayer<T>::nextTurn(){
+template <>
+void ArrOfPlayer<CandyGamePlayer>::nextTurn(){
     // this->printDeque();
     // cout << endl;
     arr.push_back(arr.at(0));
@@ -37,8 +48,16 @@ void ArrOfPlayer<T>::nextTurn(){
     // this->printDeque();
 }
 
-template <class T>
-void ArrOfPlayer<T>::reverseTurn(int turn){
+template <>
+void ArrOfPlayer<CapsaGamePlayer>::nextTurn(){
+    // this->printDeque();
+    // cout << endl;
+    arr.push_back(arr.at(0));
+    arr.pop_front();
+    // this->printDeque();
+}
+template <>
+void ArrOfPlayer<CandyGamePlayer>::reverseTurn(int turn){
     reverse(arr.begin(), arr.end());
     if (turn == 0){
         arr.push_front(arr.back());
@@ -48,6 +67,11 @@ void ArrOfPlayer<T>::reverseTurn(int turn){
             nextTurn();
         }
     }
+}
+
+template<>
+void ArrOfPlayer<UnoGamePlayer>::reverseTurn(int turn){
+    reverse(arr.begin(), arr.end());
 }
 
 template <class T>
@@ -66,14 +90,30 @@ void ArrOfPlayer<T>::changePlayerName(int idx, string name){
     this->arr[idx].setName(name);
 }
 
-template <class T>
-void ArrOfPlayer<T>::setPlayerPoint(int idx, long long point){
+template <>
+void ArrOfPlayer<CandyGamePlayer>::setPlayerPoint(int idx, long long point){
     this->arr[idx].setPoint(point);
+}
+
+template<>
+void ArrOfPlayer<UnoGamePlayer>::addUnoPlayerCard(int idx, UnoCard& card){
+    this->arr[idx] + card;
 }
 
 template <>
 void ArrOfPlayer<CandyGamePlayer>::addPlayerCard(int idx, DeckCard& card){
     this->arr[idx] + card;
+}
+template <>
+void ArrOfPlayer<CapsaGamePlayer>::addPlayerCard(int idx, DeckCard& card)
+{
+    this->arr[idx] + card;
+}
+
+template<>
+vector<DeckCard>& ArrOfPlayer<CapsaGamePlayer>::getAllPlayerCard(int idx)
+{
+    return arr[idx].getCard();
 }
 
 template <>
@@ -81,6 +121,8 @@ void ArrOfPlayer<CandyGamePlayer>::addAbilityCard(int idx, AbilityCard& card){
     this->arr[idx] + card;
     this->arr[idx].setHasAbility(true);
 }
+template <>
+void ArrOfPlayer<CapsaGamePlayer>::addAbilityCard(int idx, AbilityCard& card){}
 
 template <>
 void ArrOfPlayer<CandyGamePlayer>::clearCard(int i){
@@ -99,8 +141,12 @@ template <>
 void ArrOfPlayer<CandyGamePlayer>::setPlayerLeftCard(int idx, DeckCard& card){
     this->arr[idx].setLeftCard(card);
 }
-
+template <>
+void ArrOfPlayer<CapsaGamePlayer>::setPlayerLeftCard(int idx, DeckCard& card){
+}
 template <>
 void ArrOfPlayer<CandyGamePlayer>::setPlayerRightCard(int idx, DeckCard& card){
     this->arr[idx].setRightCard(card);
 }
+template <>
+void ArrOfPlayer<CapsaGamePlayer>::setPlayerRightCard(int idx, DeckCard& card){}

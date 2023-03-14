@@ -13,9 +13,29 @@ using namespace std;
 int main()
 {
     cout << "\033[2J\033[1;1H" << endl;
-    cout <<" _______ _______ __   _ ______ __   __       _______ _______  ______ ______  _______"<<endl;
-    cout << "|        |_____| | \\  | |     \\ \\___/        |       |_____| |_____/ |     \\ |______"<<endl;
-    cout << "|_____   |     | |  \\_| |_____/   |          |_____  |     | |    \\_ |_____/ ______|"<<endl;
+    cout << R"(
+                                                 .                          
+                                               *,**                         
+                                                %.                          
+                                                &*                          
+                                     #@@%#%@@(  @,                          
+                                &**/************&.(                         
+                             (****************(*,,&*#                       
+                            #(&@&%#(/,....,,,,,,,,,,.%*                     
+                           %*******/******************/                     
+                          #****************************.                    
+                         @/**************@ .... ... %**/                    
+                        /***************@......... .%**(                    
+                        &***************/...... .../***#                    
+                       ****************, ........*,****#                    
+                       &/**************@...  %(********#                    
+                       ****************@..(**/*********#                    
+                      @/***/&%*********%#&&#%%*********%                    
+                      /**###(&*********/###%###&*******%                    
+                     #**#####@*********/####@##@*******&                    
+                     #*###&###*********/#######@/******@                
+                    .*,..&#(,**********/####(#  ,******@          
+)" << '\n';
 
     bool inputValid = false;
     string inputGame;
@@ -24,6 +44,7 @@ int main()
         cout<<"Pilihan Game :"<<endl;
         cout<<"1. Capcha"<<endl;
         cout<<"2. Kartu Permen"<<endl;
+        cout<<"3. UNO"<<endl;
         cout<<">> ";
         cin>>inputGame;
         if (inputGame == "1")
@@ -42,12 +63,13 @@ int main()
     if (inputGame == "1")
     {
         //List Of Player
-        deque<Player*> pointerArr;
-        deque<Player*> temp;
+        deque<CapsaGamePlayer*> pointerArr;
+        deque<CapsaGamePlayer*> temp;
 
         //Variables
         bool menang = false;
         string inputPlayer;
+        bool flag = true;
 
         //Capcha GM
         CapchaManager* game = new CapchaManager();
@@ -58,16 +80,31 @@ int main()
             {
                 DeckCard tempCard;
                 game->operator-(tempCard);
-                // game->getPlayers().addPlayerCard(i, tempCard);
+                game->getPlayers().addPlayerCard(0, tempCard);
+                cout<<"Kamu dapat kartu "<<tempCard.translateToType()<<endl;
             }
+            game->getPlayers().nextTurn();
+            cout<<"---------------"<<endl;
         } 
         //Game
+        cout<<"TESTER"<<endl;
         for (int i = 0 ; i < 4 ; i++)
         {
-            // pointerArr.push_back(game->getPlayers().getPlayerAddress(i));
+            pointerArr.push_back(game->getPlayers().getPlayerAddress(i));
         }
+        cout<<"TESTER"<<endl;
         while (!menang)
         {
+            if (flag)
+            {
+                cout<<"List Kombinasi yang Anda punya"<<endl;
+                ArrOfKombinasi temp = ArrOfKombinasi(pointerArr[0]->getCard());
+                cout<<"TEST"<<endl;
+                temp.displayKombinasi();
+                cout<<"Masukkan Input Kombinasi :"<<endl;
+                cin>>inputPlayer;
+                flag = false;
+            }
             while(!pointerArr.empty())
             {
                 cout<<"Sekarang giliran player "<<pointerArr[0]->getName()<<endl;
