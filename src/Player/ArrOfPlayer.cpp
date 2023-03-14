@@ -56,6 +56,11 @@ void ArrOfPlayer<CapsaGamePlayer>::nextTurn(){
     arr.pop_front();
     // this->printDeque();
 }
+template<>
+void ArrOfPlayer<CandyGamePlayer>::prevTurn(){
+    arr.push_front(arr.back());
+    arr.pop_back();
+}
 template <>
 void ArrOfPlayer<CandyGamePlayer>::reverseTurn(int turn){
     reverse(arr.begin(), arr.end());

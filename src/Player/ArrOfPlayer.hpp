@@ -20,6 +20,7 @@ class ArrOfPlayer {
         // Function
         void nextTurn();
         void reverseTurn(int);
+        void prevTurn();
         T getPlayer(int);
         void changePlayerName(int, string);
         void setPlayerPoint(int, long long);
