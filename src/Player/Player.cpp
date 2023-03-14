@@ -172,11 +172,11 @@ void CapsaGamePlayer::operator-(Kombinasi& c)
         deleteCard(card);
     }
     arr.~ArrOfKombinasi();
-    arr = ArrOfKombinasi(getCard());
+    ArrOfKombinasi arr = ArrOfKombinasi(getCard());
     cout<<"Berhasil menghapus kartu"<<endl;
     //buat arrofkombinasi yang baru
-
 }
+
 void CapsaGamePlayer::viewAllCard()
 {
     for (DeckCard card : buffer)
