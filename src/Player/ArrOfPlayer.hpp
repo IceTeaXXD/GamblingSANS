@@ -4,11 +4,13 @@
 #include <deque>
 #include "Player.hpp"
 #include "UnoPlayer.hpp"
-
+#include "../Rules/Kombinasi.hpp"
 template <class T>
 class ArrOfPlayer {
     private :
         deque<T> arr;
+        // vector<DeckCard> tableCards;
+        map<double,Kombinasi> mapValue;
     public :
         //ctor
         ArrOfPlayer();
@@ -25,7 +27,8 @@ class ArrOfPlayer {
         void changePlayerName(int, string);
         void setPlayerPoint(int, long long);
         void addPlayerCard(int, DeckCard&);
-        void addPlayerCard(int, UnoCard&);
+        int calculateMax(vector<DeckCard> Deck,long long p);
+        void addPlayerCard(int, UnoCard &);
         vector<DeckCard>& getAllPlayerCard(int idx);
         void addAbilityCard(int, AbilityCard&);
         void clearCard(int i);

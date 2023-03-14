@@ -116,6 +116,25 @@ template <>
 void ArrOfPlayer<CandyGamePlayer>::addPlayerCard(int idx, DeckCard& card){
     this->arr[idx] + card;
 }
+template<>
+int ArrOfPlayer<CandyGamePlayer>::calculateMax(vector<DeckCard> Deck,long long p)
+{
+    map<double, Kombinasi> mapValue;
+    map<int, Player> mapPlayer;
+    map<int, Kombinasi> mapIndeks;
+    for(int i = 0; i < 7 ; i++){
+        mapIndeks.insert(make_pair(i, Kombinasi(arr[i].getCard(),Deck)));
+        mapValue.insert(make_pair(Kombinasi(arr[i].getCard(),Deck).value(),Kombinasi(arr[i].getCard(),Deck)));
+        mapPlayer.insert(make_pair(i,arr.at(i)));
+    }
+    double maxValue = maxKeyMap<double, Kombinasi>(mapValue);
+    int idx = findKey<int, Kombinasi>(mapIndeks, mapValue[maxValue]);
+    cout<<"Nilai Tertinggi yaitu "<<maxValue<<endl;
+    cout<<"Dengan kombinasi "<<mapValue[maxValue].getCombinationName()<<endl;
+    cout<<"Menambahkan poin pada player "<<arr.at(idx).getName()<<endl;
+    cout<<"Sebesar "<<p<<endl;
+    return idx;
+}
 template <>
 void ArrOfPlayer<CapsaGamePlayer>::addPlayerCard(int idx, DeckCard& card)
 {

@@ -234,22 +234,8 @@ int main()
 
             if (game->getRound() == 6)
             {
-                map<double, Kombinasi> mapValue;
-                map<int, Player> mapPlayer;
-                map<int, Kombinasi> mapIndeks;
-                for(int i = 0; i < 7 ; i++){
-                    mapIndeks.insert(make_pair(i, Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards().getBuffer())));
-                    mapValue.insert(make_pair(Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards().getBuffer()).value(), Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards().getBuffer())));
-                    mapPlayer.insert(make_pair(i, game->getPlayers().getPlayer(i)));
-                }
-                double maxValue = maxKeyMap<double, Kombinasi>(mapValue);
-                int idx = findKey<int, Kombinasi>(mapIndeks, mapValue[maxValue]);
-                cout<<"Nilai Tertinggi yaitu "<<maxValue<<endl;
-                cout<<"Dengan kombinasi "<<mapValue[maxValue].getCombinationName()<<endl;
-                cout<<"Menambahkan poin pada player "<<mapPlayer[idx].getName()<<endl;
-                cout<<"Sebesar "<<game->getPoint()<<endl;
-
-                long long tempPoin = mapPlayer[idx].getPoint();
+                int idx = game->getPlayers().calculateMax(game->getPlayCards().getBuffer(),game->getPoint());
+                long long tempPoin = game->getPlayers().getPlayer(idx).getPoint();
                 game->getPlayers().setPlayerPoint(idx,game->getPoint() + tempPoin);
 
                 cout<<"Table Card List"<<endl;
@@ -261,7 +247,6 @@ int main()
                     game->getPlayers().getPlayer(i).viewAllCard();
                     cout << endl;
                 }
-
             }
             game->setRound(game->getRound()+1);
             // Ubah Turn

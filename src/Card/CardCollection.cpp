@@ -8,6 +8,12 @@ CardCollection<T>::CardCollection(){}
 template <class T>
 void CardCollection<T>::MakeDeck(){}
 
+template<class T>
+int CardCollection<T>::getNumOfCard()
+{
+    return buffer.size();
+}
+
 template <>
 void CardCollection<DeckCard>::MakeDeck(){
     vector<DeckCard> cards;

@@ -21,7 +21,7 @@ class CardCollection{
         /* Membuat sebuah deck untuk kartu T */
         void MakeDeck();
         void MakeDeck(string filename);
-
+        int getNumOfCard();
         T getCard(int);
         // T takeCard();
         void setCard(T&);
