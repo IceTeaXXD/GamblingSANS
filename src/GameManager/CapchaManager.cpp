@@ -53,3 +53,15 @@ int CapchaManager::firstPlayer(){
     }
     return (itr-angka.begin())/13;
 }
+
+Kombinasi CapchaManager::getLastPlayed(){
+    return *lastPlayed;
+}
+
+void CapchaManager::setLastPlayed(Kombinasi& lastPlayed){
+    this->lastPlayed = &lastPlayed;
+}
+
+void CapchaManager::clearLastPlayed(){
+    delete this->lastPlayed;
+}
