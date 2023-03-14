@@ -59,4 +59,5 @@ class CandyGamePlayer: public Player, public CardCollection<DeckCard>{
         void setHasAbility(bool);
         bool getHasAbility();
 };
+
 #endif

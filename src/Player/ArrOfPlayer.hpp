@@ -3,6 +3,7 @@
 
 #include <deque>
 #include "Player.hpp"
+#include "UnoPlayer.hpp"
 
 template <class T>
 class ArrOfPlayer {
@@ -23,6 +24,7 @@ class ArrOfPlayer {
         void changePlayerName(int, string);
         void setPlayerPoint(int, long long);
         void addPlayerCard(int, DeckCard&);
+        void addUnoPlayerCard(int, UnoCard&);
         void addAbilityCard(int, AbilityCard&);
         void clearCard(int i);
         void printDeque();
@@ -33,5 +35,6 @@ class ArrOfPlayer {
 
 
 template class ArrOfPlayer<CandyGamePlayer>;
+template class ArrOfPlayer<UnoGamePlayer>;
 
 #endif
