@@ -25,8 +25,6 @@ ArrOfKombinasi::ArrOfKombinasi(vector<DeckCard> arrInput)
                     for (int m = l+1; m<arrInput.size() ; m++)
                     {
                         vector<DeckCard> temp;
-                        count++;
-                        cout<<count<<endl;
                         temp.push_back(arrInput[i]);
                         temp.push_back(arrInput[j]);
                         temp.push_back(arrInput[k]);
@@ -69,8 +67,6 @@ ArrOfKombinasi::ArrOfKombinasi(vector<DeckCard> arrInput)
             {
                 for (int m = l+1; m<arrInput.size() ; m++)
                 {
-                    count++;
-                    cout<<count<<endl;
                     vector<DeckCard> temp;
                     temp.push_back(arrInput[j]);
                     temp.push_back(arrInput[k]);
@@ -102,8 +98,6 @@ ArrOfKombinasi::ArrOfKombinasi(vector<DeckCard> arrInput)
         {
             for (int m = l+1; m<arrInput.size() ; m++)
             {
-                 count++;
-                cout<<count<<endl;
                 vector<DeckCard> temp;
                 temp.push_back(arrInput[k]);
                 temp.push_back(arrInput[l]);
@@ -128,8 +122,6 @@ ArrOfKombinasi::ArrOfKombinasi(vector<DeckCard> arrInput)
     {
         for (int m = l+1; m<arrInput.size() ; m++)
         {
-             count++;
-                    cout<<count<<endl;
             vector<DeckCard> temp;
             temp.push_back(arrInput[l]);
             temp.push_back(arrInput[m]);
@@ -150,8 +142,6 @@ ArrOfKombinasi::ArrOfKombinasi(vector<DeckCard> arrInput)
     count = 0;
     for (int m = 0; m<arrInput.size() ; m++)
     {
-         count++;
-                    cout<<count<<endl;
         vector<DeckCard> temp;
         temp.push_back(arrInput[m]);
         KombinasiCapsa tempC = KombinasiCapsa(temp,1);
@@ -225,7 +215,6 @@ void ArrOfKombinasi::displaySpecificCombination(string input)
                 cout<<num+1<<". ";
                 arrLima[i].printKombinasi();
                 cout<<endl;
-                cout<<"PPPPPPP"<<endl;
                 dropComb.push_back(&arrLima[i]);
                 num++;
             }
@@ -240,7 +229,6 @@ void ArrOfKombinasi::displaySpecificCombination(string input)
                 cout<<num+1<<". ";
                 arrLima[i].printKombinasi();
                 cout<<endl;
-                cout<<"PPPPPPP"<<endl;
                 dropComb.push_back(&arrLima[i]);
                 num++;
             }
@@ -255,7 +243,6 @@ void ArrOfKombinasi::displaySpecificCombination(string input)
                 cout<<num+1<<". ";
                 arrLima[i].printKombinasi();
                 cout<<endl;
-                cout<<"PPPPPPP"<<endl;
                 dropComb.push_back(&arrLima[i]);
                 num++;
             }
@@ -270,7 +257,6 @@ void ArrOfKombinasi::displaySpecificCombination(string input)
                 cout<<num+1<<". ";
                 arrLima[i].printKombinasi();
                 cout<<endl;
-                cout<<"PPPPPPP"<<endl;
                 dropComb.push_back(&arrLima[i]);
                 num++;
             }
@@ -285,7 +271,6 @@ void ArrOfKombinasi::displaySpecificCombination(string input)
                 cout<<num+1<<". ";
                 arrEmpat[i].printKombinasi();
                 cout<<endl;
-                cout<<"PPPPPPP"<<endl;
                 dropComb.push_back(&arrEmpat[i]);
                 num++;
             }
@@ -300,7 +285,6 @@ void ArrOfKombinasi::displaySpecificCombination(string input)
                 cout<<num+1<<". ";
                 arrEmpat[i].printKombinasi();
                 cout<<endl;
-                cout<<"PPPPPPP"<<endl;
                 dropComb.push_back(&arrEmpat[i]);
                 num++;
             }
@@ -313,7 +297,6 @@ void ArrOfKombinasi::displaySpecificCombination(string input)
             cout<<num+1<<". ";
             arrTiga[i].printKombinasi();
             cout<<endl;
-            cout<<"PPPPPPP"<<endl;
             dropComb.push_back(&arrTiga[i]);
             num++;
         }
@@ -325,7 +308,6 @@ void ArrOfKombinasi::displaySpecificCombination(string input)
             cout<<num+1<<". ";
             arrDua[i].printKombinasi();
             cout<<endl;
-            cout<<"PPPPPPP"<<endl;
             dropComb.push_back(&arrDua[i]);
             num++;
         }
@@ -337,7 +319,6 @@ void ArrOfKombinasi::displaySpecificCombination(string input)
             cout<<num+1<<". ";
             arrSatu[i].printKombinasi();
             cout<<endl;
-            cout<<"PPPPPPP"<<endl;
             dropComb.push_back(&arrSatu[i]);
             num++;
         }

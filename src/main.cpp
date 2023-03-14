@@ -72,6 +72,7 @@ int main()
         string inputPlayer;
         int angka;
         bool flag = true;
+        // int idxFirstPlayer;
 
         //Capcha GM
         CapchaManager* game = new CapchaManager();
@@ -88,20 +89,24 @@ int main()
             cout<<"---------------"<<endl;
         } 
         //Game
-        for (int i = 0 ; i < 4 ; i++)
+        int idxFirstPlayer = game->firstPlayer();
+        for (int i = idxFirstPlayer ; i < idxFirstPlayer+4 ; i++)
         {
-            pointerArr.push_back(game->getPlayers().getPlayerAddress(i));
+            pointerArr.push_back(game->getPlayers().getPlayerAddress(i%4));
         }
         while (!menang)
         {
             game->clearLastPlayed();
             if (flag)
             {
+                cout<<"Sekarang giliran player "<<pointerArr[0]->getName()<<endl;
                 cout<<"List Kombinasi yang Anda punya"<<endl;
                 ArrOfKombinasi temp = ArrOfKombinasi(pointerArr[0]->getCard());
                 // ArrOfKombinasi temp2 = ArrOfKombinasi(pointerArr[1]->getCard());
                 // ArrOfKombinasi temp3 = ArrOfKombinasi(pointerArr[2]->getCard());
                 // ArrOfKombinasi temp4 = ArrOfKombinasi(pointerArr[3]->getCard());
+                
+                // temp.displaySpecificCombination("HighCard");Pai
                 temp.displayCombinationList();
                 // cout<<"temp2"<<endl;
                 // temp2.displayCombinationList();
@@ -116,14 +121,14 @@ int main()
                 cout<<"Masukkan nomor kombinasi yang ingin dikeluarkan : "<<endl;
                 cout<<">> ";
                 cin>>angka;
-                cout<<pointerArr[0]->getArrOfKombinasi()->dropCombSize()<<endl;
-                while(angka > pointerArr[0]->getArrOfKombinasi()->dropCombSize() || angka <= 0)
+                // cout<<temp.dropCombSize()<<endl;
+                while(angka > temp.dropCombSize() || angka <= 0)
                 {
                     cout<<"Masukkan nomor kombinasi yang ingin dikeluarkan : "<<endl;
                     cout<<">> ";
                     cin>>angka;
                 }
-                Kombinasi droppedCombination = pointerArr[0]->getArrOfKombinasi()->DropCombination(angka-1);
+                Kombinasi droppedCombination = temp.DropCombination(angka-1);
                 *pointerArr[0]-droppedCombination;
                 ArrOfKombinasi temp2 = ArrOfKombinasi(pointerArr[0]->getCard());
                 // temp2.displayCombinationList();

@@ -29,7 +29,7 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
         if(isStraightFlush())
         {
             val = MAX_FOUR_KIND;
-            for (DeckCard i : arrTableCardCombination)
+            for (DeckCard i : arrCombination)
             {
                 val += i.value();
             }
@@ -39,7 +39,7 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
         else if (isFullHouse())
         {
             val = MAX_FLUSH;
-            for (DeckCard i : arrTableCardCombination)
+            for (DeckCard i : arrCombination)
             {
                 val += i.value();
             }
@@ -49,7 +49,7 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
         else if (isFlush())
         {
             val = MAX_STRAIGHT;
-            for (DeckCard i : arrTableCardCombination)
+            for (DeckCard i : arrCombination)
             {
                 val += i.value();
             }
@@ -59,7 +59,7 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
         else if(isStraight())
         {
             val = MAX_THREE_KIND;
-            for (DeckCard i : arrTableCardCombination)
+            for (DeckCard i : arrCombination)
             {
                 val += i.value();
             }
@@ -76,7 +76,7 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
         if (isFourAKind())
         {
             val = MAX_FULL_HOUSE;
-            for (DeckCard i : arrTableCardCombination)
+            for (DeckCard i : arrCombination)
             {
                 val += i.value();
             }
@@ -86,7 +86,7 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
         else if (isTwoPair())
         {
             val = MAX_PAIR;
-            for (DeckCard i : arrTableCardCombination)
+            for (DeckCard i : arrCombination)
             {
                 val += i.value();
             }
@@ -103,7 +103,7 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
         if (isThreeOfKind())
         {
             val = MAX_TWO_PAIR;
-            for (DeckCard i : arrTableCardCombination)
+            for (DeckCard i : arrCombination)
             {
                 val += i.value();
             }
@@ -120,7 +120,7 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
         if(isPair())
         {
             val = MAX_HIGH_CARD;
-            for (DeckCard i : arrTableCardCombination)
+            for (DeckCard i : arrCombination)
             {
                 val += i.value();
             }
@@ -135,6 +135,7 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
     else
     {
         // cout << "TABLE 9\n";
+        arrCombination.push_back(arr[0]);
         val = arr.begin()->value();
         this->val = val;
         this->combinationName = "HighCard";
@@ -265,12 +266,12 @@ bool KombinasiCapsa::isStraight(){
             
             if (itr != arrAngka.end())
             {   
-                this->arrTableCardCombination.push_back(tempArr[itr-arrAngka.begin()]);
+                this->arrCombination.push_back(tempArr[itr-arrAngka.begin()]);
                 straight = true;
             }
             else
             {
-                this->arrTableCardCombination.clear();
+                this->arrCombination.clear();
                 straight = false;
                 break;
             }
@@ -293,7 +294,7 @@ bool KombinasiCapsa::isFlush(){
         if (tempArr[i].getType()==tempArr[i-4].getType())
         {
             for (int j = i-4; j < i+1; j++){
-                this->arrTableCardCombination.push_back(tempArr[j]);
+                this->arrCombination.push_back(tempArr[j]);
             }
             return true;
         }
@@ -329,11 +330,11 @@ bool KombinasiCapsa::isFullHouse(){
                 {
                     if (!(tempArr[i]==tempThreeKind[0]))
                     {
-                        this->arrTableCardCombination.push_back(tempArr[i]);
-                        this->arrTableCardCombination.push_back(tempArr[j]);
+                        this->arrCombination.push_back(tempArr[i]);
+                        this->arrCombination.push_back(tempArr[j]);
                         for (auto card : tempThreeKind)
                         {
-                            this->arrTableCardCombination.push_back(card);
+                            this->arrCombination.push_back(card);
                         }
                         return true;
                     }
@@ -365,12 +366,12 @@ bool KombinasiCapsa::isStraightFlush(){
             
             if (itr != arrAngka.end() && tempArr[itr-arrAngka.begin()].getType() == tempWarna)
             {   
-                this->arrTableCardCombination.push_back(tempArr[itr-arrAngka.begin()]);
+                this->arrCombination.push_back(tempArr[itr-arrAngka.begin()]);
                 straight = true;
             }
             else
             {
-                this->arrTableCardCombination.clear();
+                this->arrCombination.clear();
                 straight = false;
                 break;
             }
