@@ -200,65 +200,7 @@ int main()
                         aksi = game->inputToLower(aksi);
                         //Implementasi poin disini
                         //pake getter dan setter poin yg di game manager
-                        if (game->isInputTrue(aksi)){
-                            if(aksi == "next"){
-                                /* Do Nothing */
-                                input = true;
-                            }else if(aksi == "double" || aksi == "2"){
-                                game->setPoint(game->getPoint()*2);
-                                cout << game->getPlayers().getPlayer(0).getName() << " melakukan DOUBLE! Poin hadiah naik dari " << game->getPoint()/2 << " menjadi " << game->getPoint()  << "!" << endl;
-                                input = true;
-                            }else if(aksi == "half"){
-                                game->setPoint(game->getPoint()/2);
-                                if(game->getPoint() != 0){
-                                    cout << game->getPlayers().getPlayer(0).getName() << " melakukan HALF! Poin hadiah turun dari " << game->getPoint()*2 << " menjadi " << game->getPoint()  << "!" << endl;
-                                }else{
-                                    cout << "Nothing happened" << endl;
-                                    game->setPoint(1);
-                                }
-                                input = true;
-                            }else if(aksi == "viewcards"){
-                                game->getPlayers().getPlayer(0).viewAllCard();
-                                cout << endl;
-                                input == false;
-                            }else if(aksi == "tablecards"){
-                                cout << " ==================== " << endl;
-                                cout << "       DECK CARDS       " << endl;
-                                cout << " ==================== " << endl;
-                                game->getPlayCards().displayDeckCard();
-                                cout << endl;
-                                input == false;
-                            }else if(aksi == "help"){
-                                cout << "Berikut adalah beberapa perintah: " << endl;
-                                cout << "1. Next"<< endl;
-                                cout << "2. Double"<< endl;
-                                cout << "3. Half"<< endl;
-                                cout << "4. Quadruple" << endl;
-                                cout << "5. Quarter" << endl;
-                                cout << "6. Reroll" << endl;
-                                cout << "7. Reverse "<< endl;
-                                cout << "8. Switch" << endl;
-                                cout << "9. Swap" << endl;
-                                cout << "10. Help" << endl;
-                                cout << "11. ViewCards" << endl;
-                                cout << "12. TableCards" << endl;
-                                cout << endl;
-                            }else{
-                                if(game->getPlayers().getPlayer(0).getHasAbility()){
-                                    if(aksi == game->getPlayers().getPlayer(0).getAbilityCard().getType()){
-                                        game->manipulate<AbilityCard&>(game->getPlayers().getPlayer(0).getAbilityCard());
-                                    }else{
-                                        throw TidakPunyaKartuAbility();
-                                    }
-                                    input = true;
-                                }else{
-                                    throw BelumAdaAbility();
-                                }
-                                input = true;
-                            }
-                        }else{
-                            throw InputSalah();
-                        }
+                        input = game->parseCommand(aksi);
                     }catch(Exception& e){
                         e.what();
                         input = false;

@@ -57,6 +57,7 @@ class GameManager: public CardCollection<DeckCard>{
         /* Manipulasi */
 
         string inputToLower(string);
+        virtual bool parseCommand(string) = 0;
 };
 
 #endif
