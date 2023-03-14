@@ -31,3 +31,9 @@ KartuDimatikan::KartuDimatikan(){}
 void KartuDimatikan::what() const throw(){
     cout << "Kartu anda telah dimatikan\nSilakan ulangi!\n";
 }
+
+ReverseNext::ReverseNext(){}
+
+void ReverseNext::what() const throw(){
+    cout << "";
+}

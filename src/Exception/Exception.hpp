@@ -39,4 +39,11 @@ class KartuDimatikan: public Exception{
         KartuDimatikan();
         void what() const throw();  
 };
+
+class ReverseNext: public Exception{
+    public:
+        ReverseNext();
+        void what() const throw();
+};
+
 #endif
