@@ -85,7 +85,7 @@ void CardCollection<UnoCard*>::MakeDeck(){
         }
     }
 
-    /* Create Skip, Reverse, Plus 2 : 1 for each color*/
+    /* Create Skip, Reverse, Plus 2 : 2 for each color*/
     for (int i = 1 ; i <= 4 ; i++){
         UnoCard*f = new plus2(i);
         cards.push_back(f);

@@ -11,7 +11,7 @@ class Warna{
         4. Merah */
         int type;
     public:
-        void setWarna(string);
+        void setWarna(int);
         int getType();
         string translateToString();
         string translateToType();

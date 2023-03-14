@@ -33,3 +33,8 @@ int Warna::getType()
 {
     return type;
 }
+
+void Warna::setWarna(int t)
+{
+    this->type = t;
+}

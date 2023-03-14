@@ -2,7 +2,9 @@
 
 UnoPlayCards::UnoPlayCards(){}
 
-UnoPlayCards::UnoPlayCards(int t, int n) : Angka(t), Warna(n){}
+UnoPlayCards::UnoPlayCards(int t, int n) : Angka(t), Warna(n){
+    cardType = "Play";
+}
 
 void UnoPlayCards::printInfo(){
     string card = to_string(this->getNum()) + " " + this->translateToString();

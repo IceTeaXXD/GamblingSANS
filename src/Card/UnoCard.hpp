@@ -8,10 +8,13 @@ using namespace std;
 class UnoCard{
     protected:
         printColor pc;
+        string cardType;
     public:
         UnoCard();
         ~UnoCard();
         virtual void printInfo();
+        virtual void setCardType(string);
+        virtual string getCardType();
 };
 
 #endif
