@@ -29,6 +29,8 @@ class CapchaManager : public GameManager
         // void printInfoPlayerCard(int); //buat ngecek player punya kartu apa aja
         ArrOfPlayer<CapsaGamePlayer>& getPlayers();
         void setGiliran(int);
+
+        bool parseCommand(string);
         // int getGiliran();
         // void setPoint(int);
         

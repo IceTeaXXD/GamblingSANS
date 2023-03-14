@@ -37,5 +37,7 @@ class CandyGameManager : public GameManager
         /*Manipulasi*/
         template<class T>
         void manipulate(T);
+
+        bool parseCommand(string);
 };
 #endif

@@ -7,7 +7,7 @@ using namespace std;
 class Exception{
     public:
         Exception();
-        virtual void what() const = 0;
+        virtual void what() const throw() = 0;
 };
 
 class SalahFormatFile: public Exception{
