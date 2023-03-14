@@ -45,7 +45,7 @@ double DeckCard::value()
     double tempwarna;
     if (getType()==1)
     {
-        tempwarna = 0;
+        tempwarna = 0.00001;
     }
     else if(getType()==2)
     {

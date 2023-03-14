@@ -22,6 +22,7 @@ class KombinasiCapsa : public Kombinasi{
         bool isFlush();
         bool isFullHouse();
         bool isStraightFlush();
+        bool isDragon();
 };
 
 #endif

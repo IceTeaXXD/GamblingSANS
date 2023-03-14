@@ -1,4 +1,5 @@
 #include "KombinasiCapsa.hpp"
+#include <cmath>
 
 using namespace std;
 
@@ -14,7 +15,16 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
     }
     this->arrCombination = playCards;
     double val;
-    if (n==5)
+    if (n==13)
+    {
+        if (isDragon())
+        {
+            val = MAX_STRAIGHT_FLUSH + 1.3 + pow(10, 6-playCards[0].getType());
+        }
+        this->val = val;
+        this->combinationName = "Dragon";
+    }
+    else if (n==5)
     {
         if(isTableCardStraightFlush())
         {
@@ -132,7 +142,7 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
 }
 
 KombinasiCapsa::~KombinasiCapsa(){
-    
+
 }
 
 double KombinasiCapsa::getConst(int input)
@@ -274,7 +284,6 @@ bool KombinasiCapsa::isStraight(){
 }
 
 bool KombinasiCapsa::isFlush(){
-    
     arrCombination.clear();
     bool flush = false;
     vector<DeckCard> tempArr = arr;
@@ -293,7 +302,7 @@ bool KombinasiCapsa::isFlush(){
 }
 
 bool KombinasiCapsa::isFullHouse(){
-    arrTableCardCombination.clear();
+    arrCombination.clear();
     vector<DeckCard> tempArr = arr;
     bool threeKind = false;
     vector<DeckCard> tempThreeKind;
@@ -336,7 +345,7 @@ bool KombinasiCapsa::isFullHouse(){
 }
 
 bool KombinasiCapsa::isStraightFlush(){
-    arrTableCardCombination.clear();
+    arrCombination.clear();
     vector<DeckCard> tempArr = arr;
     vector<int> arrAngka;
     bool straight = false;
@@ -372,4 +381,20 @@ bool KombinasiCapsa::isStraightFlush(){
         }
     }
     return straight;
+}
+
+bool KombinasiCapsa::isDragon(){
+    arrCombination.clear();
+    int tempWarna = arr[0].getType();
+    for (int i = 1; i <= 13; i++)
+    {
+        auto itr = find(arr.begin(), arr.end(), compareAngka);
+        if (itr==arr.end())
+        {
+            arrCombination.clear();
+            return false;
+        }
+    }
+    return true;
+
 }

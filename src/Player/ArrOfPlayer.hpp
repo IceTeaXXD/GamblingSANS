@@ -9,6 +9,7 @@ template <class T>
 class ArrOfPlayer {
     private :
         deque<T> arr;
+        
     public :
         //ctor
         ArrOfPlayer();
