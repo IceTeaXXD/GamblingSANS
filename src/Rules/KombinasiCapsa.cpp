@@ -386,13 +386,22 @@ bool KombinasiCapsa::isStraightFlush(){
 bool KombinasiCapsa::isDragon(){
     arrCombination.clear();
     int tempWarna = arr[0].getType();
+    vector<int> tempAngka;
+    for (int i = 0; i < arr.size(); i++)
+    {
+        tempAngka.push_back(arr[i].getNum());
+    }
     for (int i = 1; i <= 13; i++)
     {
-        auto itr = find(arr.begin(), arr.end(), compareAngka);
-        if (itr==arr.end())
+        auto itr = find(tempAngka.begin(), tempAngka.end(), i);
+        if ((itr!=tempAngka.end()) && (arr[itr-tempAngka.begin()].getType() == tempWarna))
         {
-            arrCombination.clear();
+            continue;
+        }
+        else
+        {
             return false;
+            arrCombination.clear();
         }
     }
     return true;

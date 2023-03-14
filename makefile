@@ -27,6 +27,7 @@ build:
 	$(C) -c $(SOURCE_FOLDER)/Player/UnoPlayer.cpp -o $(OUTPUT_FOLDER)/UnoPlayer.o
 	$(C) -c $(SOURCE_FOLDER)/Exception/Exception.cpp -o $(OUTPUT_FOLDER)/Exception.o
 	$(C) -c $(SOURCE_FOLDER)/Rules/Kombinasi.cpp -o $(OUTPUT_FOLDER)/Kombinasi.o
+	$(C) -c $(SOURCE_FOLDER)/Rules/KombinasiCapsa.cpp -o $(OUTPUT_FOLDER)/KombinasiCapsa.o
 	$(C) -c $(SOURCE_FOLDER)/Rules/FindValue.cpp -o $(OUTPUT_FOLDER)/FindValue.o
 	$(C) -c $(SOURCE_FOLDER)/Rules/ArrOfKombinasi.cpp -o $(OUTPUT_FOLDER)/ArrOfKombinasi.o
 	$(C) -c $(SOURCE_FOLDER)/utils/printColor.cpp -o $(OUTPUT_FOLDER)/printColor.o
