@@ -977,16 +977,25 @@ bool Kombinasi::isTableCardTwoPair()
 
 bool Kombinasi::isThreeOfKind(){
     arrCombination.clear();
+    bool threeOfKind = false;
     vector<DeckCard> tempArr = arr;
     sort(tempArr.begin(), tempArr.end(), compareAngka);
+
+    if (isTableCardThreeOfKind)
+    {
+        // ngambil angka yg ada di arrTableCardCombination
+        arrTableCardCombination.clear();
+    }
     for (int i = tempArr.size()-1; i>1; i--)
     {
-        if (tempArr[i]==tempArr[i-2])
+        if (tempArr[i]==tempArr[i-2])  //tambahin syarat ga sama kaya di array arrtableCard
+                                       //tambahin buat semua yang belum ada if(isTableCard....) kecuali FourAKind
         {
             arrCombination.push_back(tempArr[i]);
             arrCombination.push_back(tempArr[i-1]);
             arrCombination.push_back(tempArr[i-2]);
-            return true;
+            threeOfKind = true;
+            break;
         }
     }
     return false;
