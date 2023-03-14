@@ -94,7 +94,7 @@ int main()
     p4.push_back(m10);
 
     p5.push_back(h6);
-    p5.push_back(k11);
+    p5.push_back(k10);
 
     p6.push_back(b6);
     p6.push_back(m12);
