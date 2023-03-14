@@ -173,26 +173,6 @@ double Kombinasi::value(){
                 // cout << "Full House\n";
                 return val;
             }
-            else if (isFlush())
-            {
-                val = MAX_STRAIGHT;
-                for (DeckCard i : arrCombination)
-                {
-                    val += i.value();
-                }
-                // cout << "Flush1\n";
-                return val;
-            }
-            else if (isStraight())
-            {
-                val = MAX_THREE_KIND;
-                for (DeckCard i : arrCombination)
-                {
-                    val += i.value();
-                }
-                // cout << "Straight1\n";
-                return val;
-            }
             else if (isThreeOfKind())
             {
                 val = MAX_TWO_PAIR;
@@ -275,17 +255,6 @@ double Kombinasi::value(){
                 // cout << "Straight2\n";
                 return val;
             }
-            else if (isThreeOfKind())
-            {
-                val = MAX_TWO_PAIR;
-                // cout<<arrCombination.size()<<endl;
-                for (auto i : arrCombination)
-                {
-                    val += i.value();
-                }
-                // cout << "Three Kind\n";
-                return val;
-            }
             else if (isTwoPair())
             {
                 val = MAX_PAIR;
@@ -294,16 +263,6 @@ double Kombinasi::value(){
                     val += i.value();
                 }
                 // cout << "Two Pair\n";
-                return val;
-            }
-            else if (isPair())
-            {
-                val = MAX_HIGH_CARD;
-                for (DeckCard i : arrCombination)
-                {
-                    val += i.value();
-                }
-                // cout << "Pair\n";
                 return val;
             }
             else
@@ -348,16 +307,6 @@ double Kombinasi::value(){
                 // cout << "Straight3\n";
                 return val;
             }
-            else if (isThreeOfKind())
-            {
-                val = MAX_TWO_PAIR;
-                for (auto i : arrCombination)
-                {
-                    val += i.value();
-                }
-                // cout << "Three Kind\n";
-                return val;
-            }
             else if (isTwoPair())
             {
                 val = MAX_PAIR;
@@ -366,16 +315,6 @@ double Kombinasi::value(){
                     val += i.value();
                 }
                 // cout << "Two Pair\n";
-                return val;
-            }
-            else if (isPair())
-            {
-                val = MAX_HIGH_CARD;
-                for (DeckCard i : arrCombination)
-                {
-                    val += i.value();
-                }
-                // cout << "Pair\n";
                 return val;
             }
             else
