@@ -157,10 +157,11 @@ void CandyGameManager::manipulate<ReverseDirection&>(ReverseDirection& C){
         cout << endl;
 
         /* Reverse direction */
-        players->reverseTurn(this->turn);
+        ArrOfPlayer<CandyGamePlayer> temp = *players;
+        temp.reverseTurn(this->turn);
 
         /* OUTPUT GILIRAN RONDE SELANJUTNYA*/
-        ArrOfPlayer <CandyGamePlayer> after = *players;
+        ArrOfPlayer <CandyGamePlayer> after = temp;
         for(int i = 0 ; i <= 7-turn ; i++){
             after.nextTurn();
         }
@@ -169,7 +170,26 @@ void CandyGameManager::manipulate<ReverseDirection&>(ReverseDirection& C){
             cout << after.getPlayer(i).getName() << " ";
         }
         cout << endl;
-        throw ReverseNext();
+        bool input = false;
+        while(!input){
+            try{
+                string aksi;
+                cout<<"Tentukan aksi anda: (Point hadiah: " << getPoint() << ")"<<endl;
+                cout<<"1. Next"<<endl;
+                cout<<"2. Double"<<endl;
+                cout<<"3. Half"<<endl;
+                cout<<">> ";
+                cin >> aksi;
+                input = parseCommand(aksi);
+            }catch (Exception& e){
+                e.what();
+                input = false;
+            }
+        }
+
+        players->reverseTurn(this->turn);
+
+        // throw ReverseNext();
     }
     else{
         throw KartuDimatikan();

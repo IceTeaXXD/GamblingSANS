@@ -61,6 +61,7 @@ void ArrOfPlayer<CandyGamePlayer>::prevTurn(){
     arr.push_front(arr.back());
     arr.pop_back();
 }
+template<>
 void ArrOfPlayer<UnoGamePlayer>::nextTurn(){
     arr.push_back(arr.at(0));
     arr.pop_front();
