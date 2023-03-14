@@ -24,7 +24,7 @@ class ArrOfPlayer {
         void changePlayerName(int, string);
         void setPlayerPoint(int, long long);
         void addPlayerCard(int, DeckCard&);
-        void addUnoPlayerCard(int, UnoCard&);
+        void addPlayerCard(int, UnoCard&);
         vector<DeckCard>& getAllPlayerCard(int idx);
         void addAbilityCard(int, AbilityCard&);
         void clearCard(int i);

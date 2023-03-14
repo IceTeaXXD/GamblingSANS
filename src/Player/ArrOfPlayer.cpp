@@ -56,6 +56,12 @@ void ArrOfPlayer<CapsaGamePlayer>::nextTurn(){
     arr.pop_front();
     // this->printDeque();
 }
+template<>
+void ArrOfPlayer<UnoGamePlayer>::nextTurn(){
+    arr.push_back(arr.at(0));
+    arr.pop_front();
+}
+
 template <>
 void ArrOfPlayer<CandyGamePlayer>::reverseTurn(int turn){
     reverse(arr.begin(), arr.end());
@@ -67,6 +73,7 @@ void ArrOfPlayer<CandyGamePlayer>::reverseTurn(int turn){
             nextTurn();
         }
     }
+    
 }
 
 template<>
@@ -96,7 +103,7 @@ void ArrOfPlayer<CandyGamePlayer>::setPlayerPoint(int idx, long long point){
 }
 
 template<>
-void ArrOfPlayer<UnoGamePlayer>::addUnoPlayerCard(int idx, UnoCard& card){
+void ArrOfPlayer<UnoGamePlayer>::addPlayerCard(int idx, UnoCard& card){
     this->arr[idx] + card;
 }
 

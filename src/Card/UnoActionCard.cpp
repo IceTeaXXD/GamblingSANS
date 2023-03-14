@@ -4,6 +4,7 @@ plus2::plus2(){}
 
 plus2::plus2(int t){
     this->type = t;
+    this->cardType = "Plus2";
 }
 
 void plus2::printInfo(){
@@ -25,6 +26,7 @@ reversecard::reversecard(){}
 
 reversecard::reversecard(int t){
     this->type = t;
+    this->cardType = "Reverse";
 }
 
 void reversecard::printInfo(){
@@ -46,6 +48,7 @@ skip::skip(){}
 
 skip::skip(int t){
     this->type = t;
+    this->cardType = "Skip";
 }
 
 void skip::printInfo(){
@@ -63,13 +66,19 @@ void skip::printInfo(){
     }
 }
 
-wildcard::wildcard(){}
+wildcard::wildcard(){
+    setWarna(0);
+    this->cardType = "Wildcard";
+}
 
 void wildcard::printInfo(){
     cout << "WILDCARD";
 }
 
-wildcardplus4::wildcardplus4(){}
+wildcardplus4::wildcardplus4(){
+    setWarna(0);
+    this->cardType = "Wildcard+4";
+}
 
 void wildcardplus4::printInfo(){
     cout << "WILDCARD +4";

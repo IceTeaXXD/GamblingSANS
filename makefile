@@ -33,8 +33,8 @@ build:
 	$(C) $(SOURCE_FOLDER)/main.cpp $(OUTPUT_FOLDER)/*.o -o $(OUTPUT_FOLDER)/main.exe
 	@rm $(OUTPUT_FOLDER)/*.o
 
-all:
-	g++ -o $(OUTPUT_FOLDER)/main.exe 	\
+uff:
+	g++ -o bin/main 	\
 	src/main.cpp \
 	src/Card/AbilityCard.cpp \
 	src/Card/Abilities.cpp \
@@ -57,4 +57,4 @@ all:
 	src/Rules/FindValue.cpp \
 	src/Rules/ArrOfKombinasi.cpp \
 	src/utils/printColor.cpp
-	$(OUTPUT_FOLDER)/main.exe
+	bin/main

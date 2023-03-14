@@ -10,21 +10,27 @@
 #include "../Card/UnoPlayCards.hpp"
 #include "../Player/Player.hpp"
 #include "../Player/ArrOfPlayer.hpp"
-#include "../Player/UnoPlayer.hpp"
-
+#include "../utils/printColor.hpp"
 using namespace std;
 
 
-class UnoManager : public GameManager{
+class UnoGameManager : public GameManager{
     private:
         ArrOfPlayer<UnoGamePlayer>* players;
-        CardCollection<UnoCard*> playCards;
+        CardCollection<UnoCard*> playCard;
+        CardCollection<UnoCard*> deckCards;
+        printColor pc;
+
     public:
-        UnoManager();
-        UnoManager(string);
-        ~UnoManager();
+        UnoGameManager();
+        ~UnoGameManager();
         void reset();
-        
+        ArrOfPlayer<UnoGamePlayer>& getPlayers();
+        CardCollection<UnoCard*>& getPlayCard();
+        CardCollection<UnoCard*>& getDeckCard();
+        void distributeCard();
+        template<class T>
+        void manipulate(T);
 };
 
 #endif

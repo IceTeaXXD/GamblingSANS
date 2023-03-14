@@ -27,13 +27,13 @@ class skip : public UnoCard, public Warna{
         void printInfo();
 };
 
-class wildcard : public UnoCard{
+class wildcard : public Warna, public UnoCard{
     public:
         wildcard();
         void printInfo();
 };
 
-class wildcardplus4 : public UnoCard{
+class wildcardplus4 : public Warna, public UnoCard{
     public:
         wildcardplus4();
         void printInfo();
