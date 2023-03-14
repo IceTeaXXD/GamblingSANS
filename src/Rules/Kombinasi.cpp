@@ -24,7 +24,21 @@ Kombinasi::Kombinasi(vector<DeckCard> playerCards, vector<DeckCard> tableCards)
         this->arr.push_back(tableCards[i]);
     }
 }
-Kombinasi::~Kombinasi(){}
+
+Kombinasi::Kombinasi(vector<DeckCard> playCards)
+{
+    for (int i = 0 ; i < playCards.size() ; i++)
+    {
+        this->arr.push_back(playCards[i]);
+    }
+}
+
+Kombinasi::~Kombinasi()
+{
+    arr.clear();
+    arrCombination.clear();
+    arrTableCardCombination.clear();
+}
 
 void Kombinasi::setCards(vector<DeckCard> playerCards, vector<DeckCard> tableCards){
     this->arr.push_back(playerCards[0]);
@@ -126,7 +140,18 @@ double Kombinasi::tableValue(){
     }
 
 }
-
+vector<DeckCard> Kombinasi::getCombinationCard()
+{
+    return this->arrCombination;
+}
+void Kombinasi::printKombinasi()
+{
+    cout<<getCombinationName();
+    for(int i = 0 ; i < arrCombination.size() ; i++)
+    {
+        arrCombination[i].printType();
+    }
+}
 double Kombinasi::value(){
     /* Ini kayaknya mending terima satu kartu terus tentuin valuenya berapa */
     /*double temp = 
@@ -753,7 +778,45 @@ bool Kombinasi::isTableCardPair()
     // }
     // return false;
 }
-
+double Kombinasi::getConst(int input)
+{
+    if (input == 1)
+    {
+        return this->MAX_HIGH_CARD;
+    }
+    else if (input==2)
+    {
+        return this->MAX_PAIR;
+    }
+    else if (input == 3)
+    {
+        return MAX_TWO_PAIR;
+    }
+    else if (input == 4)
+    {
+        return MAX_THREE_KIND;
+    }
+    else if (input == 5)
+    {
+        return MAX_STRAIGHT;
+    }
+    else if (input == 6)
+    {
+        return MAX_FLUSH;
+    }
+    else if (input==7)
+    {
+        return MAX_FULL_HOUSE;
+    }
+    else if(input == 8)
+    {
+        return MAX_FOUR_KIND;
+    }
+    else
+    {
+        return MAX_STRAIGHT_FLUSH;
+    }
+}
 bool Kombinasi::isTwoPair()
 {   
     arrCombination.clear();

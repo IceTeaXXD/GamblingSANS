@@ -165,6 +165,21 @@ void CardCollection<T>::operator+(T& c){
 }
 
 template <class T>
+void CardCollection<T>::Del(T& el)
+{
+    auto it = std::find(buffer.begin(), buffer.end(), el);
+    if (it != buffer.end())
+    {
+        buffer.erase(it); // corrected line
+        cout<<"Berhasil menghapus elemen"<<endl;
+    }
+    else
+    {
+        cout<<"Value not found"<<endl;
+    }
+}
+
+template <class T>
 void CardCollection<T>::displayDeckCard()
 {
     for (auto it = buffer.begin(); it != buffer.end(); it++) 

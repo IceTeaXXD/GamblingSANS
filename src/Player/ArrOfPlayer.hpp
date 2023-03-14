@@ -23,6 +23,7 @@ class ArrOfPlayer {
         void changePlayerName(int, string);
         void setPlayerPoint(int, long long);
         void addPlayerCard(int, DeckCard&);
+        vector<DeckCard>& getAllPlayerCard(int idx);
         void addAbilityCard(int, AbilityCard&);
         void clearCard(int i);
         void printDeque();
@@ -33,5 +34,6 @@ class ArrOfPlayer {
 
 
 template class ArrOfPlayer<CandyGamePlayer>;
+template class ArrOfPlayer<CapsaGamePlayer>;
 
 #endif

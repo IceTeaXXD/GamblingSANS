@@ -107,7 +107,10 @@ vector<DeckCard> CandyGamePlayer::getCard()
 {
     return CardCollection<DeckCard>::buffer;
 }
-
+vector<DeckCard>& CapsaGamePlayer::getCard()
+{
+    return CardCollection<DeckCard>::buffer;
+}
 void CandyGamePlayer::setLeftCard(DeckCard& card){
     CardCollection<DeckCard>::setLeftCard(card);
 }
@@ -142,3 +145,36 @@ void CandyGamePlayer::setHasAbility(bool s){
 }
 
 bool CandyGamePlayer::getHasAbility(){ return this->hasAbility; }
+
+CapsaGamePlayer::CapsaGamePlayer() : Player()
+{
+    countOfPlayerCards = 0;
+}
+
+CapsaGamePlayer::CapsaGamePlayer(string n) : Player(n)
+{
+    countOfPlayerCards = 0;
+}
+
+CapsaGamePlayer::~CapsaGamePlayer(){}
+
+void CapsaGamePlayer::operator+(DeckCard& card)
+{
+    CardCollection<DeckCard>::operator+(card);
+    countOfPlayerCards++;
+}
+
+void CapsaGamePlayer::operator-(Kombinasi& c)
+{
+    for(auto it = c.getCombinationCard().begin(); it != c.getCombinationCard().end(); ++it)
+    {
+        CardCollection<DeckCard>::Del(*it);
+    }
+    cout<<"Berhasil menghapus kartu"<<endl;
+    //buat arrofkombinasi yang baru
+
+}
+void CapsaGamePlayer::viewAllCard()
+{
+    
+}

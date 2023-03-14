@@ -24,6 +24,7 @@ class CardCollection{
         void setCard(T&);
         void operator+(T&);
         void operator-(T&);
+        void Del(T&);
         void displayDeckCard();
         // void displayCapsa();
         void clear();
