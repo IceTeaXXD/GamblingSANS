@@ -38,13 +38,21 @@ void UnoGameManager::distributeCard(){
 
 template<>
 void UnoGameManager::manipulate<plus2&>(plus2& card){
-    //
+    for (int i = 0 ; i < players->getPlayer(1).getBuffer().size(); i++){
+        if (players->getPlayer(1).getBuffer().at(i)->getCardType() == "plus2"){
+            players->nextTurn();
+            return;
+        }
+    }
+    for (int i = 0; i < 2; i++){
+        players->getPlayer(1) + deckCards.getCard(0);
+        deckCards.getBuffer().erase(deckCards.getBuffer().begin());
+    }
 }
 
 template<>
 void UnoGameManager::manipulate<reversecard&>(reversecard& card){
     players->reverseTurn(0);
-
 }
 
 template<>
@@ -72,7 +80,25 @@ void UnoGameManager::manipulate<wildcard&>(wildcard& card){
 
 template<>
 void UnoGameManager::manipulate<wildcardplus4&>(wildcardplus4& card){
+    cout << "Pilih Warna: " << endl;
+    pc.printRed("1. Hijau");
+    cout << endl;
+    pc.printBlue("2. Biru");
+    cout << endl;
+    pc.printGreen("3. Kuning");
+    cout << endl;
+    pc.printYellow("4. Merah");
+    cout << endl;
 
+    int color;
+    cout << ">> ";
+    cin >> color;
+    card.setWarna(color);
+
+    for (int i = 0; i < 4; i++){
+        players->getPlayer(1) + deckCards.getCard(0);
+        deckCards.getBuffer().erase(deckCards.getBuffer().begin());
+    }
 }
 
 template<>
