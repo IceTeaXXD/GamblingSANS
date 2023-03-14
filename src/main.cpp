@@ -8,14 +8,35 @@
 #include "Player/ArrOfPlayer.hpp"
 #include "Rules/Kombinasi.hpp"
 #include "Rules/ArrOfKombinasi.hpp"
+#include "Exception/Exception.hpp"
 using namespace std;
 
 int main()
 {
     cout << "\033[2J\033[1;1H" << endl;
-    cout <<" _______ _______ __   _ ______ __   __       _______ _______  ______ ______  _______"<<endl;
-    cout << "|        |_____| | \\  | |     \\ \\___/        |       |_____| |_____/ |     \\ |______"<<endl;
-    cout << "|_____   |     | |  \\_| |_____/   |          |_____  |     | |    \\_ |_____/ ______|"<<endl;
+    cout << R"(
+                                                 .                          
+                                               *,**                         
+                                                %.                          
+                                                &*                          
+                                     #@@%#%@@(  @,                          
+                                &**/************&.(                         
+                             (****************(*,,&*#                       
+                            #(&@&%#(/,....,,,,,,,,,,.%*                     
+                           %*******/******************/                     
+                          #****************************.                    
+                         @/**************@ .... ... %**/                    
+                        /***************@......... .%**(                    
+                        &***************/...... .../***#                    
+                       ****************, ........*,****#                    
+                       &/**************@...  %(********#                    
+                       ****************@..(**/*********#                    
+                      @/***/&%*********%#&&#%%*********%                    
+                      /**###(&*********/###%###&*******%                    
+                     #**#####@*********/####@##@*******&                    
+                     #*###&###*********/#######@/******@                
+                    .*,..&#(,**********/####(#  ,******@          
+)" << '\n';
 
     bool inputValid = false;
     string inputGame;
@@ -24,6 +45,7 @@ int main()
         cout<<"Pilihan Game :"<<endl;
         cout<<"1. Capcha"<<endl;
         cout<<"2. Kartu Permen"<<endl;
+        cout<<"3. UNO"<<endl;
         cout<<">> ";
         cin>>inputGame;
         if (inputGame == "1")
@@ -226,19 +248,19 @@ int main()
                                     if(aksi == game->getPlayers().getPlayer(0).getAbilityCard().getType()){
                                         game->manipulate<AbilityCard&>(game->getPlayers().getPlayer(0).getAbilityCard());
                                     }else{
-                                        throw "Anda tidak memiliki kartu ability ini\n";
+                                        throw TidakPunyaKartuAbility();
                                     }
                                     input = true;
                                 }else{
-                                    throw "Anda belum memiliki kartu ability!\n";
+                                    throw BelumAdaAbility();
                                 }
                                 input = true;
                             }
                         }else{
-                            throw "Input Anda salah, silakan ulangi!\n";
+                            throw InputSalah();
                         }
-                    }catch (const char* err){
-                        cout << "Error: " << err << endl;
+                    }catch(Exception& e){
+                        e.what();
                         input = false;
                     }
                 }

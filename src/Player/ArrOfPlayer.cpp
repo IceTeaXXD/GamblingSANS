@@ -12,6 +12,17 @@ ArrOfPlayer<T>::ArrOfPlayer(){
     
 }
 
+template<>
+ArrOfPlayer<UnoGamePlayer>::ArrOfPlayer(){
+    string name;
+    for (int i = 0; i < 4; i++){
+        cout << "Masukan nama player " << i+1 << " : ";
+        cin >> name;
+        UnoGamePlayer p(name);
+        this->arr.push_back(p);
+    }
+}
+
 template <class T>
 ArrOfPlayer<T>:: ArrOfPlayer(int n){
     string name;
@@ -58,7 +69,12 @@ void ArrOfPlayer<CandyGamePlayer>::reverseTurn(int turn){
     }
 }
 
-template <class T   >
+template<>
+void ArrOfPlayer<UnoGamePlayer>::reverseTurn(int turn){
+    reverse(arr.begin(), arr.end());
+}
+
+template <class T>
 T ArrOfPlayer<T>::getPlayer(int idx){
     return this->arr[idx];
 }
@@ -77,6 +93,11 @@ void ArrOfPlayer<T>::changePlayerName(int idx, string name){
 template <>
 void ArrOfPlayer<CandyGamePlayer>::setPlayerPoint(int idx, long long point){
     this->arr[idx].setPoint(point);
+}
+
+template<>
+void ArrOfPlayer<UnoGamePlayer>::addUnoPlayerCard(int idx, UnoCard& card){
+    this->arr[idx] + card;
 }
 
 template <>

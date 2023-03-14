@@ -1,4 +1,5 @@
 #include "CardCollection.hpp"
+#include "../Exception/Exception.hpp"
 using namespace std;
 
 template <class T>
@@ -176,7 +177,7 @@ void CardCollection<DeckCard>::MakeDeck(string filename){
             DeckCard* c = new DeckCard(w,a);
             cards.push_back(*c);
         }else{
-            throw "Salah format. Perhatikan warna dan angka yang dimasukkan!\n";
+            throw SalahFormatFile();
         }
     }
     /* Mengacak */
