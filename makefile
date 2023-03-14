@@ -21,10 +21,14 @@ build:
 	$(C) -c $(SOURCE_FOLDER)/GameManager/GameManager.cpp -o $(OUTPUT_FOLDER)/GameManager.o
 	$(C) -c $(SOURCE_FOLDER)/GameManager/CandyGameManager.cpp -o $(OUTPUT_FOLDER)/CandyGameManager.o
 	$(C) -c $(SOURCE_FOLDER)/GameManager/CapchaManager.cpp -o $(OUTPUT_FOLDER)/CapchaManager.o
+	$(C) -c $(SOURCE_FOLDER)/GameManager/UnoGameManager.cpp -o $(OUTPUT_FOLDER)/UnoGameManager.o
 	$(C) -c $(SOURCE_FOLDER)/Player/Player.cpp -o $(OUTPUT_FOLDER)/Player.o
 	$(C) -c $(SOURCE_FOLDER)/Player/ArrOfPlayer.cpp -o $(OUTPUT_FOLDER)/ArrOfPlayer.o
+	$(C) -c $(SOURCE_FOLDER)/Player/UnoPlayer.cpp -o $(OUTPUT_FOLDER)/UnoPlayer.o
+	$(C) -c $(SOURCE_FOLDER)/Exception/Exception.cpp -o $(OUTPUT_FOLDER)/Exception.o
 	$(C) -c $(SOURCE_FOLDER)/Rules/Kombinasi.cpp -o $(OUTPUT_FOLDER)/Kombinasi.o
 	$(C) -c $(SOURCE_FOLDER)/Rules/FindValue.cpp -o $(OUTPUT_FOLDER)/FindValue.o
+	$(C) -c $(SOURCE_FOLDER)/Rules/ArrOfKombinasi.cpp -o $(OUTPUT_FOLDER)/ArrOfKombinasi.o
 	$(C) -c $(SOURCE_FOLDER)/utils/printColor.cpp -o $(OUTPUT_FOLDER)/printColor.o
 	$(C) $(SOURCE_FOLDER)/main.cpp $(OUTPUT_FOLDER)/*.o -o $(OUTPUT_FOLDER)/main.exe
 	@rm $(OUTPUT_FOLDER)/*.o
