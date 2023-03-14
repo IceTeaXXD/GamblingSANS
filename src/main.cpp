@@ -7,6 +7,7 @@
 #include "Player/Player.hpp"
 #include "Player/ArrOfPlayer.hpp"
 #include "Rules/Kombinasi.hpp"
+#include "Exception/Exception.hpp"
 using namespace std;
 
 int main()
@@ -209,19 +210,19 @@ int main()
                                     if(aksi == game->getPlayers().getPlayer(0).getAbilityCard().getType()){
                                         game->manipulate<AbilityCard&>(game->getPlayers().getPlayer(0).getAbilityCard());
                                     }else{
-                                        throw "Anda tidak memiliki kartu ability ini\n";
+                                        throw TidakPunyaKartuAbility();
                                     }
                                     input = true;
                                 }else{
-                                    throw "Anda belum memiliki kartu ability!\n";
+                                    throw BelumAdaAbility();
                                 }
                                 input = true;
                             }
                         }else{
-                            throw "Input Anda salah, silakan ulangi!\n";
+                            throw InputSalah();
                         }
-                    }catch (const char* err){
-                        cout << "Error: " << err << endl;
+                    }catch(Exception& e){
+                        e.what();
                         input = false;
                     }
                 }
