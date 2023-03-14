@@ -101,7 +101,7 @@ int main()
                 cout<<"List Kombinasi yang Anda punya"<<endl;
                 ArrOfKombinasi temp = ArrOfKombinasi(pointerArr[0]->getCard());
                 cout<<"TEST"<<endl;
-                temp.displayKombinasi();
+                temp.displayCombinationList();
                 cout<<"Masukkan Input Kombinasi :"<<endl;
                 cin>>inputPlayer;
                 flag = false;

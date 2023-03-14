@@ -3,7 +3,16 @@ using namespace std;
 
 ArrOfKombinasi::ArrOfKombinasi(vector<DeckCard> arrInput)
 {
-    //Straight Flush,Flush, Straight, Two Pair, 
+    //Straight Flush,Flush, Straight, Two Pair,
+    this->isStraightFlush = false;
+    this->isFourAKind = false;
+    this->isFullHouse = false;
+    this->isFlush = false;
+    this->isStraight = false;
+    this->isThreeAKind = false;
+    this->isTwoPair = false;
+    this->isPair = false;
+    this->isHighCard = false;
     for(int i = 0; i< arrInput.size()-4 ; i ++)
     {
         for (int j = i+1 ; j< arrInput.size()-3 ; j++)
@@ -21,15 +30,26 @@ ArrOfKombinasi::ArrOfKombinasi(vector<DeckCard> arrInput)
                         temp.push_back(arrInput[l]);
                         temp.push_back(arrInput[m]);
                         KombinasiCapsa tempC = KombinasiCapsa(temp,5);
-                        // if (tempC->value()>=tempC->getConst(5) && tempC->value()<=tempC->getConst(7) || tempC->value()>=tempC->getConst(9))
-                        // {
-                        cout<<"__"<<endl;
                         if (tempC.getValue()!=0)
                         {
                             arrLima.push_back(tempC);
+                            if (tempC.getCName()=="Straight Flush")
+                            {
+                                this->isStraightFlush = true;
+                            }
+                            else if (tempC.getCName()=="Flush")
+                            {
+                                this->isFlush = true;
+                            }
+                            else if (tempC.getCName() == "Straight")
+                            {
+                                this->isStraight = true;
+                            }
+                            else if (tempC.getCName() == "Full House")
+                            {
+                                this->isFullHouse = true;
+                            }
                         }
-                        //     cout<<"1"<<endl;
-                        // }
                         temp.clear();
                     }
                 }
@@ -52,14 +72,18 @@ ArrOfKombinasi::ArrOfKombinasi(vector<DeckCard> arrInput)
                     temp.push_back(arrInput[l]);
                     temp.push_back(arrInput[m]);
                     KombinasiCapsa tempC = KombinasiCapsa(temp,4);
-                    // if (tempC->value()>=tempC->getConst(8) && tempC->value()<=tempC->getConst(9) || tempC->value()>=tempC->getConst(3) && tempC->value()<=tempC->getConst(4))
-                    // {
                     if (tempC.getValue()!=0)
                     {
                         arrEmpat.push_back(tempC);
+                        if(tempC.getCName() == "Four of a Kind")
+                        {
+                            this->isFourAKind = true;
+                        }
+                        else if (tempC.getCName() == "Two Pair")
+                        {
+                            this->isTwoPair = true;
+                        }
                     }
-                    //     cout<<"2"<<endl;
-                    // }
                     temp.clear();
                 }
             }
@@ -78,14 +102,14 @@ ArrOfKombinasi::ArrOfKombinasi(vector<DeckCard> arrInput)
                 temp.push_back(arrInput[l]);
                 temp.push_back(arrInput[m]);
                 KombinasiCapsa tempC = KombinasiCapsa(temp,3);
-                // if (tempC->value()>=tempC->getConst(4) && tempC->value()<=tempC->getConst(5))
-                // {
                 if (tempC.getValue()!=0)
                 {
                     arrTiga.push_back(tempC);
+                    if (tempC.getCName() == "Three of a Kind")
+                    {
+                        this->isThreeAKind = true;
+                    }
                 }
-                //     cout<<"3"<<endl;
-                // }
                 temp.clear();
             }
         }
@@ -100,14 +124,14 @@ ArrOfKombinasi::ArrOfKombinasi(vector<DeckCard> arrInput)
             temp.push_back(arrInput[l]);
             temp.push_back(arrInput[m]);
             KombinasiCapsa tempC =  KombinasiCapsa(temp,2);
-            // if (tempC->value()>=tempC->getConst(2) && tempC->value()<=tempC->getConst(3))
-            // {
             if (tempC.getValue()!=0)
             {
                 arrDua.push_back(tempC);
+                if (tempC.getCName() == "Pair")
+                {
+                    this->isPair = true;
+                }
             }
-            //     cout<<"4"<<endl;
-            // }
             temp.clear();
         }
     }
@@ -116,24 +140,11 @@ ArrOfKombinasi::ArrOfKombinasi(vector<DeckCard> arrInput)
     for (int m = 0; m<arrInput.size() ; m++)
     {
         vector<DeckCard> temp;
-        cout<<"test1"<<endl;
         temp.push_back(arrInput[m]);
-        cout<<"test2"<<endl;
         KombinasiCapsa tempC = KombinasiCapsa(temp,1);
-        cout<<"test3"<<endl;
-        //value ini ada yang salah
-        // double tempValue = tempC->value();
-        // if (tempValue>=tempC->getConst(1) && tempValue<=tempC->getConst(2))
-        // {
-        if (tempC.getValue()!=0)
-        {
-            arrSatu.push_back(tempC);
-        }
-        cout<<"test4"<<endl;
-        //     cout<<"5"<<endl;
-        // }
+        arrSatu.push_back(tempC);
+        isHighCard = true;
         temp.clear();
-        // tempC->~Kombinasi();
     }
 }
 ArrOfKombinasi::ArrOfKombinasi(){}
@@ -155,7 +166,39 @@ void ArrOfKombinasi::addKombinasi(Kombinasi& k)
 {
     // arr.push_back(k);
 }
-
+void ArrOfKombinasi::displayCombinationList()
+{
+    cout<<"KOMBINASI YANG ANDA PUNYA : "<<endl;
+    if (isStraightFlush)
+    {
+        cout<<"Straight Flush"<<endl;
+    }
+    if (isFourAKind)
+    {
+        cout<<"Four A Kind"<<endl;
+    }
+    if (isFullHouse)
+    {
+        cout<<"Full House"<<endl;
+    }
+    if (isFlush)
+    {
+        cout<<"Flush"<<endl;
+    }
+    if (isThreeAKind)
+    {
+        cout<<"Three A Kind"<<endl;
+    }
+    if(isTwoPair)
+    {
+        cout<<"Two Pair"<<endl;
+    }
+    if(isPair)
+    {
+        cout<<"Pair"<<endl;
+    }
+    cout<<"High Card"<<endl;
+}
 void ArrOfKombinasi::displayKombinasi()
 {
     for (int i = 0 ; i < arrLima.size() ; i++)

@@ -12,11 +12,21 @@ class ArrOfKombinasi
         vector<Kombinasi> arrTiga;
         vector<Kombinasi> arrDua;
         vector<Kombinasi> arrSatu;
+        bool isStraightFlush;
+        bool isFourAKind;
+        bool isFullHouse;
+        bool isFlush;
+        bool isStraight;
+        bool isThreeAKind;
+        bool isTwoPair;
+        bool isPair;
+        bool isHighCard;
     public:
         ArrOfKombinasi();
         ArrOfKombinasi(vector<DeckCard>);
         ~ArrOfKombinasi();
         // Kombinasi& getKombinasi(int);
+        void displayCombinationList();
         void addKombinasi(Kombinasi& k);
         void displayKombinasi();
 };

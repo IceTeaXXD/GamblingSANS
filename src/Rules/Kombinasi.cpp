@@ -146,9 +146,11 @@ void Kombinasi::printKombinasi()
     for(int i = 0 ; i < arrCombination.size() ; i++)
     {
         arrCombination[i].printType();
+        cout<<" ";
     }
     cout<<endl;
 }
+
 string Kombinasi::getCName()
 {
     return combinationName;
