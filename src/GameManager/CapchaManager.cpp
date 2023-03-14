@@ -32,3 +32,24 @@ CardCollection<DeckCard>* CapchaManager::getCards()
 bool CapchaManager::parseCommand(string aksi){
     return true;
 }
+
+int CapchaManager::firstPlayer(){
+    vector<DeckCard> temp;
+    vector<int> angka;
+    for (int i = 0; i < 4; i++)
+    {
+        vector<DeckCard> buffer = players->getPlayer(i).getBuffer();
+        temp.insert(temp.end(), buffer.begin(), buffer.end());
+        buffer.clear();
+    }
+    for (int i = 0; i < temp.size(); i++)
+    {
+        angka.push_back(temp[i].getNum());
+    }
+    auto itr = find(angka.begin(), angka.end(), 3);
+    while (temp[itr-angka.begin()].getType() != 4)
+    {
+       itr = find(itr+1, angka.end(), 3);
+    }
+    return (itr-angka.begin())/13;
+}

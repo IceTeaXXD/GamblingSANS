@@ -31,6 +31,7 @@ class CapchaManager : public GameManager
         void setGiliran(int);
 
         bool parseCommand(string);
+        int firstPlayer();
         // int getGiliran();
         // void setPoint(int);
         
