@@ -733,7 +733,7 @@ bool Kombinasi::isTwoPair()
     sort(tempArr.begin(), tempArr.end(), compareAngka);
     int tempAngka1 = 0;
     int tempAngka2 = 0;
-    if (isTableCardTwoPair)
+    if (isTableCardTwoPair())
     {
         tempAngka1 = arrTableCardCombination[0].getNum();
         tempAngka2 = arrTableCardCombination[2].getNum();
@@ -835,7 +835,7 @@ bool Kombinasi::isThreeOfKind(){
     vector<DeckCard> tempArr = arr;
     sort(tempArr.begin(), tempArr.end(), compareAngka);
     int tempAngka = 0;
-    if (isTableCardThreeOfKind)
+    if (isTableCardThreeOfKind())
     {
         tempAngka = arrTableCardCombination[0].getNum();
         arrTableCardCombination.clear();
