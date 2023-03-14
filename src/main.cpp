@@ -142,7 +142,9 @@ int main()
                 DeckCard temp;
                 game->operator-(temp);
                 game->getPlayCards()+temp;
-                cout<<"Kartu "<<temp.getNum()<<" "<<temp.translateToString()<<" telah ditambahkan di meja"<<endl;
+                cout<<"Kartu ";
+                temp.printInfo(); 
+                cout << " telah ditambahkan di meja"<<endl;
             }
 
             for (int i = 0 ; i < 7 ; i++){
@@ -154,9 +156,11 @@ int main()
                     game->operator-(temp2);
                     game->getPlayers().addPlayerCard(0, temp1);
                     game->getPlayers().addPlayerCard(0, temp2);
-                    cout<<"Kamu dapat kartu "<<temp1.getNum()<<" "<<temp1.translateToString()<<endl;
-                    cout<<"Kamu dapat kartu "<<temp2.getNum()<<" "<<temp2.translateToString()<<endl;
-                    cout<<endl;
+                    cout<<"Kamu dapat kartu : " << endl;
+                    temp1.printInfo();
+                    cout << "\n";
+                    temp2.printInfo();
+                    cout << "\n";
                 }
 
                 bool input = false;
@@ -194,6 +198,13 @@ int main()
                                 game->getPlayers().getPlayer(0).viewAllCard();
                                 cout << endl;
                                 input == false;
+                            }else if(aksi == "tablecards"){
+                                cout << " ==================== " << endl;
+                                cout << "       DECK CARDS       " << endl;
+                                cout << " ==================== " << endl;
+                                game->getPlayCards().displayDeckCard();
+                                cout << endl;
+                                input == false;
                             }else if(aksi == "help"){
                                 cout << "Berikut adalah beberapa perintah: " << endl;
                                 cout << "1. Next"<< endl;
@@ -207,13 +218,14 @@ int main()
                                 cout << "9. Swap" << endl;
                                 cout << "10. Help" << endl;
                                 cout << "11. ViewCards" << endl;
+                                cout << "12. TableCards" << endl;
                                 cout << endl;
                             }else{
                                 if(game->getPlayers().getPlayer(0).getHasAbility()){
                                     if(aksi == game->getPlayers().getPlayer(0).getAbilityCard().getType()){
                                         game->manipulate<AbilityCard&>(game->getPlayers().getPlayer(0).getAbilityCard());
                                     }else{
-                                        cout << "Anda tidak memiliki kartu ability ini" << endl;
+                                        throw "Anda tidak memiliki kartu ability ini\n";
                                     }
                                     input = true;
                                 }else{
@@ -230,7 +242,7 @@ int main()
                     }
                 }
                 cout << endl;
-                cout << "\033[2J\033[1;1H" << endl;
+                // cout << "\033[2J\033[1;1H" << endl;
                 game->getPlayers().nextTurn();
             }
 
@@ -241,10 +253,10 @@ int main()
                 DeckCard temp;
                 game->operator-(temp);
                 game->getPlayCards()+temp;
-                cout<<"Kartu "<<temp.getNum()<<" "<<temp.translateToString()<<" telah ditambahkan di meja"<<endl;
+                cout<<"Kartu ";
+                temp.printInfo(); 
+                cout << " telah ditambahkan di meja"<<endl;
                 cout<<endl;
-                game->getPlayCards().displayDeckCard();
-                cout << endl;
 
                 cout << "Pembagian Ability Card sudah dilakukan! :D" << endl;
                 for(int i = 0; i < 7 ; i++){
@@ -261,8 +273,8 @@ int main()
                 map<int, Player> mapPlayer;
                 map<int, Kombinasi> mapIndeks;
                 for(int i = 0; i < 7 ; i++){
-                    mapIndeks.insert(make_pair(i, Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getTableCards())));
-                    mapValue.insert(make_pair(Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getTableCards()).value(), Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getTableCards())));
+                    mapIndeks.insert(make_pair(i, Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards().getBuffer())));
+                    mapValue.insert(make_pair(Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards().getBuffer()).value(), Kombinasi(game->getPlayers().getPlayer(i).getCard(),game->getPlayCards().getBuffer())));
                     mapPlayer.insert(make_pair(i, game->getPlayers().getPlayer(i)));
                 }
                 double maxValue = maxKeyMap<double, Kombinasi>(mapValue);
@@ -277,11 +289,12 @@ int main()
 
                 cout<<"Table Card List"<<endl;
                 game->getPlayCards().displayDeckCard();
-                cout<<"Player Card :"<<endl;
+                cout<<"\nPlayer Cards :"<<endl;
                 for (int i = 0 ; i < 7 ; i++)
                 {
                     cout<<"Player "<<game->getPlayers().getPlayerAddress(i)->getName()<<endl;
                     game->getPlayers().getPlayer(i).viewAllCard();
+                    cout << endl;
                 }
 
             }

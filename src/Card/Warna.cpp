@@ -7,8 +7,10 @@ string Warna::translateToString(){
         return "Biru";
     }else if(getType() == 3){
         return "Kuning";
-    }else{
+    }else if(getType() == 4){
         return "Merah";
+    }else{
+        return "Hitam";
     }
 }
 string Warna::translateToType(){

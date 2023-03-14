@@ -79,16 +79,21 @@ void CandyGameManager::manipulate<REROLL&>(REROLL& C){
         C.setNotAvailable();
 
         /* Kosongkan Kartu terlebih dahulu */
-        players->getPlayer(0).clearCards();
+        players->clearCard(0);
 
         /* Tambahin Kartu Baru */
-        DeckCard add;
-        CardCollection<DeckCard>::operator-(add);
-        players->getPlayer(0) + add;
+        DeckCard temp1,temp2;
+        CardCollection<DeckCard>::operator-(temp1);
+        CardCollection<DeckCard>::operator-(temp2);
+        players->addPlayerCard(0, temp1);
+        players->addPlayerCard(0, temp2);
 
         /* OUTPUT */
         cout<<"RE-ROLLED"<<endl;
-        players->getPlayer(0).viewAllCard();
+        cout << "Kartu anda sekarang : " << endl;
+        temp1.printInfo();
+        cout << "\n";
+        temp2.printInfo();
     }
     else
     {
@@ -118,10 +123,14 @@ void CandyGameManager::manipulate<Quarter&>(Quarter& C){
         C.setNotAvailable();
 
         /* Set point jadi 1/4 */
-        setPoint(this->point/4);
+        if(this->point > 1){
+            setPoint(this->point/4);
 
-        /* OUTPUT */
-        cout << "Point berubah menjadi " << this->point << endl;
+            /* OUTPUT */
+            cout << "Point berubah menjadi " << this->point << endl;
+        }else{
+            cout << "Nothing happened" << endl;
+        }
     }
     else{
         cout << "Kartu anda telah dimatikan" << endl;
@@ -133,15 +142,36 @@ void CandyGameManager::manipulate<ReverseDirection&>(ReverseDirection& C){
     if (C.isAvailable()){
         C.setNotAvailable();
 
+        cout << "Player " << players->getPlayer(0).getName() << " melakukan REVERSE!." << endl;
+
+        /* OUTPUT GILIRAN RONDE INI */
+        ArrOfPlayer <CandyGamePlayer> before = *players;
+        for(int i = 0 ; i < 7-turn ; i++){
+            before.nextTurn();
+        }
+        cout << "Urutan eksekusi giliran saat ini : ";
+        for (int i = 0; i < 7; i++){
+            cout << before.getPlayer(i).getName() << " ";
+        }
+        cout << endl;
+
         /* Reverse direction */
-        cout << "TURNNNNNN: " << this->turn << endl;
         players->reverseTurn(this->turn);
 
-        /* OUTPUT */
-        cout << "Direction berubah" << endl;
+        /* OUTPUT GILIRAN RONDE SELANJUTNYA*/
+        ArrOfPlayer <CandyGamePlayer> after = *players;
+        for(int i = 0 ; i <= 7-turn ; i++){
+            after.nextTurn();
+        }
+        cout << "Urutan eksekusi giliran selanjutnya : ";
+        for (int i = 0; i < 7; i++){
+            cout << after.getPlayer(i).getName() << " ";
+        }
+        cout << endl;
+
     }
     else{
-        cout << "Kartu anda telah dimatikan" << endl;
+        throw "Kartu anda telah dimatikan\nSilakan ulangi!\n";
     }
 }
 
@@ -158,75 +188,82 @@ void CandyGameManager::manipulate<SwapCard&>(SwapCard& C){
         int pilihan1;
         cout << ">> ";
         cin >> pilihan1;
-        cout << "Silahkan pilih pemain lain yang kartunya ingin anda tukar:" << endl;
-        for (int i = 1; i < 7; i++){
-            if (i != pilihan1){
-                cout << i << ". " << players->getPlayer(i).getName() << endl;
+        if(pilihan1 > 7 && pilihan1 < 1){
+            throw "Input Anda salah!\n";
+        }else{
+            cout << "Silahkan pilih pemain lain yang kartunya ingin anda tukar:" << endl;
+            for (int i = 1; i < 7; i++){
+                if (i != pilihan1){
+                    cout << i << ". " << players->getPlayer(i).getName() << endl;
+                }
             }
         }
         int pilihan2;
         cout << ">> ";
         cin >> pilihan2;
-        cout << "Silakan pilih kartu kanan/kiri " << players->getPlayer(pilihan1).getName() << ":" << endl;
-        cout << "1. Kanan" << endl;
-        cout << "2. Kiri" << endl;
-        int pilihan3;
-        cout << ">> ";
-        cin >> pilihan3;
-        cout << "Silakan pilih kartu kanan/kiri " << players->getPlayer(pilihan2).getName() << ":" << endl;
-        cout << "1. Kanan" << endl;
-        cout << "2. Kiri" << endl;
-        int pilihan4;
-        cout << ">> ";
-        cin >> pilihan4;
+        if(pilihan2> 7 && pilihan2 < 1 && pilihan2 == pilihan1){
+            throw "Input Anda salah!\n";
+        }else{
+            cout << "Silakan pilih kartu kanan/kiri " << players->getPlayer(pilihan1).getName() << ":" << endl;
+            cout << "1. Kanan" << endl;
+            cout << "2. Kiri" << endl;
+            int pilihan3;
+            cout << ">> ";
+            cin >> pilihan3;
+            cout << "Silakan pilih kartu kanan/kiri " << players->getPlayer(pilihan2).getName() << ":" << endl;
+            cout << "1. Kanan" << endl;
+            cout << "2. Kiri" << endl;
+            int pilihan4;
+            cout << ">> ";
+            cin >> pilihan4;
 
-        // move to a temp card first
-        DeckCard p1Left = players->getPlayer(pilihan1).getLeftCard();
-        DeckCard p1Right = players->getPlayer(pilihan1).getRightCard();
-        DeckCard p2Left = players->getPlayer(pilihan2).getLeftCard();
-        DeckCard p2Right = players->getPlayer(pilihan2).getRightCard();
-        
-        cout << "============================" << endl;
-        cout << "KARTU SEBELUM DITUKAR : " << endl;
-        cout << players->getPlayer(pilihan1).getName() << endl;
-        players->getPlayer(pilihan1).viewAllCard();
-        cout << players->getPlayer(pilihan2).getName() << endl;
-        players->getPlayer(pilihan2).viewAllCard();
-
-        // swap the card and remove swappee card
-        if (pilihan3 == 1){
-            if (pilihan4 == 1){
-                players->setPlayerRightCard(pilihan1, p2Right);
-                players->setPlayerRightCard(pilihan2, p1Right);
-            }
-            else{
-                players->setPlayerRightCard(pilihan1, p2Left);
-                players->setPlayerLeftCard(pilihan2, p1Right);
-
-            }
-        }
-        else{
-            if (pilihan4 == 1){
-                players->setPlayerLeftCard(pilihan1, p2Right);
-                players->setPlayerRightCard(pilihan2, p1Left);
-            }
-            else{
-                players->setPlayerLeftCard(pilihan1, p2Left);
-                players->setPlayerLeftCard(pilihan2, p1Left);
-            }
-        }
-        
-        cout << "============================" << endl;
-        cout << "KARTU SETELAH DITUKAR : " << endl;
-        cout << players->getPlayer(pilihan1).getName() << endl;
-        players->getPlayer(pilihan1).viewAllCard();
-        cout << players->getPlayer(pilihan2).getName() << endl;
-        players->getPlayer(pilihan2).viewAllCard();
-        cout << "============================" << endl;
+            // move to a temp card first
+            DeckCard p1Left = players->getPlayer(pilihan1).getLeftCard();
+            DeckCard p1Right = players->getPlayer(pilihan1).getRightCard();
+            DeckCard p2Left = players->getPlayer(pilihan2).getLeftCard();
+            DeckCard p2Right = players->getPlayer(pilihan2).getRightCard();
             
-        /* OUTPUT */
-        cout << "Kartu berhasil ditukar" << endl;
+            // cout << "============================" << endl;
+            // cout << "KARTU SEBELUM DITUKAR : " << endl;
+            // cout << players->getPlayer(pilihan1).getName() << endl;
+            // players->getPlayer(pilihan1).viewAllCard();
+            // cout << players->getPlayer(pilihan2).getName() << endl;
+            // players->getPlayer(pilihan2).viewAllCard();
 
+            // swap the card and remove swappee card
+            if (pilihan3 == 1){
+                if (pilihan4 == 1){
+                    players->setPlayerRightCard(pilihan1, p2Right);
+                    players->setPlayerRightCard(pilihan2, p1Right);
+                }
+                else{
+                    players->setPlayerRightCard(pilihan1, p2Left);
+                    players->setPlayerLeftCard(pilihan2, p1Right);
+
+                }
+            }
+            else{
+                if (pilihan4 == 1){
+                    players->setPlayerLeftCard(pilihan1, p2Right);
+                    players->setPlayerRightCard(pilihan2, p1Left);
+                }
+                else{
+                    players->setPlayerLeftCard(pilihan1, p2Left);
+                    players->setPlayerLeftCard(pilihan2, p1Left);
+                }
+            }
+            
+            // cout << "============================" << endl;
+            // cout << "KARTU SETELAH DITUKAR : " << endl;
+            // cout << players->getPlayer(pilihan1).getName() << endl;
+            // players->getPlayer(pilihan1).viewAllCard();
+            // cout << players->getPlayer(pilihan2).getName() << endl;
+            // players->getPlayer(pilihan2).viewAllCard();
+            // cout << "============================" << endl;
+                
+            /* OUTPUT */
+            cout << "Kartu berhasil ditukar" << endl;
+        }
     }
     else{
         cout << "Kartu anda telah dimatikan" << endl;
@@ -247,22 +284,28 @@ void CandyGameManager::manipulate<Switch&>(Switch& C){
         int pilihan1;
         cout << ">> ";
         cin >> pilihan1;
-        cout << "Kedua kartu " << players->getPlayer(0).getName() << " telah ditukar dengan " << players->getPlayer(pilihan1).getName() << "!" << endl;
+        if(pilihan1 > 7 && pilihan1 < 1){
+            throw "Input Anda salah!\n";
+        }else{
+            cout << "Kedua kartu " << players->getPlayer(0).getName() << " telah ditukar dengan " << players->getPlayer(pilihan1).getName() << "!" << endl;
 
-        // Get the cards
-        DeckCard p1Left = players->getPlayer(0).getLeftCard();
-        DeckCard p1Right = players->getPlayer(0).getRightCard();
-        DeckCard p2Left = players->getPlayer(pilihan1).getLeftCard();
-        DeckCard p2Right = players->getPlayer(pilihan1).getRightCard();
+            // Get the cards
+            DeckCard p1Left = players->getPlayer(0).getLeftCard();
+            DeckCard p1Right = players->getPlayer(0).getRightCard();
+            DeckCard p2Left = players->getPlayer(pilihan1).getLeftCard();
+            DeckCard p2Right = players->getPlayer(pilihan1).getRightCard();
 
-        // Switch card
-        players->setPlayerLeftCard(0, p2Left);
-        players->setPlayerRightCard(0, p2Right);
-        players->setPlayerLeftCard(pilihan1, p1Left);
-        players->setPlayerRightCard(pilihan1, p1Right);
+            // Switch card
+            players->setPlayerLeftCard(0, p2Left);
+            players->setPlayerRightCard(0, p2Right);
+            players->setPlayerLeftCard(pilihan1, p1Left);
+            players->setPlayerRightCard(pilihan1, p1Right);
 
-        cout << "Kartumu sekarang adalah:" << endl;
-        players->getPlayer(0).viewAllCard();
+            cout << "Kartumu sekarang adalah:" << endl;
+            p2Left.printInfo();
+            cout << "\n";
+            p2Right.printInfo();
+        }
     }
     else{
         cout << "Oops, kartu ability switchmu telah dimatikan sebelumnya :(.\nSilahkan lakukan perintah lain."<<endl;
@@ -281,24 +324,28 @@ void CandyGameManager::manipulate<Abilityless&>(Abilityless& C){
         int pilihan1;
         cout << ">> ";
         cin >> pilihan1;
-        if (players->getPlayer(pilihan1).getAbilityCard().isAvailable()){
-            players->getPlayer(pilihan1).getAbilityCard().setNotAvailable();
-            cout << "Kartu ability " << players->getPlayer(pilihan1).getName() << " telah dimatikan." << endl;
-        }
-        else if (!players->getPlayer(pilihan1).getAbilityCard().isAvailable()){
-            cout << "Kartu ability " << players->getPlayer(pilihan1).getName() << " telah dipakai sebelumnya. Yah, sayang penggunaan kartu ini sia-sia 🙁" << endl;
-        }
-        else if(players->getPlayer(1).getAbilityCard().isAvailable() || 
-                players->getPlayer(2).getAbilityCard().isAvailable() || 
-                players->getPlayer(3).getAbilityCard().isAvailable() || 
-                players->getPlayer(4).getAbilityCard().isAvailable() || 
-                players->getPlayer(5).getAbilityCard().isAvailable() || 
-                players->getPlayer(6).getAbilityCard().isAvailable()){
-            cout << "Eits, ternyata semua pemain sudah memakai kartu kemampuan. Yah kamu kena sendiri deh, kemampuanmu menjadi abilityless. Yah, pengunaan kartu ini sia-sia" << endl;
+        if(pilihan1 > 7 && pilihan1 < 1){
+            throw "Input Anda salah!\n";
+        }else{
+            if (players->getPlayer(pilihan1).getAbilityCard().isAvailable()){
+                players->getPlayer(pilihan1).getAbilityCard().setNotAvailable();
+                cout << "Kartu ability " << players->getPlayer(pilihan1).getName() << " telah dimatikan." << endl;
+            }
+            else if(!players->getPlayer(1).getAbilityCard().isAvailable() && 
+                    !players->getPlayer(2).getAbilityCard().isAvailable() && 
+                    !players->getPlayer(3).getAbilityCard().isAvailable() && 
+                    !players->getPlayer(4).getAbilityCard().isAvailable() && 
+                    !players->getPlayer(5).getAbilityCard().isAvailable() && 
+                    !players->getPlayer(6).getAbilityCard().isAvailable()){
+                cout << "Eits, ternyata semua pemain sudah memakai kartu kemampuan. Yah kamu kena sendiri deh, kemampuanmu menjadi abilityless. Yah, pengunaan kartu ini sia-sia 😭😭" << endl;
+            }
+            else if (!players->getPlayer(pilihan1).getAbilityCard().isAvailable()){
+                cout << "Kartu ability " << players->getPlayer(pilihan1).getName() << " telah dipakai sebelumnya. Yah, sayang penggunaan kartu ini sia-sia 🙁" << endl;
+            }
         }
     }
     else{
-        cout << "Eits, kamu tidak punya kartunya 😛" << endl;
+        throw "Eits, kamu tidak punya kartunya 😛\n";
     }
 }
 
@@ -325,6 +372,6 @@ void CandyGameManager::manipulate<AbilityCard&>(AbilityCard& C){
     else if (C.getType() == "abilityless"){
         manipulate<Abilityless&>(dynamic_cast<Abilityless&>(C));
     }else{
-        cout << "Anda tidak memiliki kartu ini!" << endl;
+        throw "Anda tidak memiliki kartu ini!\n";
     }
 }

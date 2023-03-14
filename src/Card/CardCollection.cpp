@@ -65,6 +65,62 @@ void CardCollection<AbilityCard*>::MakeDeck(){
     }
 }
 
+template <>
+void CardCollection<UnoCard*>::MakeDeck(){
+    vector<UnoCard*> cards;
+
+    /* Create Play Cards*/
+    for(int i = 0 ; i <= 9 ; i++){
+        for (int j = 1 ; j <= 4 ; j++){
+            if (i == 0){ // 0 cards only 1 for each color
+                UnoCard* c = new UnoPlayCards(0, j);
+                cards.push_back(c);
+            }else{ // 1-9 cards 2 for each color
+                UnoCard* d = new UnoPlayCards(i, j);
+                cards.push_back(d);
+                UnoCard* e = new UnoPlayCards(i, j);
+                cards.push_back(e);
+            }
+        }
+    }
+
+    /* Create Skip, Reverse, Plus 2 : 1 for each color*/
+    for (int i = 1 ; i <= 4 ; i++){
+        UnoCard*f = new plus2(i);
+        cards.push_back(f);
+        f = new plus2(i);
+        cards.push_back(f);
+        UnoCard*g = new skip(i);
+        cards.push_back(g);
+        g = new skip(i);
+        cards.push_back(g);
+        UnoCard*h = new reversecard(i);
+        cards.push_back(h);
+        h = new reversecard(i);
+        cards.push_back(h);
+    }
+
+    /* Create WildCard and WildCard Plus 4*/
+    for (int i = 0 ; i < 4 ; i++){
+        UnoCard* k = new wildcard();
+        cards.push_back(k);
+        UnoCard* l = new wildcardplus4();
+        cards.push_back(l);
+    }
+
+    /* Mengacak Kartu */
+    srand(time(0));
+    vector<int> num;
+    for (int i = 1; i <= 108; i++){
+        num.push_back(i);
+    }
+    for (int i = 0; i < 108; i++){
+        int randIdx = rand() % (108 - i);
+        this->buffer.push_back(cards[num[randIdx]-1]);
+        num.erase(num.begin() + randIdx);
+    }
+}
+
 template <class T>
 void CardCollection<T>::MakeDeck(string filename){}
 
@@ -79,7 +135,7 @@ void CardCollection<DeckCard>::MakeDeck(string filename){
         Angka dari 1-10, A, K, Q, J
     */
 
-   vector<DeckCard> cards;
+    vector<DeckCard> cards;
 
     string out;
 
@@ -164,6 +220,14 @@ void CardCollection<T>::operator+(T& c){
     this->buffer.push_back(c);
 }
 
+template<>
+void CardCollection<UnoCard*>::displayDeckCard(){
+    for (int i = 0 ; i < this->buffer.size() ; i++){
+        this->buffer[i]->printInfo();
+        cout << endl;
+    }
+}
+
 template <class T>
 void CardCollection<T>::Del(T& el)
 {
@@ -185,6 +249,7 @@ void CardCollection<T>::displayDeckCard()
     for (auto it = buffer.begin(); it != buffer.end(); it++) 
     {
         it->printInfo();
+        cout << endl;
     }
 }
 
@@ -205,6 +270,10 @@ void CardCollection<AbilityCard*>::displayDeckCard()
     // {
     //     it[]->printInfo();
     // }
+}
+template <class T>
+vector<T> CardCollection<T>::getBuffer(){
+    return this->buffer;
 }
 
 template <class T>

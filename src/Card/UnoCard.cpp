@@ -2,8 +2,8 @@
 
 UnoCard::UnoCard(){}
 
-UnoCard::UnoCard(int num, int type) : Angka(num), Warna(type){}
+UnoCard::~UnoCard(){}
 
 void UnoCard::printInfo(){
-    cout<<this->getNum()<<" "<<this->translateToString()<<endl;
+    cout << "Ini adalah kartu Uno" << endl;
 }

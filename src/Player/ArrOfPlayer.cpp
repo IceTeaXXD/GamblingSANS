@@ -53,7 +53,6 @@ void ArrOfPlayer<CandyGamePlayer>::reverseTurn(int turn){
         arr.pop_back();
     }else{
         for (int i = 0 ; i < turn-1 ; i++){
-            cout << "NEXTT" << endl;
             nextTurn();
         }
     }
@@ -103,6 +102,7 @@ void ArrOfPlayer<CandyGamePlayer>::addAbilityCard(int idx, AbilityCard& card){
 }
 template <>
 void ArrOfPlayer<CapsaGamePlayer>::addAbilityCard(int idx, AbilityCard& card){}
+
 template <>
 void ArrOfPlayer<CandyGamePlayer>::clearCard(int i){
     arr[i].clearCards();
