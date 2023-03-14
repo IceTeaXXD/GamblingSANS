@@ -26,7 +26,7 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
     }
     else if (n==5)
     {
-        if(isTableCardStraightFlush())
+        if(isStraightFlush())
         {
             val = MAX_FOUR_KIND;
             for (DeckCard i : arrTableCardCombination)
@@ -36,7 +36,7 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
             this->val = val;
             this->combinationName = "StraightFlush";
         }
-        else if (isTableCardFullHouse())
+        else if (isFullHouse())
         {
             val = MAX_FLUSH;
             for (DeckCard i : arrTableCardCombination)
@@ -46,7 +46,7 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
             this->val = val;
             this->combinationName = "FullHouse";
         }
-        else if (isTableCardFlush())
+        else if (isFlush())
         {
             val = MAX_STRAIGHT;
             for (DeckCard i : arrTableCardCombination)
@@ -56,7 +56,7 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
             this->val = val;
             this->combinationName = "Flush";
         }
-        else if(isTableCardStraight())
+        else if(isStraight())
         {
             val = MAX_THREE_KIND;
             for (DeckCard i : arrTableCardCombination)
