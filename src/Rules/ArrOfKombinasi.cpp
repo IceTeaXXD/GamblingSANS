@@ -214,15 +214,20 @@ void ArrOfKombinasi::displayCombinationList()
 }
 void ArrOfKombinasi::displaySpecificCombination(string input)
 {
-    cout<<input<<endl;
+    dropComb.clear();
+    int num = 0;
     if(input == "StraightFlush")
     {
         for (int i = 0 ; i < arrLima.size() ; i++)
         {
             if (arrLima[i].getCName()=="StraightFlush")
             {
+                cout<<num+1<<". ";
                 arrLima[i].printKombinasi();
                 cout<<endl;
+                cout<<"PPPPPPP"<<endl;
+                dropComb.push_back(&arrLima[i]);
+                num++;
             }
         }
     }
@@ -232,8 +237,12 @@ void ArrOfKombinasi::displaySpecificCombination(string input)
         {
             if (arrLima[i].getCName()=="Flush")
             {
+                cout<<num+1<<". ";
                 arrLima[i].printKombinasi();
                 cout<<endl;
+                cout<<"PPPPPPP"<<endl;
+                dropComb.push_back(&arrLima[i]);
+                num++;
             }
         }
     }
@@ -243,8 +252,12 @@ void ArrOfKombinasi::displaySpecificCombination(string input)
         {
             if (arrLima[i].getCName()=="Straight")
             {
+                cout<<num+1<<". ";
                 arrLima[i].printKombinasi();
                 cout<<endl;
+                cout<<"PPPPPPP"<<endl;
+                dropComb.push_back(&arrLima[i]);
+                num++;
             }
         }
     }
@@ -254,8 +267,12 @@ void ArrOfKombinasi::displaySpecificCombination(string input)
         {
             if (arrLima[i].getCName()=="FullHouse")
             {
+                cout<<num+1<<". ";
                 arrLima[i].printKombinasi();
                 cout<<endl;
+                cout<<"PPPPPPP"<<endl;
+                dropComb.push_back(&arrLima[i]);
+                num++;
             }
         }
     }
@@ -265,8 +282,12 @@ void ArrOfKombinasi::displaySpecificCombination(string input)
         {
             if (arrEmpat[i].getCName()=="FourAKind")
             {
+                cout<<num+1<<". ";
                 arrEmpat[i].printKombinasi();
                 cout<<endl;
+                cout<<"PPPPPPP"<<endl;
+                dropComb.push_back(&arrEmpat[i]);
+                num++;
             }
         }
     }
@@ -276,8 +297,12 @@ void ArrOfKombinasi::displaySpecificCombination(string input)
         {
             if (arrEmpat[i].getCName()=="TwoPair")
             {
+                cout<<num+1<<". ";
                 arrEmpat[i].printKombinasi();
                 cout<<endl;
+                cout<<"PPPPPPP"<<endl;
+                dropComb.push_back(&arrEmpat[i]);
+                num++;
             }
         }
     }
@@ -285,24 +310,36 @@ void ArrOfKombinasi::displaySpecificCombination(string input)
     {
         for (int i = 0 ; i < arrTiga.size() ; i++)
         {
+            cout<<num+1<<". ";
             arrTiga[i].printKombinasi();
             cout<<endl;
+            cout<<"PPPPPPP"<<endl;
+            dropComb.push_back(&arrTiga[i]);
+            num++;
         }
     }
     else if (input == "Pair")
     {
         for (int i = 0 ; i < arrDua.size() ; i++)
         {
+            cout<<num+1<<". ";
             arrDua[i].printKombinasi();
             cout<<endl;
+            cout<<"PPPPPPP"<<endl;
+            dropComb.push_back(&arrDua[i]);
+            num++;
         }
     }
     else if (input == "HighCard")
     {
         for (int i = 0 ; i < arrSatu.size() ; i++)
         {
+            cout<<num+1<<". ";
             arrSatu[i].printKombinasi();
             cout<<endl;
+            cout<<"PPPPPPP"<<endl;
+            dropComb.push_back(&arrSatu[i]);
+            num++;
         }
     }
     else
@@ -332,4 +369,38 @@ void ArrOfKombinasi::displayKombinasi()
     {
         arrSatu[i].printKombinasi();
     }
+}
+
+vector<Kombinasi> ArrOfKombinasi::getCombinationList(int num)
+{
+    if (num = 1)
+    {
+        return arrSatu;
+    }
+    else if (num == 2)
+    {
+        return arrDua;
+    }
+    else if (num == 3)
+    {
+        return arrTiga;
+    }
+    else if (num == 4)
+    {
+        return arrEmpat;
+    }
+    else 
+    {
+        return arrLima;
+    }
+}
+
+Kombinasi ArrOfKombinasi::DropCombination(int idx)
+{
+    return *dropComb[idx];
+}
+
+int ArrOfKombinasi::dropCombSize()
+{
+    return dropComb.size();
 }

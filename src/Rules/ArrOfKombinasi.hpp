@@ -12,6 +12,7 @@ class ArrOfKombinasi
         vector<Kombinasi> arrTiga;
         vector<Kombinasi> arrDua;
         vector<Kombinasi> arrSatu;
+        vector<Kombinasi*> dropComb;
         bool isStraightFlush;
         bool isFourAKind;
         bool isFullHouse;
@@ -29,6 +30,9 @@ class ArrOfKombinasi
         void displayCombinationList();
         void addKombinasi(Kombinasi& k);
         void displayKombinasi();
+        vector<Kombinasi> getCombinationList(int);
         void displaySpecificCombination(string);
+        Kombinasi DropCombination(int);
+        int dropCombSize();
 };
 #endif

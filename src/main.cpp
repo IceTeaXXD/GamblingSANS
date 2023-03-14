@@ -70,6 +70,7 @@ int main()
         //Variables
         bool menang = false;
         string inputPlayer;
+        int angka;
         bool flag = true;
 
         //Capcha GM
@@ -93,27 +94,40 @@ int main()
         }
         while (!menang)
         {
+            game->clearLastPlayed();
             if (flag)
             {
                 cout<<"List Kombinasi yang Anda punya"<<endl;
                 ArrOfKombinasi temp = ArrOfKombinasi(pointerArr[0]->getCard());
-                ArrOfKombinasi temp2 = ArrOfKombinasi(pointerArr[1]->getCard());
-                ArrOfKombinasi temp3 = ArrOfKombinasi(pointerArr[2]->getCard());
-                ArrOfKombinasi temp4 = ArrOfKombinasi(pointerArr[3]->getCard());
+                // ArrOfKombinasi temp2 = ArrOfKombinasi(pointerArr[1]->getCard());
+                // ArrOfKombinasi temp3 = ArrOfKombinasi(pointerArr[2]->getCard());
+                // ArrOfKombinasi temp4 = ArrOfKombinasi(pointerArr[3]->getCard());
                 temp.displayCombinationList();
-                cout<<"temp2"<<endl;
-                temp2.displayCombinationList();
-                cout<<"temp3"<<endl;
-                temp3.displayCombinationList();
-                cout<<"temp4"<<endl;
-                temp4.displayCombinationList();
+                // cout<<"temp2"<<endl;
+                // temp2.displayCombinationList();
+                // cout<<"temp3"<<endl;
+                // temp3.displayCombinationList();
+                // cout<<"temp4"<<endl;
+                // temp4.displayCombinationList();
                 cout<<"Masukkan Nama Kombinasi yang ingin dikeluarkan :"<<endl;
-                while(flag)
+                cout<<">> ";
+                cin>>inputPlayer;
+                temp.displaySpecificCombination(inputPlayer);
+                cout<<"Masukkan nomor kombinasi yang ingin dikeluarkan : "<<endl;
+                cout<<">> ";
+                cin>>angka;
+                cout<<pointerArr[0]->getArrOfKombinasi()->dropCombSize()<<endl;
+                while(angka > pointerArr[0]->getArrOfKombinasi()->dropCombSize() || angka <= 0)
                 {
+                    cout<<"Masukkan nomor kombinasi yang ingin dikeluarkan : "<<endl;
                     cout<<">> ";
-                    cin>>inputPlayer;
-                    temp.displaySpecificCombination(inputPlayer);
+                    cin>>angka;
                 }
+                Kombinasi droppedCombination = pointerArr[0]->getArrOfKombinasi()->DropCombination(angka-1);
+                *pointerArr[0]-droppedCombination;
+                ArrOfKombinasi temp2 = ArrOfKombinasi(pointerArr[0]->getCard());
+                // temp2.displayCombinationList();
+                temp2.displaySpecificCombination("HighCard");
                 flag = false;
             }
             while(!pointerArr.empty())

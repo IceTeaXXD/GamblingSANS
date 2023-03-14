@@ -13,7 +13,7 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
     {
         this->arr.push_back(playCards[i]);
     }
-    this->arrCombination = playCards;
+    this->arr = playCards;
     double val;
     if (n==13)
     {

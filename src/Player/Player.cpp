@@ -209,3 +209,71 @@ void CapsaGamePlayer::deleteCard(DeckCard& el)
         cout<<"Value not found"<<endl;
     }
 }
+
+void CapsaGamePlayer::viewAllGreaterCombination(Kombinasi c)
+{
+    if (c.getCName() == "StraightFlush" || c.getCName() == "Flush" || c.getCName() == "FullHouse" || c.getCName() == "Straight")
+    {
+        for (int i = 0 ; i < arr.getCombinationList(5).size() ; i++)
+        {
+            if (arr.getCombinationList(5).at(i).getValue() > c.getValue())
+            {
+                arr.getCombinationList(5).at(i).printKombinasi();
+                greateComb.push_back(&arr.getCombinationList(5).at(i));
+                cout<<endl;
+            }
+        }
+    }
+    else if (c.getCName() == "FourAKind" || c.getCName() == "TwoPair")
+    {
+        for (int i = 0 ; i < arr.getCombinationList(4).size() ; i++)
+        {
+            if (arr.getCombinationList(4).at(i).getValue() > c.getValue())
+            {
+                arr.getCombinationList(4).at(i).printKombinasi();
+                greateComb.push_back(&arr.getCombinationList(4).at(i));
+                cout<<endl;
+            }
+        }
+    }
+    else if (c.getCName() == "ThreeAKind")
+    {
+        for (int i = 0 ; i < arr.getCombinationList(3).size() ; i++)
+        {
+            if (arr.getCombinationList(3).at(i).getValue() > c.getValue())
+            {
+                arr.getCombinationList(3).at(i).printKombinasi();
+                greateComb.push_back(&arr.getCombinationList(3).at(i));
+                cout<<endl;
+            }
+        }
+    }
+    else if (c.getCName() == "Pair")
+    {
+        for (int i = 0 ; i < arr.getCombinationList(2).size() ; i++)
+        {
+            if (arr.getCombinationList(2).at(i).getValue() > c.getValue())
+            {
+                arr.getCombinationList(2).at(i).printKombinasi();
+                greateComb.push_back(&arr.getCombinationList(2).at(i));
+                cout<<endl;
+            }
+        }
+    }
+    else if (c.getCName() == "HighCard")
+    {
+        for (int i = 0 ; i < arr.getCombinationList(1).size() ; i++)
+        {
+            if (arr.getCombinationList(1).at(i).getValue() > c.getValue())
+            {
+                arr.getCombinationList(1).at(i).printKombinasi();
+                greateComb.push_back(&arr.getCombinationList(1).at(i));
+                cout<<endl;
+            }
+        }
+    }
+}
+ArrOfKombinasi* CapsaGamePlayer::getArrOfKombinasi()
+{
+    return &this->arr;
+}   

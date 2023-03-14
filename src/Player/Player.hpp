@@ -65,15 +65,18 @@ class CapsaGamePlayer : public Player , public CardCollection<DeckCard>
 {
     private:
         ArrOfKombinasi arr;
+        vector<Kombinasi*> greateComb; 
         int countOfPlayerCards;
     public:
         CapsaGamePlayer();
         CapsaGamePlayer(string);
         ~CapsaGamePlayer();
 
+        ArrOfKombinasi* getArrOfKombinasi();
         vector<DeckCard>& getCard();
         void operator+(DeckCard&);
         void operator-(Kombinasi&);
+        void viewAllGreaterCombination(Kombinasi);
         void deleteCard(DeckCard&);
         void viewAllCard();
 };
