@@ -25,14 +25,124 @@ Kombinasi::Kombinasi(vector<DeckCard> playerCards, vector<DeckCard> tableCards)
     }
 }
 
-Kombinasi::Kombinasi(vector<DeckCard> playCards)
+Kombinasi::Kombinasi(vector<DeckCard> playCards,int n)
 {
     for (int i = 0 ; i < playCards.size() ; i++)
     {
         this->arr.push_back(playCards[i]);
     }
+    double val;
+    if (n==5)
+    {
+        if(isTableCardStraightFlush())
+        {
+            val = MAX_FOUR_KIND;
+            for (DeckCard i : arrTableCardCombination)
+            {
+                val += i.value();
+            }
+            this->val = val;
+        }
+        else if (isTableCardFullHouse())
+        {
+            val = MAX_FLUSH;
+            for (DeckCard i : arrTableCardCombination)
+            {
+                val += i.value();
+            }
+            this->val = val;
+        }
+        else if (isTableCardFlush())
+        {
+            val = MAX_STRAIGHT;
+            for (DeckCard i : arrTableCardCombination)
+            {
+                val += i.value();
+            }
+            this->val = val;
+        }
+        else if(isTableCardStraight())
+        {
+            val = MAX_THREE_KIND;
+            for (DeckCard i : arrTableCardCombination)
+            {
+                val += i.value();
+            }
+            this->val = val;
+        }
+        else 
+        {
+            this->val = 0;
+        }
+    }
+    else if (n==4)
+    {
+        if (isFourAKind())
+        {
+            val = MAX_FULL_HOUSE;
+            for (DeckCard i : arrTableCardCombination)
+            {
+                val += i.value();
+            }
+            this->val = val;
+        }
+        else if (isTwoPair())
+        {
+            val = MAX_PAIR;
+            for (DeckCard i : arrTableCardCombination)
+            {
+                val += i.value();
+            }
+            this->val = val;
+        }
+        else
+        {
+            this->val = 0;
+        }
+    }
+    else if (n==3)
+    {
+        if (isThreeOfKind())
+        {
+            val = MAX_TWO_PAIR;
+            for (DeckCard i : arrTableCardCombination)
+            {
+                val += i.value();
+            }
+            this->val = val;
+        }
+        else
+        {
+            this->val = 0;
+        }
+    }
+    else if (n==2)
+    {
+        if(isPair())
+        {
+            val = MAX_HIGH_CARD;
+            for (DeckCard i : arrTableCardCombination)
+            {
+                val += i.value();
+            }
+            this->val = val;
+        }
+        else
+        {
+            this->val = 0;
+        }
+    }
+    else
+    {
+        // cout << "TABLE 9\n";
+        val = arr.begin()->value();
+        this->val = val;
+    }
 }
-
+double Kombinasi::getValue()
+{
+    return this->val;
+}
 Kombinasi::~Kombinasi()
 {
     arr.clear();
