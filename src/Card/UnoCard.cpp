@@ -2,6 +2,8 @@
 
 UnoCard::UnoCard(){}
 
+UnoCard::UnoCard(int angka, int warna) : Angka(angka), Warna(warna){}
+
 UnoCard::~UnoCard(){}
 
 void UnoCard::printInfo(){

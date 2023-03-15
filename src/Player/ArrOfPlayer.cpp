@@ -61,6 +61,13 @@ void ArrOfPlayer<CandyGamePlayer>::prevTurn(){
     arr.push_front(arr.back());
     arr.pop_back();
 }
+
+template<>
+void ArrOfPlayer<UnoGamePlayer>::prevTurn(){
+    arr.push_front(arr.back());
+    arr.pop_back();
+}
+
 template<>
 void ArrOfPlayer<UnoGamePlayer>::nextTurn(){
     arr.push_back(arr.at(0));
@@ -110,6 +117,11 @@ void ArrOfPlayer<CandyGamePlayer>::setPlayerPoint(int idx, long long point){
 template<>
 void ArrOfPlayer<UnoGamePlayer>::addPlayerCard(int idx, UnoCard& card){
     this->arr[idx] + card;
+}
+
+template<>
+void ArrOfPlayer<UnoGamePlayer>::removePlayerCard(int idx, UnoCard& card){
+    this->arr[idx] - card;
 }
 
 template <>

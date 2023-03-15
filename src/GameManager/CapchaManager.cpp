@@ -33,3 +33,8 @@ bool CapchaManager::parseCommand(string aksi)
 {
     return true;    
 }
+
+bool CapchaManager::isInputTrue(string aksi) const
+{
+    return false;
+}

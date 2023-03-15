@@ -49,7 +49,7 @@ class GameManager: public CardCollection<DeckCard>{
         vector<DeckCard>& getTableCards();
         virtual void displayPlayer();
         DeckCard* getCard();
-        bool isInputTrue(string);
+        virtual bool isInputTrue(string) const = 0;
 
         void makeTableCards();
         void makeTableCards(string);
