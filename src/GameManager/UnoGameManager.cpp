@@ -193,11 +193,15 @@ bool UnoGameManager::parseCommand(string aksi){
             cout << "Pilih kartu: ";
             cin >> cardIndex;
             UnoCard* temp = players->getPlayer(0).getBuffer()[cardIndex-1];
+            if (lastInput == players->getPlayer(0).getName()){
+                // cek kartu yg dipilih, angkanya harus sama!
+            }
             putCard(temp);
             if(temp->getCardType() != "Wildcard" && temp->getCardType() != "Wildcard+4"){
                 players->getPlayerAddress(0)->setIsInputed();
                 players->prevTurn();
             }
+            lastInput = players->getPlayer(0).getName();
         }else if(aksi == "addcard"){
             // ambil 1 kartu dari deckCard
             UnoCard* temp = deckCards.getCard(0);

@@ -21,6 +21,7 @@ class UnoGameManager : public GameManager{
         CardCollection<UnoCard*> playCard;
         CardCollection<UnoCard*> deckCards;
         printColor pc;
+        string lastInput;
 
     public:
         UnoGameManager();
