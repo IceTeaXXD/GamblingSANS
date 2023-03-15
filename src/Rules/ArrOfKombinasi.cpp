@@ -385,3 +385,21 @@ int ArrOfKombinasi::dropCombSize()
 {
     return dropComb.size();
 }
+ArrOfKombinasi& ArrOfKombinasi::operator=(ArrOfKombinasi other)
+{
+    this->arrLima = other.arrLima;
+    this->arrEmpat = other.arrEmpat;
+    this->arrTiga = other.arrTiga;
+    this->arrDua = other.arrDua;
+    this->arrSatu = other.arrSatu;
+    this->isStraightFlush = other.isStraightFlush;
+    this->isFourAKind = other.isFourAKind;
+    this->isFullHouse = other.isFullHouse;
+    this->isFlush = other.isFlush;
+    this->isStraight = other.isStraight;
+    this->isThreeAKind = other.isThreeAKind;
+    this->isTwoPair = other.isTwoPair;
+    this->isPair = other.isPair;
+    this->isHighCard = other.isPair;
+    return *this;
+}

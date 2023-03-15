@@ -213,7 +213,7 @@ void CapsaGamePlayer::deleteCard(DeckCard& el)
 void CapsaGamePlayer::getAllGreaterCombination(Kombinasi* c)
 {
     // this->arr.~ArrOfKombinasi();
-    // this->arr = ArrOfKombinasi(this->getBuffer());
+    // this->arr = ArrOfKombinasi(this->getCard());
     this->canPlay = false;
     cout<<"HALOHALO"<<endl;
     cout<<c->getCName()<<endl;

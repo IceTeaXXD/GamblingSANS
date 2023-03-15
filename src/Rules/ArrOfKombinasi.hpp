@@ -34,5 +34,6 @@ class ArrOfKombinasi
         void displaySpecificCombination(string);
         KombinasiCapsa* DropCombination(int);
         int dropCombSize();
+        ArrOfKombinasi& operator=(ArrOfKombinasi);
 };
 #endif

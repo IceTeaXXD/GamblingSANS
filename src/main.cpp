@@ -70,7 +70,6 @@ int main()
         //Variables
         bool menang = false;
         string inputPlayer;
-        Kombinasi droppedCombination;
         int angka;
         bool flag = true;
         KombinasiCapsa* droppedCombination;
@@ -142,7 +141,8 @@ int main()
             do
             {
                 cout<<"Sekarang giliran player "<<pointerArr[0]->getName()<<endl;
-                pointerArr[0]->viewAllGreaterCombination(*droppedCombination);
+                pointerArr[0]->getAllGreaterCombination(droppedCombination);
+                pointerArr[0]->displayGreaterComb();
                 cout<<"Masukkan aksi :"<<endl;
                 cout<<">> ";
                 cin>>inputPlayer;
