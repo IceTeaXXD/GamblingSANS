@@ -219,7 +219,7 @@ void CapsaGamePlayer::viewAllGreaterCombination(Kombinasi c)
             if (arr.getCombinationList(5).at(i).getValue() > c.getValue())
             {
                 arr.getCombinationList(5).at(i).printKombinasi();
-                greateComb.push_back(&arr.getCombinationList(5).at(i));
+                greaterComb.push_back(&arr.getCombinationList(5).at(i));
                 cout<<endl;
             }
         }
@@ -231,7 +231,7 @@ void CapsaGamePlayer::viewAllGreaterCombination(Kombinasi c)
             if (arr.getCombinationList(4).at(i).getValue() > c.getValue())
             {
                 arr.getCombinationList(4).at(i).printKombinasi();
-                greateComb.push_back(&arr.getCombinationList(4).at(i));
+                greaterComb.push_back(&arr.getCombinationList(4).at(i));
                 cout<<endl;
             }
         }
@@ -243,7 +243,7 @@ void CapsaGamePlayer::viewAllGreaterCombination(Kombinasi c)
             if (arr.getCombinationList(3).at(i).getValue() > c.getValue())
             {
                 arr.getCombinationList(3).at(i).printKombinasi();
-                greateComb.push_back(&arr.getCombinationList(3).at(i));
+                greaterComb.push_back(&arr.getCombinationList(3).at(i));
                 cout<<endl;
             }
         }
@@ -255,7 +255,7 @@ void CapsaGamePlayer::viewAllGreaterCombination(Kombinasi c)
             if (arr.getCombinationList(2).at(i).getValue() > c.getValue())
             {
                 arr.getCombinationList(2).at(i).printKombinasi();
-                greateComb.push_back(&arr.getCombinationList(2).at(i));
+                greaterComb.push_back(&arr.getCombinationList(2).at(i));
                 cout<<endl;
             }
         }
@@ -267,7 +267,7 @@ void CapsaGamePlayer::viewAllGreaterCombination(Kombinasi c)
             if (arr.getCombinationList(1).at(i).getValue() > c.getValue())
             {
                 arr.getCombinationList(1).at(i).printKombinasi();
-                greateComb.push_back(&arr.getCombinationList(1).at(i));
+                greaterComb.push_back(&arr.getCombinationList(1).at(i));
                 cout<<endl;
             }
         }

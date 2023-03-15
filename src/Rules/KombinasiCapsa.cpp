@@ -143,7 +143,14 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
 }
 
 KombinasiCapsa::~KombinasiCapsa(){
+    
+}
 
+KombinasiCapsa& KombinasiCapsa::operator=(KombinasiCapsa& other){
+    this->arr = other.arr;
+    this->arrCombination = other.arrCombination;
+    this->arrTableCardCombination = other.arrTableCardCombination;
+    return *this;
 }
 
 double KombinasiCapsa::getConst(int input)

@@ -65,7 +65,7 @@ class CapsaGamePlayer : public Player , public CardCollection<DeckCard>
 {
     private:
         ArrOfKombinasi arr;
-        vector<Kombinasi*> greateComb; 
+        vector<KombinasiCapsa*> greaterComb; 
         int countOfPlayerCards;
     public:
         CapsaGamePlayer();

@@ -352,7 +352,7 @@ void ArrOfKombinasi::displayKombinasi()
     }
 }
 
-vector<Kombinasi> ArrOfKombinasi::getCombinationList(int num)
+vector<KombinasiCapsa> ArrOfKombinasi::getCombinationList(int num)
 {
     if (num = 1)
     {
@@ -376,9 +376,9 @@ vector<Kombinasi> ArrOfKombinasi::getCombinationList(int num)
     }
 }
 
-Kombinasi ArrOfKombinasi::DropCombination(int idx)
+KombinasiCapsa* ArrOfKombinasi::DropCombination(int idx)
 {
-    return *dropComb[idx];
+    return dropComb[idx];
 }
 
 int ArrOfKombinasi::dropCombSize()
