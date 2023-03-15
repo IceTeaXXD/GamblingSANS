@@ -70,6 +70,7 @@ int main()
         //Variables
         bool menang = false;
         string inputPlayer;
+        Kombinasi droppedCombination;
         int angka;
         bool flag = true;
         KombinasiCapsa* droppedCombination;
