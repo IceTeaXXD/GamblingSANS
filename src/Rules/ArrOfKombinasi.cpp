@@ -14,9 +14,59 @@ ArrOfKombinasi::ArrOfKombinasi(vector<DeckCard> arrInput)
     this->isPair = false;
     this->isHighCard = false;
     int count = 0;
-    for(int i = 0; i< arrInput.size()-4 ; i ++)
+    if (arrInput.size()>=5)
     {
-        for (int j = i+1 ; j< arrInput.size()-3 ; j++)
+        for(int i = 0; i< arrInput.size()-4 ; i ++)
+        {
+            for (int j = i+1 ; j< arrInput.size()-3 ; j++)
+            {
+                for (int k = j+1; k<arrInput.size()-2 ; k++)
+                {
+                    for (int l = k+1 ; l<arrInput.size()-1 ; l++)
+                    {
+                        for (int m = l+1; m<arrInput.size() ; m++)
+                        {
+                            vector<DeckCard> temp;
+                            temp.push_back(arrInput[i]);
+                            temp.push_back(arrInput[j]);
+                            temp.push_back(arrInput[k]);
+                            temp.push_back(arrInput[l]);
+                            temp.push_back(arrInput[m]);
+                            KombinasiCapsa tempC = KombinasiCapsa(temp,5);
+                            // cout<<tempC.ge?tValue()<<endl;
+                            // cout<<tempC.getCName()<<endl;
+                            if (tempC.getValue()!=0)
+                            {
+                                arrLima.push_back(tempC);
+                                if (tempC.getCName()=="StraightFlush")
+                                {
+                                    this->isStraightFlush = true;
+                                }
+                                else if (tempC.getCName()=="Flush")
+                                {
+                                    this->isFlush = true;
+                                }
+                                else if (tempC.getCName() == "Straight")
+                                {
+                                    this->isStraight = true;
+                                }
+                                else if (tempC.getCName() == "FullHouse")
+                                {
+                                    this->isFullHouse = true;
+                                }
+                            }
+                            temp.clear();
+                        }
+                    }
+                }
+            }
+        }
+    }
+    count = 0;
+    // Four a kind, 2 pair
+    if (arrInput.size()>=4)
+    {
+        for (int j = 0 ; j< arrInput.size()-3 ; j++)
         {
             for (int k = j+1; k<arrInput.size()-2 ; k++)
             {
@@ -25,32 +75,21 @@ ArrOfKombinasi::ArrOfKombinasi(vector<DeckCard> arrInput)
                     for (int m = l+1; m<arrInput.size() ; m++)
                     {
                         vector<DeckCard> temp;
-                        temp.push_back(arrInput[i]);
                         temp.push_back(arrInput[j]);
                         temp.push_back(arrInput[k]);
                         temp.push_back(arrInput[l]);
                         temp.push_back(arrInput[m]);
-                        KombinasiCapsa tempC = KombinasiCapsa(temp,5);
-                        // cout<<tempC.ge?tValue()<<endl;
-                        // cout<<tempC.getCName()<<endl;
+                        KombinasiCapsa tempC = KombinasiCapsa(temp,4);
                         if (tempC.getValue()!=0)
                         {
-                            arrLima.push_back(tempC);
-                            if (tempC.getCName()=="StraightFlush")
+                            arrEmpat.push_back(tempC);
+                            if(tempC.getCName() == "FourAKind")
                             {
-                                this->isStraightFlush = true;
+                                this->isFourAKind = true;
                             }
-                            else if (tempC.getCName()=="Flush")
+                            else if (tempC.getCName() == "TwoPair")
                             {
-                                this->isFlush = true;
-                            }
-                            else if (tempC.getCName() == "Straight")
-                            {
-                                this->isStraight = true;
-                            }
-                            else if (tempC.getCName() == "FullHouse")
-                            {
-                                this->isFullHouse = true;
+                                this->isTwoPair = true;
                             }
                         }
                         temp.clear();
@@ -60,31 +99,26 @@ ArrOfKombinasi::ArrOfKombinasi(vector<DeckCard> arrInput)
         }
     }
     count = 0;
-    // Four a kind, 2 pair
-    for (int j = 0 ; j< arrInput.size()-3 ; j++)
+    // //three of kind
+    if (arrInput.size()>=3)
     {
-        for (int k = j+1; k<arrInput.size()-2 ; k++)
+        for (int k = 0 ; k<arrInput.size()-2 ; k++)
         {
             for (int l = k+1 ; l<arrInput.size()-1 ; l++)
             {
                 for (int m = l+1; m<arrInput.size() ; m++)
                 {
                     vector<DeckCard> temp;
-                    temp.push_back(arrInput[j]);
                     temp.push_back(arrInput[k]);
                     temp.push_back(arrInput[l]);
                     temp.push_back(arrInput[m]);
-                    KombinasiCapsa tempC = KombinasiCapsa(temp,4);
+                    KombinasiCapsa tempC = KombinasiCapsa(temp,3);
                     if (tempC.getValue()!=0)
                     {
-                        arrEmpat.push_back(tempC);
-                        if(tempC.getCName() == "FourAKind")
+                        arrTiga.push_back(tempC);
+                        if (tempC.getCName() == "ThreeAKind")
                         {
-                            this->isFourAKind = true;
-                        }
-                        else if (tempC.getCName() == "TwoPair")
-                        {
-                            this->isTwoPair = true;
+                            this->isThreeAKind = true;
                         }
                     }
                     temp.clear();
@@ -92,25 +126,25 @@ ArrOfKombinasi::ArrOfKombinasi(vector<DeckCard> arrInput)
             }
         }
     }
+
+    // //pair
     count = 0;
-    // //three of kind
-    for (int k = 0 ; k<arrInput.size()-2 ; k++)
+    if(arrInput.size()>=2)
     {
-        for (int l = k+1 ; l<arrInput.size()-1 ; l++)
+        for (int l = 0 ; l<arrInput.size()-1 ; l++)
         {
             for (int m = l+1; m<arrInput.size() ; m++)
             {
                 vector<DeckCard> temp;
-                temp.push_back(arrInput[k]);
                 temp.push_back(arrInput[l]);
                 temp.push_back(arrInput[m]);
-                KombinasiCapsa tempC = KombinasiCapsa(temp,3);
+                KombinasiCapsa tempC =  KombinasiCapsa(temp,2);
                 if (tempC.getValue()!=0)
                 {
-                    arrTiga.push_back(tempC);
-                    if (tempC.getCName() == "ThreeAKind")
+                    arrDua.push_back(tempC);
+                    if (tempC.getCName() == "Pair")
                     {
-                        this->isThreeAKind = true;
+                        this->isPair = true;
                     }
                 }
                 temp.clear();
@@ -118,38 +152,19 @@ ArrOfKombinasi::ArrOfKombinasi(vector<DeckCard> arrInput)
         }
     }
 
-    // //pair
-    count = 0;
-    for (int l = 0 ; l<arrInput.size()-1 ; l++)
-    {
-        for (int m = l+1; m<arrInput.size() ; m++)
-        {
-            vector<DeckCard> temp;
-            temp.push_back(arrInput[l]);
-            temp.push_back(arrInput[m]);
-            KombinasiCapsa tempC =  KombinasiCapsa(temp,2);
-            if (tempC.getValue()!=0)
-            {
-                arrDua.push_back(tempC);
-                if (tempC.getCName() == "Pair")
-                {
-                    this->isPair = true;
-                }
-            }
-            temp.clear();
-        }
-    }
-
     // //HighCard
     count = 0;
-    for (int m = 0; m<arrInput.size() ; m++)
+    if(arrInput.size()>=1)
     {
-        vector<DeckCard> temp;
-        temp.push_back(arrInput[m]);
-        KombinasiCapsa tempC = KombinasiCapsa(temp,1);
-        arrSatu.push_back(tempC);
-        isHighCard = true;
-        temp.clear();
+        for (int m = 0; m<arrInput.size() ; m++)
+        {
+            vector<DeckCard> temp;
+            temp.push_back(arrInput[m]);
+            KombinasiCapsa tempC = KombinasiCapsa(temp,1);
+            arrSatu.push_back(tempC);
+            isHighCard = true;
+            temp.clear();
+        }
     }
 }
 ArrOfKombinasi::ArrOfKombinasi(){}
@@ -356,7 +371,7 @@ void ArrOfKombinasi::displayKombinasi()
 
 vector<KombinasiCapsa> ArrOfKombinasi::getCombinationList(int num)
 {
-    if (num = 1)
+    if (num == 1)
     {
         return arrSatu;
     }

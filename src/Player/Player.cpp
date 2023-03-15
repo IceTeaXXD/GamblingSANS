@@ -170,10 +170,15 @@ void CapsaGamePlayer::operator-(KombinasiCapsa& c)
     for(DeckCard card : c.getCombinationCard())
     {
         deleteCard(card);
+        cout<<"|||||||"<<endl;
+        countOfPlayerCards--;
+        cout<<countOfPlayerCards<<endl;
         cout<<"Berhasil menghapus kartu"<<endl;
     }
-    arr.~ArrOfKombinasi();
-    ArrOfKombinasi arr = ArrOfKombinasi(getCard());
+    // arr.~ArrOfKombinasi();
+    cout<<"Test1"<<endl;
+    this->arr = ArrOfKombinasi(getCard());
+    cout<<"TEST"<<endl;
     //buat arrofkombinasi yang baru
 }
 
@@ -212,7 +217,8 @@ void CapsaGamePlayer::deleteCard(DeckCard& el)
 
 void CapsaGamePlayer::getAllGreaterCombination(Kombinasi& c)
 {
-    this->arr.~ArrOfKombinasi();
+    greaterComb.clear();
+    // this->arr.~ArrOfKombinasi();
     this->arr = ArrOfKombinasi(this->getCard());
     this->canPlay = false;
     cout<<"HALOHALO"<<endl;
@@ -319,4 +325,8 @@ void CapsaGamePlayer::displayGreaterComb()
         cout<<i+1<<". ";
         greaterComb[i]->printKombinasi();
     }
+}
+int CapsaGamePlayer::getCountOfPlayerCards()
+{
+    return this->countOfPlayerCards;
 }

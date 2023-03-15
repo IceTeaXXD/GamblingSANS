@@ -73,6 +73,7 @@ class CapsaGamePlayer : public Player , public CardCollection<DeckCard>
         CapsaGamePlayer(string);
         ~CapsaGamePlayer();
 
+        int getCountOfPlayerCards();
         ArrOfKombinasi* getArrOfKombinasi();
         vector<DeckCard>& getCard();
         void operator+(DeckCard&);

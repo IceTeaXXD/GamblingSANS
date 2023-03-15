@@ -73,7 +73,7 @@ int main()
         int angka;
         bool flag = true;
         KombinasiCapsa* droppedCombination;
-        ArrOfKombinasi tempArrKombinasi;
+        // ArrOfKombinasi tempArrKombinasi;
 
         //Capcha GM
         CapchaManager* game = new CapchaManager();
@@ -98,6 +98,7 @@ int main()
         while (!menang)
         {
             // game->clearLastPlayed();
+            ArrOfKombinasi tempArrKombinasi;
             if (flag)
             {
                 cout<<"Sekarang giliran player "<<pointerArr[0]->getName()<<endl;
@@ -144,7 +145,14 @@ int main()
                 // temp2.displayCombinationList();
                 newArrKombinasi.displaySpecificCombination("HighCard");
                 flag = false;
-                gamePlayer.push_back(pointerArr.at(0));
+                cout<<pointerArr[0]->getCountOfPlayerCards()<<"GMBR KNTL MATTHW"<<endl;
+                if(pointerArr[0]->getCountOfPlayerCards() == 0)
+                {
+                    menang = true;
+                    cout<<"Player "<<pointerArr[0]->getName()<<" telah memenangkan pertandingan"<<endl;
+                    break;
+                }
+                pointerArr.push_back(pointerArr.at(0));
                 pointerArr.pop_front();
             }
             do
@@ -170,24 +178,35 @@ int main()
                 else
                 {
                     cout<<"P1"<<endl;
-                    game->setDroppedCombination(pointerArr.at(0)->getArrOfKombinasi()->DropCombination(angka-1));
+                    tempArrKombinasi = ArrOfKombinasi(pointerArr[0]->getCard());
+                    game->setDroppedCombination(tempArrKombinasi.DropCombination(angka-1));
+                    cout<<pointerArr[0]->getCountOfPlayerCards()<<endl;
+                    if(pointerArr[0]->getCountOfPlayerCards() == 0)
+                    {
+                        menang = true;
+                        cout<<"Player "<<pointerArr[0]->getName()<<" telah memenangkan pertandingan"<<endl;
+                    }
+                    // game->setDroppedCombination(pointerArr.at(0)->getArrOfKombinasi()->DropCombination(angka-1));
                     // droppedCombination = &pointerArr.at(0)->getArrOfKombinasi()->DropCombination(angka-1);
-                    cout<<"P2"<<endl;
-                    gamePlayer.push_back(pointerArr.at(0));
-                    cout<<"P3"<<endl;
+                    // cout<<"P2"<<endl;
+                    pointerArr.push_back(pointerArr.at(0));
+                    // cout<<"P3"<<endl;
                     pointerArr.pop_front();
                 }
+                cout<<"==============================================="<<endl;
                 // cout << pointerArr.size() << endl;
                 // gamePlayer.push_front(pointerArr.at(0));
                 // pointerArr.pop_front();
             }
             while(!pointerArr.empty());
             cout << "aaaaaaa\n";
+            pointerArr.clear();
             for(int i = 0 ; i < 4 ; i++)
             {
                 cout << i << "-------------------" << gamePlayer.size() << endl;
                 pointerArr.push_back(gamePlayer.at(i));
             }
+            gamePlayer.clear();
             flag = true;
         }
     }
