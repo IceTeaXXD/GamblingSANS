@@ -39,5 +39,7 @@ class CandyGameManager : public GameManager
         void manipulate(T);
 
         bool parseCommand(string);
+
+        void displayMeja();
 };
 #endif

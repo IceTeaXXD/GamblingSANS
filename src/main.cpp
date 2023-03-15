@@ -4,7 +4,6 @@
 #include "GameManager/GameManager.hpp"
 #include "GameManager/CandyGameManager.hpp"
 #include "GameManager/CapchaManager.hpp"
-// #include "GameManager/TwentyFourGameManager.hpp"
 #include "Player/Player.hpp"
 #include "Player/ArrOfPlayer.hpp"
 #include "Rules/Kombinasi.hpp"
@@ -170,6 +169,10 @@ int main()
 
             for (int i = 0 ; i < 7 ; i++){
                 game->setTurn(i);
+                if(game->getRound()!=1)
+                {
+                    game->displayMeja();
+                }
                 cout << "Sekarang adalah giliran Player " << game->getPlayers().getPlayer(0).getName() << endl;
                 if(game->getRound() == 1){
                     DeckCard temp1, temp2;
@@ -179,8 +182,9 @@ int main()
                     game->getPlayers().addPlayerCard(0, temp2);
                     cout<<"Kamu dapat kartu : " << endl;
                     temp1.printInfo();
-                    cout << "\n";
+                    cout << endl;
                     temp2.printInfo();
+                    cout << endl;
                     cout << "\n";
                 }
 
@@ -233,22 +237,16 @@ int main()
             if (game->getRound() == 6)
             {
                 cout << "Ronde VI telah berakhir" << endl;
-                cout << "=======================" << endl;
-
-                cout << "   Table Card List" <<endl;
-                game->getPlayCards().displayDeckCard();
-
-                cout << "=======================" << endl;
+                game->displayMeja();
+                for(int i = 0; i<7; i++)
+                {
+                    cout << "Player " << game->getPlayers().getPlayer(i).getName() << endl;
+                    game->getPlayers().getPlayer(i).viewAllCard();
+                    cout << endl;
+                }
                 int idx = game->getPlayers().calculateMax(game->getPlayCards().getBuffer(),game->getPoint());
                 long long tempPoin = game->getPlayers().getPlayer(idx).getPoint();
                 game->getPlayers().setPlayerPoint(idx,game->getPoint() + tempPoin);
-                // cout<<"\nPlayer Cards :"<<endl;
-                // for (int i = 0 ; i < 7 ; i++)
-                // {
-                //     cout<<"Player "<<game->getPlayers().getPlayerAddress(i)->getName()<<endl;
-                //     game->getPlayers().getPlayer(i).viewAllCard();
-                //     cout << endl;
-                // }
             }
             cout << endl;
             game->setRound(game->getRound()+1);

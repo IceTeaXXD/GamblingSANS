@@ -482,3 +482,18 @@ bool CandyGameManager::parseCommand(string aksi)
         }
     }
 }
+
+void CandyGameManager::displayMeja()
+{
+    vector<DeckCard>::iterator* it;
+    cout << "              MEJA          "  << endl;
+    cout << "+-------------------------------+" << endl;
+    for(int i = 0; i < playCards.getBuffer().size(); i++)
+    {
+        cout << "|            ";
+        playCards.getBuffer()[i].printInfo();
+        cout << "		|";
+        cout << endl;
+    }
+    cout << "+-------------------------------+" << endl;
+}

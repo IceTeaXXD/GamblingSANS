@@ -33,7 +33,7 @@ void DeckCard::printInfo()
     }else if (this->translateToString() == "Hijau"){
         pc.printGreen(card);
     }else{
-        cout<< card <<endl;
+        cout<< card;
     }
 }
 void DeckCard::printType()
