@@ -124,7 +124,7 @@ int main()
                 ArrOfKombinasi newArrKombinasi = ArrOfKombinasi(pointerArr[0]->getCard());
                 // newArrKombinasi.displaySpecificCombination("HighCard");
                 flag = false;
-                // cout<<pointerArr[0]->getCountOfPlayerCards()<<"GMBR KNTL MATTHW"<<endl;
+                cout<<pointerArr[0]->getCountOfPlayerCards()<<" JUMLAH KARTU"<<endl;
                 if(pointerArr[0]->getCountOfPlayerCards() == 0)
                 {
                     menang = true;
@@ -166,10 +166,15 @@ int main()
                     cout<<"INI YANG DI GAME SETELAH UPDATE"<<endl;
                     game->getDroppedCombination().printKombinasi();
                     *pointerArr[0]-game->getDroppedCombination();
+                    cout<<pointerArr[0]->getCountOfPlayerCards()<<" JUMLAH KARTU"<<endl;
                     cout<<"CEK 2"<<endl;
+                    cout<<"INI YANG DI GAME SETELAH UPDATE"<<endl;
+                    game->getDroppedCombination().printKombinasi();
                     // cout<<pointerArr[0]->getCountOfPlayerCards()<<endl;
                     game->setLastPlayed(game->getDroppedCombination());
                     cout<<"CEK 3"<<endl;
+                    cout<<"INI YANG DI GAME SETELAH UPDATE"<<endl;
+                    game->getDroppedCombination().printKombinasi();
                     if(pointerArr[0]->getCountOfPlayerCards() == 0)
                     {
                         menang = true;
