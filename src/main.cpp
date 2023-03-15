@@ -73,6 +73,7 @@ int main()
         int angka;
         bool flag = true;
         KombinasiCapsa* droppedCombination;
+        ArrOfKombinasi tempArrKombinasi;
 
         //Capcha GM
         CapchaManager* game = new CapchaManager();
@@ -101,7 +102,7 @@ int main()
             {
                 cout<<"Sekarang giliran player "<<pointerArr[0]->getName()<<endl;
                 cout<<"List Kombinasi yang Anda punya"<<endl;
-                ArrOfKombinasi tempArrKombinasi = ArrOfKombinasi(pointerArr[0]->getCard());
+                tempArrKombinasi = ArrOfKombinasi(pointerArr[0]->getCard());
                 // ArrOfKombinasi temp2 = ArrOfKombinasi(pointerArr[1]->getCard());
                 // ArrOfKombinasi temp3 = ArrOfKombinasi(pointerArr[2]->getCard());
                 // ArrOfKombinasi temp4 = ArrOfKombinasi(pointerArr[3]->getCard());
@@ -136,6 +137,8 @@ int main()
                 cout<<game->getDroppedCombination().getCName()<<endl;
                 // *pointerArr[0]-*droppedCombination;
                 *pointerArr[0]-game->getDroppedCombination();
+                cout << "aaaaaaaaaa\n";
+                game->getDroppedCombination().printKombinasi();
                 game->setLastPlayed(game->getDroppedCombination());
                 ArrOfKombinasi newArrKombinasi = ArrOfKombinasi(pointerArr[0]->getCard());
                 // temp2.displayCombinationList();

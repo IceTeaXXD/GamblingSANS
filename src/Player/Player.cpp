@@ -165,7 +165,7 @@ void CapsaGamePlayer::operator+(DeckCard& card)
     countOfPlayerCards++;
 }
 
-void CapsaGamePlayer::operator-(Kombinasi& c)
+void CapsaGamePlayer::operator-(KombinasiCapsa& c)
 {
     for(DeckCard card : c.getCombinationCard())
     {
