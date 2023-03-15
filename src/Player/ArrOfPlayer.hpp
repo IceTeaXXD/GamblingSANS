@@ -33,6 +33,7 @@ class ArrOfPlayer {
         void setPlayerLeftCard(int, DeckCard&);
         void setPlayerRightCard(int, DeckCard&);
         T* getPlayerAddress(int idx);
+        int getSize();
 };
 
 

@@ -599,7 +599,6 @@ Kombinasi& Kombinasi::operator=(Kombinasi& other){
     this->arrCombination = other.arrCombination;
     this->arrTableCardCombination = other.arrTableCardCombination;
     this->combinationName = other.combinationName;
-    cout << "ulullululu\n" << this->combinationName << endl;
     this->val = other.val;
     return *this;
 }

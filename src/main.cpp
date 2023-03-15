@@ -94,7 +94,7 @@ int main()
         {
             pointerArr.push_back(game->getPlayers().getPlayerAddress(i%4));
         }
-        // game->deleteAll3Cards();
+        game->deleteAll3Cards();
         while (!menang)
         {
             ArrOfKombinasi tempArrKombinasi;
@@ -117,13 +117,6 @@ int main()
                     cout<<">> ";
                     cin>>angka;
                 }
-                cout << "lalallalalala\n";
-                tempArrKombinasi.DropCombination(angka-1).printKombinasi();
-                cout << "lalallalalala\n";
-                game->setDroppedCombination(tempArrKombinasi.DropCombination(angka-1));
-                cout << "lalallalalala\n";
-                game->getDroppedCombination().printKombinasi();
-                cout << "lalallalalala\n";
                 // cout<<game->getDroppedCombination().getCName()<<endl;
                 *pointerArr[0]-game->getDroppedCombination();
                 pointerArr[0]->setArrCombination();

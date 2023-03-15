@@ -50,6 +50,7 @@ class Kombinasi : protected FindValue{
         bool operator==(const Kombinasi&) const;
 
         Kombinasi& operator=(Kombinasi&);
+        
         vector<DeckCard> getCombinationCard();
         /*  Rule:
             - highcard rumusnya ngikutin yg di docs, value = konstanta + 0.3*warna 

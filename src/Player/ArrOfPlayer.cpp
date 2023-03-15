@@ -137,6 +137,11 @@ void ArrOfPlayer<T>::printDeque(){
     }
 }
 
+template <class T>
+int ArrOfPlayer<T>::getSize(){
+    return arr.size();
+}
+
 template <>
 void ArrOfPlayer<CandyGamePlayer>::setPlayerLeftCard(int idx, DeckCard& card){
     this->arr[idx].setLeftCard(card);
