@@ -104,19 +104,26 @@ int main()
                 cout<<"List Kombinasi yang Anda punya"<<endl;
                 tempArrKombinasi = ArrOfKombinasi(pointerArr[0]->getCard());
                 tempArrKombinasi.displayCombinationList();
-                cout<<"Masukkan Nama Kombinasi yang ingin dikeluarkan :"<<endl;
-                cout<<">> ";
-                cin>>inputPlayer;
+                cout<<"Masukkan Nama Kombinasi yang ingin dikeluarkan (Tanpa Spasi):"<<endl;
+                cin >> inputPlayer;       
+                while (inputPlayer!="HighCard"&&inputPlayer!="Pair"&&inputPlayer!="TwoPair"&&\
+                       inputPlayer!="ThreeAKind"&&inputPlayer!="Straight"&&inputPlayer!="Flush"&&\
+                       inputPlayer!="FullHouse"&&inputPlayer!="FourAKind"&&inputPlayer!="StraightFlush")
+                {
+                    cout << "Input salah. Ketik nama kombinasi seperti pada layar tanpa spasi.\n";
+                    cin >> inputPlayer;
+                }
                 tempArrKombinasi.displaySpecificCombination(inputPlayer);
                 cout<<"Masukkan nomor kombinasi yang ingin dikeluarkan : "<<endl;
                 cout<<">> ";
                 cin>>angka;
-                while(angka > tempArrKombinasi.dropCombSize() || angka <= 0)
+                while(angka > tempArrKombinasi.dropCombSize() && angka <= 0)
                 {
-                    cout<<"Masukkan nomor kombinasi yang ingin  : "<<endl;
+                    cout<<"Masukkan nomor kombinasi yang ingin dikeluarkan : "<<endl;
                     cout<<">> ";
                     cin>>angka;
                 }
+                game->setDroppedCombination(tempArrKombinasi.DropCombination(angka-1));
                 // cout<<game->getDroppedCombination().getCName()<<endl;
                 *pointerArr[0]-game->getDroppedCombination();
                 pointerArr[0]->setArrCombination();

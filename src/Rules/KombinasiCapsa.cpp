@@ -20,9 +20,9 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
         if (isDragon())
         {
             val = MAX_STRAIGHT_FLUSH + 1.3 + pow(10, 6-playCards[0].getType());
+            this->val = val;
+            this->combinationName = "Dragon";
         }
-        this->val = val;
-        this->combinationName = "Dragon";
     }
     else if (n==5)
     {
@@ -32,6 +32,8 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
             for (DeckCard i : arrCombination)
             {
                 val += i.value();
+                if (i.getNum()<=2)
+                val += 1.3;
             }
             this->val = val;
             this->combinationName = "StraightFlush";
@@ -42,6 +44,8 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
             for (DeckCard i : arrCombination)
             {
                 val += i.value();
+                if (i.getNum()<=2)
+                val += 1.3;
             }
             this->val = val;
             this->combinationName = "FullHouse";
@@ -52,6 +56,8 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
             for (DeckCard i : arrCombination)
             {
                 val += i.value();
+                if (i.getNum()<=2)
+                val += 1.3;
             }
             this->val = val;
             this->combinationName = "Flush";
@@ -62,6 +68,8 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
             for (DeckCard i : arrCombination)
             {
                 val += i.value();
+                if (i.getNum()<=2)
+                val += 1.3;
             }
             this->val = val;
             this->combinationName = "Straight";
@@ -80,6 +88,8 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
             for (DeckCard i : arrCombination)
             {
                 val += i.value();
+                if (i.getNum()<=2)
+                val += 1.3;
             }
             this->val = val;
             this->combinationName = "FourAKind";
@@ -90,6 +100,8 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
             for (DeckCard i : arrCombination)
             {
                 val += i.value();
+                if (i.getNum()<=2)
+                val += 1.3;
             }
             this->val = val;
             this->combinationName = "TwoPair";
@@ -107,6 +119,8 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
             for (DeckCard i : arrCombination)
             {
                 val += i.value();
+                if (i.getNum()<=2)
+                val += 1.3;
             }
             this->val = val;
             this->combinationName = "ThreeAKind";
@@ -124,6 +138,8 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
             for (DeckCard i : arrCombination)
             {
                 val += i.value();
+                if (i.getNum()<=2)
+                val += 1.3;
             }
             this->val = val;
             this->combinationName = "Pair";
@@ -138,6 +154,8 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
         // cout << "TABLE 9\n";
         arrCombination.push_back(arr[0]);
         val = arr.begin()->value();
+        if (arr.begin()->getNum()<=2)
+        val += 1.3;
         this->val = val;
         this->combinationName = "HighCard";
     }
