@@ -13,7 +13,7 @@ class KombinasiCapsa : public Kombinasi{
         
         //function
         double getConst(int);
-        KombinasiCapsa& operator=(KombinasiCapsa&);
+        KombinasiCapsa& operator=(const KombinasiCapsa&);
         
         //function override
         bool isPair();

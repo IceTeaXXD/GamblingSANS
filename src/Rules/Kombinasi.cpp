@@ -145,6 +145,7 @@ void Kombinasi::printKombinasi()
     cout<<getCName()<<endl;
     for(int i = 0 ; i < arrCombination.size() ; i++)
     {
+        cout<<"TES"<<endl;
         arrCombination[i].printType();
         cout<<" ";
     }

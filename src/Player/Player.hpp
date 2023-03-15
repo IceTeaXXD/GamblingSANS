@@ -77,7 +77,7 @@ class CapsaGamePlayer : public Player , public CardCollection<DeckCard>
         vector<DeckCard>& getCard();
         void operator+(DeckCard&);
         void operator-(Kombinasi&);
-        void getAllGreaterCombination(Kombinasi*);
+        void getAllGreaterCombination(Kombinasi&);
         void deleteCard(DeckCard&);
         bool isGreater();
         void viewAllCard();

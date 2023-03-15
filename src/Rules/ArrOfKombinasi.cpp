@@ -31,6 +31,8 @@ ArrOfKombinasi::ArrOfKombinasi(vector<DeckCard> arrInput)
                         temp.push_back(arrInput[l]);
                         temp.push_back(arrInput[m]);
                         KombinasiCapsa tempC = KombinasiCapsa(temp,5);
+                        // cout<<tempC.ge?tValue()<<endl;
+                        // cout<<tempC.getCName()<<endl;
                         if (tempC.getValue()!=0)
                         {
                             arrLima.push_back(tempC);
@@ -376,9 +378,9 @@ vector<KombinasiCapsa> ArrOfKombinasi::getCombinationList(int num)
     }
 }
 
-KombinasiCapsa* ArrOfKombinasi::DropCombination(int idx)
+KombinasiCapsa& ArrOfKombinasi::DropCombination(int idx)
 {
-    return dropComb[idx];
+    return *dropComb[idx];
 }
 
 int ArrOfKombinasi::dropCombSize()

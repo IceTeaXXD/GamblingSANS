@@ -68,6 +68,7 @@ KombinasiCapsa::KombinasiCapsa(vector<DeckCard> playCards,int n)
         }
         else 
         {
+            // this->combinationName = "GA ADA";
             this->val = 0;
         }
     }
@@ -146,7 +147,7 @@ KombinasiCapsa::~KombinasiCapsa(){
     
 }
 
-KombinasiCapsa& KombinasiCapsa::operator=(KombinasiCapsa& other){
+KombinasiCapsa& KombinasiCapsa::operator=(const KombinasiCapsa& other){
     this->arr = other.arr;
     this->arrCombination = other.arrCombination;
     this->arrTableCardCombination = other.arrTableCardCombination;

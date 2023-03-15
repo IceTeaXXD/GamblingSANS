@@ -32,7 +32,7 @@ class ArrOfKombinasi
         void displayKombinasi();
         vector<KombinasiCapsa> getCombinationList(int);
         void displaySpecificCombination(string);
-        KombinasiCapsa* DropCombination(int);
+        KombinasiCapsa& DropCombination(int);
         int dropCombSize();
         ArrOfKombinasi& operator=(ArrOfKombinasi);
 };

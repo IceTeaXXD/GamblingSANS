@@ -20,7 +20,7 @@ class CapchaManager : public GameManager
         Kombinasi* lastPlayed;
         CardCollection<DeckCard> Cards;
         ArrOfPlayer<CapsaGamePlayer>* players;
-        Kombinasi droppedCombination;
+        Kombinasi* droppedCombination;
     public:
         CapchaManager();
         ~CapchaManager();

@@ -67,9 +67,9 @@ void CapchaManager::clearLastPlayed(){
 }
 void CapchaManager::setDroppedCombination(Kombinasi c)
 {
-    this->droppedCombination = c;
+    this->droppedCombination = &c;
 }
 Kombinasi& CapchaManager::getDroppedCombination()
 {
-    return this->droppedCombination;
+    return *this->droppedCombination;
 }
