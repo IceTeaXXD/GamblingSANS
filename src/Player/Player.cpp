@@ -170,10 +170,10 @@ void CapsaGamePlayer::operator-(Kombinasi& c)
     for(DeckCard card : c.getCombinationCard())
     {
         deleteCard(card);
+        cout<<"Berhasil menghapus kartu"<<endl;
     }
     arr.~ArrOfKombinasi();
     ArrOfKombinasi arr = ArrOfKombinasi(getCard());
-    cout<<"Berhasil menghapus kartu"<<endl;
     //buat arrofkombinasi yang baru
 }
 

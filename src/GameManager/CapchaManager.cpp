@@ -65,11 +65,11 @@ void CapchaManager::setLastPlayed(Kombinasi& lastPlayed){
 void CapchaManager::clearLastPlayed(){
     delete this->lastPlayed;
 }
-void CapchaManager::setDroppedCombination(Kombinasi c)
+void CapchaManager::setDroppedCombination(KombinasiCapsa& c)
 {
     this->droppedCombination = &c;
 }
-Kombinasi& CapchaManager::getDroppedCombination()
+KombinasiCapsa& CapchaManager::getDroppedCombination()
 {
     return *this->droppedCombination;
 }
