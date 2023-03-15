@@ -151,6 +151,8 @@ KombinasiCapsa& KombinasiCapsa::operator=(const KombinasiCapsa& other){
     this->arr = other.arr;
     this->arrCombination = other.arrCombination;
     this->arrTableCardCombination = other.arrTableCardCombination;
+    this->combinationName = other.combinationName;
+    this->val = other.val;
     return *this;
 }
 

@@ -150,7 +150,7 @@ void Kombinasi::printKombinasi()
     {
         // cout<<"TES"<<endl;
         arrCombination[i].printType();
-        cout<<" ";
+        cout<<"   ";
     }
     cout<<endl;
     cout<<"================================================"<<endl;
@@ -598,8 +598,12 @@ Kombinasi& Kombinasi::operator=(Kombinasi& other){
     this->arr = other.arr;
     this->arrCombination = other.arrCombination;
     this->arrTableCardCombination = other.arrTableCardCombination;
+    this->combinationName = other.combinationName;
+    cout << "ulullululu\n" << this->combinationName << endl;
+    this->val = other.val;
     return *this;
 }
+
 
 // double Kombinasi::HighCard()
 // { 

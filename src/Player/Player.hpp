@@ -77,12 +77,14 @@ class CapsaGamePlayer : public Player , public CardCollection<DeckCard>
         ArrOfKombinasi* getArrOfKombinasi();
         vector<DeckCard>& getCard();
         void operator+(DeckCard&);
-        void operator-(KombinasiCapsa&);
+        void operator-(KombinasiCapsa);
         void getAllGreaterCombination(Kombinasi&);
         void deleteCard(DeckCard&);
         bool isGreater();
         void viewAllCard();
         void displayGreaterComb();
         KombinasiCapsa& getGreaterComb(int);
+        void setArrCombination();
+        void delete3Cards();
 };
 #endif

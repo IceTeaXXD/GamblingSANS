@@ -94,6 +94,7 @@ int main()
         {
             pointerArr.push_back(game->getPlayers().getPlayerAddress(i%4));
         }
+        // game->deleteAll3Cards();
         while (!menang)
         {
             ArrOfKombinasi tempArrKombinasi;
@@ -116,9 +117,16 @@ int main()
                     cout<<">> ";
                     cin>>angka;
                 }
+                cout << "lalallalalala\n";
+                tempArrKombinasi.DropCombination(angka-1).printKombinasi();
+                cout << "lalallalalala\n";
                 game->setDroppedCombination(tempArrKombinasi.DropCombination(angka-1));
+                cout << "lalallalalala\n";
+                game->getDroppedCombination().printKombinasi();
+                cout << "lalallalalala\n";
                 // cout<<game->getDroppedCombination().getCName()<<endl;
                 *pointerArr[0]-game->getDroppedCombination();
+                pointerArr[0]->setArrCombination();
                 game->getDroppedCombination().printKombinasi();
                 game->setLastPlayed(game->getDroppedCombination());
                 ArrOfKombinasi newArrKombinasi = ArrOfKombinasi(pointerArr[0]->getCard());
@@ -146,41 +154,50 @@ int main()
                 cout<<"*****************************************************"<<endl;
                 cout<<endl;
                 pointerArr[0]->getAllGreaterCombination(game->getDroppedCombination());
-                pointerArr[0]->displayGreaterComb();
-                cout<<"Masukkan '0' untuk PASS atau Masukkan nomor kombinasi yang ingin dikeluarkan"<<endl;
-                cout<<"Masukkan aksi :"<<endl;
-                cout<<">> ";
-                cin>>angka;
-                if (angka == 0)
+                if (pointerArr[0]->isGreater())
                 {
-                    gamePlayer.push_front(pointerArr.at(0));
-                    pointerArr.pop_front();
-                    cout<<"Anda melakukan PASS"<<endl;
+                    pointerArr[0]->displayGreaterComb();
+                    cout<<"Masukkan '0' untuk PASS atau Masukkan nomor kombinasi yang ingin dikeluarkan"<<endl;
+                    cout<<"Masukkan aksi :"<<endl;
+                    cout<<">> ";
+                    cin>>angka;
+                    if (angka == 0)
+                    {
+                        gamePlayer.push_front(pointerArr.at(0));
+                        pointerArr.pop_front();
+                        cout<<"Anda melakukan PASS"<<endl;
+                    }
+                    else
+                    {
+                        // cout<<"P1"<<endl;
+                        // tempArrKombinasi = ArrOfKombinasi(pointerArr[0]->getCard());
+                        game->setDroppedCombination(pointerArr[0]->getGreaterComb(angka-1));
+                        cout<<"CEK 1"<<endl;
+                        cout<<"INI YANG DI GAME SETELAH UPDATE"<<endl;
+                        game->getDroppedCombination().printKombinasi();
+                        *pointerArr[0]-(game->getDroppedCombination());
+                        pointerArr[0]->setArrCombination();
+                        cout<<pointerArr[0]->getCountOfPlayerCards()<<" JUMLAH KARTU"<<endl;
+                        cout<<"CEK 2"<<endl;
+                        cout<<"INI YANG DI GAME SETELAH UPDATE"<<endl;
+                        game->getDroppedCombination().printKombinasi();
+                        // cout<<pointerArr[0]->getCountOfPlayerCards()<<endl;
+                        game->setLastPlayed(game->getDroppedCombination());
+                        cout<<"CEK 3"<<endl;
+                        cout<<"INI YANG DI GAME SETELAH UPDATE"<<endl;
+                        game->getDroppedCombination().printKombinasi();
+                        if(pointerArr[0]->getCountOfPlayerCards() == 0)
+                        {
+                            menang = true;
+                            cout<<"Player "<<pointerArr[0]->getName()<<" telah memenangkan pertandingan"<<endl;
+                        }
+                        pointerArr.push_back(pointerArr.at(0));
+                        pointerArr.pop_front();
+                    }
                 }
                 else
                 {
-                    // cout<<"P1"<<endl;
-                    // tempArrKombinasi = ArrOfKombinasi(pointerArr[0]->getCard());
-                    game->setDroppedCombination(pointerArr[0]->getGreaterComb(angka-1));
-                    cout<<"CEK 1"<<endl;
-                    cout<<"INI YANG DI GAME SETELAH UPDATE"<<endl;
-                    game->getDroppedCombination().printKombinasi();
-                    *pointerArr[0]-game->getDroppedCombination();
-                    cout<<pointerArr[0]->getCountOfPlayerCards()<<" JUMLAH KARTU"<<endl;
-                    cout<<"CEK 2"<<endl;
-                    cout<<"INI YANG DI GAME SETELAH UPDATE"<<endl;
-                    game->getDroppedCombination().printKombinasi();
-                    // cout<<pointerArr[0]->getCountOfPlayerCards()<<endl;
-                    game->setLastPlayed(game->getDroppedCombination());
-                    cout<<"CEK 3"<<endl;
-                    cout<<"INI YANG DI GAME SETELAH UPDATE"<<endl;
-                    game->getDroppedCombination().printKombinasi();
-                    if(pointerArr[0]->getCountOfPlayerCards() == 0)
-                    {
-                        menang = true;
-                        cout<<"Player "<<pointerArr[0]->getName()<<" telah memenangkan pertandingan"<<endl;
-                    }
-                    pointerArr.push_back(pointerArr.at(0));
+                    gamePlayer.push_front(pointerArr.at(0));
                     pointerArr.pop_front();
                 }
                 cout<<"========================================================="<<endl;

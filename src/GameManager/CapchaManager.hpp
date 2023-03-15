@@ -20,7 +20,7 @@ class CapchaManager : public GameManager
         Kombinasi* lastPlayed;
         CardCollection<DeckCard> Cards;
         ArrOfPlayer<CapsaGamePlayer>* players;
-        KombinasiCapsa* droppedCombination;
+        KombinasiCapsa droppedCombination;
     public:
         CapchaManager();
         ~CapchaManager();
@@ -35,8 +35,9 @@ class CapchaManager : public GameManager
         void clearLastPlayed();
         bool parseCommand(string);
         int firstPlayer();
-        void setDroppedCombination(KombinasiCapsa&);
+        void setDroppedCombination(KombinasiCapsa);
         KombinasiCapsa& getDroppedCombination();
+        void deleteAll3Cards();
         // int getGiliran();
         // void setPoint(int);
         

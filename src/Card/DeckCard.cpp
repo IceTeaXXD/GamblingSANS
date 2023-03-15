@@ -57,7 +57,15 @@ void DeckCard::printInfoCapsa()
 
 void DeckCard::printType()
 {
-    cout<<this->getNum()<<" "<<this->translateToType();
+    if (this->getNum()==11)
+    cout<<"Jack ";
+    else if (this->getNum()==12)
+    cout<<"Queen ";
+    else if (this->getNum()==13)
+    cout<<"King ";
+    else
+    cout<<this->getNum()<<" ";
+    cout <<this->translateToType();
 }
 double DeckCard::value()
 {

@@ -165,7 +165,7 @@ void CapsaGamePlayer::operator+(DeckCard& card)
     countOfPlayerCards++;
 }
 
-void CapsaGamePlayer::operator-(KombinasiCapsa& c)
+void CapsaGamePlayer::operator-(KombinasiCapsa c)
 {
     for(DeckCard card : c.getCombinationCard())
     {
@@ -174,7 +174,7 @@ void CapsaGamePlayer::operator-(KombinasiCapsa& c)
         // cout<<"Berhasil menghapus kartu"<<endl;
     }
     // arr.~ArrOfKombinasi();
-    this->arr = ArrOfKombinasi(getCard());
+    // this->arr = ArrOfKombinasi(getCard());
     //buat arrofkombinasi yang baru
 }
 
@@ -205,9 +205,20 @@ void CapsaGamePlayer::deleteCard(DeckCard& el)
         buffer.erase(buffer.begin() + (it - vecAngka.begin())); // corrected line
         // cout<<"Berhasil menghapus elemen"<<endl;
     }
-    else
+}
+
+void CapsaGamePlayer::delete3Cards()
+{
+    vector<int> vecAngka;
+    for (int i =0; i < buffer.size(); i++)
     {
-        cout<<"Value not found"<<endl;
+        vecAngka.push_back(buffer[i].getNum());
+    }
+    auto it = find(vecAngka.begin(), vecAngka.end(), 3);
+    while (it != vecAngka.end())
+    {
+        buffer.erase(buffer.begin() + (it - vecAngka.begin()));
+        it = find(it+1, vecAngka.end(), 3);
     }
 }
 
@@ -281,14 +292,14 @@ void CapsaGamePlayer::getAllGreaterCombination(Kombinasi& c)
         {
             if (arr.getCombinationList(2).at(i).getValue() > c.getValue())
             {
-                cout<<"HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHHAHAHAHAHA"<<endl;
+                // cout<<"HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHHAHAHAHAHA"<<endl;
                 // arr.getCombinationList(2).at(i).printKombinasi();
                 greaterComb.push_back(&arr.getCombinationList(2).at(i));
                 // cout<<"PRINT KOMBINASI"<<endl;
                 // greaterComb.at(i)->printKombinasi();
                 // cout<<endl;s
-                cout<<"PUSH"<<endl;
-                cout<<"PUSHGANPUSHGANPUSHGANPUSHGAN"<<endl;
+                // cout<<"PUSH"<<endl;
+                // cout<<"PUSHGANPUSHGANPUSHGANPUSHGAN"<<endl;
                 this->canPlay = true;
             }
             else
@@ -351,4 +362,9 @@ int CapsaGamePlayer::getCountOfPlayerCards()
 KombinasiCapsa& CapsaGamePlayer::getGreaterComb(int i)
 {
     return *greaterComb[i];
+}
+
+void CapsaGamePlayer::setArrCombination()
+{
+    this->arr = ArrOfKombinasi(getCard());
 }

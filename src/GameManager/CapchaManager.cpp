@@ -65,11 +65,22 @@ void CapchaManager::setLastPlayed(Kombinasi& lastPlayed){
 void CapchaManager::clearLastPlayed(){
     delete this->lastPlayed;
 }
-void CapchaManager::setDroppedCombination(KombinasiCapsa& c)
+void CapchaManager::setDroppedCombination(KombinasiCapsa c)
 {
-    this->droppedCombination = &c;
+    this->droppedCombination.operator=(c);
 }
 KombinasiCapsa& CapchaManager::getDroppedCombination()
 {
-    return *this->droppedCombination;
+    return this->droppedCombination;
+}
+void CapchaManager::deleteAll3Cards()
+{
+    for (int i = 0; i < players[0].getSize(); i++)
+    {
+        cout << "wahahahhaha\n";
+        CapsaGamePlayer* player = players[0].getPlayerAddress(i);
+        cout << "wahahahhaha\n";
+        player->delete3Cards();
+        cout << "wahahahhaha\n";
+    }
 }
