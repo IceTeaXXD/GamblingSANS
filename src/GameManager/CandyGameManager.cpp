@@ -206,10 +206,13 @@ void CandyGameManager::manipulate<SwapCard&>(SwapCard& C){
         for (int i = 1; i < 7; i++){
             cout << i << ". " << players->getPlayer(i).getName() << endl;
         }
+        string pil1;
         int pilihan1;
         cout << ">> ";
-        cin >> pilihan1;
-        if(pilihan1 > 7 && pilihan1 < 1){
+        cin >> pil1;
+        pilihan1 = pil1[0]-'0';
+        if(pilihan1 > 7 || pilihan1 < 1 || pil1.size() != 1){
+            C.setAvailable();
             throw InputSalah();
         }else{
             cout << "Silahkan pilih pemain lain yang kartunya ingin anda tukar:" << endl;
@@ -219,24 +222,39 @@ void CandyGameManager::manipulate<SwapCard&>(SwapCard& C){
                 }
             }
         }
+        string pil2;
         int pilihan2;
         cout << ">> ";
-        cin >> pilihan2;
-        if(pilihan2> 7 && pilihan2 < 1 && pilihan2 == pilihan1){
+        cin >> pil2;
+        pilihan2 = pil2[0] - '0';
+        if(pilihan2> 7 || pilihan2 < 1 || pilihan2 == pilihan1 || pil2.size() != 1){
+            C.setAvailable();
             throw InputSalah();
         }else{
             cout << "Silakan pilih kartu kanan/kiri " << players->getPlayer(pilihan1).getName() << ":" << endl;
             cout << "1. Kanan" << endl;
             cout << "2. Kiri" << endl;
+            string pil3;
             int pilihan3;
             cout << ">> ";
-            cin >> pilihan3;
+            cin >> pil3;
+            pilihan3 = pil3[0]-'0';
+            if(pilihan3 > 2 || pilihan3 < 1 || pil3.size() != 1){
+                C.setAvailable();
+                throw InputSalah();
+            }
             cout << "Silakan pilih kartu kanan/kiri " << players->getPlayer(pilihan2).getName() << ":" << endl;
             cout << "1. Kanan" << endl;
             cout << "2. Kiri" << endl;
+            string pil4;
             int pilihan4;
             cout << ">> ";
-            cin >> pilihan4;
+            cin >> pil4;
+            pilihan4 = pil3[0]-'0';
+            if(pilihan4 > 2 || pilihan4 < 1 || pil4.size() != 1){
+                C.setAvailable();
+                throw InputSalah();
+            }
 
             // move to a temp card first
             DeckCard p1Left = players->getPlayer(pilihan1).getLeftCard();
@@ -302,11 +320,13 @@ void CandyGameManager::manipulate<Switch&>(Switch& C){
         for (int i = 1; i < 7; i++){
             cout << i << ". " << players->getPlayer(i).getName() << endl;
         }
-        int pilihan1;
+        string pil1;
         cout << ">> ";
-        cin >> pilihan1;
-        if(pilihan1 > 7 && pilihan1 < 1){
-            throw "Input Anda salah!\n";
+        cin >> pil1;
+        int pilihan1 = pil1[0]-'0';
+        if(pilihan1 > 7 || pilihan1 < 1 || pil1.size() != 1){
+            C.setAvailable();
+            throw InputSalah();
         }else{
             cout << "Kedua kartu " << players->getPlayer(0).getName() << " telah ditukar dengan " << players->getPlayer(pilihan1).getName() << "!" << endl;
 
@@ -342,10 +362,12 @@ void CandyGameManager::manipulate<Abilityless&>(Abilityless& C){
         for (int i = 1; i < 7; i++){
             cout << i << ". " << players->getPlayer(i).getName() << endl;
         }
-        int pilihan1;
+        string pil1;
         cout << ">> ";
-        cin >> pilihan1;
-        if(pilihan1 > 7 && pilihan1 < 1){
+        cin >> pil1;
+        int pilihan1 = pil1[0] - '0';
+        if(pilihan1 > 7 || pilihan1 < 1 || pil1.size() != 1){
+            C.setAvailable();
             throw InputSalah();
         }else{
             if (players->getPlayer(pilihan1).getAbilityCard().isAvailable()){

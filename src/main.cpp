@@ -4,6 +4,7 @@
 #include "GameManager/GameManager.hpp"
 #include "GameManager/CandyGameManager.hpp"
 #include "GameManager/CapchaManager.hpp"
+// #include "GameManager/TwentyFourGameManager.hpp"
 #include "Player/Player.hpp"
 #include "Player/ArrOfPlayer.hpp"
 #include "Rules/Kombinasi.hpp"
@@ -46,13 +47,10 @@ int main()
         cout<<"1. Capcha"<<endl;
         cout<<"2. Kartu Permen"<<endl;
         cout<<"3. UNO"<<endl;
+        cout<<"4. Permainan 24" << endl;
         cout<<">> ";
         cin>>inputGame;
-        if (inputGame == "1")
-        {
-            inputValid = true;
-        }
-        else if (inputGame == "2")
+        if (inputGame == "1" || inputGame == "2" || inputGame == "3" || inputGame == "4")
         {
             inputValid = true;
         }
@@ -133,7 +131,7 @@ int main()
             }
         }
     }
-    else
+    else if(inputGame == "2")
     {
         cout << "\033[2J\033[1;1H" << endl;
         cout << "====================" << endl;
@@ -234,20 +232,25 @@ int main()
 
             if (game->getRound() == 6)
             {
+                cout << "Ronde VI telah berakhir" << endl;
+                cout << "=======================" << endl;
+
+                cout << "   Table Card List" <<endl;
+                game->getPlayCards().displayDeckCard();
+
+                cout << "=======================" << endl;
                 int idx = game->getPlayers().calculateMax(game->getPlayCards().getBuffer(),game->getPoint());
                 long long tempPoin = game->getPlayers().getPlayer(idx).getPoint();
                 game->getPlayers().setPlayerPoint(idx,game->getPoint() + tempPoin);
-
-                cout<<"Table Card List"<<endl;
-                game->getPlayCards().displayDeckCard();
-                cout<<"\nPlayer Cards :"<<endl;
-                for (int i = 0 ; i < 7 ; i++)
-                {
-                    cout<<"Player "<<game->getPlayers().getPlayerAddress(i)->getName()<<endl;
-                    game->getPlayers().getPlayer(i).viewAllCard();
-                    cout << endl;
-                }
+                // cout<<"\nPlayer Cards :"<<endl;
+                // for (int i = 0 ; i < 7 ; i++)
+                // {
+                //     cout<<"Player "<<game->getPlayers().getPlayerAddress(i)->getName()<<endl;
+                //     game->getPlayers().getPlayer(i).viewAllCard();
+                //     cout << endl;
+                // }
             }
+            cout << endl;
             game->setRound(game->getRound()+1);
             // Ubah Turn
             game->getPlayers().nextTurn();
@@ -306,6 +309,22 @@ int main()
                 }
             }
         }
+    }
+    else if (inputGame == "3")
+    {
+        /* UNO */
+    }
+    else if(inputGame == "4")
+    {
+        // TwentyFourGameManager* game = new TwentyFourGameManager();
+        // cout << "Insert your solution!" << endl;
+        // string solution;
+        // cin >> solution;
+        // game->findTwentyFour();
+        // for(int i = 0; i < game->getNumSolution(); i++){
+        //     cout << game->getSolution(i) << endl;
+        // }
+        // game->parseCommand(solution);
     }
     return 0;
 }

@@ -21,6 +21,8 @@ void AbilityCard::setNotAvailable()
     availability = false;
 }
 
+void AbilityCard::setAvailable(){ availability = true; }
+
 string AbilityCard::getType()
 {
     return type;

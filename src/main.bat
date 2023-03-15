@@ -7,6 +7,7 @@ g++ -c "./Card/Abilities.cpp" -o ../bin/Abilities.o
 g++ -c "./GameManager/GameManager.cpp" -o ../bin/GameManager.o
 g++ -c "./GameManager/CandyGameManager.cpp" -o ../bin/CandyGameManager.o
 g++ -c "./GameManager/CapchaManager.cpp" -o ../bin/CapchaManager.o
+@REM g++ -c "./GameManager/TwentyFourGameManager.cpp" -o ../bin/TwentyFourGameManager.o
 g++ -c "./Player/Player.cpp" -o ../bin/Player.o
 g++ -c "./Player/ArrOfPlayer.cpp" -o ../bin/ArrOfPlayer.o
 g++ -c "./Rules/Kombinasi.cpp" -o ../bin/Kombinasi.o
