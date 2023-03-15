@@ -142,14 +142,18 @@ vector<DeckCard> Kombinasi::getCombinationCard()
 }
 void Kombinasi::printKombinasi()
 {
+    cout<<endl;
+    cout<<"================================================"<<endl;
     cout<<getCName()<<endl;
+    cout<<"------------------------------------------------"<<endl;
     for(int i = 0 ; i < arrCombination.size() ; i++)
     {
-        cout<<"TES"<<endl;
+        // cout<<"TES"<<endl;
         arrCombination[i].printType();
         cout<<" ";
     }
     cout<<endl;
+    cout<<"================================================"<<endl;
 }
 
 string Kombinasi::getCName()

@@ -83,5 +83,6 @@ class CapsaGamePlayer : public Player , public CardCollection<DeckCard>
         bool isGreater();
         void viewAllCard();
         void displayGreaterComb();
+        KombinasiCapsa& getGreaterComb(int);
 };
 #endif

@@ -30,7 +30,7 @@ class ArrOfKombinasi
         void displayCombinationList();
         void addKombinasi(Kombinasi& k);
         void displayKombinasi();
-        vector<KombinasiCapsa> getCombinationList(int);
+        vector<KombinasiCapsa>& getCombinationList(int);
         void displaySpecificCombination(string);
         KombinasiCapsa& DropCombination(int);
         int dropCombSize();

@@ -170,15 +170,11 @@ void CapsaGamePlayer::operator-(KombinasiCapsa& c)
     for(DeckCard card : c.getCombinationCard())
     {
         deleteCard(card);
-        cout<<"|||||||"<<endl;
         countOfPlayerCards--;
-        cout<<countOfPlayerCards<<endl;
-        cout<<"Berhasil menghapus kartu"<<endl;
+        // cout<<"Berhasil menghapus kartu"<<endl;
     }
     // arr.~ArrOfKombinasi();
-    cout<<"Test1"<<endl;
     this->arr = ArrOfKombinasi(getCard());
-    cout<<"TEST"<<endl;
     //buat arrofkombinasi yang baru
 }
 
@@ -221,18 +217,22 @@ void CapsaGamePlayer::getAllGreaterCombination(Kombinasi& c)
     // this->arr.~ArrOfKombinasi();
     this->arr = ArrOfKombinasi(this->getCard());
     this->canPlay = false;
-    cout<<"HALOHALO"<<endl;
-    cout<<c.getCName()<<endl;
-    cout<<"HELOHELO"<<endl; 
+    // int num = 0;
+    // cout<<"HALOHALO"<<endl;
+    // cout<<c.getCName()<<endl;
+    // cout<<"HELOHELO"<<endl; 
     if (c.getCName() == "StraightFlush" || c.getCName() == "Flush" || c.getCName() == "FullHouse" || c.getCName() == "Straight")
     {
         for (int i = 0 ; i < arr.getCombinationList(5).size() ; i++)
         {
             if (arr.getCombinationList(5).at(i).getValue() > c.getValue())
             {
+                // cout<<num+1<<". ";
                 arr.getCombinationList(5).at(i).printKombinasi();
                 greaterComb.push_back(&arr.getCombinationList(5).at(i));
-                cout<<endl;
+                // cout<<"PRINT KOMBINASI"<<endl;
+                // greaterComb.at(i)->printKombinasi();
+                // cout<<endl;
                 this->canPlay = true;
             }
             else
@@ -247,9 +247,9 @@ void CapsaGamePlayer::getAllGreaterCombination(Kombinasi& c)
         {
             if (arr.getCombinationList(4).at(i).getValue() > c.getValue())
             {
-                arr.getCombinationList(4).at(i).printKombinasi();
+                // arr.getCombinationList(4)->at(i).printKombinasi();
                 greaterComb.push_back(&arr.getCombinationList(4).at(i));
-                cout<<endl;
+                // cout<<endl;
                 this->canPlay = true;
             }
             else
@@ -264,9 +264,9 @@ void CapsaGamePlayer::getAllGreaterCombination(Kombinasi& c)
         {
             if (arr.getCombinationList(3).at(i).getValue() > c.getValue())
             {
-                arr.getCombinationList(3).at(i).printKombinasi();
+                // arr.getCombinationList(3)->at(i).printKombinasi();
                 greaterComb.push_back(&arr.getCombinationList(3).at(i));
-                cout<<endl;
+                // cout<<endl;
                 this->canPlay = true;
             }
             else
@@ -281,9 +281,14 @@ void CapsaGamePlayer::getAllGreaterCombination(Kombinasi& c)
         {
             if (arr.getCombinationList(2).at(i).getValue() > c.getValue())
             {
-                arr.getCombinationList(2).at(i).printKombinasi();
+                cout<<"HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHHAHAHAHAHA"<<endl;
+                // arr.getCombinationList(2).at(i).printKombinasi();
                 greaterComb.push_back(&arr.getCombinationList(2).at(i));
-                cout<<endl;
+                // cout<<"PRINT KOMBINASI"<<endl;
+                // greaterComb.at(i)->printKombinasi();
+                // cout<<endl;s
+                cout<<"PUSH"<<endl;
+                cout<<"PUSHGANPUSHGANPUSHGANPUSHGAN"<<endl;
                 this->canPlay = true;
             }
             else
@@ -298,9 +303,9 @@ void CapsaGamePlayer::getAllGreaterCombination(Kombinasi& c)
         {
             if (arr.getCombinationList(1).at(i).getValue() > c.getValue())
             {
-                arr.getCombinationList(1).at(i).printKombinasi();
+                // arr.getCombinationList(1).at(i).printKombinasi();
                 greaterComb.push_back(&arr.getCombinationList(1).at(i));
-                cout<<endl;
+                // cout<<endl;
                 this->canPlay = true;
             }
             // else
@@ -323,10 +328,27 @@ void CapsaGamePlayer::displayGreaterComb()
     for (int i = 0 ; i < greaterComb.size() ; i++) 
     {
         cout<<i+1<<". ";
-        greaterComb[i]->printKombinasi();
+        // greaterComb[i]->printKombinasi();
+        // cout<<endl;
+        // cout<<"================================================"<<endl;
+        // cout<<greaterComb[i]->getCName()<<endl;
+        // cout<<"------------------------------------------------"<<endl;
+        // cout<<"UKURAN "<<endl;
+        // cout<<greaterComb.size()<<endl;
+        // for(int j = 0 ; j < greaterComb[i]->getCombinationCard().size() ; j++)
+        // {
+            // cout<<"TES"<<endl
+            greaterComb[i]->printKombinasi();
+        // }
+        // cout<<endl;
+        // cout<<"================================================"<<endl;
     }
 }
 int CapsaGamePlayer::getCountOfPlayerCards()
 {
     return this->countOfPlayerCards;
+}
+KombinasiCapsa& CapsaGamePlayer::getGreaterComb(int i)
+{
+    return *greaterComb[i];
 }

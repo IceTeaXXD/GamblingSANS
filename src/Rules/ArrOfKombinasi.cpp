@@ -191,33 +191,33 @@ void ArrOfKombinasi::displayCombinationList()
     cout<<"KOMBINASI YANG ANDA PUNYA : "<<endl;
     if (isStraightFlush)
     {
-        cout<<"Straight Flush"<<endl;
+        cout<<"-    Straight Flush"<<endl;
     }
     if (isFourAKind)
     {
-        cout<<"Four A Kind"<<endl;
+        cout<<"-    Four A Kind"<<endl;
     }
     if (isFullHouse)
     {
-        cout<<"Full House"<<endl;
+        cout<<"-    Full House"<<endl;
     }
     if (isFlush)
     {
-        cout<<"Flush"<<endl;
+        cout<<"-    Flush"<<endl;
     }
     if (isThreeAKind)
     {
-        cout<<"Three A Kind"<<endl;
+        cout<<"-    Three A Kind"<<endl;
     }
     if(isTwoPair)
     {
-        cout<<"Two Pair"<<endl;
+        cout<<"-    Two Pair"<<endl;
     }
     if(isPair)
     {
-        cout<<"Pair"<<endl;
+        cout<<"-    Pair"<<endl;
     }
-    cout<<"High Card"<<endl;
+    cout<<"-    High Card"<<endl;
 }
 void ArrOfKombinasi::displaySpecificCombination(string input)
 {
@@ -369,7 +369,7 @@ void ArrOfKombinasi::displayKombinasi()
     }
 }
 
-vector<KombinasiCapsa> ArrOfKombinasi::getCombinationList(int num)
+vector<KombinasiCapsa>& ArrOfKombinasi::getCombinationList(int num)
 {
     if (num == 1)
     {
