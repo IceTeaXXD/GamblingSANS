@@ -146,7 +146,7 @@ void CardCollection<DeckCard>::MakeDeck(string filename){
 
     string out;
 
-    ifstream File("../config/"+filename);
+    ifstream File("./config/"+filename);
 
     /* Compute number of cards */
     getline(File, out);
