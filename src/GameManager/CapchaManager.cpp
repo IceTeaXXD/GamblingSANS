@@ -81,5 +81,7 @@ void CapchaManager::deleteAll3Cards()
         player->delete3Cards();
     }
 }
-
-bool CapchaManager::isInputTrue(string a) const{return true;}
+bool CapchaManager::isInputTrue(string) const
+{
+    return true;
+}
