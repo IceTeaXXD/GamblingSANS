@@ -39,6 +39,8 @@ class CapchaManager : public GameManager
         KombinasiCapsa& getDroppedCombination();
         void deleteAll3Cards();
         bool isInputTrue(string) const;
+        void parserFirstPlayer(string aksi, deque<CapsaGamePlayer*>& pointerArr, bool& menang, bool& flag, int& angka);
+        void parserNextPlayer(deque<CapsaGamePlayer*>& pointerArr, deque<CapsaGamePlayer*>& gamePlayer, bool& menang, int& angka);
         // int getGiliran();
         // void setPoint(int);
         
