@@ -2,7 +2,9 @@
 
 UnoPlayCards::UnoPlayCards(){}
 
-UnoPlayCards::UnoPlayCards(int t, int n) : Angka(t), Warna(n){
+UnoPlayCards::UnoPlayCards(int angka, int warna){
+    this->type = warna;
+    this->num = angka;
     cardType = "Play";
 }
 

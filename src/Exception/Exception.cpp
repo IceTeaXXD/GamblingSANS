@@ -37,3 +37,9 @@ ReverseNext::ReverseNext(){}
 void ReverseNext::what() const throw(){
     cout << "";
 }
+
+EndTurnErr::EndTurnErr(){}
+
+void EndTurnErr::what() const throw(){
+    cout << "Salah input! Silakan melakukan addcard terlebih dahulu!\n";
+}
