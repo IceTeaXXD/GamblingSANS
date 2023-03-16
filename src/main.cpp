@@ -45,7 +45,7 @@ int main()
     while (!inputValid)
     {
         cout<<"Pilihan Game :"<<endl;
-        cout<<"1. Kartu Permen"<<endl;
+        cout<<"1. Candy Cards"<<endl;
         cout<<"2. Capcha"<<endl;
         cout<<"3. UNO"<<endl;
         cout<<">> ";
