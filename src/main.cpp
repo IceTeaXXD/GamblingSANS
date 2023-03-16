@@ -212,27 +212,7 @@ int main()
                     }
                 }else{
                     cout << "NO WINNER. STARTING FROM ROUND 1" << endl;
-
-                    game->setRound(1);
-
                     game->reset();
-                    
-                    game->makeAbilityCards();
-
-                    cout << "Masukkan metode pembuatan kartu (auto/file):\n>> ";
-                    cin >> makeCardMethod;
-                    for(int i = 0; i < makeCardMethod.length(); i++)
-                    {
-                        makeCardMethod[i] =  tolower(makeCardMethod[i]);
-                    }
-                    if(makeCardMethod == "auto"){
-                        game->makeTableCards();
-                    }else{
-                        cout << "Masukkan nama file: ";
-                        cin >> fileName;
-                        game->makeTableCards(fileName);
-                    }
-                    cout << "\033[2J\033[1;1H" << endl;
                 }
             }
         }
