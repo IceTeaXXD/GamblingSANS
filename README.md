@@ -50,4 +50,4 @@ Project ini selesai
 - 13521024 Ahmad Nadil
 
 ## Group's Photo
-![](Photo.jpg)
+![](doc/Photo.jpg)
