@@ -140,7 +140,7 @@ void UnoGameManager::putCard(UnoCard* card){
     }
     else if(card->getCardType() == "Plus2"){
         // check if the card is valid, same color or same number with the top of playCard
-        if (card->getType() == playCard.getBuffer()[0]->getType() || card->getNum() == playCard.getBuffer()[0]->getNum()){
+        if (card->getType() == playCard.getBuffer()[0]->getType() || playCard.getBuffer()[0]->getCardType() == "Plus2"){
             lastInput = players->getPlayer(0).getName();
             playCard - playCard.getBuffer()[0];
             playCard + card;
@@ -151,7 +151,7 @@ void UnoGameManager::putCard(UnoCard* card){
         }
     }else if (card->getCardType() == "Reverse"){
         // check if the card is valid, same color or same number with the top of playCard
-        if (card->getType() == playCard.getBuffer()[0]->getType() || card->getNum() == playCard.getBuffer()[0]->getNum()){
+        if (card->getType() == playCard.getBuffer()[0]->getType() || playCard.getBuffer()[0]->getCardType() == "Reverse"){
             lastInput = players->getPlayer(0).getName();
             playCard - playCard.getBuffer()[0];
             playCard + card;
@@ -162,7 +162,7 @@ void UnoGameManager::putCard(UnoCard* card){
         }
     }else if (card->getCardType() == "Skip"){
         // check if the card is valid, same color or same number with the top of playCard
-        if (card->getType() == playCard.getBuffer()[0]->getType() || card->getNum() == playCard.getBuffer()[0]->getNum()){
+        if (card->getType() == playCard.getBuffer()[0]->getType() || playCard.getBuffer()[0]->getCardType() == "Skip"){
             lastInput = players->getPlayer(0).getName();
             cout << "======== : " << lastInput << endl;
             playCard - playCard.getBuffer()[0];
@@ -197,7 +197,6 @@ bool UnoGameManager::parseCommand(string aksi){
     }
     else
     {
-        cout << "BUFFER : " << playCard.getBuffer().size() << endl;
         if(aksi == "putcard"){
             // milih kartu, lalu masuk ke putCard
             int cardIndex;
@@ -210,7 +209,7 @@ bool UnoGameManager::parseCommand(string aksi){
             if (lastInput == players->getPlayer(0).getName()){
                 if(players->getSize() == 2 && (playCard.getBuffer()[0]->getCardType() == "Skip" || playCard.getBuffer()[0]->getCardType() == "Reverse")){
                 }
-                else if(temp->getNum() != playCard.getBuffer()[0]->getNum()){
+                if(temp->getNum() != playCard.getBuffer()[0]->getNum()){
                     throw DifferentType();
                 }
             }
