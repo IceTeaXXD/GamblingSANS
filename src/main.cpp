@@ -117,9 +117,9 @@ int main()
                 DeckCard temp;
                 game->operator-(temp);
                 game->getPlayCards()+temp;
-                cout<<"Kartu ";
+                cout<<"Kartu" << endl;
                 temp.printInfo(); 
-                cout << " telah ditambahkan di meja"<<endl;
+                cout << "\ntelah ditambahkan di meja"<<endl;
             }
 
             for (int i = 0 ; i < 7 ; i++){
@@ -227,7 +227,7 @@ int main()
                         if(makeCardMethod == "auto"){
                             game = new CandyGameManager();
                         }else{
-                            cout << "Masukkan nama file: ";
+                            cout << "Masukkan nama file:\n>> ";
                             cin >> fileName;
                             game = new CandyGameManager(fileName);
                         }

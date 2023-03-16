@@ -22,7 +22,29 @@ DeckCard::~DeckCard(){}
 void DeckCard::printInfo()
 {
     // concat getNum() and translateToString()
-    string card = to_string(this->getNum()) + " " + this->translateToString();
+    string card;
+    string num = to_string(this->getNum());
+
+    card =  " _____\n|";
+    card.append(num);
+    if (num.length() == 1){
+        card.append("    |\n");
+    }else{
+        card.append("   |\n");
+    }
+    card.append("|     |\n");
+    card.append("|     |\n");
+    card.append("|     |\n");
+
+    if (num.length() == 1){
+        card.append("|____");
+        
+    }else{
+        card.append("|___");
+    }
+    card.append(num); 
+    card.append("|");
+
     printColor pc;
     if (this->translateToString() == "Biru"){
         pc.printBlue(card);
@@ -33,7 +55,7 @@ void DeckCard::printInfo()
     }else if (this->translateToString() == "Hijau"){
         pc.printGreen(card);
     }else{
-        cout<< card;
+        cout<< to_string(this->getNum()) + " " + this->translateToString();
     }
 }
 

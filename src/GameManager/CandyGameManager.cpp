@@ -507,9 +507,9 @@ void CandyGameManager::displayMeja()
     cout << "+-------------------------------+" << endl;
     for(int i = 0; i < playCards.getBuffer().size(); i++)
     {
-        cout << "|            ";
+        // cout << "|            ";
         playCards.getBuffer()[i].printInfo();
-        cout << "		|";
+        // cout << "		|";
         cout << endl;
     }
     cout << "+-------------------------------+" << endl;
