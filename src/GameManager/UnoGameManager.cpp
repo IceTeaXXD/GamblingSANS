@@ -155,8 +155,8 @@ void UnoGameManager::putCard(UnoCard* card){
             lastInput = players->getPlayer(0).getName();
             playCard - playCard.getBuffer()[0];
             playCard + card;
-            manipulate<reversecard&>(dynamic_cast<reversecard&>(*card));
             players->removePlayerCard(0, *card);
+            manipulate<reversecard&>(dynamic_cast<reversecard&>(*card));
         }else{
             throw WrongCard();
         }
@@ -178,8 +178,8 @@ void UnoGameManager::putCard(UnoCard* card){
         players->removePlayerCard(0, *card);
     }else if (card->getCardType() == "Wildcard+4"){
         lastInput = players->getPlayer(0).getName();
-        manipulate<wildcardplus4&>(dynamic_cast<wildcardplus4&>(*card));
         players->removePlayerCard(0, *card);
+        manipulate<wildcardplus4&>(dynamic_cast<wildcardplus4&>(*card));
     }else{
         cout << "Kartu ERROR" << endl;
     }
@@ -242,9 +242,9 @@ bool UnoGameManager::parseCommand(string aksi){
 bool UnoGameManager::isGameOver(){
     for (int i = 0 ; i < players->getSize(); i++){
         if (players->getPlayer(i).getCard().size() == 0){
-            players->removePlayer(i);
             string name = players->getPlayer(i).getName();
             winner.push_back(name);
+            players->removePlayer(i);
         }
     }
 
@@ -259,11 +259,10 @@ bool UnoGameManager::isGameOver(){
 
 void UnoGameManager::displayWinner() const{
     cout << "Permainan selesai!" << endl;
-    int i = 4;
+    cout << "Pemenang : " << endl;
     int j = 1;
-    while (i > 0){
+    for (int i = winner.size()-1; i >= 0; i--){
         cout << j << ". " << winner[i] << endl;
-        i--;
         j++;
     }
 }
