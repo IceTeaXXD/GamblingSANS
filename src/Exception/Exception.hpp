@@ -52,4 +52,28 @@ class EndTurnErr: public Exception{
         void what() const throw();
 };
 
+class WrongCard: public Exception{
+    public :
+        WrongCard();
+        void what() const throw();
+};
+
+class DifferentType: public Exception{
+    public:
+        DifferentType();
+        void what() const throw();
+};
+
+class WrongInput: public Exception{
+    public:
+        WrongInput();
+        void what() const throw();
+};
+
+class CardIndexErr: public Exception{
+    public:
+        CardIndexErr();
+        void what() const throw();
+};
+
 #endif

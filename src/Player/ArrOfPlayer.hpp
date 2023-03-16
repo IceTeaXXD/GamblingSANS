@@ -37,6 +37,7 @@ class ArrOfPlayer {
         void setPlayerRightCard(int, DeckCard&);
         T* getPlayerAddress(int idx);
         int getSize();
+        void removePlayer(int);
 };
 
 

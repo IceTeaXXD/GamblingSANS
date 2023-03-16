@@ -68,7 +68,7 @@ int main()
         cout<<"1. Candy Cards"<<endl;
         cout<<"2. Capcha"<<endl;
         cout<<"3. UNO"<<endl;
-        cout<<">> ";
+        cout<<"(1/2/3) >> ";
         cin>>inputGame;
         if (inputGame == "1" || inputGame == "2" || inputGame == "3")
         {
@@ -358,6 +358,7 @@ int main()
         {
             bool input = false;
             while(!input){
+                cout << "\033[2J\033[1;1H" << endl;
                 cout << "TABLE CARDS : " << endl;
                 game->getPlayCard().displayDeckCard();
                 cout << endl;
@@ -365,14 +366,18 @@ int main()
                 game->getPlayers().getPlayer(0).viewAllCard();
                 cout << endl;
                 cout << "Tentukan aksi anda: " << endl;
-                cout << "1. InputCard" << endl;
-                cout << "2. AddCard" << endl;
+                cout << "1. PutCard" << endl;
+                cout << "2. TakeCard" << endl;
+                cout << "3. EndTurn" << endl;
                 cout << ">> ";
                 try{
                     string aksi;
                     cin >> aksi;
                     aksi = game->inputToLower(aksi);
                     input = game->parseCommand(aksi);
+                    // cin.get();
+                    // cout << "Press enter to continue...";
+                    // cin.get();
                     game->getPlayers().nextTurn();
                 }
                 catch (Exception& e)
@@ -385,10 +390,6 @@ int main()
 
         /* Display the Winner */
         game->displayWinner();
-
-
-
-
     }
     return 0;
 }

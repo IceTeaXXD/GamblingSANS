@@ -198,3 +198,8 @@ void ArrOfPlayer<CandyGamePlayer>::setPlayerRightCard(int idx, DeckCard& card){
 }
 template <>
 void ArrOfPlayer<CapsaGamePlayer>::setPlayerRightCard(int idx, DeckCard& card){}
+
+template <class T>
+void ArrOfPlayer<T>::removePlayer(int idx){
+    this->arr.erase(arr.begin()+idx);
+}
