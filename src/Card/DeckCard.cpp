@@ -68,17 +68,16 @@ void DeckCard::printType()
     num = "King";
     else
     num = to_string(this->getNum());
-
-    string card = num + " " + this->translateToType();
-    buffer << std::left << std::setw(13) << std::setfill(' ') << card;
+    string card = num + " ";
+    buffer << std::left << std::setw(8) << std::setfill(' ') << card;
     if (this->translateToType() == "Diamond"){
-        cout << "\033[1;31m" << buffer.str() << "\033[0m";
+        cout << "\033[1;31m" << buffer.str() << "\033[0m"<<"♦️";
     }else if (this->translateToType() == "Club"){
-        cout << "\033[1;34m" << buffer.str() << "\033[0m";
+        cout << "\033[1;34m" << buffer.str() << "\033[0m"<<"♣️";
     }else if (this->translateToType() == "Heart"){
-        cout << "\033[1;31m" << buffer.str() << "\033[0m";
+        cout << "\033[1;31m" << buffer.str() << "\033[0m"<<"♥️";
     }else if (this->translateToType() == "Spade"){
-        cout << "\033[1;34m" << buffer.str() << "\033[0m";
+        cout << "\033[1;34m" << buffer.str() << "\033[0m"<<"♠️";
     }
     buffer.str(std::string());
 

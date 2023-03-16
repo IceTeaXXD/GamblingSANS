@@ -97,7 +97,7 @@ int main()
             if (flag)
             {
                 cout<<"=============================================================================================="<<endl;
-                cout<<"Sekarang giliran player "<<pointerArr[0]->getName()<<endl;
+                cout<<"Sekarang giliran 👤  player "<<pointerArr[0]->getName()<<endl;
                 cout<<"=============================================================================================="<<endl;
                 cout<<"Banyak kartu anda : "<<pointerArr[0]->getCountOfPlayerCards()<<endl;
                 cout << "Kartu kamu :\n";
@@ -120,7 +120,7 @@ int main()
             {
                 cout << "\033[2J\033[1;1H" << endl;
                 cout<<"=============================================================================================="<<endl;
-                cout<<"Sekarang giliran player "<<pointerArr[0]->getName()<<endl;
+                cout<<"Sekarang giliran 👤  player "<<pointerArr[0]->getName()<<endl;
                 cout<<"=============================================================================================="<<endl;
                 cout<<"Kombinasi sebelumnya : "<<endl;
                 game->getDroppedCombination().printKombinasi();
@@ -209,6 +209,7 @@ int main()
                 if(game->getRound()!=1)
                 {
                     game->displayMeja();
+                    game->getPlayers().getPlayer(0).viewAllCard();
                 }
                 cout << "Sekarang adalah giliran Player " << game->getPlayers().getPlayer(0).getName() << endl;
                 if(game->getRound() == 1){
@@ -322,6 +323,114 @@ int main()
                     cout << "NO WINNER. STARTING FROM ROUND 1" << endl;
                     game->reset();
                 }
+            }
+        }
+    }
+    else if (inputGame == "2")
+    {
+        //List Of Player
+        deque<CapsaGamePlayer*> pointerArr;
+        deque<CapsaGamePlayer*> gamePlayer;
+
+        //Variables
+        bool menang = false;
+        string inputPlayer;
+        int angka;
+        bool flag = true;
+
+        //Capcha GM
+        CapchaManager* game = new CapchaManager();
+        for (int i = 0 ; i<4 ; i++)
+        {
+            for (int j = 0  ; j < 13 ; j++)
+            {
+                DeckCard tempCard;
+                game->operator-(tempCard);
+                game->getPlayers().addPlayerCard(0, tempCard);
+                // cout<<"Kamu dapat kartu "<<tempCard.translateToType()<<endl;
+            }
+            game->getPlayers().nextTurn();
+            // cout<<"---------------"<<endl;
+        } 
+        //Game
+        int idxFirstPlayer = game->firstPlayer();
+        for (int i = idxFirstPlayer ; i < idxFirstPlayer+4 ; i++)
+        {
+            pointerArr.push_back(game->getPlayers().getPlayerAddress(i%4));
+        }
+        game->deleteAll3Cards();
+        while (!menang)
+        {
+            if (flag)
+            {
+                cout<<"=============================================================================================="<<endl;
+                cout<<"Sekarang giliran player "<<pointerArr[0]->getName()<<endl;
+                cout<<"=============================================================================================="<<endl;
+                cout<<"Banyak kartu anda : "<<pointerArr[0]->getCountOfPlayerCards()<<endl;
+                cout << "Kartu kamu :\n";
+                pointerArr[0]->viewAllCard();
+                cout<<"List Kombinasi yang Anda punya"<<endl;
+                pointerArr[0]->setArrCombination();
+                pointerArr[0]->getArrOfKombinasi()->displayCombinationList();
+                cout<<"=============================================================================================="<<endl;
+                cout<<"Masukkan Nama Kombinasi yang ingin dikeluarkan (Tanpa Spasi):"<<endl;
+                cout<<">> ";    
+                cin >> inputPlayer;
+                game->parserFirstPlayer(inputPlayer, pointerArr, menang, flag, angka);
+                if(menang)
+                break;
+                pointerArr.push_back(pointerArr.at(0));
+                pointerArr.pop_front();
+                cout<<"=============================================================================================="<<endl;
+            }
+            do
+            {
+                cout << "\033[2J\033[1;1H" << endl;
+                cout<<"=============================================================================================="<<endl;
+                cout<<"Sekarang giliran player "<<pointerArr[0]->getName()<<endl;
+                cout<<"=============================================================================================="<<endl;
+                cout<<"Kombinasi sebelumnya : "<<endl;
+                game->getDroppedCombination().printKombinasi();
+                cout<<"=============================================================================================="<<endl;
+                // cout<<endl;
+                pointerArr[0]->getAllGreaterCombination(game->getDroppedCombination());
+                if (pointerArr[0]->isGreater())
+                {
+                    cout<<"Banyak kartu anda : "<<pointerArr[0]->getCountOfPlayerCards()<<endl;
+                    cout << "Kartu kamu :\n";
+                    pointerArr[0]->viewAllCard();
+                    pointerArr[0]->displayGreaterComb();
+                    cout<<"Masukkan '0' untuk PASS atau Masukkan nomor kombinasi yang ingin dikeluarkan"<<endl;
+                    cout<<"Masukkan aksi :"<<endl;
+                    cout<<">> ";
+                    cin>>angka;
+                    game->parserNextPlayer(pointerArr, gamePlayer, menang, angka);
+                    if(menang)
+                    break;
+                }
+                else
+                {
+                    cout<<"Anda dipaksa untuk PASS"<<endl;
+                    cout<<"Banyak kartu anda : "<<pointerArr[0]->getCountOfPlayerCards()<<endl;
+                    cout << "Kartu kamu :\n";
+                    pointerArr[0]->viewAllCard();
+                    gamePlayer.push_front(pointerArr.at(0));
+                    pointerArr.pop_front();
+                }
+                // cout<<"========================================================="<<endl;
+            }
+            while(!pointerArr.empty());
+            // cout << "aaaaaaa\n";
+            if (!menang)
+            {
+                pointerArr.clear();
+                for(int i = 0 ; i < 4 ; i++)
+                {
+                    // cout << i << "-------------------" << gamePlayer.size() << endl;
+                    pointerArr.push_back(gamePlayer.at(i));
+                }
+                gamePlayer.clear();
+                flag = true;
             }
         }
     }

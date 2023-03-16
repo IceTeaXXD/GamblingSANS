@@ -47,7 +47,7 @@ void CapchaManager::parserFirstPlayer(string aksi, deque<CapsaGamePlayer*>& poin
     cout<<"Masukkan nomor kombinasi yang ingin dikeluarkan : "<<endl;
     cout<<">> ";
     cin>>angka;
-    while(angka > pointerArr[0]->getArrOfKombinasi()->dropCombSize() && angka <= 0)
+    while(angka > pointerArr[0]->getArrOfKombinasi()->dropCombSize() || angka <= 0)
     {
         cout<<"Masukkan nomor kombinasi yang ingin dikeluarkan : "<<endl;
         cout<<">> ";
