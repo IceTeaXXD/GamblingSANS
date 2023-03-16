@@ -14,4 +14,8 @@ class UnoGamePlayer : public Player, public CardCollection<UnoCard*>{
         vector<UnoCard*> getCard();
         void clearCards();
         void operator+(UnoCard&);
+        void operator-(UnoCard&);
+        bool isInputed;
+        void setIsInputed(bool);
+
 };

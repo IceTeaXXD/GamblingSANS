@@ -11,6 +11,7 @@
 #include "../Player/Player.hpp"
 #include "../Player/ArrOfPlayer.hpp"
 #include "../utils/printColor.hpp"
+#include "../Exception/Exception.hpp"
 using namespace std;
 
 
@@ -20,6 +21,7 @@ class UnoGameManager : public GameManager{
         CardCollection<UnoCard*> playCard;
         CardCollection<UnoCard*> deckCards;
         printColor pc;
+        string lastInput;
 
     public:
         UnoGameManager();
@@ -31,6 +33,11 @@ class UnoGameManager : public GameManager{
         void distributeCard();
         template<class T>
         void manipulate(T);
+        void putCard(UnoCard* card);
+        bool parseCommand(string);
+        bool isInputTrue(string) const;
+        bool isGameOver() const;
+        void displayWinner() const;
 };
 
 #endif

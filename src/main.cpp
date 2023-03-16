@@ -4,6 +4,7 @@
 #include "GameManager/GameManager.hpp"
 #include "GameManager/CandyGameManager.hpp"
 #include "GameManager/CapchaManager.hpp"
+#include "GameManager/UnoGameManager.hpp"
 #include "Player/Player.hpp"
 #include "Player/ArrOfPlayer.hpp"
 #include "Rules/Kombinasi.hpp"
@@ -47,7 +48,6 @@ int main()
         cout<<"1. Capcha"<<endl;
         cout<<"2. Kartu Permen"<<endl;
         cout<<"3. UNO"<<endl;
-        cout<<"4. Permainan 24" << endl;
         cout<<">> ";
         cin>>inputGame;
         if (inputGame == "1" || inputGame == "2" || inputGame == "3" || inputGame == "4")
@@ -407,19 +407,47 @@ int main()
     }
     else if (inputGame == "3")
     {
-        /* UNO */
-    }
-    else if(inputGame == "4")
-    {
-        // TwentyFourGameManager* game = new TwentyFourGameManager();
-        // cout << "Insert your solution!" << endl;
-        // string solution;
-        // cin >> solution;
-        // game->findTwentyFour();
-        // for(int i = 0; i < game->getNumSolution(); i++){
-        //     cout << game->getSolution(i) << endl;
-        // }
-        // game->parseCommand(solution);
+        UnoGameManager* game  = new UnoGameManager();
+        cout << "Game Created!" << endl;
+        
+        /* Distribute Cards to Players */
+        game->distributeCard();
+
+        while(!game->isGameOver())
+        {
+            bool input = false;
+            while(!input){
+                cout << "TABLE CARDS : " << endl;
+                game->getPlayCard().displayDeckCard();
+                cout << endl;
+                cout << "Giliran Player " << game->getPlayers().getPlayer(0).getName() << endl;
+                game->getPlayers().getPlayer(0).viewAllCard();
+                cout << endl;
+                cout << "Tentukan aksi anda: " << endl;
+                cout << "1. InputCard" << endl;
+                cout << "2. AddCard" << endl;
+                cout << ">> ";
+                try{
+                    string aksi;
+                    cin >> aksi;
+                    aksi = game->inputToLower(aksi);
+                    input = game->parseCommand(aksi);
+                    game->getPlayers().nextTurn();
+                }
+                catch (Exception& e)
+                {
+                    e.what();
+                    input = false;
+                }
+            }
+        }
+
+        /* Display the Winner */
+        game->displayWinner();
+
+
+
+
     }
     return 0;
 }

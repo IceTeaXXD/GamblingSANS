@@ -41,5 +41,7 @@ class CandyGameManager : public GameManager
         bool parseCommand(string);
 
         void displayMeja();
+
+        bool isInputTrue(string) const;
 };
 #endif

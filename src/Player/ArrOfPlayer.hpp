@@ -28,6 +28,7 @@ class ArrOfPlayer {
         void addPlayerCard(int, DeckCard&);
         int calculateMax(vector<DeckCard> Deck,long long p);
         void addPlayerCard(int, UnoCard &);
+        void removePlayerCard(int, UnoCard &);
         vector<DeckCard>& getAllPlayerCard(int idx);
         void addAbilityCard(int, AbilityCard&);
         void clearCard(int i);

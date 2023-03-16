@@ -497,3 +497,8 @@ void CandyGameManager::displayMeja()
     }
     cout << "+-------------------------------+" << endl;
 }
+
+bool CandyGameManager::isInputTrue(string input) const
+{
+    return input=="tablecards" || input == "viewcards" || input == "next" || input == "double" || input == "half" || input == "quadruple" || input == "quarter" || input == "reroll" || input == "reverse" || input == "switch" || input == "swap" || input == "help" || input == "abilityless" || input == "2";
+}

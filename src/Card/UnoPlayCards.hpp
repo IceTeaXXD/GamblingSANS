@@ -8,7 +8,7 @@ using namespace std;
 #include "UnoCard.hpp"
 #include "../utils/printColor.hpp"
 
-class UnoPlayCards : public UnoCard, public Angka, public Warna{
+class UnoPlayCards : public UnoCard{
     public:
         UnoPlayCards();
         UnoPlayCards(int, int);

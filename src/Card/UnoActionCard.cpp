@@ -72,7 +72,18 @@ wildcard::wildcard(){
 }
 
 void wildcard::printInfo(){
-    cout << "WILDCARD";
+    string card = "Wildcard";
+    if (this->translateToString() == "Biru"){
+        pc.printBlue(card);
+    }else if (this->translateToString() == "Merah"){
+        pc.printRed(card);
+    }else if (this->translateToString() == "Kuning"){
+        pc.printYellow(card);
+    }else if (this->translateToString() == "Hijau"){
+        pc.printGreen(card);
+    }else{
+        cout<< card;
+    }
 }
 
 wildcardplus4::wildcardplus4(){
@@ -81,5 +92,16 @@ wildcardplus4::wildcardplus4(){
 }
 
 void wildcardplus4::printInfo(){
-    cout << "WILDCARD +4";
+    string card = "Wildcard+4";
+    if (this->translateToString() == "Biru"){
+        pc.printBlue(card);
+    }else if (this->translateToString() == "Merah"){
+        pc.printRed(card);
+    }else if (this->translateToString() == "Kuning"){
+        pc.printYellow(card);
+    }else if (this->translateToString() == "Hijau"){
+        pc.printGreen(card);
+    }else{
+        cout<< card;
+    }
 }

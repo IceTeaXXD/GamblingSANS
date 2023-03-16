@@ -46,4 +46,10 @@ class ReverseNext: public Exception{
         void what() const throw();
 };
 
+class EndTurnErr: public Exception{
+    public:
+        EndTurnErr();
+        void what() const throw();
+};
+
 #endif
