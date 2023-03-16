@@ -525,10 +525,12 @@ bool CandyGameManager::isInputTrue(string input) const
 void CandyGameManager::createDisplayTable(vector<vector<string>>& kartu, int angka)
 {
     kartu[0].push_back(" ");
-    for (int i = 0; i < 8; i++)
+    kartu[0].push_back(" ");
+    for (int i = 0; i < 6; i++)
     {
         kartu[0].push_back("_");
     }
+    kartu[0].push_back(" ");
     kartu[0].push_back(" ");
 
     kartu[1].push_back(" ");

@@ -25,22 +25,22 @@ void DeckCard::printInfo()
     string card;
     string num = to_string(this->getNum());
 
-    card =  " _____\n|";
+    card =  " ______\n|";
     card.append(num);
     if (num.length() == 1){
-        card.append("    |\n");
+        card.append("     |\n");
     }else{
-        card.append("   |\n");
+        card.append("    |\n");
     }
-    card.append("|     |\n");
-    card.append("|     |\n");
-    card.append("|     |\n");
+    card.append("|      |\n");
+    card.append("|      |\n");
+    card.append("|      |\n");
 
     if (num.length() == 1){
-        card.append("|____");
+        card.append("|_____");
         
     }else{
-        card.append("|___");
+        card.append("|____");
     }
     card.append(num); 
     card.append("|");
