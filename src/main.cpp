@@ -9,6 +9,7 @@
 #include "Rules/Kombinasi.hpp"
 #include "Rules/ArrOfKombinasi.hpp"
 #include "Exception/Exception.hpp"
+
 using namespace std;
 
 int main()
@@ -83,10 +84,10 @@ int main()
                 DeckCard tempCard;
                 game->operator-(tempCard);
                 game->getPlayers().addPlayerCard(0, tempCard);
-                cout<<"Kamu dapat kartu "<<tempCard.translateToType()<<endl;
+                // cout<<"Kamu dapat kartu "<<tempCard.translateToType()<<endl;
             }
             game->getPlayers().nextTurn();
-            cout<<"---------------"<<endl;
+            // cout<<"---------------"<<endl;
         } 
         //Game
         int idxFirstPlayer = game->firstPlayer();
@@ -100,17 +101,22 @@ int main()
             ArrOfKombinasi tempArrKombinasi;
             if (flag)
             {
+                cout<<"=============================================================================================="<<endl;
                 cout<<"Sekarang giliran player "<<pointerArr[0]->getName()<<endl;
+                cout<<"=============================================================================================="<<endl;
                 cout<<"List Kombinasi yang Anda punya"<<endl;
                 tempArrKombinasi = ArrOfKombinasi(pointerArr[0]->getCard());
                 tempArrKombinasi.displayCombinationList();
+                cout<<"=============================================================================================="<<endl;
                 cout<<"Masukkan Nama Kombinasi yang ingin dikeluarkan (Tanpa Spasi):"<<endl;
+                cout<<">> ";    
                 cin >> inputPlayer;       
                 while (inputPlayer!="HighCard"&&inputPlayer!="Pair"&&inputPlayer!="TwoPair"&&\
                        inputPlayer!="ThreeAKind"&&inputPlayer!="Straight"&&inputPlayer!="Flush"&&\
                        inputPlayer!="FullHouse"&&inputPlayer!="FourAKind"&&inputPlayer!="StraightFlush")
                 {
                     cout << "Input salah. Ketik nama kombinasi seperti pada layar tanpa spasi.\n";
+                    cout<<">> ";
                     cin >> inputPlayer;
                 }
                 tempArrKombinasi.displaySpecificCombination(inputPlayer);
@@ -127,12 +133,12 @@ int main()
                 // cout<<game->getDroppedCombination().getCName()<<endl;
                 *pointerArr[0]-game->getDroppedCombination();
                 pointerArr[0]->setArrCombination();
-                game->getDroppedCombination().printKombinasi();
+                // game->getDroppedCombination().printKombinasi();
                 game->setLastPlayed(game->getDroppedCombination());
                 ArrOfKombinasi newArrKombinasi = ArrOfKombinasi(pointerArr[0]->getCard());
                 // newArrKombinasi.displaySpecificCombination("HighCard");
                 flag = false;
-                cout<<pointerArr[0]->getCountOfPlayerCards()<<" JUMLAH KARTU"<<endl;
+                // cout<<pointerArr[0]->getCountOfPlayerCards()<<" JUMLAH KARTU"<<endl;
                 if(pointerArr[0]->getCountOfPlayerCards() == 0)
                 {
                     menang = true;
@@ -141,18 +147,18 @@ int main()
                 }
                 pointerArr.push_back(pointerArr.at(0));
                 pointerArr.pop_front();
+                cout<<"=============================================================================================="<<endl;
             }
             do
             {
-                cout<<endl;
-                cout<<endl;
-                cout<<"*****************************************************"<<endl;
+                 cout << "\033[2J\033[1;1H" << endl;
+                cout<<"=============================================================================================="<<endl;
                 cout<<"Sekarang giliran player "<<pointerArr[0]->getName()<<endl;
-                cout<<"*****************************************************"<<endl;
+                cout<<"=============================================================================================="<<endl;
                 cout<<"Kombinasi sebelumnya : "<<endl;
                 game->getDroppedCombination().printKombinasi();
-                cout<<"*****************************************************"<<endl;
-                cout<<endl;
+                cout<<"=============================================================================================="<<endl;
+                // cout<<endl;
                 pointerArr[0]->getAllGreaterCombination(game->getDroppedCombination());
                 if (pointerArr[0]->isGreater())
                 {
@@ -197,17 +203,18 @@ int main()
                 }
                 else
                 {
+                    cout<<"Anda dipaksa untuk PASS"<<endl;
                     gamePlayer.push_front(pointerArr.at(0));
                     pointerArr.pop_front();
                 }
-                cout<<"========================================================="<<endl;
+                // cout<<"========================================================="<<endl;
             }
             while(!pointerArr.empty());
             // cout << "aaaaaaa\n";
             pointerArr.clear();
             for(int i = 0 ; i < 4 ; i++)
             {
-                cout << i << "-------------------" << gamePlayer.size() << endl;
+                // cout << i << "-------------------" << gamePlayer.size() << endl;
                 pointerArr.push_back(gamePlayer.at(i));
             }
             gamePlayer.clear();

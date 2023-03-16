@@ -239,7 +239,7 @@ void CapsaGamePlayer::getAllGreaterCombination(Kombinasi& c)
             if (arr.getCombinationList(5).at(i).getValue() > c.getValue())
             {
                 // cout<<num+1<<". ";
-                arr.getCombinationList(5).at(i).printKombinasi();
+                // arr.getCombinationList(5).at(i).printKombinasi();
                 greaterComb.push_back(&arr.getCombinationList(5).at(i));
                 // cout<<"PRINT KOMBINASI"<<endl;
                 // greaterComb.at(i)->printKombinasi();
@@ -336,9 +336,10 @@ bool CapsaGamePlayer::isGreater()
 }
 void CapsaGamePlayer::displayGreaterComb()
 {
+    cout<<"List Kombinasi Yang Dapat Dikeluarkan : "<<endl;
     for (int i = 0 ; i < greaterComb.size() ; i++) 
     {
-        cout<<i+1<<". ";
+        cout<<"                             Kombinasi "<<i+1;
         // greaterComb[i]->printKombinasi();
         // cout<<endl;
         // cout<<"================================================"<<endl;
