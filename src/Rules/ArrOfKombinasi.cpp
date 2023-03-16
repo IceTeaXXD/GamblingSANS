@@ -229,7 +229,7 @@ void ArrOfKombinasi::displaySpecificCombination(string input)
         {
             if (arrLima[i].getCName()=="StraightFlush")
             {
-                cout<<num+1<<". ";
+                cout<<"                                 Kombinasi "<<num+1;
                 arrLima[i].printKombinasi();
                 cout<<endl;
                 dropComb.push_back(&arrLima[i]);
@@ -243,7 +243,7 @@ void ArrOfKombinasi::displaySpecificCombination(string input)
         {
             if (arrLima[i].getCName()=="Flush")
             {
-                cout<<num+1<<". ";
+                cout<<"                                 Kombinasi "<<num+1;
                 arrLima[i].printKombinasi();
                 cout<<endl;
                 dropComb.push_back(&arrLima[i]);
@@ -257,7 +257,7 @@ void ArrOfKombinasi::displaySpecificCombination(string input)
         {
             if (arrLima[i].getCName()=="Straight")
             {
-                cout<<num+1<<". ";
+                cout<<"                                 Kombinasi "<<num+1;
                 arrLima[i].printKombinasi();
                 cout<<endl;
                 dropComb.push_back(&arrLima[i]);
@@ -271,7 +271,7 @@ void ArrOfKombinasi::displaySpecificCombination(string input)
         {
             if (arrLima[i].getCName()=="FullHouse")
             {
-                cout<<num+1<<". ";
+                cout<<"                                 Kombinasi "<<num+1;
                 arrLima[i].printKombinasi();
                 cout<<endl;
                 dropComb.push_back(&arrLima[i]);
@@ -285,7 +285,7 @@ void ArrOfKombinasi::displaySpecificCombination(string input)
         {
             if (arrEmpat[i].getCName()=="FourAKind")
             {
-                cout<<num+1<<". ";
+                cout<<"                                 Kombinasi "<<num+1;
                 arrEmpat[i].printKombinasi();
                 cout<<endl;
                 dropComb.push_back(&arrEmpat[i]);
@@ -299,7 +299,7 @@ void ArrOfKombinasi::displaySpecificCombination(string input)
         {
             if (arrEmpat[i].getCName()=="TwoPair")
             {
-                cout<<num+1<<". ";
+                cout<<"                                 Kombinasi "<<num+1;
                 arrEmpat[i].printKombinasi();
                 cout<<endl;
                 dropComb.push_back(&arrEmpat[i]);
@@ -311,7 +311,7 @@ void ArrOfKombinasi::displaySpecificCombination(string input)
     {
         for (int i = 0 ; i < arrTiga.size() ; i++)
         {
-            cout<<num+1<<". ";
+            cout<<"                                 Kombinasi "<<num+1;
             arrTiga[i].printKombinasi();
             cout<<endl;
             dropComb.push_back(&arrTiga[i]);
@@ -322,7 +322,7 @@ void ArrOfKombinasi::displaySpecificCombination(string input)
     {
         for (int i = 0 ; i < arrDua.size() ; i++)
         {
-            cout<<num+1<<". ";
+            cout<<"                                 Kombinasi "<<num+1;
             arrDua[i].printKombinasi();
             cout<<endl;
             dropComb.push_back(&arrDua[i]);
@@ -333,7 +333,7 @@ void ArrOfKombinasi::displaySpecificCombination(string input)
     {
         for (int i = 0 ; i < arrSatu.size() ; i++)
         {
-            cout<<num+1<<". ";
+            cout<<"                                 Kombinasi "<<num+1;
             arrSatu[i].printKombinasi();
             cout<<endl;
             dropComb.push_back(&arrSatu[i]);
