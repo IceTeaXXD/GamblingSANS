@@ -97,7 +97,7 @@ int main()
             if (flag)
             {
                 cout<<"=============================================================================================="<<endl;
-                cout<<"Sekarang giliran player "<<pointerArr[0]->getName()<<endl;
+                cout<<"Sekarang giliran 👤  player "<<pointerArr[0]->getName()<<endl;
                 cout<<"=============================================================================================="<<endl;
                 cout<<"Banyak kartu anda : "<<pointerArr[0]->getCountOfPlayerCards()<<endl;
                 cout << "Kartu kamu :\n";
@@ -120,7 +120,7 @@ int main()
             {
                 cout << "\033[2J\033[1;1H" << endl;
                 cout<<"=============================================================================================="<<endl;
-                cout<<"Sekarang giliran player "<<pointerArr[0]->getName()<<endl;
+                cout<<"Sekarang giliran 👤  player "<<pointerArr[0]->getName()<<endl;
                 cout<<"=============================================================================================="<<endl;
                 cout<<"Kombinasi sebelumnya : "<<endl;
                 game->getDroppedCombination().printKombinasi();
@@ -209,6 +209,7 @@ int main()
                 if(game->getRound()!=1)
                 {
                     game->displayMeja();
+                    game->getPlayers().getPlayer(0).viewAllCard();
                 }
                 cout << "Sekarang adalah giliran Player " << game->getPlayers().getPlayer(0).getName() << endl;
                 if(game->getRound() == 1){
