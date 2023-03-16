@@ -45,12 +45,12 @@ int main()
     while (!inputValid)
     {
         cout<<"Pilihan Game :"<<endl;
-        cout<<"1. Capcha"<<endl;
-        cout<<"2. Kartu Permen"<<endl;
+        cout<<"1. Kartu Permen"<<endl;
+        cout<<"2. Capcha"<<endl;
         cout<<"3. UNO"<<endl;
         cout<<">> ";
         cin>>inputGame;
-        if (inputGame == "1" || inputGame == "2" || inputGame == "3" || inputGame == "4")
+        if (inputGame == "1" || inputGame == "2" || inputGame == "3")
         {
             inputValid = true;
         }
@@ -59,7 +59,7 @@ int main()
             cout<<"Masukan tidak valid, silahkan ulangi."<<endl;
         }
     }
-    if (inputGame == "1")
+    if (inputGame == "2")
     {
         //List Of Player
         deque<CapsaGamePlayer*> pointerArr;
@@ -232,7 +232,7 @@ int main()
             }
         }
     }
-    else if(inputGame == "2")
+    else if(inputGame == "1")
     {
         cout << "\033[2J\033[1;1H" << endl;
         cout << "====================" << endl;
