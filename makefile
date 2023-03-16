@@ -36,26 +36,11 @@ build:
 
 uff:
 	g++ -o bin/main 	\
-	src/main.cpp \
-	src/Card/AbilityCard.cpp \
-	src/Card/Abilities.cpp \
-	src/Card/Warna.cpp \
-	src/Card/Angka.cpp \
-	src/Card/CardCollection.cpp \
-	src/Card/DeckCard.cpp \
-	src/Card/UnoCard.cpp \
-	src/Card/UnoPlayCards.cpp \
-	src/Card/UnoActionCard.cpp \
-	src/GameManager/GameManager.cpp \
-	src/GameManager/CandyGameManager.cpp \
-	src/GameManager/CapchaManager.cpp \
-	src/GameManager/UnoGameManager.cpp \
-	src/Player/Player.cpp \
-	src/Player/ArrOfPlayer.cpp \
-	src/Player/UnoPlayer.cpp \
-	src/Exception/Exception.cpp \
-	src/Rules/Kombinasi.cpp \
-	src/Rules/FindValue.cpp \
-	src/Rules/ArrOfKombinasi.cpp \
-	src/utils/printColor.cpp
+	src/main.cpp	\
+	src/Card/*.cpp	\
+	src/Exception/*.cpp	\
+	src/GameManager/*.cpp	\
+	src/Player/*.cpp	\
+	src/Rules/*.cpp	\
+	src/utils/*.cpp
 	bin/main
