@@ -199,6 +199,7 @@ int main()
                         {
                             menang = true;
                             cout<<"Player "<<pointerArr[0]->getName()<<" telah memenangkan pertandingan"<<endl;
+                            break;
                         }
                         pointerArr.push_back(pointerArr.at(0));
                         pointerArr.pop_front();
