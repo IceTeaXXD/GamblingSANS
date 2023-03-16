@@ -9,6 +9,7 @@ Tugas Besar 1 IF2210 Pemrograman Berorientasi Objek
 5. [Project Status](#project-status)
 6. [Acknowledgements](#acknowledgements)
 7. [Author](#author)
+8. [Group Photo](#groups-photo)
 
 ## General Information
 Program ini merupakan program permainan Kartu Permen dengan menerapkan konsep Object-Oriented Programming. Penerapan konsep tersebut antara lain penggunaan Inheritance, Polymorphism, Method Overloading, Operator Overloading, Template dan Generic Classes, Exception, C++ Standard Template Library, serta Abstract Base Class.
