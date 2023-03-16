@@ -115,7 +115,7 @@ void CandyGameManager::manipulate<REROLL&>(REROLL& C){
     }
     else
     {
-        cout << "Kartu anda telah dimatikan" << endl;
+        throw KartuDimatikan();
     }
 }
 
@@ -131,7 +131,7 @@ void CandyGameManager::manipulate<Quadruple&>(Quadruple& C){
         cout << "Point berubah menjadi " << this->point << endl;
     }
     else{
-        cout << "Kartu anda telah dimatikan" << endl;
+        throw KartuDimatikan();
     }
 }
 
@@ -151,7 +151,7 @@ void CandyGameManager::manipulate<Quarter&>(Quarter& C){
         }
     }
     else{
-        cout << "Kartu anda telah dimatikan" << endl;
+        throw KartuDimatikan();
     }
 }
 
@@ -322,7 +322,7 @@ void CandyGameManager::manipulate<SwapCard&>(SwapCard& C){
         }
     }
     else{
-        cout << "Kartu anda telah dimatikan" << endl;
+        throw KartuDimatikan();
     }
 }
 
@@ -366,7 +366,7 @@ void CandyGameManager::manipulate<Switch&>(Switch& C){
         }
     }
     else{
-        cout << "Oops, kartu ability switchmu telah dimatikan sebelumnya :(.\nSilahkan lakukan perintah lain."<<endl;
+        throw KartuDimatikan();
     }
 }
 
@@ -405,7 +405,7 @@ void CandyGameManager::manipulate<Abilityless&>(Abilityless& C){
         }
     }
     else{
-        throw TidakPunyaKartuAbility();
+        throw KartuDimatikan();
     }
 }
 
