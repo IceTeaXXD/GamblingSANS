@@ -57,6 +57,7 @@ bool CandyGameManager::existWinner(){
 
 void CandyGameManager::reset()
 {
+    setRound(1);
     /* DELETE DECK, DELETE KARTU PER PLAYER, DELETE TABLE CARD, DELETE ABILITY CARD, ULANG DARI round 1 */
     playCards.clear();
     abilityCardList.clear();
@@ -66,6 +67,22 @@ void CandyGameManager::reset()
         players->clearCard(i);
         players->getPlayerAddress(i)->setHasAbility(false);
     }
+    makeAbilityCards();
+    cout << "Masukkan metode pembuatan kartu (auto/file):\n>> ";
+    string makeCardMethod, fileName;
+    cin >> makeCardMethod;
+    for(int i = 0; i < makeCardMethod.length(); i++)
+    {
+        makeCardMethod[i] =  tolower(makeCardMethod[i]);
+    }
+    if(makeCardMethod == "auto"){
+        makeTableCards();
+    }else{
+        cout << "Masukkan nama file: ";
+        cin >> fileName;
+        makeTableCards(fileName);
+    }
+    cout << "\033[2J\033[1;1H" << endl;
 }
 
 void CandyGameManager::makeAbilityCards()
