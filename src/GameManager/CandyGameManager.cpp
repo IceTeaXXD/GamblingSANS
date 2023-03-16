@@ -510,7 +510,7 @@ void CandyGameManager::displayMeja()
         createDisplayTable(kartu, playCards.getBuffer()[i].getNum());
         warna.push_back(playCards.getBuffer()[i].getType());
     }
-    cout << "                       MEJA                         " << endl;
+    cout << "                        MEJA                          " << endl;
     cout << "+----------------------------------------------------+" << endl;
     printTableCard(kartu, playCards.getBuffer().size(), warna);
     cout << "|                                                    |" << endl;
