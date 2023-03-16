@@ -38,6 +38,7 @@ class CapchaManager : public GameManager
         void setDroppedCombination(KombinasiCapsa);
         KombinasiCapsa& getDroppedCombination();
         void deleteAll3Cards();
+        bool isInputTrue(string) const;
         // int getGiliran();
         // void setPoint(int);
         
