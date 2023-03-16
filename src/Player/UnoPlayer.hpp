@@ -16,6 +16,6 @@ class UnoGamePlayer : public Player, public CardCollection<UnoCard*>{
         void operator+(UnoCard&);
         void operator-(UnoCard&);
         bool isInputed;
-        void setIsInputed();
+        void setIsInputed(bool);
 
 };

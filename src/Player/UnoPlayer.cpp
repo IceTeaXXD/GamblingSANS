@@ -48,14 +48,7 @@ void UnoGamePlayer::operator-(UnoCard& cardInput){
     }
 }
 
-void UnoGamePlayer::setIsInputed()
+void UnoGamePlayer::setIsInputed(bool fuck)
 {
-    if(this->isInputed)
-    {
-        this->isInputed = false;
-    }
-    else
-    {
-        this->isInputed = true;
-    }
+    this->isInputed = fuck;
 }

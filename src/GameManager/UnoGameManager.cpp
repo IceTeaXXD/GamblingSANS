@@ -127,6 +127,7 @@ void UnoGameManager::putCard(UnoCard* card){
         // check if the card is valid, same color or same number with the top of playCard
         if (card->getType() == playCard.getBuffer()[0]->getType() || card->getNum() == playCard.getBuffer()[0]->getNum()){
             // erase the first element of playCard and push the card to the back of playCard
+            lastInput = players->getPlayer(0).getName();
             playCard - playCard.getBuffer()[0];
             playCard + card;
             players->removePlayerCard(0, *card);
@@ -137,6 +138,7 @@ void UnoGameManager::putCard(UnoCard* card){
     else if(card->getCardType() == "Plus2"){
         // check if the card is valid, same color or same number with the top of playCard
         if (card->getType() == playCard.getBuffer()[0]->getType() || card->getNum() == playCard.getBuffer()[0]->getNum()){
+            lastInput = players->getPlayer(0).getName();
             playCard - playCard.getBuffer()[0];
             playCard + card;
             manipulate<plus2&>(dynamic_cast<plus2&>(*card));
@@ -147,6 +149,7 @@ void UnoGameManager::putCard(UnoCard* card){
     }else if (card->getCardType() == "Reverse"){
         // check if the card is valid, same color or same number with the top of playCard
         if (card->getType() == playCard.getBuffer()[0]->getType() || card->getNum() == playCard.getBuffer()[0]->getNum()){
+            lastInput = players->getPlayer(0).getName();
             playCard - playCard.getBuffer()[0];
             playCard + card;
             manipulate<reversecard&>(dynamic_cast<reversecard&>(*card));
@@ -157,6 +160,8 @@ void UnoGameManager::putCard(UnoCard* card){
     }else if (card->getCardType() == "Skip"){
         // check if the card is valid, same color or same number with the top of playCard
         if (card->getType() == playCard.getBuffer()[0]->getType() || card->getNum() == playCard.getBuffer()[0]->getNum()){
+            lastInput = players->getPlayer(0).getName();
+            cout << "======== : " << lastInput << endl;
             playCard - playCard.getBuffer()[0];
             playCard + card;
             manipulate<skip&>(dynamic_cast<skip&>(*card));
@@ -165,9 +170,11 @@ void UnoGameManager::putCard(UnoCard* card){
             cout << "Kartu tidak valid" << endl;
         }
     }else if (card->getCardType() == "Wildcard"){
+        lastInput = players->getPlayer(0).getName();
         manipulate<wildcard&>(dynamic_cast<wildcard&>(*card));
         players->removePlayerCard(0, *card);
     }else if (card->getCardType() == "Wildcard+4"){
+        lastInput = players->getPlayer(0).getName();
         manipulate<wildcardplus4&>(dynamic_cast<wildcardplus4&>(*card));
         players->removePlayerCard(0, *card);
     }else{
@@ -189,21 +196,25 @@ bool UnoGameManager::parseCommand(string aksi){
     {
         if(aksi == "inputcard"){
             // milih kartu, lalu masuk ke putCard
+            cout << "LAST INPUT : " << lastInput << endl;
             int cardIndex;
             cout << "Pilih kartu: ";
             cin >> cardIndex;
+            // string inputNow = players->getPlayer(0).getName();
             UnoCard* temp = players->getPlayer(0).getBuffer()[cardIndex-1];
             if (lastInput == players->getPlayer(0).getName()){
-                // cek kartu yg dipilih, angkanya harus sama!
+                if(temp->getNum() != playCard.getBuffer()[0]->getNum()){
+                    throw InputSalah();
+                }
             }
             putCard(temp);
-            if(temp->getCardType() != "Wildcard" && temp->getCardType() != "Wildcard+4"){
-                players->getPlayerAddress(0)->setIsInputed();
+            if(temp->getCardType() != "Wildcard" && temp->getCardType() != "Wildcard+4" && temp->getCardType() != "Plus2" && temp->getCardType() != "Skip" && temp->getCardType() != "Reverse"){
+                players->getPlayerAddress(0)->setIsInputed(true);
                 players->prevTurn();
             }
-            lastInput = players->getPlayer(0).getName();
         }else if(aksi == "addcard"){
             // ambil 1 kartu dari deckCard
+            lastInput = "";
             UnoCard* temp = deckCards.getCard(0);
             players->addPlayerCard(0, *temp);
             cout << "Mengambil kartu: ";
@@ -214,7 +225,7 @@ bool UnoGameManager::parseCommand(string aksi){
             if(!players->getPlayerAddress(0)->isInputed){
                 throw EndTurnErr();
             }else{
-                players->getPlayerAddress(0)->setIsInputed();
+                players->getPlayerAddress(0)->setIsInputed(false);
             }
         }
         return true;
