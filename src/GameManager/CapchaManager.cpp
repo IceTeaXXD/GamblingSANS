@@ -85,5 +85,3 @@ bool CapchaManager::isInputTrue(string) const
 {
     return true;
 }
-
-bool CapchaManager::isInputTrue(string a) const{return true;}
