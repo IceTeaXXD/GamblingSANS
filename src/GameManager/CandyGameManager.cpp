@@ -502,20 +502,117 @@ bool CandyGameManager::parseCommand(string aksi)
 
 void CandyGameManager::displayMeja()
 {
-    vector<DeckCard>::iterator* it;
-    cout << "              MEJA          "  << endl;
-    cout << "+-------------------------------+" << endl;
-    for(int i = 0; i < playCards.getBuffer().size(); i++)
+    vector<vector<string>> kartu;
+    vector<int> warna;
+    kartu.resize(6);
+    for (int i = 0; i < playCards.getBuffer().size(); i++)
     {
-        cout << "|            ";
-        playCards.getBuffer()[i].printInfo();
-        cout << "		|";
-        cout << endl;
+        createDisplayTable(kartu, playCards.getBuffer()[i].getNum());
+        warna.push_back(playCards.getBuffer()[i].getType());
     }
-    cout << "+-------------------------------+" << endl;
+    cout << "                       MEJA                         " << endl;
+    cout << "+----------------------------------------------------+" << endl;
+    printTableCard(kartu, playCards.getBuffer().size(), warna);
+    cout << "|                                                    |" << endl;
+    cout << "+----------------------------------------------------+" << endl;
 }
 
 bool CandyGameManager::isInputTrue(string input) const
 {
     return input=="tablecards" || input == "viewcards" || input == "next" || input == "double" || input == "half" || input == "quadruple" || input == "quarter" || input == "reroll" || input == "reverse" || input == "switch" || input == "swap" || input == "help" || input == "abilityless" || input == "2";
+}
+
+void CandyGameManager::createDisplayTable(vector<vector<string>>& kartu, int angka)
+{
+    kartu[0].push_back(" ");
+    for (int i = 0; i < 8; i++)
+    {
+        kartu[0].push_back("_");
+    }
+    kartu[0].push_back(" ");
+
+    kartu[1].push_back(" ");
+    kartu[1].push_back("|");
+    for (char x : to_string(angka))
+    {
+        string temp = "";
+        temp += x;
+        kartu[1].push_back(temp);
+    }
+    for (int i = 0; i < 6 - to_string(angka).length(); i++)
+    {
+        kartu[1].push_back(" ");
+    }
+    kartu[1].push_back("|");
+    kartu[1].push_back(" ");
+
+    kartu[2].push_back(" ");
+    kartu[2].push_back("|");
+    for (int i = 0; i < 6; i++)
+    {
+        kartu[2].push_back(" ");
+    }
+    kartu[2].push_back("|");
+    kartu[2].push_back(" ");
+    
+    kartu[3].push_back(" ");
+    kartu[3].push_back("|");
+    for (int i = 0; i < 6; i++)
+    {
+        kartu[3].push_back(" ");
+    }
+    kartu[3].push_back("|");
+    kartu[3].push_back(" ");
+
+    kartu[4].push_back(" ");
+    kartu[4].push_back("|");
+    for (int i = 0; i < 6; i++)
+    {
+        kartu[4].push_back(" ");
+    }
+    kartu[4].push_back("|");
+    kartu[4].push_back(" ");
+
+    
+    kartu[5].push_back(" ");
+    kartu[5].push_back("|");
+    for (int i = 0; i < 6 - to_string(angka).length(); i++)
+    {
+        kartu[5].push_back("_");
+    }
+    for (char x : to_string(angka))
+    {
+        string temp = "";
+        temp += x;
+        kartu[5].push_back(temp);
+    }
+    kartu[5].push_back("|");
+    kartu[5].push_back(" ");   
+}
+
+void CandyGameManager::printTableCard(vector<vector<string>> kartu, int banyakKartu, vector<int> warna)
+{
+    for (auto vec : kartu){
+        cout << "| ";
+        for (int i = 0; i < 24-banyakKartu*5; i++)
+        {
+            cout << " ";
+        }
+        for (int i = 0; i < vec.size(); i++){
+            if(warna[(i-1)/10]==1)
+            cout << "\033[1;32m" << vec[i] << "\033[0m";
+            else if(warna[(i-1)/10]==2) 
+            cout << "\033[1;34m" << vec[i] << "\033[0m";
+            else if(warna[(i-1)/10]==3) 
+            cout << "\033[1;33m" << vec[i] << "\033[0m";
+            else if(warna[(i-1)/10]==4) 
+            cout << "\033[1;31m" << vec[i] << "\033[0m";
+        }
+        for (int i = 0; i < 26-banyakKartu*5 - (banyakKartu/5); i++)
+        {
+            cout << " ";
+        }
+        cout << " |";
+        cout << endl;
+    }
 }

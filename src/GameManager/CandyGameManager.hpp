@@ -43,5 +43,9 @@ class CandyGameManager : public GameManager
         void displayMeja();
 
         bool isInputTrue(string) const;
+
+        void createDisplayTable(vector<vector<string>>&, int);
+
+        void printTableCard(vector<vector<string>>, int, vector<int>);
 };
 #endif
