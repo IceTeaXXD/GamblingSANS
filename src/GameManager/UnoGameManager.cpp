@@ -264,7 +264,7 @@ void UnoGameManager::displayWinner() const{
     cout << "Permainan selesai!" << endl;
     cout << "Pemenang : " << endl;
     int j = 1;
-    for (int i = winner.size()-1; i >= 0; i--){
+    for (int i = 0; i < winner.size(); i++){
         cout << j << ". " << winner[i] << endl;
         j++;
     }
