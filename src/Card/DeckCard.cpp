@@ -36,16 +36,60 @@ void DeckCard::printInfo()
         cout<< card;
     }
 }
+
+void DeckCard::printInfoCapsa()
+{
+    // concat getNum() and translateToString()
+    string card = to_string(this->getNum()) + " " + this->translateToType();
+    printColor pc;
+    if (this->translateToString() == "Diamond"){
+        pc.printRed(card);
+    }else if (this->translateToString() == "Club"){
+        pc.printBlue(card);
+    }else if (this->translateToString() == "Heart"){
+        pc.printRed(card);
+    }else if (this->translateToString() == "Spade"){
+        pc.printBlue(card);
+    }else{
+        cout<< card <<endl;
+    }
+}
+
 void DeckCard::printType()
 {
-    cout<<this->getNum()<<" "<<this->translateToType();
+    stringstream buffer;
+    string num;
+    printColor pc;
+    if (this->getNum()==11)
+    num = "Jack";
+    else if (this->getNum()==12)
+    num = "Queen";
+    else if (this->getNum()==13)
+    num = "King";
+    else
+    num = to_string(this->getNum());
+
+    string card = num + " " + this->translateToType();
+    buffer << std::left << std::setw(13) << std::setfill(' ') << card;
+    if (this->translateToType() == "Diamond"){
+        cout << "\033[1;31m" << buffer.str() << "\033[0m";
+    }else if (this->translateToType() == "Club"){
+        cout << "\033[1;34m" << buffer.str() << "\033[0m";
+    }else if (this->translateToType() == "Heart"){
+        cout << "\033[1;31m" << buffer.str() << "\033[0m";
+    }else if (this->translateToType() == "Spade"){
+        cout << "\033[1;34m" << buffer.str() << "\033[0m";
+    }
+    buffer.str(std::string());
+
 }
+
 double DeckCard::value()
 {
     double tempwarna;
     if (getType()==1)
     {
-        tempwarna = 0;
+        tempwarna = 0.00001;
     }
     else if(getType()==2)
     {

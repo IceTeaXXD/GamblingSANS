@@ -3,14 +3,14 @@
 
 int main()
 {
-    CardCollection<DeckCard> table;
-    CardCollection<DeckCard> p1;
-    CardCollection<DeckCard> p2;
-    CardCollection<DeckCard> p3;
-    CardCollection<DeckCard> p4;
-    CardCollection<DeckCard> p5;
-    CardCollection<DeckCard> p6;
-    CardCollection<DeckCard> p7;
+    vector<DeckCard> table;
+    vector<DeckCard> p1;
+    vector<DeckCard> p2;
+    vector<DeckCard> p3;
+    vector<DeckCard> p4;
+    vector<DeckCard> p5;
+    vector<DeckCard> p6;
+    vector<DeckCard> p7;
 
     //table card
     // DeckCard k4 = DeckCard(2,4);
@@ -75,32 +75,32 @@ int main()
     DeckCard k11 = DeckCard(3,11);
     DeckCard k12 = DeckCard(3,12);
     DeckCard k13 = DeckCard(3,13);
-    table.addCard(k3);
-    table.addCard(k5);
-    table.addCard(k7);
-    table.addCard(k9);
-    table.addCard(k11);
+    table.push_back(k3);
+    table.push_back(k5);
+    table.push_back(k7);
+    table.push_back(k9);
+    table.push_back(k11);
 
-    p2.addCard(k8);
-    p2.addCard(h3);
+    p2.push_back(k8);
+    p2.push_back(h3);
 
-    p1.addCard(k6);
-    p1.addCard(h13);
+    p1.push_back(k6);
+    p1.push_back(h13);
 
-    p3.addCard(m5);
-    p3.addCard(h5);
+    p3.push_back(m5);
+    p3.push_back(h5);
 
-    p4.addCard(b3);
-    p4.addCard(m10);
+    p4.push_back(b3);
+    p4.push_back(m10);
 
-    p5.addCard(h6);
-    p5.addCard(k11);
+    p5.push_back(h6);
+    p5.push_back(k10);
 
-    p6.addCard(b6);
-    p6.addCard(m12);
+    p6.push_back(b6);
+    p6.push_back(m12);
 
-    p7.addCard(h5);
-    p7.addCard(h13);
+    p7.push_back(h5);
+    p7.push_back(h13);
 
     //KOMBINASI
     cout << "\np1\n";

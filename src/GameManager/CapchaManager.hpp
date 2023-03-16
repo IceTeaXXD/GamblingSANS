@@ -17,9 +17,10 @@ class CapchaManager : public GameManager
     private:
         int giliran;
         int point;
+        Kombinasi* lastPlayed;
         CardCollection<DeckCard> Cards;
         ArrOfPlayer<CapsaGamePlayer>* players;
-
+        KombinasiCapsa droppedCombination;
     public:
         CapchaManager();
         ~CapchaManager();
@@ -29,8 +30,14 @@ class CapchaManager : public GameManager
         // void printInfoPlayerCard(int); //buat ngecek player punya kartu apa aja
         ArrOfPlayer<CapsaGamePlayer>& getPlayers();
         void setGiliran(int);
-
+        Kombinasi getLastPlayed();
+        void setLastPlayed(Kombinasi&);
+        void clearLastPlayed();
         bool parseCommand(string);
+        int firstPlayer();
+        void setDroppedCombination(KombinasiCapsa);
+        KombinasiCapsa& getDroppedCombination();
+        void deleteAll3Cards();
         // int getGiliran();
         // void setPoint(int);
         

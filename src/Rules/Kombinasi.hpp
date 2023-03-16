@@ -8,13 +8,13 @@
 #include "../Card/CardCollection.hpp"
 
 class Kombinasi : protected FindValue{
-    private:
+    protected:
         //0-1 player, sisanya table
         vector<DeckCard> arr;
         vector<DeckCard> arrCombination;
         vector<DeckCard> arrTableCardCombination;
+        string combinationName;
         double val;
-
         const double MAX_HIGH_CARD = 1.31;
         const double MAX_PAIR = MAX_HIGH_CARD + 1.31 + 1.301;
         const double MAX_TWO_PAIR = MAX_PAIR + 1.31 + 1.3101 + 1.3001 + 1.3;//
@@ -29,7 +29,6 @@ class Kombinasi : protected FindValue{
         /* Default Constructor */
         Kombinasi();
         Kombinasi(vector<DeckCard> playerCards, vector<DeckCard> tableCards);
-        Kombinasi(vector<DeckCard>,int);
         ~Kombinasi();
         /* Setter */
         /* Set Kartu dari playerCards dan tableCards*/
@@ -40,7 +39,7 @@ class Kombinasi : protected FindValue{
         double getValue();
         double tableValue();
         string getCombinationName();
-        double getConst(int);
+        string getCName();
         /* Bruteforcing untuk Kombinasi Kartu */
         int getCombination(DeckCard x, DeckCard tc);
 
@@ -51,6 +50,7 @@ class Kombinasi : protected FindValue{
         bool operator==(const Kombinasi&) const;
 
         Kombinasi& operator=(Kombinasi&);
+        
         vector<DeckCard> getCombinationCard();
         /*  Rule:
             - highcard rumusnya ngikutin yg di docs, value = konstanta + 0.3*warna 
@@ -61,14 +61,14 @@ class Kombinasi : protected FindValue{
             - Jadi nanti buat di fungsi yg value tinggal panggil aja ini semua dijumlahin
         */
         // double HighCard(); Digabung sama value()
-        bool isPair();
-        bool isTwoPair();
-        bool isThreeOfKind();
-        bool isStraight();
-        bool isFlush();
-        bool isFullHouse();
+        virtual bool isPair();
+        virtual bool isTwoPair();
+        virtual bool isThreeOfKind();
+        virtual bool isStraight();
+        virtual bool isFlush();
+        virtual bool isFullHouse();
         bool isFourAKind();
-        bool isStraightFlush();
+        virtual bool isStraightFlush();
 
         bool isTableCardPair();
         bool isTableCardTwoPair();

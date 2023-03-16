@@ -9,8 +9,7 @@ template <class T>
 class ArrOfPlayer {
     private :
         deque<T> arr;
-        // vector<DeckCard> tableCards;
-        map<double,Kombinasi> mapValue;
+        
     public :
         //ctor
         ArrOfPlayer();
@@ -36,6 +35,7 @@ class ArrOfPlayer {
         void setPlayerLeftCard(int, DeckCard&);
         void setPlayerRightCard(int, DeckCard&);
         T* getPlayerAddress(int idx);
+        int getSize();
 };
 
 
