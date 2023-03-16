@@ -30,7 +30,80 @@ CardCollection<DeckCard>* CapchaManager::getCards()
 }
 
 bool CapchaManager::parseCommand(string aksi){
+    
     return true;
+}
+
+void CapchaManager::parserFirstPlayer(string aksi, deque<CapsaGamePlayer*>& pointerArr, bool& menang, bool& flag, int& angka){
+    while (aksi!="HighCard"&&aksi!="Pair"&&aksi!="TwoPair"&&\
+        aksi!="ThreeAKind"&&aksi!="Straight"&&aksi!="Flush"&&\
+        aksi!="FullHouse"&&aksi!="FourAKind"&&aksi!="StraightFlush")
+    {
+    cout << "Input salah. Ketik nama kombinasi seperti pada layar tanpa spasi.\n";
+    cout<<">> ";
+    cin >> aksi;
+    }
+    pointerArr[0]->getArrOfKombinasi()->displaySpecificCombination(aksi);
+    cout<<"Masukkan nomor kombinasi yang ingin dikeluarkan : "<<endl;
+    cout<<">> ";
+    cin>>angka;
+    while(angka > pointerArr[0]->getArrOfKombinasi()->dropCombSize() || angka <= 0)
+    {
+        cout<<"Masukkan nomor kombinasi yang ingin dikeluarkan : "<<endl;
+        cout<<">> ";
+        cin>>angka;
+    }
+    this->setDroppedCombination(pointerArr[0]->getArrOfKombinasi()->DropCombination(angka-1));
+    // cout<<this->getDroppedCombination().getCName()<<endl;
+    *pointerArr[0]-this->getDroppedCombination();
+    pointerArr[0]->setArrCombination();
+    // this->getDroppedCombination().printKombinasi();
+    this->setLastPlayed(this->getDroppedCombination());
+    // newArrKombinasi.displaySpecificCombination("HighCard");
+    flag = false;
+    // cout<<pointerArr[0]->getCountOfPlayerCards()<<" JUMLAH KARTU"<<endl;
+    if(pointerArr[0]->getCountOfPlayerCards() == 0)
+    {
+        menang = true;
+        cout<<"Player "<<pointerArr[0]->getName()<<" telah memenangkan pertandingan"<<endl;
+    }
+}
+
+void CapchaManager::parserNextPlayer(deque<CapsaGamePlayer*>& pointerArr, deque<CapsaGamePlayer*>& gamePlayer, bool& menang, int& angka){
+    if (angka == 0)
+    {
+        gamePlayer.push_front(pointerArr.at(0));
+        pointerArr.pop_front();
+        cout<<"Anda melakukan PASS"<<endl;
+    }
+    else
+    {
+        // cout<<"P1"<<endl;
+        // tempArrKombinasi = ArrOfKombinasi(pointerArr[0]->getCard());
+        this->setDroppedCombination(pointerArr[0]->getGreaterComb(angka-1));
+        // cout<<"CEK 1"<<endl;
+        // cout<<"INI YANG DI GAME SETELAH UPDATE"<<endl;
+        // this->getDroppedCombination().printKombinasi();
+        *pointerArr[0]-(this->getDroppedCombination());
+        pointerArr[0]->setArrCombination();
+        cout<<pointerArr[0]->getCountOfPlayerCards()<<" JUMLAH KARTU"<<endl;
+        // cout<<"CEK 2"<<endl;
+        // cout<<"INI YANG DI GAME SETELAH UPDATE"<<endl;
+        // this->getDroppedCombination().printKombinasi();
+        // cout<<pointerArr[0]->getCountOfPlayerCards()<<endl;
+        this->setLastPlayed(this->getDroppedCombination());
+        // cout<<"CEK 3"<<endl;
+        // cout<<"INI YANG DI GAME SETELAH UPDATE"<<endl;
+        // this->getDroppedCombination().printKombinasi();
+        if(pointerArr[0]->getCountOfPlayerCards() == 0)
+        {
+            menang = true;
+            cout<<"Player "<<pointerArr[0]->getName()<<" telah memenangkan pertandingan"<<endl;
+            cout<<"----------------------------SELAMAT---------------------------------"<<endl;
+        }
+        pointerArr.push_back(pointerArr.at(0));
+        pointerArr.pop_front();
+    }
 }
 
 int CapchaManager::firstPlayer(){
