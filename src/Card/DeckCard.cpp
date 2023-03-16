@@ -57,16 +57,33 @@ void DeckCard::printInfoCapsa()
 
 void DeckCard::printType()
 {
+    
+    string num;
+    printColor pc;
     if (this->getNum()==11)
-    cout<<"Jack ";
+    num = "Jack";
     else if (this->getNum()==12)
-    cout<<"Queen ";
+    num = "Queen";
     else if (this->getNum()==13)
-    cout<<"King ";
+    num = "King";
     else
-    cout<<this->getNum()<<" ";
-    cout <<this->translateToType();
+    num = to_string(this->getNum());
+
+    string card = num + " " + this->translateToType();
+    if (this->translateToType() == "Diamond"){
+        pc.printRed(card);
+    }else if (this->translateToType() == "Club"){
+        pc.printBlue(card);
+    }else if (this->translateToType() == "Heart"){
+        pc.printRed(card);
+    }else if (this->translateToType() == "Spade"){
+        pc.printBlue(card);
+    }else{
+        cout << card << endl;
+    }
+
 }
+
 double DeckCard::value()
 {
     double tempwarna;
