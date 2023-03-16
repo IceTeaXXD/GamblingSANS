@@ -18,6 +18,7 @@ using namespace std;
 class UnoGameManager : public GameManager{
     private:
         ArrOfPlayer<UnoGamePlayer>* players;
+        vector<string> winner;
         CardCollection<UnoCard*> playCard;
         CardCollection<UnoCard*> deckCards;
         printColor pc;
@@ -36,7 +37,7 @@ class UnoGameManager : public GameManager{
         void putCard(UnoCard* card);
         bool parseCommand(string);
         bool isInputTrue(string) const;
-        bool isGameOver() const;
+        bool isGameOver();
         void displayWinner() const;
 };
 
