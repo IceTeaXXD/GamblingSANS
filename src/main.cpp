@@ -181,24 +181,25 @@ int main()
                         // cout<<"P1"<<endl;
                         // tempArrKombinasi = ArrOfKombinasi(pointerArr[0]->getCard());
                         game->setDroppedCombination(pointerArr[0]->getGreaterComb(angka-1));
-                        cout<<"CEK 1"<<endl;
-                        cout<<"INI YANG DI GAME SETELAH UPDATE"<<endl;
-                        game->getDroppedCombination().printKombinasi();
+                        // cout<<"CEK 1"<<endl;
+                        // cout<<"INI YANG DI GAME SETELAH UPDATE"<<endl;
+                        // game->getDroppedCombination().printKombinasi();
                         *pointerArr[0]-(game->getDroppedCombination());
                         pointerArr[0]->setArrCombination();
                         cout<<pointerArr[0]->getCountOfPlayerCards()<<" JUMLAH KARTU"<<endl;
-                        cout<<"CEK 2"<<endl;
-                        cout<<"INI YANG DI GAME SETELAH UPDATE"<<endl;
-                        game->getDroppedCombination().printKombinasi();
+                        // cout<<"CEK 2"<<endl;
+                        // cout<<"INI YANG DI GAME SETELAH UPDATE"<<endl;
+                        // game->getDroppedCombination().printKombinasi();
                         // cout<<pointerArr[0]->getCountOfPlayerCards()<<endl;
                         game->setLastPlayed(game->getDroppedCombination());
-                        cout<<"CEK 3"<<endl;
-                        cout<<"INI YANG DI GAME SETELAH UPDATE"<<endl;
-                        game->getDroppedCombination().printKombinasi();
+                        // cout<<"CEK 3"<<endl;
+                        // cout<<"INI YANG DI GAME SETELAH UPDATE"<<endl;
+                        // game->getDroppedCombination().printKombinasi();
                         if(pointerArr[0]->getCountOfPlayerCards() == 0)
                         {
                             menang = true;
                             cout<<"Player "<<pointerArr[0]->getName()<<" telah memenangkan pertandingan"<<endl;
+                            cout<<"----------------------------SELAMAT---------------------------------"<<endl;
                             break;
                         }
                         pointerArr.push_back(pointerArr.at(0));
@@ -218,14 +219,17 @@ int main()
             }
             while(!pointerArr.empty());
             // cout << "aaaaaaa\n";
-            pointerArr.clear();
-            for(int i = 0 ; i < 4 ; i++)
+            if (!menang)
             {
-                // cout << i << "-------------------" << gamePlayer.size() << endl;
-                pointerArr.push_back(gamePlayer.at(i));
+                pointerArr.clear();
+                for(int i = 0 ; i < 4 ; i++)
+                {
+                    // cout << i << "-------------------" << gamePlayer.size() << endl;
+                    pointerArr.push_back(gamePlayer.at(i));
+                }
+                gamePlayer.clear();
+                flag = true;
             }
-            gamePlayer.clear();
-            flag = true;
         }
     }
     else if(inputGame == "2")
