@@ -180,12 +180,20 @@ void CapsaGamePlayer::operator-(KombinasiCapsa c)
 
 void CapsaGamePlayer::viewAllCard()
 {
-    for (DeckCard card : buffer)
+    vector<DeckCard> temp = buffer;
+    sort(temp.begin(), temp.end(), compareWarna); 
+    for (int i = 0; i < temp.size(); i++)
     {
-        card.printInfoCapsa();
-
+        temp[i].printType();
+        
+        if (i==((temp.size()-1)/2))
+        cout << endl;
+        else
+        cout << "   ";
     }
+    cout << endl;
 }
+
 
 
 void CapsaGamePlayer::deleteCard(DeckCard& el)
@@ -218,6 +226,7 @@ void CapsaGamePlayer::delete3Cards()
     while (it != vecAngka.end())
     {
         buffer.erase(buffer.begin() + (it - vecAngka.begin()));
+        countOfPlayerCards--;
         it = find(it+1, vecAngka.end(), 3);
     }
 }

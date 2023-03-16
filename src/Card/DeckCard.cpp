@@ -57,7 +57,7 @@ void DeckCard::printInfoCapsa()
 
 void DeckCard::printType()
 {
-    
+    stringstream buffer;
     string num;
     printColor pc;
     if (this->getNum()==11)
@@ -70,17 +70,17 @@ void DeckCard::printType()
     num = to_string(this->getNum());
 
     string card = num + " " + this->translateToType();
+    buffer << std::left << std::setw(13) << std::setfill(' ') << card;
     if (this->translateToType() == "Diamond"){
-        pc.printRed(card);
+        cout << "\033[1;31m" << buffer.str() << "\033[0m";
     }else if (this->translateToType() == "Club"){
-        pc.printBlue(card);
+        cout << "\033[1;34m" << buffer.str() << "\033[0m";
     }else if (this->translateToType() == "Heart"){
-        pc.printRed(card);
+        cout << "\033[1;31m" << buffer.str() << "\033[0m";
     }else if (this->translateToType() == "Spade"){
-        pc.printBlue(card);
-    }else{
-        cout << card << endl;
+        cout << "\033[1;34m" << buffer.str() << "\033[0m";
     }
+    buffer.str(std::string());
 
 }
 

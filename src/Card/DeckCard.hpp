@@ -5,6 +5,8 @@
 #include <algorithm>
 #include <vector>
 #include <ctime>
+#include <iomanip>
+#include <sstream>
 #include "Angka.hpp"
 #include "Warna.hpp"
 #include "../Rules/FindValue.hpp"

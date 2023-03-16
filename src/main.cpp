@@ -104,6 +104,9 @@ int main()
                 cout<<"=============================================================================================="<<endl;
                 cout<<"Sekarang giliran player "<<pointerArr[0]->getName()<<endl;
                 cout<<"=============================================================================================="<<endl;
+                cout<<"Banyak kartu anda : "<<pointerArr[0]->getCountOfPlayerCards()<<endl;
+                cout << "Kartu kamu :\n";
+                pointerArr[0]->viewAllCard();
                 cout<<"List Kombinasi yang Anda punya"<<endl;
                 tempArrKombinasi = ArrOfKombinasi(pointerArr[0]->getCard());
                 tempArrKombinasi.displayCombinationList();
@@ -162,6 +165,9 @@ int main()
                 pointerArr[0]->getAllGreaterCombination(game->getDroppedCombination());
                 if (pointerArr[0]->isGreater())
                 {
+                    cout<<"Banyak kartu anda : "<<pointerArr[0]->getCountOfPlayerCards()<<endl;
+                    cout << "Kartu kamu :\n";
+                    pointerArr[0]->viewAllCard();
                     pointerArr[0]->displayGreaterComb();
                     cout<<"Masukkan '0' untuk PASS atau Masukkan nomor kombinasi yang ingin dikeluarkan"<<endl;
                     cout<<"Masukkan aksi :"<<endl;
@@ -204,6 +210,9 @@ int main()
                 else
                 {
                     cout<<"Anda dipaksa untuk PASS"<<endl;
+                    cout<<"Banyak kartu anda : "<<pointerArr[0]->getCountOfPlayerCards()<<endl;
+                    cout << "Kartu kamu :\n";
+                    pointerArr[0]->viewAllCard();
                     gamePlayer.push_front(pointerArr.at(0));
                     pointerArr.pop_front();
                 }
