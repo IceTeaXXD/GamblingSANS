@@ -30,7 +30,12 @@ GameManager::GameManager(int a):point(64)
 
 GameManager::GameManager(string f): point(64)
 {
-    CardCollection<DeckCard>::MakeDeck(f);
+    try{
+        CardCollection<DeckCard>::MakeDeck(f);
+    }catch (const std::invalid_argument){
+        cout << "File tidak ada, membuat kartu secara otomatis" << endl;
+        CardCollection<DeckCard>::MakeDeck();
+    }
 }
 
 void GameManager::makeTableCards()
