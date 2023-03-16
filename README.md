@@ -47,3 +47,6 @@ Project ini selesai
 - 13521006 Azmi Hasna Zahrani
 - 13521007 Matthew Mahendra
 - 13521024 Ahmad Nadil
+
+## Group's Photo
+![](Photo.jpg)
